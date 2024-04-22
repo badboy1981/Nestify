@@ -19,7 +19,7 @@ public class HandleInput : MonoBehaviour
     }
     private void Start()
     {
-        Speed = 3;
+        Speed = 2;
     }
 
     private void FixedUpdate()
@@ -38,6 +38,6 @@ public class HandleInput : MonoBehaviour
 
         transform.Translate(Vector3.back * Time.deltaTime * V_Input * Speed);
         //transform.Translate(Vector3.left * Time.deltaTime * H_Input * Speed);
-        transform.Rotate(Vector3.up * Time.deltaTime * H_Input * Speed * 30);
+        transform.Rotate(Vector3.up * Time.deltaTime * H_Input * Speed * 50);
     }
 }

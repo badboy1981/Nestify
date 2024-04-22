@@ -10,7 +10,7 @@ namespace Collectable
     {
         [SerializeField] TextMeshProUGUI CointText;
         [SerializeField] TextMeshProUGUI KeyText;
-        int CoinCounter = 0;
+        public int CoinCounter = 0;
         public int KeyCounter = 0;
         public List<string> CollectableName;
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Collectable
@@ -10,6 +11,8 @@ namespace Collectable
         [SerializeField] float DoorOpen;
         [SerializeField] Animator _Animator;
         [SerializeField] GameObject _Collector;
+        [SerializeField] TextMeshProUGUI WinMessage;
+
         Collector _CollectorScript;
 
 
@@ -34,10 +37,27 @@ namespace Collectable
             {
                 _Animator.SetBool("Inside", true);
             }
+            if (name == "DoorFinal")
+            {
+                if (_CollectorScript.CoinCounter == 20)
+                {
+                    _Animator.SetBool("Inside", true);
+                    WinMessage.text = "YOU WIN!!!";
+                    Debug.Log("Final Door!");
+                }
+                else
+                {
+                    WinMessage.text = "You need more Coin!!!";
+                }
+            }
         }
         private void OnTriggerExit(Collider other)
         {
             _Animator.SetBool("Inside", false);
+            if (name == "DoorFinal")
+            {
+                WinMessage.text = null;
+            }
         }
     }
 }

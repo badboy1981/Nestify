@@ -1,0 +1,18 @@
+
+/Animation
+/MazeSourceFBX
+/Samples
+/Scenes
+/TextMesh Pro
+
+*.mat.meta
+*.mat
+*.prefab
+*.meta
+*.controller
+*.anim
+*.unity
+*.fbx
+*.inputactions
+*.asset
+*.png

@@ -18,6 +18,10 @@ public class MyInputInit : ScriptableObject, Input001.IPlayerActions
             SetGamePlay();
         }
     }
+    private void OnDisable()
+    {
+
+    }
     private void SetGamePlay()
     {
         _InputControll.Player.Enable();
@@ -26,14 +30,17 @@ public class MyInputInit : ScriptableObject, Input001.IPlayerActions
     {
         _InputControll.Player.Disable();
     }
-    public event UnityAction<Vector2> MoveStartEvent = delegate { };
-    public event UnityAction<float> MoveCancledEvent = delegate { };
+
+    public event UnityAction<Vector2> MoveEvent = delegate { };
+    public event UnityAction<float> JumpEvent = delegate { };
+
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.phase.IsInProgress())
-            MoveStartEvent?.Invoke(context.ReadValue<Vector2>());
+        MoveEvent?.Invoke(context.ReadValue<Vector2>());
+    }
 
-        if (context.phase == InputActionPhase.Canceled)
-            MoveCancledEvent?.Invoke(context.ReadValue<float>());
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        JumpEvent?.Invoke(context.ReadValue<float>());
     }
 }

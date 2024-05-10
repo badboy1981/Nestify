@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [CreateAssetMenu(menuName = ("My Asset/MazeControl"), fileName = "MazeControl")]
-public class MyInputInit : ScriptableObject, Input001.IPlayerActions
+public class MyInputInit : ScriptableObject, Input001.IPlayerActions,Input001.IMapActions
 {
     private Input001 _InputControll;
     private void OnEnable()
@@ -25,6 +25,7 @@ public class MyInputInit : ScriptableObject, Input001.IPlayerActions
     private void SetGamePlay()
     {
         _InputControll.Player.Enable();
+        _InputControll.Map.Disable();
     }
     private void SetUI()
     {

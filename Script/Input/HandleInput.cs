@@ -45,7 +45,7 @@ public class HandleInput : MonoBehaviour
     private void Start()
     {
         Speed = 120;
-        RotateRatio = 100;
+        RotateRatio = 200;
     }
     private void FixedUpdate()
     {

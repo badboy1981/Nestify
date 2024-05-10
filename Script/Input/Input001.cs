@@ -182,6 +182,144 @@ namespace NameInput001
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Map"",
+            ""id"": ""ab2e819b-cea0-4c58-86a0-a620ffc86f5c"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""da60a480-f7bd-4c3a-b72e-3259182a75f6"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""7890e01c-e4d1-4791-8d06-a719f5bb45a2"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""id"": ""99452d56-5585-4edc-9beb-d62509793078"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Down"",
+                    ""id"": ""2e836f81-c601-4987-ad2b-dead201df218"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Left"",
+                    ""id"": ""6059fd87-ba87-4b2d-8a03-15ef477e9e44"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Right"",
+                    ""id"": ""599f6336-5b4d-4232-a8c8-154ec255a205"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""MoveArrow"",
+                    ""id"": ""e960ece2-d167-4197-bbb6-b0ecdd72c148"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""0a9e23df-7b91-4eae-a882-c1f741cfafeb"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""8d75e9cf-5fc8-4081-ac63-fee00b5bd601"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""d29638c4-2a7f-4d04-bc69-77da8ad95b2b"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""915b37fc-d0f9-4762-9f1a-ce5783ef6367"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8958f7f2-948d-466b-8291-efe43181cba2"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -224,6 +362,9 @@ namespace NameInput001
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            // Map
+            m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
+            m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -335,6 +476,52 @@ namespace NameInput001
             }
         }
         public PlayerActions @Player => new PlayerActions(this);
+
+        // Map
+        private readonly InputActionMap m_Map;
+        private List<IMapActions> m_MapActionsCallbackInterfaces = new List<IMapActions>();
+        private readonly InputAction m_Map_Move;
+        public struct MapActions
+        {
+            private @Input001 m_Wrapper;
+            public MapActions(@Input001 wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Move => m_Wrapper.m_Map_Move;
+            public InputActionMap Get() { return m_Wrapper.m_Map; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(MapActions set) { return set.Get(); }
+            public void AddCallbacks(IMapActions instance)
+            {
+                if (instance == null || m_Wrapper.m_MapActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_MapActionsCallbackInterfaces.Add(instance);
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+            }
+
+            private void UnregisterCallbacks(IMapActions instance)
+            {
+                @Move.started -= instance.OnMove;
+                @Move.performed -= instance.OnMove;
+                @Move.canceled -= instance.OnMove;
+            }
+
+            public void RemoveCallbacks(IMapActions instance)
+            {
+                if (m_Wrapper.m_MapActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IMapActions instance)
+            {
+                foreach (var item in m_Wrapper.m_MapActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_MapActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public MapActions @Map => new MapActions(this);
         private int m_KeyBordSchemeSchemeIndex = -1;
         public InputControlScheme KeyBordSchemeScheme
         {
@@ -366,6 +553,10 @@ namespace NameInput001
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+        }
+        public interface IMapActions
+        {
+            void OnMove(InputAction.CallbackContext context);
         }
     }
 }

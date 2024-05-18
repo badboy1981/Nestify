@@ -17,6 +17,9 @@ namespace Collectable
         {
             //base.Collect();            
         }
+#if UNITY_EDITOR
+
+#endif
         private void Awake()
         {
             _CollectorScript = _Collector.GetComponent<Collector>();

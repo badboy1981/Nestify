@@ -46,6 +46,15 @@ namespace NameInput001
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GoMap"",
+                    ""type"": ""Value"",
+                    ""id"": ""97fa71d2-3c11-49f5-bb95-6f0d58fac02c"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -180,6 +189,17 @@ namespace NameInput001
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c0756f9-2d3f-4d6c-bb50-52be77007777"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""GoMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -192,6 +212,15 @@ namespace NameInput001
                     ""type"": ""Value"",
                     ""id"": ""da60a480-f7bd-4c3a-b72e-3259182a75f6"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GoToPlay"",
+                    ""type"": ""Value"",
+                    ""id"": ""03a99d38-f34a-4651-880a-218a88359766"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -318,6 +347,17 @@ namespace NameInput001
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3ed6c76-0ce6-41d4-8b46-b00c14e1e975"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBordScheme"",
+                    ""action"": ""GoToPlay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -362,9 +402,11 @@ namespace NameInput001
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            m_Player_GoMap = m_Player.FindAction("GoMap", throwIfNotFound: true);
             // Map
             m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
             m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
+            m_Map_GoToPlay = m_Map.FindAction("GoToPlay", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -428,12 +470,14 @@ namespace NameInput001
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_GoMap;
         public struct PlayerActions
         {
             private @Input001 m_Wrapper;
             public PlayerActions(@Input001 wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
+            public InputAction @GoMap => m_Wrapper.m_Player_GoMap;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -449,6 +493,9 @@ namespace NameInput001
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @GoMap.started += instance.OnGoMap;
+                @GoMap.performed += instance.OnGoMap;
+                @GoMap.canceled += instance.OnGoMap;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -459,6 +506,9 @@ namespace NameInput001
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @GoMap.started -= instance.OnGoMap;
+                @GoMap.performed -= instance.OnGoMap;
+                @GoMap.canceled -= instance.OnGoMap;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -481,11 +531,13 @@ namespace NameInput001
         private readonly InputActionMap m_Map;
         private List<IMapActions> m_MapActionsCallbackInterfaces = new List<IMapActions>();
         private readonly InputAction m_Map_Move;
+        private readonly InputAction m_Map_GoToPlay;
         public struct MapActions
         {
             private @Input001 m_Wrapper;
             public MapActions(@Input001 wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Map_Move;
+            public InputAction @GoToPlay => m_Wrapper.m_Map_GoToPlay;
             public InputActionMap Get() { return m_Wrapper.m_Map; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -498,6 +550,9 @@ namespace NameInput001
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @GoToPlay.started += instance.OnGoToPlay;
+                @GoToPlay.performed += instance.OnGoToPlay;
+                @GoToPlay.canceled += instance.OnGoToPlay;
             }
 
             private void UnregisterCallbacks(IMapActions instance)
@@ -505,6 +560,9 @@ namespace NameInput001
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @GoToPlay.started -= instance.OnGoToPlay;
+                @GoToPlay.performed -= instance.OnGoToPlay;
+                @GoToPlay.canceled -= instance.OnGoToPlay;
             }
 
             public void RemoveCallbacks(IMapActions instance)
@@ -553,10 +611,12 @@ namespace NameInput001
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnGoMap(InputAction.CallbackContext context);
         }
         public interface IMapActions
         {
             void OnMove(InputAction.CallbackContext context);
+            void OnGoToPlay(InputAction.CallbackContext context);
         }
     }
 }

@@ -1,29 +1,63 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HandleInput : MonoBehaviour
 {
     [SerializeField] MyInputInit _InputControl;
+    public SavePlayerData _SavePlayerData;
+    [SerializeField] GameObject _Player;
 
     private Vector3 Movement;
     private Vector3 Rotation;
-    private float Jump;
     [Range(0, 1000)][SerializeField] private float Speed;
     [Range(0, 1000)][SerializeField] private float RotateRatio;
     [SerializeField] ConstantForce _ConstantForce;
 
     private Rigidbody rb;
-
-    private void Awake()
+    
+    //private void OnEnable()    
+    private void Start()
     {
+        Speed = 120;
+        RotateRatio = 200;
         rb = GetComponent<Rigidbody>();
         _ConstantForce = GetComponent<ConstantForce>();
         _InputControl.MoveEvent += HandleMoveByForce;
         _InputControl.JumpEvent += HandleJump;
+        _InputControl.GoToMap += HandleGoToMap;
+        _InputControl.GoToPlay += HandleGoToPlay;
     }
 
+    private void HandleGoToMap(float GoMap)
+    {
+        Debug.Log($"Go To Map {GoMap}");
+
+        SceneManager.LoadScene("TopViewGame");
+        SaveData();
+    }
+    private void SaveData()
+    {
+        if (_SavePlayerData.TestFloat > 0)
+        {
+            _SavePlayerData.PlayerPosition = _Player.transform.position;
+            _SavePlayerData.TestFloat += Time.deltaTime;
+        }
+        else
+        {
+            //_SavePlayerData = ScriptableObject.CreateInstance<SavePlayerData>();
+            _SavePlayerData = new SavePlayerData();
+            _SavePlayerData.PlayerPosition = _Player.transform.position;
+            _SavePlayerData.TestFloat += Time.deltaTime;
+        }
+    }
+    private void HandleGoToPlay(float GoPlay)
+    {
+        Debug.Log($"Go To Play {GoPlay}");        
+        SceneManager.LoadScene("Maze_Easy_6-8");
+    }
     private void HandleMoveByVelosity(Vector2 MoveValue)
     {
         //Movement = new Vector3(0, 0, MoveValue.y * Speed);
@@ -39,27 +73,13 @@ public class HandleInput : MonoBehaviour
     }
     private void HandleJump(float JumpValue)
     {
-        Jump = JumpValue;
         _ConstantForce.relativeForce = new Vector3(0, JumpValue * Speed, 0);
     }
-    private void Start()
-    {
-        Speed = 120;
-        RotateRatio = 200;
-    }
+
     private void FixedUpdate()
     {
         MoveBy_ConstantForce();
-    }
-    private void MoveBy_Velocity()
-    {
-        rb.velocity = Movement;
-        _ConstantForce.relativeTorque = Rotation;
-        //transform.Rotate(Rotation);
-    }
-    private void MoveBy_RiggidBodyForce()
-    {
-
+        //MoveByOldSystem();
     }
     private void MoveBy_ConstantForce()
     {
@@ -67,6 +87,23 @@ public class HandleInput : MonoBehaviour
         //_ConstantForce.relativeTorque = Rotation / 10;
         transform.Rotate(Rotation * Time.deltaTime);
     }
+    private void MoveByOldSystem()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        float speed = 2;
+
+        Vector3 movement = new(x, 0, z);
+        transform.Translate(movement * speed * Time.deltaTime);
+        SaveData();
+    }
+    private void MoveBy_Velocity()
+    {
+        rb.velocity = Movement;
+        _ConstantForce.relativeTorque = Rotation;
+        //transform.Rotate(Rotation);
+    }
+
     private void MoveByRigidbody3D()
     {
         transform.Rotate(RotateRatio * Movement.x * Speed * Time.deltaTime * Vector3.up);

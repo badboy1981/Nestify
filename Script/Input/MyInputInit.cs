@@ -63,9 +63,8 @@ public class MyInputInit : ScriptableObject, Input001.IPlayerActions, Input001.I
     {
         if (context.phase == InputActionPhase.Started)
         {
-            GoToPlay?.Invoke(context.ReadValue<float>());
-
             SetGamePlay();
+            GoToPlay?.Invoke(context.ReadValue<float>());
         }
     }
 
@@ -73,9 +72,8 @@ public class MyInputInit : ScriptableObject, Input001.IPlayerActions, Input001.I
     {
         if (context.phase == InputActionPhase.Started)
         {
-            GoToMap?.Invoke(context.ReadValue<float>());
-
             SetUI();
+            GoToMap?.Invoke(context.ReadValue<float>());
         }
     }
 }

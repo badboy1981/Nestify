@@ -13,7 +13,7 @@ namespace Collectable
         public int CoinCounter = 0;
         public int KeyCounter = 0;
         public List<string> CollectableName;
-
+        
         private void Awake()
         {
             CollectableName = new List<string>();

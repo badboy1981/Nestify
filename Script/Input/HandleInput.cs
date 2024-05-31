@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class HandleInput : MonoBehaviour
 {
     [SerializeField] MyInputInit _InputControl;
-    public SavePlayerData _SavePlayerData;
+    SavePlayerData _SavePlayerData;
+    //public GameObject SaveObject;
     [SerializeField] GameObject _Player;
 
     private Vector3 Movement;
@@ -17,10 +18,11 @@ public class HandleInput : MonoBehaviour
     [SerializeField] ConstantForce _ConstantForce;
 
     private Rigidbody rb;
-    
+
     //private void OnEnable()    
     private void Start()
     {
+
         Speed = 120;
         RotateRatio = 200;
         rb = GetComponent<Rigidbody>();
@@ -34,29 +36,30 @@ public class HandleInput : MonoBehaviour
     private void HandleGoToMap(float GoMap)
     {
         Debug.Log($"Go To Map {GoMap}");
-
         SceneManager.LoadScene("TopViewGame");
-        SaveData();
-    }
-    private void SaveData()
-    {
-        if (_SavePlayerData.TestFloat > 0)
-        {
-            _SavePlayerData.PlayerPosition = _Player.transform.position;
-            _SavePlayerData.TestFloat += Time.deltaTime;
-        }
-        else
-        {
-            //_SavePlayerData = ScriptableObject.CreateInstance<SavePlayerData>();
-            _SavePlayerData = new SavePlayerData();
-            _SavePlayerData.PlayerPosition = _Player.transform.position;
-            _SavePlayerData.TestFloat += Time.deltaTime;
-        }
     }
     private void HandleGoToPlay(float GoPlay)
     {
-        Debug.Log($"Go To Play {GoPlay}");        
+        Debug.Log($"Go To Play {GoPlay}");
         SceneManager.LoadScene("Maze_Easy_6-8");
+    }
+    private void SaveData()
+    {
+        _SavePlayerData = ScriptableObject.CreateInstance<SavePlayerData>();
+        _SavePlayerData.PlayerPosition = _Player.transform.position;
+        _SavePlayerData.TestFloat += Time.deltaTime;
+        Debug.Log($"Player Position: {_SavePlayerData.PlayerPosition} \n Test Float Value: {_SavePlayerData.TestFloat}");
+    }
+    private void SaveData2()
+    {
+        //_SavePlayerData = new SavePlayerData()
+        //{
+        //    PlayerPosition = _Player.transform.position,
+        //    TestFloat = Time.deltaTime
+        //};
+        _SavePlayerData = ScriptableObject.CreateInstance<SavePlayerData>();
+        _SavePlayerData.PlayerPosition = _Player.transform.position;
+        Debug.Log($"Player Position: {_SavePlayerData.PlayerPosition}");
     }
     private void HandleMoveByVelosity(Vector2 MoveValue)
     {
@@ -103,7 +106,6 @@ public class HandleInput : MonoBehaviour
         _ConstantForce.relativeTorque = Rotation;
         //transform.Rotate(Rotation);
     }
-
     private void MoveByRigidbody3D()
     {
         transform.Rotate(RotateRatio * Movement.x * Speed * Time.deltaTime * Vector3.up);
@@ -121,7 +123,6 @@ public class HandleInput : MonoBehaviour
         //rb.MovePosition((Vector2)transform.position + (Movement * Speed * Time.deltaTime));
         rb.MovePosition(new Vector3(0, 0, Movement.y));
     }
-
     private void ControlByInputSysytem()
     {
         transform.Translate(Movement.y * Speed * Time.deltaTime * Vector3.back);

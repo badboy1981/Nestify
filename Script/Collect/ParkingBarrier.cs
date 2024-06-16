@@ -27,7 +27,7 @@ namespace Collectable
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log(CrainHandle.name);
-            if (_CollectorScript.CollectableName.Contains(CrainHandle.name.Replace("CH", "Key")))
+            if (_CollectorScript.KeyList.Contains(CrainHandle.name.Replace("CH", "Key")))
             {
                 _Animator.SetBool("CheckKey", true);
             }

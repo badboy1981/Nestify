@@ -33,7 +33,7 @@ namespace Collectable
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log($"Door Name: {name}");
-            if (_CollectorScript.CollectableName.Contains(name.Replace("Door", "Key")))
+            if (_CollectorScript.KeyList.Contains(name.Replace("Door", "Key")))
             {
                 _Animator.SetBool("Inside", true);
             }

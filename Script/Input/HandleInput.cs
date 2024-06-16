@@ -1,3 +1,5 @@
+using Collectable;
+using SaveAndLoad;
 using System;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -7,10 +9,9 @@ using UnityEngine.SceneManagement;
 public class HandleInput : MonoBehaviour
 {
     [SerializeField] MyInputInit _InputControl;
-    SavePlayerData _SavePlayerData;
-    //public GameObject SaveObject;
+    [SerializeField] SaveScript _SavePlayerData;
+    Collector _CollectedName;
     [SerializeField] GameObject _Player;
-
     private Vector3 Movement;
     private Vector3 Rotation;
     [Range(0, 1000)][SerializeField] private float Speed;
@@ -22,21 +23,21 @@ public class HandleInput : MonoBehaviour
     //private void OnEnable()    
     private void Start()
     {
-
         Speed = 120;
         RotateRatio = 200;
         rb = GetComponent<Rigidbody>();
         _ConstantForce = GetComponent<ConstantForce>();
+        _CollectedName = _Player.GetComponent<Collector>();
         _InputControl.MoveEvent += HandleMoveByForce;
         _InputControl.JumpEvent += HandleJump;
         _InputControl.GoToMap += HandleGoToMap;
         _InputControl.GoToPlay += HandleGoToPlay;
     }
-
+    
     private void HandleGoToMap(float GoMap)
     {
         Debug.Log($"Go To Map {GoMap}");
-        SceneManager.LoadScene("TopViewGame");
+        SceneManager.LoadScene("");
     }
     private void HandleGoToPlay(float GoPlay)
     {
@@ -45,10 +46,7 @@ public class HandleInput : MonoBehaviour
     }
     private void SaveData()
     {
-        _SavePlayerData = ScriptableObject.CreateInstance<SavePlayerData>();
-        _SavePlayerData.PlayerPosition = _Player.transform.position;
-        _SavePlayerData.TestFloat += Time.deltaTime;
-        Debug.Log($"Player Position: {_SavePlayerData.PlayerPosition} \n Test Float Value: {_SavePlayerData.TestFloat}");
+        _SavePlayerData.SaveTest2(_Player.transform.position, _Player.transform.rotation, _CollectedName.KeyList, _CollectedName.CoinList);        
     }
     private void SaveData2()
     {
@@ -57,9 +55,9 @@ public class HandleInput : MonoBehaviour
         //    PlayerPosition = _Player.transform.position,
         //    TestFloat = Time.deltaTime
         //};
-        _SavePlayerData = ScriptableObject.CreateInstance<SavePlayerData>();
-        _SavePlayerData.PlayerPosition = _Player.transform.position;
-        Debug.Log($"Player Position: {_SavePlayerData.PlayerPosition}");
+        //_SavePlayerData = ScriptableObject.CreateInstance<SavePlayerData>();
+        //_SavePlayerData.PlayerPosition = _Player.transform.position;
+        //Debug.Log($"Player Position: {_SavePlayerData.PlayerPosition}");
     }
     private void HandleMoveByVelosity(Vector2 MoveValue)
     {
@@ -98,7 +96,6 @@ public class HandleInput : MonoBehaviour
 
         Vector3 movement = new(x, 0, z);
         transform.Translate(movement * speed * Time.deltaTime);
-        SaveData();
     }
     private void MoveBy_Velocity()
     {

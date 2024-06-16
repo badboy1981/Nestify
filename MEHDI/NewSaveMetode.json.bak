@@ -1,0 +1,15 @@
+{
+    "Position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -8.134525299072266
+    },
+    "Angle": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "KeyLists": "Key_04,Key_01,Key_04",
+    "CoinLists": "Coin002,Coin003,Coin004,Coin001"
+}

@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,19 +12,24 @@ namespace Collectable
     //}
     public class Collectable : MonoBehaviour
     {
-        //private static int TotlaNumber = 1;
         public virtual void Collect()
         {
             Destroy(gameObject);
         }
         public virtual void SpeedChange() { }
 
-        public enum CollectableObject
-        {
-            Coin = 1,
-            Arrow = 2,
-            Key = 3,
-            Other = 4
-        }
+        //private bool Destroyable(string Collected)
+        //{
+        //    string[] destroyable = { "Coin", "Arrow", "Key" };
+        //    Collected = Collected.Remove(Collected.IndexOf('_'), Collected.Length);
+        //    return Array.Exists(destroyable, element => element == Collected);
+        //}
+        //public enum CollectableObject
+        //{
+        //    Coin = 1,
+        //    Arrow = 2,
+        //    Key = 3,
+        //    Other = 4
+        //}
     }
 }

@@ -1,0 +1,17 @@
+{
+    "PlayerPosition": {
+        "x": 8,
+        "y": 0.5,
+        "z": 65
+    },
+    "PlayerRotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "KeyLists": [],
+    "KeyValet": 0,
+    "CoinLists": [],
+    "CoinValet": 0
+}

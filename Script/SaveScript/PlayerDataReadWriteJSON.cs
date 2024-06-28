@@ -18,7 +18,7 @@ public class PlayerDataReadWriteJSON : MonoBehaviour
         {
             PlayerPosition = Player.transform.position,
             PlayerRotation = Player.transform.rotation,
-            KeyLists = Keys
+            KeyLists = CollectedName.KeyList
         };
 
         string Json = JsonUtility.ToJson(data, true);
@@ -38,10 +38,10 @@ public class PlayerDataReadWriteJSON : MonoBehaviour
             PlayerRotation = Player.transform.rotation,
 
             KeyValet = CollectedName.KeyCounter,
-            KeyLists = String.Join(",", CollectedName.KeyList),
+            KeyLists = CollectedName.KeyList,
 
             CoinValet = CollectedName.CoinCounter,
-            CoinLists = String.Join(",", CollectedName.CoinList)
+            CoinLists = CollectedName.CoinList
         };
     }
     //#02

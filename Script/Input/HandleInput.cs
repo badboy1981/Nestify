@@ -37,7 +37,7 @@ public class HandleInput : MonoBehaviour
     private void HandleGoToMap(float GoMap)
     {
         Debug.Log($"Go To Map {GoMap}");
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Maze_Easy_6-8");
     }
     private void HandleGoToPlay(float GoPlay)
     {

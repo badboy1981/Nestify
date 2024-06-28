@@ -10,8 +10,8 @@
         "z": 0.0,
         "w": -0.444891095161438
     },
-    "KeyValet": 0,
-    "KeyLists": "Key_04,Key_01,Key_04",
-    "CoinValet": 0,
-    "CoinLists": "Coin002,Coin003,Coin004,Coin001"
+    "KeyValet": 2,
+    "KeyLists": "Key_01,Key_04",
+    "CoinValet": 1,
+    "CoinLists": "Coin_001"
 }

@@ -6,8 +6,10 @@ public class PlayerData
 {
     public Vector3 PlayerPosition;
     public Quaternion PlayerRotation;
+    public List<string> KeyLists;
     public int KeyValet;
-    public string KeyLists;
+    public List<string> CoinLists;
     public int CoinValet;
-    public string CoinLists;
+    //public string KeyLists;    
+    //public string CoinLists;
 }

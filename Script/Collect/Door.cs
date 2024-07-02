@@ -33,13 +33,13 @@ namespace Collectable
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log($"Door Name: {name}");
-            if (_CollectorScript.KeyList.Contains(name.Replace("Door", "Key")))
+            if (_CollectorScript._PlayerData.KeyLists.Contains(name.Replace("Door", "Key")))
             {
                 _Animator.SetBool("Inside", true);
             }
             if (name == "DoorFinal")
             {
-                if (_CollectorScript.CoinCounter == 20)
+                if (_CollectorScript._PlayerData.CoinLists.Count == 20)
                 {
                     _Animator.SetBool("Inside", true);
                     WinMessage.text = "YOU WIN!!!";

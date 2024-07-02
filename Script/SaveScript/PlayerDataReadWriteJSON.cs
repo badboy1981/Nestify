@@ -12,13 +12,14 @@ public class PlayerDataReadWriteJSON : MonoBehaviour
     public void SavePlayerData()
     {
         CollectedName = Player.GetComponent<Collector>();
-        string Keys = String.Join(",", CollectedName.KeyList);
-        string Coin = CollectedName.CoinCounter.ToString();
+        //string Keys = String.Join(",", CollectedName._PlayerData.KeyLists);
+        //string Coin = CollectedName._PlayerData.KeyLists.ToString();
         var data = new PlayerData()
         {
             PlayerPosition = Player.transform.position,
             PlayerRotation = Player.transform.rotation,
-            KeyLists = CollectedName.KeyList
+            KeyLists = CollectedName._PlayerData.KeyLists,
+            CoinLists = CollectedName._PlayerData.CoinLists
         };
 
         string Json = JsonUtility.ToJson(data, true);
@@ -37,11 +38,10 @@ public class PlayerDataReadWriteJSON : MonoBehaviour
             PlayerPosition = Player.transform.position,
             PlayerRotation = Player.transform.rotation,
 
-            KeyValet = CollectedName.KeyCounter,
-            KeyLists = CollectedName.KeyList,
+            KeyLists = CollectedName._PlayerData.KeyLists,
 
-            CoinValet = CollectedName.CoinCounter,
-            CoinLists = CollectedName.CoinList
+            
+            CoinLists = CollectedName._PlayerData.CoinLists
         };
     }
     //#02

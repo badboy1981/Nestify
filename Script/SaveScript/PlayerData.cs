@@ -4,12 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    public string SceneName;
     public Vector3 PlayerPosition;
     public Quaternion PlayerRotation;
-    public List<string> KeyLists;
-    public int KeyValet;
+    public List<string> KeyLists;    
     public List<string> CoinLists;
-    public int CoinValet;
-    //public string KeyLists;    
-    //public string CoinLists;
 }

@@ -1,9 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.CompilerServices;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +15,7 @@ namespace Collectable
 
         //private Collector collector;
 
-        private string AtmID;
+        //private string AtmID;
 
         private void Start()
         {            
@@ -33,22 +30,12 @@ namespace Collectable
         }
         private void OnTriggerEnter(Collider other)
         {
-            AtmID = other.name;
+            //string AtmID = other.name;
             OnTriggerEnter_M001(other);
             if (other.name.Contains("ATM"))
             {
                 _PlayerData.SceneName = SceneManager.GetActiveScene().name;
                 SaveJsonTest();
-            }
-        }
-        private void SaveJsonTest()
-        {
-            string JsonPath = $"/Script/SaveScript/PlayerData.json";
-            string Json = JsonUtility.ToJson(_PlayerData, true);
-            if (!string.IsNullOrEmpty(Json))
-            {
-                using var sw = new StreamWriter(Application.dataPath + JsonPath);
-                sw.Write(Json);
             }
         }
         private void OnTriggerEnter_M002(Collider other)
@@ -102,15 +89,27 @@ namespace Collectable
                 }
             }
         }
-        public string LoadStringFromJson()
+        private void SaveJsonTest()
         {
-            string JsonPath = "/Script/SaveScript/PlayerData.json";
+            //string JsonPath = $"/Script/SaveScript/PlayerData.json";
+            string JsonPath = "PlayerData.json";
+            string Json = JsonUtility.ToJson(_PlayerData, true);
+            if (!string.IsNullOrEmpty(Json))
+            {
+                using var sw = new StreamWriter(Application.dataPath + JsonPath);
+                sw.Write(Json);
+            }
+        }
+        public string LoadStringFromJson()
+        {            
+            //string JsonPath = "/Script/SaveScript/PlayerData.json";
+            string JsonPath = "PlayerData.json";
+            Debug.Log(Application.dataPath + JsonPath);
             using var PlayerData = new StreamReader(Application.dataPath + JsonPath);
             return PlayerData.ReadToEnd();
         }
         public void SetPlayerDataOnReLoad()
         {
-
             PlayerData PDataObject = JsonUtility.FromJson<PlayerData>(LoadStringFromJson()); ;
             transform.SetPositionAndRotation(PDataObject.PlayerPosition, PDataObject.PlayerRotation);
 

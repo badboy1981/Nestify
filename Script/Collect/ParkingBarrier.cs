@@ -26,10 +26,11 @@ namespace Collectable
         }
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(CrainHandle.name);
+            //Debug.Log($"Crain Name: {CrainHandle.name} || Other Name: {other.name} || Key List: {CrainHandle.name.Replace("CH", "Key")}");
             if (_CollectorScript._PlayerData.KeyLists.Contains(CrainHandle.name.Replace("CH", "Key")))
             {
                 _Animator.SetBool("CheckKey", true);
+                //Debug.Log($"Connect: {CrainHandle.name}");
             }
         }
         private void OnTriggerExit(Collider other)

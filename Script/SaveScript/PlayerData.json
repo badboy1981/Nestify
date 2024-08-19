@@ -1,24 +1,17 @@
 {
-    "SceneName": "Maze_Easy_6-8",
-    "AtmID": "ATM_001",
+    "SceneName": "Maze_Scenes_001",
+    "AtmID": "ATM_Scenec001_001",
     "PlayerPosition": {
-        "x": 11.575667381286621,
-        "y": 0.49998679757118227,
-        "z": 40.99082565307617
+        "x": 0.0,
+        "y": 0.5,
+        "z": 0.0
     },
     "PlayerRotation": {
         "x": 0.0,
-        "y": 0.9910436272621155,
+        "y": 0.0,
         "z": 0.0,
-        "w": -0.13353872299194337
+        "w": 0.0
     },
-    "KeyLists": [
-        "Key_004"
-    ],
-    "CoinLists": [
-        "Coin_002",
-        "Coin_003",
-        "Coin_004",
-        "Coin_001"
-    ]
+    "KeyLists": [],
+    "CoinLists": []
 }

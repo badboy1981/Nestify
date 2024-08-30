@@ -32,6 +32,10 @@ namespace Collectable
                 _Animator.SetBool("CheckKey", true);
                 //Debug.Log($"Connect: {CrainHandle.name}");
             }
+            //else
+            //{
+            //    Debug.Log($"Crain Handle Name: {CrainHandle.name} || Key List: {string.Join(',', _CollectorScript._PlayerData.KeyLists)}");
+            //}
         }
         private void OnTriggerExit(Collider other)
         {

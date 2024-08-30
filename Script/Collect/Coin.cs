@@ -19,6 +19,10 @@ namespace Collectable
             //CoinCollectedEvent?.Invoke();
             //Destroy(gameObject);
         }
+        public override void OnTriggerEnter(Collider other)
+        {
+            base.OnTriggerEnter(other);
+        }
         //private void OnTriggerEnter(Collider other)
         //{
         //    //Counter++;

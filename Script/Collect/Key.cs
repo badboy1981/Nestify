@@ -5,10 +5,15 @@ using UnityEngine;
 namespace Collectable
 {
     public class Key : Collectable
-    {        
+    {
         public override void Collect()
         {
-            base.Collect();     
+            base.Collect();
+        }
+        public override void OnTriggerEnter(Collider other)
+        {
+            base.OnTriggerEnter(other);
+            //Debug.Log($"Get Key:{gameObject.name}");
         }
     }
 }

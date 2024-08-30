@@ -32,7 +32,7 @@ namespace Collectable
         }
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"Door Name: {name}");
+            //Debug.Log($"Door Name: {name}");
             if (_CollectorScript._PlayerData.KeyLists.Contains(name.Replace("Door", "Key")))
             {
                 _Animator.SetBool("Inside", true);
@@ -43,7 +43,7 @@ namespace Collectable
                 {
                     _Animator.SetBool("Inside", true);
                     WinMessage.text = "YOU WIN!!!";
-                    Debug.Log("Final Door!");
+                    //Debug.Log("Final Door!");
                 }
                 else
                 {

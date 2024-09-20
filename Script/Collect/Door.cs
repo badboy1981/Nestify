@@ -30,7 +30,7 @@ namespace Collectable
         {
             transform.position = new Vector3(transform.position.x, DoorOpen, transform.position.z);
         }
-        private void OnTriggerEnter(Collider other)
+      public override void OnTriggerEnter(Collider other)
         {
             //Debug.Log($"Door Name: {name}");
             if (_CollectorScript._PlayerData.KeyLists.Contains(name.Replace("Door", "Key")))

@@ -24,7 +24,7 @@ namespace Collectable
         {
             _CollectorScript = _Collector.GetComponent<Collector>();
         }
-        private void OnTriggerEnter(Collider other)
+        public override void OnTriggerEnter(Collider other)
         {
             //Debug.Log($"Crain Name: {CrainHandle.name} || Other Name: {other.name} || Key List: {CrainHandle.name.Replace("CH", "Key")}");
             if (_CollectorScript._PlayerData.KeyLists.Contains(CrainHandle.name.Replace("CH", "Key")))

@@ -6,6 +6,7 @@ namespace Collectable
 {
     public class Key : Collectable
     {
+        [SerializeField] DataTest.ScriptableObjectDataTEST KeyList;
         public override void Collect()
         {
             base.Collect();
@@ -13,7 +14,8 @@ namespace Collectable
         public override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);
-            //Debug.Log($"Get Key:{gameObject.name}");
+            KeyList.KeyLists.Add(gameObject.name);
+            Debug.Log($"Get Key:{gameObject.name}");
         }
     }
 }

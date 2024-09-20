@@ -10,8 +10,8 @@ namespace Collectable
     {
         public static event UnityAction CoinCollectedEvent = delegate { };
         public static event UnityAction<string> TestEvent = delegate { };
-        //int Counter = 0;
-        //[SerializeField] TextMeshProUGUI CointText;
+
+        [SerializeField] DataTest.ScriptableObjectDataTEST CoinCounter;
 
         public override void Collect()
         {
@@ -22,6 +22,7 @@ namespace Collectable
         public override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);
+            CoinCounter.CoinCounter += 1;
         }
         //private void OnTriggerEnter(Collider other)
         //{

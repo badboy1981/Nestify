@@ -21,7 +21,7 @@ namespace Collectable
         }
         public override void Collect() { }
 
-        private void OnTriggerEnter(Collider other)
+        public override void OnTriggerEnter(Collider other)
         {
             handleInput.EnableMove = false;
             AtmPanel.SetActive(true);

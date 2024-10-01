@@ -32,6 +32,7 @@ namespace Collectable
         }
       public override void OnTriggerEnter(Collider other)
         {
+            base.OnTriggerEnter(other);
             //Debug.Log($"Door Name: {name}");
             if (_CollectorScript._PlayerData.KeyLists.Contains(name.Replace("Door", "Key")))
             {

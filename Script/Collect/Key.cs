@@ -6,16 +6,12 @@ namespace Collectable
 {
     public class Key : Collectable
     {
-        [SerializeField] DataTest.ScriptableObjectDataTEST KeyList;
-        public override void Collect()
-        {
-            base.Collect();
-        }
+        [SerializeField] SaveSystem.SaveLevelDataSObject KeyList;
+
         public override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);
-            KeyList.KeyLists.Add(gameObject.name);
-            Debug.Log($"Get Key:{gameObject.name}");
+            KeyList.KeyList.Add(gameObject.name);
         }
     }
 }

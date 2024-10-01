@@ -12,15 +12,13 @@ namespace Collectable
     //}
     public class Collectable : MonoBehaviour
     {
-        //[SerializeField] DataTest.ScriptableObjectDataTEST CollectableData;
-
         public virtual void Collect()
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         public virtual void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"Collectable Name: {gameObject.name}");
+            Destroy(gameObject);
         }
         public virtual void SpeedChange()
         {

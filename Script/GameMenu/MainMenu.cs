@@ -1,7 +1,6 @@
 using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +10,10 @@ namespace GameMenu
     {
         [SerializeField] SaveLevelDataSObject SaveLevelDataSObject;
 
+        public void StartGame()
+        {
+
+        }
         public void NewGame()
         {
             SaveLevelDataSObject.SlotID = SelectSlot.Select();

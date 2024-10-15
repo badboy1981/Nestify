@@ -36,7 +36,7 @@ public class ExitLevelPoint : MonoBehaviour
     {
         return new SaveSystem.Data.SaveData()
         {
-            SlotID = new SaveSystem.Data.SlotIDs() { SlotID = _GameData.SlotID },
+            //SlotID = new SaveSystem.Data.SlotIDs() { SlotID = _GameData.SlotID },
             scenceName = new SaveSystem.Data.ScenceName() { Name = _GameData.SceneName },
             playerData = new SaveSystem.Data.PlayerData()
             {

@@ -8,7 +8,7 @@ namespace SaveSystem
 
     public class SaveLevelDataSObject : ScriptableObject
     {
-        public int SlotID;
+        public string SlotID;
         public string SceneName;
         public int CoinCounter;
         public List<string> KeyList;

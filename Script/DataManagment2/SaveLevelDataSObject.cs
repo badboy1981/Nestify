@@ -10,6 +10,8 @@ namespace SaveSystem
     {
         public string SlotID;
         public string SceneName;
+        public int LifeCounter;
+        public int CoinBank;
         public int CoinCounter;
         public List<string> KeyList;
     }

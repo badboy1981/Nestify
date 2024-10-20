@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace SaveSystem.Data2
@@ -13,7 +12,7 @@ namespace SaveSystem.Data2
     [Serializable]
     public class Slot
     {
-        public string Name;
+        public string SlotID;
         public PlayerData playerData;
     }
 
@@ -27,27 +26,28 @@ namespace SaveSystem.Data2
     public class PlayerData
     {
         public string CurrentSceneName;
-        public int CoinCounter;
         public int LifeCounter;
+        public int CoinBank;
+        public int CoinCounter;        
         public List<string> KeyList;
     }
     public static class PlayableSceneList
     {
         private static string[] sceneList =
             {
-            "B_Maze(2)",
-            "C_Maze(6)",
-            "D_Maze(9)",
-            "E_Maze(3)",
-            "F_Maze(10)",
-            "G_Maze(11)",
-            "H_Maze(1)",
-            "I_Maze(5)",
-            "J_Maze(7)",
-            "K_Maze(4)",
-            "L_Maze(8)",
-            "M_Maze(12)"
-            };
+            "B_Maze",
+            "C_Maze",
+            "D_Maze",
+            "E_Maze",
+            "F_Maze",
+            "G_Maze",
+            "H_Maze",
+            "I_Maze",
+            "J_Maze",
+            "K_Maze",
+            "L_Maze",
+            "M_Maze"
+            };       
         public static string StartScene()
         {
             return sceneList[0];
@@ -60,6 +60,25 @@ namespace SaveSystem.Data2
         public static string NextScene(string CurrentSceneName)
         {
             return sceneList[Array.FindIndex(sceneList, row => row.Contains(CurrentSceneName)) + 1];
+        }
+        private enum SceneListEnum
+        {
+            B_Maze = 1,
+            C_Maze = 2,
+            D_Maze = 3,
+            E_Maze = 4,
+            F_Maze = 5,
+            G_Maze = 6,
+            H_Maze = 7,
+            I_Maze = 8,
+            J_Maze = 9,
+            K_Maze = 10,
+            L_Maze = 11,
+            M_Maze = 12
+        }
+        public static int SceneID(string ID)
+        {
+            return (int)SceneListEnum.B_Maze;
         }
     }
 }

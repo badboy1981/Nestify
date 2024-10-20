@@ -1,59 +1,44 @@
 using SaveSystem;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using SaveSystem.Data;
+using SaveSystem.Data2;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Windows;
 
 namespace GameMenu
 {
     public class MainMenu : MonoBehaviour
     {
-        [SerializeField] SaveLevelDataSObject SaveLevelDataSObject;
-
-        public void StartGame()
-        {
-
-        }
+        [SerializeField] SaveLevelDataSObject saveLevelData;
         public void NewGame(string SlotID)
         {
-            SaveLevelDataSObject.SlotID = SlotID;
-            SaveLevelDataSObject.SceneName = SaveSystem.Data2.PlayableSceneList.StartScene();
-            SaveLevelDataSObject.CoinCounter = 0;
-            SaveLevelDataSObject.KeyList.Clear();
-            SceneManager.LoadSceneAsync(SaveSystem.Data2.PlayableSceneList.StartScene());
-        }
-        public void SelectSaveSlot(string SlotName)
-        {
-            Debug.Log($"Slot Name: {SlotName}");
+            saveLevelData.KeyList.Clear();
+            string JsonFilePath = AppConstant.BasePath + SlotID + AppConstant.JsonExtension;
+            if (File.Exists(JsonFilePath))
+            {
+                //Continu The Game
+                var ActiveGameData = JsonUtility.FromJson<Slot>(JsonFileRW.Read(JsonFilePath));
+                saveLevelData.SlotID = ActiveGameData.SlotID;
+                saveLevelData.SceneName = ActiveGameData.playerData.CurrentSceneName;
+                saveLevelData.LifeCounter = ActiveGameData.playerData.LifeCounter;
+                saveLevelData.CoinBank = ActiveGameData.playerData.CoinBank;
+                saveLevelData.CoinCounter = ActiveGameData.playerData.CoinCounter;                
+                SceneManager.LoadSceneAsync(ActiveGameData.playerData.CurrentSceneName, LoadSceneMode.Single);
+            }
+            else
+            {
+                //Start New Game
+                saveLevelData.SlotID = SlotID;
+                saveLevelData.SceneName = PlayableSceneList.StartScene();
+                saveLevelData.LifeCounter = 3;
+                saveLevelData.CoinBank= 0;
+                saveLevelData.CoinCounter = 0;                
+                SceneManager.LoadSceneAsync(PlayableSceneList.StartScene(), LoadSceneMode.Single);
+            }
         }
         public void ExitGame()
         {
             Application.Quit();
         }
-        public void ContinueGame()
-        {
-
-        }
-    }
-    public static class SlotList
-    {
-        public static Dictionary<int, string> SlotDic = new()
-        {
-            { 0,"Slot1" },
-            { 0,"Slot2" },
-            { 0,"Slot3" },
-            { 0,"Slot4" },
-            { 0,"Slot5" },
-            { 0,"Slot6" },
-        };
-        public static void test()
-        {
-            string fg = SlotDic[0];
-        }
-    }
-    public enum SlotS
-    {
-        Slot1, Slot2, Slot3, Slot4, Slot5, Slot6
     }
 }

@@ -31,6 +31,18 @@ namespace SaveSystem.Data2
         public int CoinCounter;        
         public List<string> KeyList;
     }
+
+    [Serializable]
+    public class SlotLastGameLevel
+    {
+        public int Slot1 = 1;
+        public int Slot2 = 1;
+        public int Slot3 = 1;
+        public int Slot4 = 1;
+        public int Slot5 = 1;
+        public int Slot6 = 1;
+    }
+
     public static class PlayableSceneList
     {
         private static string[] sceneList =

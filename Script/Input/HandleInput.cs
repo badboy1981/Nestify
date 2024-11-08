@@ -89,7 +89,7 @@ public class HandleInput : MonoBehaviour
     }
     private void MoveBy_Velocity()
     {
-        rb.velocity = Movement;
+        rb.linearVelocity = Movement;
         _ConstantForce.relativeTorque = Rotation;
         //transform.Rotate(Rotation);
     }

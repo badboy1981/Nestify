@@ -9,12 +9,14 @@ namespace SaveSystem.Data2
     public class ExitLevelPoint : MonoBehaviour
     {
         [SerializeField] SaveLevelDataSObject SaveData;
+        [SerializeField] SaveSlotTotalDataSObject SlotTotalData;
+
         private void OnTriggerEnter(Collider other)
         {
             //if (SaveData.CoinCounter >= 100)
             if (true)
             {
-                SaveJsonStream(SlotData());
+                SaveJsonGameData(SlotData());
                 SaveData.CoinBank += SaveData.CoinCounter;
                 SaveData.CoinCounter = 0;
                 SceneManager.LoadSceneAsync(PlayableSceneList.NextScene(SaveData.SceneName));
@@ -40,6 +42,18 @@ namespace SaveSystem.Data2
                 }
             };
         }
+        private SlotLastGameLevel LastLevel()
+        {
+            return new SlotLastGameLevel
+            {
+                Slot1 = 2,
+                Slot2 = 3,
+                Slot3 = 3,
+                Slot4 = 3,
+                Slot5 = 3,
+                Slot6 = 3
+            };
+        }
         private Slots slots()
         {
             return new Slots
@@ -61,12 +75,15 @@ namespace SaveSystem.Data2
             };
         }
 
-        private void SaveJsonStream(Slot slots)
+        private void SaveJsonGameData(Slot slots)
         {
-            using (var _JsonStr = new StreamWriter(AppConstant.BasePath + SaveData.SlotID + AppConstant.JsonExtension))
-            {
-                _JsonStr.Write(JsonUtility.ToJson(slots, true));
-            }
+            using var _JsonStr = new StreamWriter(AppConstant.BasePath + SaveData.SlotID + AppConstant.JsonExtension);
+            _JsonStr.Write(JsonUtility.ToJson(slots, true));
+        }
+        private void SaveJsonSlotData(SlotLastGameLevel SlotLastGame)
+        {
+            var SlotData = new StreamWriter(AppConstant.BasePath + "UnlockedLevel" + AppConstant.JsonExtension);
+            SlotData.Write(JsonUtility.ToJson(SlotLastGame));
         }
     }
 }

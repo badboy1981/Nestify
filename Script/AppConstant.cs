@@ -11,4 +11,6 @@ public static class AppConstant
     {
         return BasePath + FileName + JsonExtension;
     }
+    public static string UnlockedLevel { get { return "UnlockedLevel"; } }
+    public static string UnlockedLevelPathName { get { return BasePath + UnlockedLevel + JsonExtension; } }
 }

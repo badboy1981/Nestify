@@ -6,12 +6,29 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 namespace GameMenu
 {
     public class MainMenu : MonoBehaviour
     {
         [SerializeField] SaveLevelDataSObject saveLevelData;
+        [SerializeField] SaveSlotTotalDataSObject SlotData;
+
+
+
+        private void Awake()
+        {
+            string FilePath = AppConstant.BasePath + AppConstant.UnlockedLevel + AppConstant.JsonExtension;
+            if (File.Exists(FilePath))
+            {
+                SlotData.UnlockLevels.Add(JsonUtility.FromJson<UnlockLevel>(JsonFileRW.Read(FilePath)));
+            }
+            else
+            {
+                SlotData.UnlockLevels.Clear();
+            }
+        }
 
         public void NewGame(string SlotID)
         {

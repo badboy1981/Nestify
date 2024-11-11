@@ -1,15 +1,19 @@
+using SaveSystem.Data;
+using SaveSystem.Test;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static SaveSystem.Data2.PlayableSceneList;
 
 namespace SaveSystem.Data2
 {
     public class ExitLevelPoint : MonoBehaviour
     {
         [SerializeField] SaveLevelDataSObject SaveData;
-        [SerializeField] SaveSlotTotalDataSObject SlotTotalData;
+        //[SerializeField] SaveSlotTotalDataSObject SlotTotalData;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -17,6 +21,28 @@ namespace SaveSystem.Data2
             if (true)
             {
                 SaveJsonGameData(SlotData());
+
+                SlotUnlockedLevelList Un = new();
+                UnlockLevel UnLevel = new();
+                //{
+                //    SlotID=SaveData.SlotID,
+                //    Level=PlayableSceneList.levelNumber(SaveData.SceneName)
+                //};
+                if (File.Exists(AppConstant.UnlockedLevelPathName))
+                {
+                    Un = JsonUtility.FromJson<SlotUnlockedLevelList>(JsonFileRW.Read(AppConstant.UnlockedLevelPathName));
+
+                    UnLevel = Un.unlockLevel.FirstOrDefault(x => x.SlotID == SaveData.SlotID);
+                    if (UnLevel != null)
+                    { UnLevel.Level = PlayableSceneList.levelNumber(SaveData.SceneName); }
+                }
+                UnLevel.SlotID = SaveData.SlotID;
+                UnLevel.Level = PlayableSceneList.levelNumber(SaveData.SceneName);
+
+                JsonFileRW.Write(AppConstant.UnlockedLevelPathName, JsonUtility.ToJson(Un));
+
+
+
                 SaveData.CoinBank += SaveData.CoinCounter;
                 SaveData.CoinCounter = 0;
                 SceneManager.LoadSceneAsync(PlayableSceneList.NextScene(SaveData.SceneName));
@@ -40,18 +66,6 @@ namespace SaveSystem.Data2
                     CoinCounter = 0,
                     KeyList = SaveData.KeyList
                 }
-            };
-        }
-        private SlotLastGameLevel LastLevel()
-        {
-            return new SlotLastGameLevel
-            {
-                Slot1 = 2,
-                Slot2 = 3,
-                Slot3 = 3,
-                Slot4 = 3,
-                Slot5 = 3,
-                Slot6 = 3
             };
         }
         private Slots slots()
@@ -80,10 +94,22 @@ namespace SaveSystem.Data2
             using var _JsonStr = new StreamWriter(AppConstant.BasePath + SaveData.SlotID + AppConstant.JsonExtension);
             _JsonStr.Write(JsonUtility.ToJson(slots, true));
         }
-        private void SaveJsonSlotData(SlotLastGameLevel SlotLastGame)
+        private void SaveJsonSlotData(SlotUnlockedLevelList SlotLastGame)
         {
-            var SlotData = new StreamWriter(AppConstant.BasePath + "UnlockedLevel" + AppConstant.JsonExtension);
-            SlotData.Write(JsonUtility.ToJson(SlotLastGame));
+            using var SlotData = new StreamWriter(AppConstant.BasePath + AppConstant.UnlockedLevel + AppConstant.JsonExtension);
+            SlotData.Write(JsonUtility.ToJson(SlotLastGame, true));
+        }
+        private void Test()
+        {
+
+        }
+        private void Test2()
+        {
+            switch (SaveData.SlotID)
+            {
+                case "":
+                    break;
+            }
         }
     }
 }

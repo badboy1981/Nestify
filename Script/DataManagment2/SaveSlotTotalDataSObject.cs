@@ -6,6 +6,7 @@ namespace SaveSystem
     [CreateAssetMenu(fileName = "SlotTotalData", menuName = "Save System/Slot Total Data")]
     public class SaveSlotTotalDataSObject : ScriptableObject
     {
-        public Data2.SlotLastGameLevel SlotLastGameLevel;
+        //public List<Data2.SlotUnlockedLevelList> SlotList;
+        public List<Data2.UnlockLevel> UnlockLevels;
     }
 }

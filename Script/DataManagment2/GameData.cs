@@ -17,12 +17,6 @@ namespace SaveSystem.Data2
     }
 
     [Serializable]
-    public class UnlockSceneList
-    {
-        public List<string> SceneList;
-    }
-
-    [Serializable]
     public class PlayerData
     {
         public string CurrentSceneName;
@@ -33,14 +27,16 @@ namespace SaveSystem.Data2
     }
 
     [Serializable]
-    public class SlotLastGameLevel
+    public class SlotUnlockedLevelList
     {
-        public int Slot1 = 1;
-        public int Slot2 = 1;
-        public int Slot3 = 1;
-        public int Slot4 = 1;
-        public int Slot5 = 1;
-        public int Slot6 = 1;
+        public List<UnlockLevel> unlockLevel;
+    }
+
+    [Serializable]
+    public class UnlockLevel
+    {
+        public string SlotID;
+        public int Level;
     }
 
     public static class PlayableSceneList
@@ -59,7 +55,28 @@ namespace SaveSystem.Data2
             "K_Maze",
             "L_Maze",
             "M_Maze"
-            };       
+            };
+
+        private readonly static Dictionary<string, int> LevelNumber = new()
+        {
+            { sceneList[0],1},
+            { sceneList[1],2},
+            { sceneList[2],3},
+            { sceneList[3],4},
+            { sceneList[4],5},
+            { sceneList[5],6},
+            { sceneList[6],7},
+            { sceneList[7],8},
+            { sceneList[8],9},
+            { sceneList[9],10},
+            { sceneList[10],11},
+            { sceneList[11],12},
+        };
+
+        public static int levelNumber(string SceneName)
+        {
+            return LevelNumber[SceneName];
+        }
         public static string StartScene()
         {
             return sceneList[0];
@@ -73,7 +90,7 @@ namespace SaveSystem.Data2
         {
             return sceneList[Array.FindIndex(sceneList, row => row.Contains(CurrentSceneName)) + 1];
         }
-        private enum SceneListEnum
+        public enum SceneListEnum
         {
             B_Maze = 1,
             C_Maze = 2,
@@ -88,9 +105,9 @@ namespace SaveSystem.Data2
             L_Maze = 11,
             M_Maze = 12
         }
-        public static int SceneID(string ID)
+        public static int SlotSceneID(string SlotID)
         {
-            return (int)SceneListEnum.B_Maze;
+            return (int)SceneListEnum.B_Maze;            
         }
     }
 }

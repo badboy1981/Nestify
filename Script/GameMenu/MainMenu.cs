@@ -4,7 +4,8 @@ using SaveSystem.Data2;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Windows;
+//using UnityEngine.Windows;
+using System.IO;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 
@@ -19,14 +20,15 @@ namespace GameMenu
 
         private void Awake()
         {
-            string FilePath = AppConstant.BasePath + AppConstant.UnlockedLevel + AppConstant.JsonExtension;
-            if (File.Exists(FilePath))
+            SlotData.UnlockLevels.Clear();
+            if (File.Exists(AppConstant.UnlockedLevelPathName))
             {
-                SlotData.UnlockLevels.Add(JsonUtility.FromJson<UnlockLevel>(JsonFileRW.Read(FilePath)));
-            }
-            else
-            {
-                SlotData.UnlockLevels.Clear();
+                var UnlockLevelData = JsonUtility.FromJson<SlotUnlockedLevelList>(JsonFileRW.Read(AppConstant.UnlockedLevelPathName));
+
+                foreach (var Item in UnlockLevelData.unlockLevel)
+                {
+                    SlotData.UnlockLevels.Add(Item);
+                }
             }
         }
 

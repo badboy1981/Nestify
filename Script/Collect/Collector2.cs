@@ -12,6 +12,7 @@ namespace Collectable
         [SerializeField] TextMeshProUGUI CoinBank;
         [SerializeField] TextMeshProUGUI CointText;
         [SerializeField] TextMeshProUGUI KeyText;
+        [SerializeField] TextMeshProUGUI LevelNumber;
         [SerializeField] SaveSystem.SaveLevelDataSObject LevelData;
 
         private void Awake()
@@ -19,6 +20,7 @@ namespace Collectable
             transform.SetPositionAndRotation(new Vector3(0, 0.5f, 0), Quaternion.identity);
             LevelData.SceneName = SceneManager.GetActiveScene().name;
             LevelData.KeyList.Clear();
+            
             InitCollectedText();
             RemoveCellectedKeys();
         }
@@ -31,6 +33,7 @@ namespace Collectable
             CoinBank.text = $"Coin Bank: {LevelData.CoinBank}";
             CointText.text = $"Coin: {LevelData.CoinCounter}";
             KeyText.text = $"Key: {LevelData.KeyList.Count}";
+            LevelNumber.text = $"Level: {SaveSystem.Data2.PlayableSceneList.levelNumber(SceneManager.GetActiveScene().name)}";
         }
         private void RemoveCellectedKeys()
         {

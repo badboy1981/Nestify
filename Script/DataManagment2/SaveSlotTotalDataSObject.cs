@@ -8,5 +8,6 @@ namespace SaveSystem
     {
         //public List<Data2.SlotUnlockedLevelList> SlotList;
         public List<Data2.UnlockLevel> UnlockLevels;
+        
     }
 }

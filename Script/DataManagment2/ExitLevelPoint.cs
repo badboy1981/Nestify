@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AdaptivePerformance;
 using UnityEngine.SceneManagement;
-using static SaveSystem.Data2.PlayableSceneList;
 
 namespace SaveSystem.Data2
 {
@@ -21,36 +21,23 @@ namespace SaveSystem.Data2
             if (true)
             {
                 SaveJsonGameData(SlotData());
+                SaveUnlockLevel();
 
-                SlotUnlockedLevelList Un = new();
-                UnlockLevel UnLevel = new();
-                //{
-                //    SlotID=SaveData.SlotID,
-                //    Level=PlayableSceneList.levelNumber(SaveData.SceneName)
-                //};
-                if (File.Exists(AppConstant.UnlockedLevelPathName))
-                {
-                    Un = JsonUtility.FromJson<SlotUnlockedLevelList>(JsonFileRW.Read(AppConstant.UnlockedLevelPathName));
-
-                    UnLevel = Un.unlockLevel.FirstOrDefault(x => x.SlotID == SaveData.SlotID);
-                    if (UnLevel != null)
-                    { UnLevel.Level = PlayableSceneList.levelNumber(SaveData.SceneName); }
-                }
-                UnLevel.SlotID = SaveData.SlotID;
-                UnLevel.Level = PlayableSceneList.levelNumber(SaveData.SceneName);
-
-                JsonFileRW.Write(AppConstant.UnlockedLevelPathName, JsonUtility.ToJson(Un));
-
-
-
-                SaveData.CoinBank += SaveData.CoinCounter;
-                SaveData.CoinCounter = 0;
                 SceneManager.LoadSceneAsync(PlayableSceneList.NextScene(SaveData.SceneName));
             }
             else
             {
-
             }
+        }
+        private void SaveUnlockLevel()
+        {
+            SlotUnlockedLevelList UnLockLevelList = new();
+            if (File.Exists(AppConstant.UnlockedLevelPathName))
+            {
+                UnLockLevelList = JsonUtility.FromJson<SlotUnlockedLevelList>(JsonFileRW.Read(AppConstant.UnlockedLevelPathName));
+            }
+            UnLockLevelList.AddOrUpdateUnlockLevel(SaveData.SlotID, PlayableSceneList.levelNumber(SaveData.SceneName));
+            JsonFileRW.Write(AppConstant.UnlockedLevelPathName, JsonUtility.ToJson(UnLockLevelList, true));
         }
         private Slot SlotData()
         {

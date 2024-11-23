@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace SaveSystem.Data2
@@ -22,7 +22,7 @@ namespace SaveSystem.Data2
         public string CurrentSceneName;
         public int LifeCounter;
         public int CoinBank;
-        public int CoinCounter;        
+        public int CoinCounter;
         public List<string> KeyList;
     }
 
@@ -30,7 +30,34 @@ namespace SaveSystem.Data2
     public class SlotUnlockedLevelList
     {
         public List<UnlockLevel> unlockLevel;
+
+        public SlotUnlockedLevelList()
+        {
+            unlockLevel = new List<UnlockLevel>();
+        }
+
+        // متدی برای یافتن UnlockLevel بر اساس SlotID
+        public UnlockLevel FindUnlockLevel(string slotID)
+        {
+            return unlockLevel.Find(x => x.SlotID == slotID);
+        }
+
+        // متدی برای افزودن یا به‌روزرسانی UnlockLevel
+        public void AddOrUpdateUnlockLevel(string slotID, int level)
+        {
+            var existingUnlockLevel = FindUnlockLevel(slotID);
+            if (existingUnlockLevel != null)
+            {
+                existingUnlockLevel.Level = level;
+            }
+            else
+            {
+                unlockLevel.Add(new UnlockLevel { SlotID = slotID, Level = level });
+            }
+
+        }
     }
+
 
     [Serializable]
     public class UnlockLevel
@@ -107,7 +134,7 @@ namespace SaveSystem.Data2
         }
         public static int SlotSceneID(string SlotID)
         {
-            return (int)SceneListEnum.B_Maze;            
+            return (int)SceneListEnum.B_Maze;
         }
     }
 }

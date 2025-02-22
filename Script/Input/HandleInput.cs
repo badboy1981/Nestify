@@ -35,8 +35,22 @@ public class HandleInput : MonoBehaviour
         _InputControl.JumpEvent += HandleJump;
         _InputControl.GoToMap += HandleGoToMap;
         _InputControl.GoToPlay += HandleGoToPlay;
+
+        _InputControl.MobileSteeringWheelEvent += HandleSteeringWheel;
+        _InputControl.MobileMoveButtonEvent += HandleMobileMoveButton;
     }
 
+    private void HandleSteeringWheel(Vector2 Wheel)
+    {
+        Debug.Log($"Steering Wheel: {Wheel}");
+        Rotation = new Vector3(0, Wheel.x * RotateRatio, 0);
+
+    }
+    private void HandleMobileMoveButton(Vector2 Move)
+    {
+        Debug.Log($"Mobile Move: {Move}");
+        Movement = -1 * Speed * new Vector3(0, 0, Move.y);
+    }
     private void HandleGoToMap(float GoMap)
     {
         //SceneManager.LoadScene("TopViewGame");

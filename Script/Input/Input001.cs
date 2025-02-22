@@ -103,21 +103,39 @@ namespace NameInput001
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""f045eefe-33cc-428c-9712-14d8d3f5a726"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""GoMap"",
                     ""type"": ""Value"",
                     ""id"": ""97fa71d2-3c11-49f5-bb95-6f0d58fac02c"",
                     ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""f045eefe-33cc-428c-9712-14d8d3f5a726"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MobileSteeringWheel"",
+                    ""type"": ""Value"",
+                    ""id"": ""f824d4ca-735c-4c00-a5ba-eb4012ba005d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MobileMoveButton"",
+                    ""type"": ""Value"",
+                    ""id"": ""fb0cf68b-eea2-495f-9233-595daf6208a9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 }
             ],
@@ -245,34 +263,34 @@ namespace NameInput001
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6a78b771-1fad-4b01-ad2d-770d6a1108d3"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1c6974d8-8555-4bff-8613-bae92ddf6699"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";GamePad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""7c0756f9-2d3f-4d6c-bb50-52be77007777"",
                     ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyBordScheme"",
                     ""action"": ""GoMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5c67a02-9252-4d1b-91b8-7909873e45bb"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";GamePad"",
+                    ""action"": ""MobileSteeringWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf3adbd2-31c8-4ea4-85bd-d80a138bef60"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";GamePad"",
+                    ""action"": ""MobileMoveButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -476,8 +494,10 @@ namespace NameInput001
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_GoMap = m_Player.FindAction("GoMap", throwIfNotFound: true);
+            m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            m_Player_MobileSteeringWheel = m_Player.FindAction("MobileSteeringWheel", throwIfNotFound: true);
+            m_Player_MobileMoveButton = m_Player.FindAction("MobileMoveButton", throwIfNotFound: true);
             // Map
             m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
             m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
@@ -564,8 +584,10 @@ namespace NameInput001
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_GoMap;
+        private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_MobileSteeringWheel;
+        private readonly InputAction m_Player_MobileMoveButton;
         /// <summary>
         /// Provides access to input actions defined in input action map "Player".
         /// </summary>
@@ -582,13 +604,21 @@ namespace NameInput001
             /// </summary>
             public InputAction @Move => m_Wrapper.m_Player_Move;
             /// <summary>
+            /// Provides access to the underlying input action "Player/GoMap".
+            /// </summary>
+            public InputAction @GoMap => m_Wrapper.m_Player_GoMap;
+            /// <summary>
             /// Provides access to the underlying input action "Player/Jump".
             /// </summary>
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             /// <summary>
-            /// Provides access to the underlying input action "Player/GoMap".
+            /// Provides access to the underlying input action "Player/MobileSteeringWheel".
             /// </summary>
-            public InputAction @GoMap => m_Wrapper.m_Player_GoMap;
+            public InputAction @MobileSteeringWheel => m_Wrapper.m_Player_MobileSteeringWheel;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/MobileMoveButton".
+            /// </summary>
+            public InputAction @MobileMoveButton => m_Wrapper.m_Player_MobileMoveButton;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -618,12 +648,18 @@ namespace NameInput001
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
                 @GoMap.started += instance.OnGoMap;
                 @GoMap.performed += instance.OnGoMap;
                 @GoMap.canceled += instance.OnGoMap;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @MobileSteeringWheel.started += instance.OnMobileSteeringWheel;
+                @MobileSteeringWheel.performed += instance.OnMobileSteeringWheel;
+                @MobileSteeringWheel.canceled += instance.OnMobileSteeringWheel;
+                @MobileMoveButton.started += instance.OnMobileMoveButton;
+                @MobileMoveButton.performed += instance.OnMobileMoveButton;
+                @MobileMoveButton.canceled += instance.OnMobileMoveButton;
             }
 
             /// <summary>
@@ -638,12 +674,18 @@ namespace NameInput001
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
-                @Jump.started -= instance.OnJump;
-                @Jump.performed -= instance.OnJump;
-                @Jump.canceled -= instance.OnJump;
                 @GoMap.started -= instance.OnGoMap;
                 @GoMap.performed -= instance.OnGoMap;
                 @GoMap.canceled -= instance.OnGoMap;
+                @Jump.started -= instance.OnJump;
+                @Jump.performed -= instance.OnJump;
+                @Jump.canceled -= instance.OnJump;
+                @MobileSteeringWheel.started -= instance.OnMobileSteeringWheel;
+                @MobileSteeringWheel.performed -= instance.OnMobileSteeringWheel;
+                @MobileSteeringWheel.canceled -= instance.OnMobileSteeringWheel;
+                @MobileMoveButton.started -= instance.OnMobileMoveButton;
+                @MobileMoveButton.performed -= instance.OnMobileMoveButton;
+                @MobileMoveButton.canceled -= instance.OnMobileMoveButton;
             }
 
             /// <summary>
@@ -838,6 +880,13 @@ namespace NameInput001
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMove(InputAction.CallbackContext context);
             /// <summary>
+            /// Method invoked when associated input action "GoMap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnGoMap(InputAction.CallbackContext context);
+            /// <summary>
             /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -845,12 +894,19 @@ namespace NameInput001
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnJump(InputAction.CallbackContext context);
             /// <summary>
-            /// Method invoked when associated input action "GoMap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "MobileSteeringWheel" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnGoMap(InputAction.CallbackContext context);
+            void OnMobileSteeringWheel(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "MobileMoveButton" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMobileMoveButton(InputAction.CallbackContext context);
         }
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Map" which allows adding and removing callbacks.

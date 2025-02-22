@@ -11,7 +11,8 @@ public class MyInputInit : ScriptableObject, Input001.IPlayerActions, Input001.I
     public event UnityAction<float> GoToMap = delegate { };
     public event UnityAction<float> GoToPlay = delegate { };
 
-
+    public event UnityAction<Vector2> MobileSteeringWheelEvent = delegate { };
+    public event UnityAction<Vector2> MobileMoveButtonEvent = delegate { };
 
     private Input001 _InputControll;
 
@@ -72,5 +73,15 @@ public class MyInputInit : ScriptableObject, Input001.IPlayerActions, Input001.I
             SetUI();
             GoToMap?.Invoke(context.ReadValue<float>());
         }
+    }
+
+    public void OnMobileSteeringWheel(InputAction.CallbackContext context)
+    {
+        MobileSteeringWheelEvent?.Invoke(context.ReadValue<Vector2>());
+    }
+
+    public void OnMobileMoveButton(InputAction.CallbackContext context)
+    {
+        MobileMoveButtonEvent?.Invoke(context.ReadValue<Vector2>());
     }
 }

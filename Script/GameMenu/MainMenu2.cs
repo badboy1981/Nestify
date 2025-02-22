@@ -1,17 +1,12 @@
 using SaveSystem;
-using SaveSystem.Data;
 using SaveSystem.Data2;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-//using UnityEngine.Windows;
-using System.IO;
-using UnityEngine.UIElements;
-using System.Collections.Generic;
 
 namespace GameMenu
 {
-    public class MainMenu : MonoBehaviour
+    public class MainMenu2 : MonoBehaviour
     {
         [SerializeField] SaveLevelDataSObject saveLevelData;
         [SerializeField] SaveSlotTotalDataSObject SlotData;
@@ -29,7 +24,6 @@ namespace GameMenu
                 }
             }
         }
-
         public void NewGame(string SlotID)
         {
             saveLevelData.KeyList.Clear();
@@ -62,3 +56,4 @@ namespace GameMenu
         }
     }
 }
+//Test

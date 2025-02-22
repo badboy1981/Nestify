@@ -26,8 +26,8 @@ public class HandleInput : MonoBehaviour
     private void Start()
     {
         EnableMove = true;
-        Speed = 120;
-        RotateRatio = 240;
+        Speed = 40;
+        RotateRatio = 120;
         rb = GetComponent<Rigidbody>();
         _ConstantForce = GetComponent<ConstantForce>();
         _CollectedName = _Player.GetComponent<Collector>();

@@ -1,8 +1,6 @@
 using Collectable;
 using SaveAndLoad;
 using System;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +13,7 @@ public class HandleInput : MonoBehaviour
     [Range(0, 1000)][SerializeField] public float RotateRatio;
     [SerializeField] ConstantForce _ConstantForce;
 
-    private Collector _CollectedName;
+    //private Collector _CollectedName;
     private Vector3 Movement;
     private Vector3 Rotation;
     private Rigidbody rb;
@@ -30,7 +28,7 @@ public class HandleInput : MonoBehaviour
         RotateRatio = 120;
         rb = GetComponent<Rigidbody>();
         _ConstantForce = GetComponent<ConstantForce>();
-        _CollectedName = _Player.GetComponent<Collector>();
+        //_CollectedName = _Player.GetComponent<Collector>();
         _InputControl.MoveEvent += HandleMoveByForce;
         _InputControl.JumpEvent += HandleJump;
         _InputControl.GoToMap += HandleGoToMap;
@@ -43,6 +41,7 @@ public class HandleInput : MonoBehaviour
     private void HandleSteeringWheel(Vector2 Wheel)
     {
         Debug.Log($"Steering Wheel: {Wheel}");
+        Movement = -1 * Speed * new Vector3(0, 0, Wheel.y);
         Rotation = new Vector3(0, Wheel.x * RotateRatio, 0);
 
     }
@@ -50,6 +49,7 @@ public class HandleInput : MonoBehaviour
     {
         Debug.Log($"Mobile Move: {Move}");
         Movement = -1 * Speed * new Vector3(0, 0, Move.y);
+        Rotation = new Vector3(0, Move.x * RotateRatio, 0);
     }
     private void HandleGoToMap(float GoMap)
     {

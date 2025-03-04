@@ -6,6 +6,7 @@ namespace MazeScreenManagement
     {
         [SerializeField] RectTransform ScreenArea;
         [SerializeField] GridLayoutGroup ControlGrid;
+        [SerializeField] OrientationChangeEvent _OrientationChangeEvent;
 
         [SerializeField] RectTransform MoveStickRect;
         [SerializeField] RectTransform FreeViewRect;
@@ -15,8 +16,22 @@ namespace MazeScreenManagement
         [SerializeField] float CellSpaceRetio;
         [SerializeField] int PaddingBottomRatio;
 
+        
         private void Awake()
         {
+            Excute();            
+        }
+        private void OnEnable()
+        {
+            _OrientationChangeEvent.OnOrientationChangedEvent += OrientationChanged;            
+        }
+        private void OnDisable()
+        {
+            _OrientationChangeEvent.OnOrientationChangedEvent -= OrientationChanged;
+        }
+        private void OrientationChanged(ScreenOrientation orientation)
+        {
+            Debug.Log($"Controller Orientation changed to: {orientation}");
             Excute();
         }
         private void Init()

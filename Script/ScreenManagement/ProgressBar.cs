@@ -11,6 +11,7 @@ namespace MazeScreenManagement
         [SerializeField] GridLayoutGroup ProgressBarGridLayout;
         [SerializeField] GridLayoutGroup IconGridLayout;
         [SerializeField] TextMeshProUGUI IconText;
+        [SerializeField] OrientationChangeEvent _OrientationChangeEvent;
 
         [SerializeField] Vector2 SafeArea;
         [SerializeField] Vector2 CellSize;
@@ -22,6 +23,23 @@ namespace MazeScreenManagement
 
         private void Awake()
         {
+            Excute();
+        }
+        private void OnEnable()
+        {
+            _OrientationChangeEvent.OnOrientationChangedEvent += OrientationChanged;
+        }
+        private void OnDisable()
+        {
+            _OrientationChangeEvent.OnOrientationChangedEvent -= OrientationChanged;
+        }
+        private void OrientationChanged(ScreenOrientation orientation)
+        {
+            Debug.Log($"Progress Bar Orientation changed to: {orientation}");
+            if (orientation == ScreenOrientation.Portrait)
+            {
+
+            }
             Excute();
         }
         private void Init()

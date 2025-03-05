@@ -4,12 +4,12 @@ public class OrientationChecker : MonoBehaviour
 {
     [SerializeField] OrientationChangeEvent orientationChangeEvent;
 
-    void Start()
+    private void Start()
     {
         orientationChangeEvent.Initialize();
     }
 
-    void Update()
+    private void Update()
     {
         orientationChangeEvent.CheckOrientationChange();
     }

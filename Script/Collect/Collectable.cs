@@ -14,7 +14,7 @@ namespace Collectable
     {
         public virtual void Collect()
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
         public virtual void OnTriggerEnter(Collider other)
         {

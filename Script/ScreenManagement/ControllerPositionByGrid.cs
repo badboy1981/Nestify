@@ -4,26 +4,32 @@ namespace MazeScreenManagement
 {
     public class ControllerPositionByGrid : MonoBehaviour
     {
-        [SerializeField] RectTransform ScreenArea;
-        [SerializeField] GridLayoutGroup ControlGrid;
         [SerializeField] OrientationChangeEvent _OrientationChangeEvent;
+        [SerializeField] GridLayoutGroup ControlGrid;
 
+        [SerializeField] RectTransform ScreenArea;
         [SerializeField] RectTransform MoveStickRect;
         [SerializeField] RectTransform FreeViewRect;
+
+        [SerializeField] RectTransform MoveButtonImage;
+        [SerializeField] RectTransform FreeViewButtonImage;
+        [SerializeField] float ButtonSizeReatio = 17f;
 
         [SerializeField] Vector2 SafeArea;
         [SerializeField] float CellSizeRetio;
         [SerializeField] float CellSpaceRetio;
         [SerializeField] int PaddingBottomRatio;
 
-        
+
         private void Awake()
-        {
-            Excute();            
+        {            
+            ScreenArea = GetComponent<RectTransform>();
+            ControlGrid = GetComponent<GridLayoutGroup>();
+            Excute();
         }
         private void OnEnable()
         {
-            _OrientationChangeEvent.OnOrientationChangedEvent += OrientationChanged;            
+            _OrientationChangeEvent.OnOrientationChangedEvent += OrientationChanged;
         }
         private void OnDisable()
         {
@@ -39,29 +45,35 @@ namespace MazeScreenManagement
             SafeArea = new(Screen.safeArea.width, Screen.safeArea.height);
             CellSizeRetio = 6.5f;// 11;
             CellSpaceRetio = 1.6f;
-            PaddingBottomRatio = 50;// 9;
-            ScreenArea = GetComponent<RectTransform>();
-            ControlGrid = GetComponent<GridLayoutGroup>();
+            PaddingBottomRatio = 50;// 9;       
         }
         private void InitScreen()
         {
             ScreenArea.sizeDelta = SafeArea;
         }
-        private void InitAnchorPoint()
+        private void InitButtonSize()
         {
-            Vector2 AnchorPoint = new(0.5f, 0.5f);
-            MoveStickRect = transform.GetChild(0).GetComponent<RectTransform>();
-            FreeViewRect = transform.GetChild(0).GetComponent<RectTransform>();
-
-            MoveStickRect.anchorMin = AnchorPoint;
-            MoveStickRect.anchorMax = AnchorPoint;
-
-            FreeViewRect.anchorMin = AnchorPoint;
-            FreeViewRect.anchorMax = AnchorPoint;
-
-            MoveStickRect.anchoredPosition = Vector2.zero;
-            FreeViewRect.anchoredPosition = Vector2.zero;
+            float BtWidth = SafeArea.x / ButtonSizeReatio;
+            MoveButtonImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, BtWidth);
+            MoveButtonImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, BtWidth);
+            FreeViewButtonImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, BtWidth);
+            FreeViewButtonImage.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, BtWidth);
         }
+        //private void InitAnchorPoint()
+        //{
+        //    Vector2 AnchorPoint = new(0.5f, 0.5f);
+        //    MoveStickRect = transform.GetChild(0).GetComponent<RectTransform>();
+        //    FreeViewRect = transform.GetChild(0).GetComponent<RectTransform>();
+
+        //    MoveStickRect.anchorMin = AnchorPoint;
+        //    MoveStickRect.anchorMax = AnchorPoint;
+
+        //    FreeViewRect.anchorMin = AnchorPoint;
+        //    FreeViewRect.anchorMax = AnchorPoint;
+
+        //    MoveStickRect.anchoredPosition = Vector2.zero;
+        //    FreeViewRect.anchoredPosition = Vector2.zero;
+        //}
         private void GridCustomize()
         {
             ControlGrid.padding.left = 0;
@@ -82,6 +94,7 @@ namespace MazeScreenManagement
         {
             Init();
             InitScreen();
+            InitButtonSize();
             //InitAnchorPoint();
             GridCustomize();
         }

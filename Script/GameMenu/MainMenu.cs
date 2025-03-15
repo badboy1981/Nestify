@@ -10,9 +10,12 @@ namespace GameMenu
     {
         [SerializeField] SaveLevelDataSObject saveLevelData;
         [SerializeField] SaveSlotTotalDataSObject SlotData;
+        [SerializeField] MazeScreenManagement.ScreenInitialization ScreenInit;
 
         private void Awake()
         {
+            ScreenInit.SafeArea = AppConstant.SafeArea;
+
             SlotData.UnlockLevels.Clear();
             if (File.Exists(AppConstant.UnlockedLevelPathName))
             {

@@ -1,4 +1,3 @@
-using Collectable;
 using SaveAndLoad;
 using System;
 using UnityEngine;
@@ -34,7 +33,7 @@ public class HandleInput : MonoBehaviour
         _InputControl.GoToMap += HandleGoToMap;
         _InputControl.GoToPlay += HandleGoToPlay;
 
-        _InputControl.MobileSteeringWheelEvent += HandleSteeringWheel;
+        //_InputControl.MobileSteeringWheelEvent += HandleSteeringWheel;
         _InputControl.MobileMoveButtonEvent += HandleMobileMoveButton;
     }
 
@@ -77,6 +76,7 @@ public class HandleInput : MonoBehaviour
     }
     private void MoveBy_ConstantForce()
     {
+        //_ConstantForce.relativeForce = new(_ConstantForce.relativeForce.x, _ConstantForce.relativeForce.y, Movement.z);
         _ConstantForce.relativeForce = Movement;
         //_ConstantForce.relativeTorque = Rotation / 10;
         transform.Rotate(Rotation * Time.deltaTime);

@@ -10,12 +10,14 @@ namespace GameMenu
         [SerializeField] OrientationChangeEvent _OrientationChangeEvent;
         //[SerializeField] ScreenInitialization ScreenInit;
         [SerializeField] GridLayoutGroup ButtonGrid;
+        [SerializeField] RectTransform _RectTransform;
         [SerializeField] MazeScreenManagement.ScreenInit _ScreenInit;
 
         private void Start()
         {
             ButtonGrid = GetComponent<GridLayoutGroup>();
-            
+            _RectTransform = GetComponent<RectTransform>();
+
             Excute();
         }
         private void OnEnable()
@@ -32,47 +34,44 @@ namespace GameMenu
             Excute();
         }
 
-        private MazeScreenManagement.ScreenInit ScInit()
-        {
-            return new()
-            {
-                SafeArea = AppConstant.SafeArea,
-                ButtonImageSize = new(332f, 163f),
-                CellSizeRetio = 6.5f,
-                CellSpaceRetio = 1.6f,
-                PaddingBottomRatio = 50,
-                left = 0,
-                top = 0,
-                right = 0,
-                bottom = (int)(_ScreenInit.SafeArea.y / _ScreenInit.PaddingBottomRatio),
-            };
-        }
 
+
+   
         private void GridCustomize()
         {
-            ButtonGrid.padding.left = 0;
-            ButtonGrid.padding.right = 0;
-            ButtonGrid.padding.top = 0;           
-            ButtonGrid.padding.bottom = (int)(AppConstant.SafeArea.y / _ScreenInit.PaddingBottomRatio);
+            float Wimg = Persentage(_ScreenInit.SafeArea.x, _ScreenInit.CellSizeRetio);
+            float Himg = HightImage(Wimg);
+            ButtonGrid.cellSize = new(Wimg, Himg);
 
-            ButtonGrid.cellSize = new
-                (
-                _ScreenInit.ButtonImageSize.x / _ScreenInit.CellSizeRetio,
-                _ScreenInit.ButtonImageSize.y / _ScreenInit.CellSizeRetio
-                );
+            ButtonGrid.spacing = new(Persentage(Wimg, _ScreenInit.CellSpaceRetioW), Persentage(Himg, _ScreenInit.CellSpaceRetioH));
 
-            ButtonGrid.spacing = new(_ScreenInit.SafeArea.x / _ScreenInit.CellSpaceRetio, 0);
+            ButtonGrid.padding.left = (int)Persentage(_ScreenInit.SafeArea.x, _ScreenInit.PaddingLeftRatio);
+            //ButtonGrid.padding.right = _ScreenInit.right;
+            ButtonGrid.padding.top = (int)(Persentage(_ScreenInit.SafeArea.y, _ScreenInit.PaddingTopRatio) - Himg / 2);
+            //ButtonGrid.padding.bottom = _ScreenInit.bottom;
 
             ButtonGrid.startCorner = _ScreenInit.StartCorner;
             ButtonGrid.startAxis = _ScreenInit.startAxis;
             ButtonGrid.constraint = _ScreenInit.constraint;
             ButtonGrid.childAlignment = _ScreenInit.childAlignment;
         }
+        private int Persentage(float value, float persentage)
+        {
+            return (int)(value * persentage);
+        }
+        private int WideImage(float NewHeight)
+        {
+            return (int)((_ScreenInit.ButtonImageSize.x * NewHeight) / (_ScreenInit.ButtonImageSize.y));
+        }
+        private int HightImage(float NewWide)
+        {
+            return (int)((_ScreenInit.ButtonImageSize.y * NewWide) / (_ScreenInit.ButtonImageSize.x));
+        }
         public void Excute()
         {
-            _ScreenInit.SafeArea = new(Screen.safeArea.width, Screen.safeArea.height);
-                //AppConstant.SafeArea;
-            GridCustomize();
+            _ScreenInit.SafeArea = new(Screen.safeArea.width, Screen.safeArea.height); 
+            _RectTransform.sizeDelta = _ScreenInit.SafeArea;
+            GridCustomize();            
         }
     }
 

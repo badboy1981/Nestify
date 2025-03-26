@@ -9,20 +9,24 @@ namespace GameMenu
     public class ButtonPositionUI : MonoBehaviour
     {
         [SerializeField] OrientationChangeEvent _OrientationChangeEvent;
-        [SerializeField] RectTransform _RectTransform;
-        [SerializeField] RectTransform _ChildRect;
-        [SerializeField] GridLayoutGroup ButtonGrid;
-        [SerializeField] GridLayoutGroup ChildGr;
-        [SerializeField] TextMeshProUGUI LevelText;
         [SerializeField] string Massage;
+
+        [SerializeField] RectTransform _RectTransform;
+        //[SerializeField] RectTransform _ChildRect;
+
+        [SerializeField] GridLayoutGroup ButtonGrid;
+        //[SerializeField] GridLayoutGroup ChildGr;
+
+        [SerializeField] TextMeshProUGUI LevelText;
+        
         [SerializeField] ScreenInit _ButtonInit;
-        [SerializeField] ScreenInit _ImageInit;
+        //[SerializeField] ScreenInit _ImageInit;
 
         [SerializeField] GridRatio AGridRatio;
         [SerializeField] GridInit AGridInit;
 
-        [SerializeField] GridRatio AChildGridRatio;
-        [SerializeField] GridInit AChildInit;
+        //[SerializeField] GridRatio AChildGridRatio;
+        //[SerializeField] GridInit AChildInit;
 
         [SerializeField] FontSizeRatio _FontSizeRatio;
 
@@ -67,37 +71,37 @@ namespace GameMenu
             ButtonGrid.constraint = _ButtonInit.constraint;
             ButtonGrid.childAlignment = _ButtonInit.childAlignment;
 
-            InitChild();
+            //InitChild();
         }
-        private void InitChild()
-        {
-            //float ImgSize = Persentage(ButtonGrid.cellSize.y, _ImageInit.CellSizeRetio);
-            float ImgSize = Persentage(ButtonGrid.cellSize.y, _ImageInit.CellSizeRetio);
-            Vector2 ImageSize = new(ImgSize, ImgSize);            
-            int ImgVerticalPos = (int)(_ImageInit.PaddingTopRatio * ButtonGrid.cellSize.y);
+        //private void InitChild()
+        //{
+        //    //float ImgSize = Persentage(ButtonGrid.cellSize.y, _ImageInit.CellSizeRetio);
+        //    float ImgSize = Persentage(ButtonGrid.cellSize.y, _ImageInit.CellSizeRetio);
+        //    Vector2 ImageSize = new(ImgSize, ImgSize);            
+        //    int ImgVerticalPos = (int)(_ImageInit.PaddingTopRatio * ButtonGrid.cellSize.y);
 
-            for (int i = 0; i < _RectTransform.childCount; i++)
-            {
-                if (_RectTransform.transform.GetChild(i).CompareTag("UiButton1"))
-                {
-                    ChildGr = _RectTransform.transform.GetChild(i).GetComponent<GridLayoutGroup>();
-                    ChildGr.cellSize = ImageSize;
+        //    for (int i = 0; i < _RectTransform.childCount; i++)
+        //    {
+        //        if (_RectTransform.transform.GetChild(i).CompareTag("UiButton1"))
+        //        {
+        //            ChildGr = _RectTransform.transform.GetChild(i).GetComponent<GridLayoutGroup>();
+        //            ChildGr.cellSize = ImageSize;
 
-                    ChildGr.padding.top = ImgVerticalPos;
-                    ChildGr.padding.left = (int)_ImageInit.PaddingLeftRatio;
-                    ChildGr.padding.right = 0;
-                    ChildGr.padding.bottom = 0;
+        //            ChildGr.padding.top = ImgVerticalPos;
+        //            ChildGr.padding.left = (int)_ImageInit.PaddingLeftRatio;
+        //            ChildGr.padding.right = 0;
+        //            ChildGr.padding.bottom = 0;
 
-                    ChildGr.startCorner = _ImageInit.StartCorner;
-                    ChildGr.startAxis = _ImageInit.startAxis;
-                    ChildGr.constraint = _ImageInit.constraint;
-                    ChildGr.childAlignment = _ImageInit.childAlignment;
+        //            ChildGr.startCorner = _ImageInit.StartCorner;
+        //            ChildGr.startAxis = _ImageInit.startAxis;
+        //            ChildGr.constraint = _ImageInit.constraint;
+        //            ChildGr.childAlignment = _ImageInit.childAlignment;
 
-                    LevelText = _RectTransform.transform.GetChild(i).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-                    LevelText.fontSize = _FontSizeRatio.SizeRatio * ImgSize;
-                }
-            }
-        }
+        //            LevelText = _RectTransform.transform.GetChild(i).transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        //            LevelText.fontSize = _FontSizeRatio.SizeRatio * ImgSize;
+        //        }
+        //    }
+        //}
         private int Persentage(float value, float persentage)
         {
             return (int)(value * persentage);
@@ -112,7 +116,7 @@ namespace GameMenu
         }
 
 
-        public void Excute()
+        public virtual void Excute()
         {
             Init();
             GridCustomize();

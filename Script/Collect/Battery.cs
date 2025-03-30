@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class Battery : MonoBehaviour
+namespace Collectable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class Battery : Collectable
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] BatteryDiagram _BatteryDiagram;
+        [SerializeField] float IncreaseValue = 20f;
+        public override void OnTriggerEnter(Collider other)
+        {
+            //base.OnTriggerEnter(other);
+            _BatteryDiagram.IncreaseValue(IncreaseValue);
+        }
     }
 }

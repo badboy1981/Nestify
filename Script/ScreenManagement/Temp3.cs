@@ -1,13 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Magnet : MonoBehaviour
+public class Temp3 : MonoBehaviour
 {
-    [SerializeField] Transform _Magnet;
+    [SerializeField] Transform Gate;
     [SerializeField] float RepelForce = 10f;
 
     private void Start()
     {
-        _Magnet = GetComponent<Transform>();
+        Gate = GetComponent<Transform>();
     }
     private void OnTriggerStay(Collider other)
     {
@@ -16,7 +16,7 @@ public class Magnet : MonoBehaviour
             Rigidbody droneRigidbody = other.GetComponent<Rigidbody>();
             if (droneRigidbody != null)
             {
-                Vector3 repelDirection = (other.transform.position - _Magnet.position).normalized;
+                Vector3 repelDirection = (other.transform.position - Gate.position).normalized;
                 droneRigidbody.AddForce(repelDirection * RepelForce, ForceMode.Impulse);
             }
         }

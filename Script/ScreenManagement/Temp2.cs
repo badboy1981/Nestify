@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BatteryDiagram : MonoBehaviour
+public class BatteryDiagram2 : MonoBehaviour
 {
     private RectTransform _BatteryDiagram;
     [SerializeField] float startValue = 500f;
     [SerializeField] float duration = 30f;
     public float currentValue;
     private Coroutine decreaseCoroutine;
-    private float elapsedTime;
 
     private void Start()
     {
@@ -19,7 +18,7 @@ public class BatteryDiagram : MonoBehaviour
 
     private IEnumerator DecreaseValueOverTime()
     {
-        elapsedTime = 0f;
+        float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
@@ -31,17 +30,30 @@ public class BatteryDiagram : MonoBehaviour
         currentValue = 0f;
     }
 
-    public void IncreaseValue(float IncreaseValue)
+    public void IncreaseValue()
     {
-        float newValue = Mathf.Min(currentValue + IncreaseValue, startValue);
-        float valueDifference = newValue - currentValue;
-        //float remainingTime = duration - elapsedTime;
-        float newElapsedTime = elapsedTime - (valueDifference / startValue) * duration;
+        if (decreaseCoroutine != null)
+        {
+            StopCoroutine(decreaseCoroutine);
+        }
+        currentValue = Mathf.Min(currentValue + 20f, startValue);
+        startValue = currentValue;
+        decreaseCoroutine = StartCoroutine(DecreaseValueOverTime());
+    }
 
-        //Debug.Log($"Current Value: {currentValue} || New Value: {newValue}");
+    public void ResetCoroutine()
+    {
+        if (decreaseCoroutine != null)
+        {
+            StopCoroutine(decreaseCoroutine);
+        }
+        currentValue = startValue;
+        decreaseCoroutine = StartCoroutine(DecreaseValueOverTime());
+    }
 
-        currentValue = newValue;
-        elapsedTime = Mathf.Max(0, newElapsedTime);
-        _BatteryDiagram.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, currentValue);
+    public void IncreaseDuration(float additionalTime)
+    {
+        duration += additionalTime;
+        ResetCoroutine();
     }
 }

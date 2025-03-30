@@ -13,22 +13,8 @@ namespace Collectable
         private void Start()
         {
             GateOpen = 0;
-            GateTargetAnimator = GetComponent<Animator>();
             OriginPos = GateTarget.position;
             DestinationPos = new(OriginPos.x, OriginPos.y + 5, OriginPos.z);
-        }
-        private void FixedUpdate()
-        {
-            GateTarget.position = Vector3.Lerp(OriginPos, DestinationPos, GateOpen);
-        }
-        public override void OnTriggerEnter(Collider other)
-        {
-            GateTargetAnimator.SetBool("PressKey", true);
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            GateTargetAnimator.SetBool("PressKey", false);
-            GateTarget.position = Vector3.Lerp(OriginPos, DestinationPos, GateOpen);
         }
     }
 }

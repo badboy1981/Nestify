@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ChargeThiefBigB : MonoBehaviour
+public class ChargeThiefBig : MonoBehaviour
 {
     [SerializeField] Vector3 PointA;
     [SerializeField] Vector3 PointB;

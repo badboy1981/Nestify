@@ -1,23 +1,68 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class GateKey : MonoBehaviour
 {
+    [Header("Gate")]
     [SerializeField] Transform Gate;
-    [SerializeField] float GateOpen;
+    [SerializeField] Transform KeyHandle;
+    [SerializeField] float GateOpen=5;
     [SerializeField] float GateOpenDuration = 3f;
+
+    [Header("Key Handle")]
+    [SerializeField] Vector3 KeyHandleRotation;
+    private Quaternion initialRotation; 
+    private Quaternion targetRotation;
+
     private float initialGateY;
 
     private void Start()
     {
+        initialRotation = Quaternion.Euler(-50f, -90f, 90f);
+        targetRotation = Quaternion.Euler(-140, -90f, 90f);
         initialGateY = Gate.position.y;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //StartCoroutine(RotateHandleKey(KeyHandleRotation));
+        StartCoroutine(RotateHandleKey(90f));
         StartCoroutine(OpenGate());
     }
+    private void OnTriggerExit(Collider other)
+    {
+        //StartCoroutine(RotateHandleKey(KeyHandleRotation * -1));
+        StartCoroutine(RotateHandleKey(-90f));
+        StartCoroutine(CloseGate());
+    }
+    private IEnumerator RotateHandleKey(float degreesY)
+    {
+        float elapsedTime = 0f;
+        Quaternion initialRotation = KeyHandle.rotation;
+        Quaternion targetRotation = initialRotation * Quaternion.Euler(0, degreesY, 0); 
 
+        while (elapsedTime < GateOpenDuration)
+        {
+            KeyHandle.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / GateOpenDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        KeyHandle.rotation = targetRotation;
+    }
+    //private IEnumerator RotateHandleKey(Vector3 Deg)
+    //{
+    //    float elapsedTime = 0f;
+    //    Quaternion initialRotation = KeyHandle.rotation;
+    //    Quaternion targetRotation = Quaternion.Euler(KeyHandle.rotation.x + Deg.x, KeyHandle.rotation.y + Deg.y, KeyHandle.rotation.z + Deg.z);
+    //    while (elapsedTime < GateOpenDuration)
+    //    {
+    //        KeyHandle.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / GateOpenDuration);
+    //        elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
+    //    KeyHandle.rotation = targetRotation;
+    //}
     private IEnumerator OpenGate()
     {
         float elapsedTime = 0f;
@@ -34,10 +79,7 @@ public class GateKey : MonoBehaviour
         Gate.position = targetPosition;
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        StartCoroutine(CloseGate());
-    }
+
 
     private IEnumerator CloseGate()
     {

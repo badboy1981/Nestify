@@ -1,24 +1,66 @@
 ﻿using UnityEngine;
+using System.Collections;
 
-public class Temp3 : MonoBehaviour
+public class RotatingObject : MonoBehaviour
 {
-    [SerializeField] Transform Gate;
-    [SerializeField] float RepelForce = 10f;
+    public Transform targetObject;
+    public float rotationDuration = 1f;
 
-    private void Start()
+    private Quaternion initialRotation;
+    private Quaternion targetRotation;
+    private Coroutine currentRotationCoroutine;
+    private bool isRotatingToTarget = false; // پرچم تشخیص وضعیت چرخش
+
+    void Start()
     {
-        Gate = GetComponent<Transform>();
+        initialRotation = Quaternion.Euler(-50f, -90f, 90f);
+        targetRotation = Quaternion.Euler(-140, -90f, 90f);
+        targetObject.rotation = initialRotation;
     }
-    private void OnTriggerStay(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Drone")
+        if (currentRotationCoroutine != null)
         {
-            Rigidbody droneRigidbody = other.GetComponent<Rigidbody>();
-            if (droneRigidbody != null)
-            {
-                Vector3 repelDirection = (other.transform.position - Gate.position).normalized;
-                droneRigidbody.AddForce(repelDirection * RepelForce, ForceMode.Impulse);
-            }
+            StopCoroutine(currentRotationCoroutine);
         }
+
+        isRotatingToTarget = true; // فعال کردن پرچم هنگام شروع چرخش به هدف
+        currentRotationCoroutine = StartCoroutine(RotateToTarget(targetRotation, () => {
+            isRotatingToTarget = false; // غیرفعال کردن پرچم پس از اتمام چرخش
+        }));
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // اگر چرخش به هدف کامل نشده، هیچ کاری نکن
+        if (isRotatingToTarget)
+        {
+            return;
+        }
+
+        if (currentRotationCoroutine != null)
+        {
+            StopCoroutine(currentRotationCoroutine);
+        }
+
+        currentRotationCoroutine = StartCoroutine(RotateToTarget(initialRotation));
+    }
+
+    private IEnumerator RotateToTarget(Quaternion target, System.Action onComplete = null)
+    {
+        float elapsedTime = 0f;
+        Quaternion startRotation = targetObject.rotation;
+
+        while (elapsedTime < rotationDuration)
+        {
+            targetObject.rotation = Quaternion.Slerp(startRotation, target, elapsedTime / rotationDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        targetObject.rotation = target;
+        currentRotationCoroutine = null;
+        onComplete?.Invoke(); // اجرای کالبک پس از اتمام
     }
 }

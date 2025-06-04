@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 
 namespace SaveSystem
@@ -15,5 +13,6 @@ namespace SaveSystem
         public int CoinBank;
         public int CoinCounter;
         public List<string> KeyList;
+        public List<string> GateKeyActivatorList;
     }
 }

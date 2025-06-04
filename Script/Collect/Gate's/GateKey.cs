@@ -33,7 +33,7 @@ public class GateKey : MonoBehaviour
     {
         //StartCoroutine(RotateHandleKey(KeyHandleRotation * -1));
         StartCoroutine(RotateHandleKey(-90f));
-        StartCoroutine(CloseGate());
+        StartCoroutine(CloseGate());        
     }
     private IEnumerator RotateHandleKey(float degreesY)
     {

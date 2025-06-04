@@ -10,18 +10,18 @@ namespace GameMenu
         }
     }
 
-    [UnityEditor.CustomEditor(typeof(ButtonPositionUiChild))]
-    public class IconPosition : UnityEditor.Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            DrawDefaultInspector();
+    //[UnityEditor.CustomEditor(typeof(ButtonPositionUiChild))]
+    //public class IconPosition : UnityEditor.Editor
+    //{
+    //    public override void OnInspectorGUI()
+    //    {
+    //        DrawDefaultInspector();
 
-            ButtonPositionUiChild progressBar = (ButtonPositionUiChild)target;
-            if (GUILayout.Button("Drow Button!"))
-            {
-                progressBar.Excute();
-            }
-        }
-    }
+    //        ButtonPositionUiChild progressBar = (ButtonPositionUiChild)target;
+    //        if (GUILayout.Button("Drow Button!"))
+    //        {
+    //            progressBar.Excute();
+    //        }
+    //    }
+    //}
 }

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 namespace Collectable
@@ -19,7 +16,7 @@ namespace Collectable
         {
             transform.SetPositionAndRotation(new Vector3(0, 0.5f, 0), Quaternion.identity);
             LevelData.SceneName = SceneManager.GetActiveScene().name;
-            LevelData.KeyList.Clear();
+            //LevelData.KeyList.Clear();
             LevelNumber.text = $"{SaveSystem.Data2.PlayableSceneList.levelNumber(SceneManager.GetActiveScene().name)}";
             InitCollectedText();
             RemoveCellectedKeys();

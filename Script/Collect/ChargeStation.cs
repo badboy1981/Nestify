@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class ChargeStation : MonoBehaviour
@@ -7,14 +7,29 @@ public class ChargeStation : MonoBehaviour
     [SerializeField] float ChargerCapacity = 100f;
     [SerializeField] float IncreaseValue = 10f;
     [SerializeField] float WaitSeconds = 1f;
-    [SerializeField] float WaitTimeChargeItself = 60f;
+    [SerializeField] float RechargeRate = 10f; 
+    [SerializeField] float RechargeInterval = 10f; 
+
+    private Coroutine chargingCoroutine; 
 
     public void OnTriggerEnter(Collider other)
-    {
-        StartCoroutine(IncreaseValueOverTime());
+    {        
+        if (chargingCoroutine != null)
+        {
+            StopCoroutine(chargingCoroutine);
+        }
+        chargingCoroutine = StartCoroutine(DischargeBattery());
+    }
+    private void OnTriggerExit(Collider other)
+    {        
+        if (chargingCoroutine != null)
+        {
+            StopCoroutine(chargingCoroutine);
+        }        
+        chargingCoroutine = StartCoroutine(RechargeBattery());
     }
 
-    private IEnumerator IncreaseValueOverTime()
+    private IEnumerator DischargeBattery()
     {
         while (ChargerCapacity > 0)
         {
@@ -22,16 +37,15 @@ public class ChargeStation : MonoBehaviour
             ChargerCapacity -= IncreaseValue;
             yield return new WaitForSeconds(WaitSeconds);
         }
+        chargingCoroutine = null;
     }
-
-    private void OnTriggerExit(Collider other)
+    private IEnumerator RechargeBattery()
     {
-        //The charging station starts charging itself.
-        StartCoroutine(ResetChargerCapacity());
-    }
-    private IEnumerator ResetChargerCapacity()
-    {
-        yield return new WaitForSeconds(WaitTimeChargeItself);
-        ChargerCapacity = 100f;
+        while (ChargerCapacity < 100f)
+        {
+            ChargerCapacity = Mathf.Min(ChargerCapacity + RechargeRate, 100f);
+            yield return new WaitForSeconds(RechargeInterval);
+        }
+        chargingCoroutine = null;
     }
 }

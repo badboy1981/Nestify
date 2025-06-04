@@ -8,7 +8,7 @@ namespace Collectable
         [SerializeField] float IncreaseValue = 20f;
         public override void OnTriggerEnter(Collider other)
         {
-            //base.OnTriggerEnter(other);
+            base.OnTriggerEnter(other);
             _BatteryDiagram.IncreaseValue(IncreaseValue);
         }
     }

@@ -13,6 +13,6 @@ namespace SaveSystem
         public int CoinBank;
         public int CoinCounter;
         public List<string> KeyList;
-        public List<string> GateKeyActivatorList;
+        public List<string> CollectedGateActivatorListKey;
     }
 }

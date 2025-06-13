@@ -1,11 +1,6 @@
-using SaveSystem.Data;
-using SaveSystem.Test;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.AdaptivePerformance;
 using UnityEngine.SceneManagement;
 
 namespace SaveSystem.Data2

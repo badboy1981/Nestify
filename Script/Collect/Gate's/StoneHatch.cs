@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class StoneHatch : MonoBehaviour
 {
@@ -18,14 +20,41 @@ public class StoneHatch : MonoBehaviour
     [SerializeField] Transform Gate;
 
     private readonly string DroneName = "Drone";
+
+    private void Start()
+    {
+        TestSpace.ListTest ts = new();
+        ts.Ls.Add("One");
+        ts.Ls.Add("Two");
+        ts.Ls.Add("Three");
+
+        Debug.Log(ts.Ls.IndexOf("One"));
+        Debug.Log(JsonUtility.ToJson(Keys.Gates[0]));
+        Debug.Log(Keys.Gates.Find(g => g.TargetGateName == "GateB"));
+
+    }
     public void OnTriggerEnter(Collider other)
     {
         if (other.name == DroneName)
         {
-            animator = GetComponent<Animator>();
-            animator.SetBool("OpenGate", true);
+            if (GetMissingKeys().Count > 0)
+            {
+                animator = GetComponent<Animator>();
+                Debug.Log($"Lost pieces: {string.Join(',', GetMissingKeys())}");
+            }
+            else
+            {
+                animator.SetBool("OpenGate", true);
+            }
         }
     }
+    private List<string> GetMissingKeys()
+    {
+        var Ref = Keys.Gates.Find(g => g.HatchName == name).Keys;
+        var Target = GateActivatorKey.CollectedGateActivatorListKey;
+        return Ref.Except(Target).ToList();
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.name == DroneName)
@@ -33,36 +62,13 @@ public class StoneHatch : MonoBehaviour
             animator.SetBool("OpenGate", false);
         }
     }
-    private Collectable.StoneHatchKey FillStoneHatchKey()
-    {
-        Collectable.Gate GateA = new()
-        {
-            TargetGateName = "GateA",
-            HatchName = "HatchA",
-            Keys = new() { "KeyAA", "KeyAB", "KeyAC" }
-        };
-        Collectable.Gate GateB = new()
-        {
-            TargetGateName = "GateB",
-            HatchName = "HatchB",
-            Keys = new() { "KeyBA", "KeyBB", "KeyBC" }
-        };
-        Collectable.Gate GateC = new()
-        {
-            TargetGateName = "GateC",
-            HatchName = "HatchC",
-            Keys = new() { "KeyCA", "KeyCB", "KeyCC" }
-        };
 
-        Collectable.StoneHatchKey Hatch = new();
-        Hatch.Gates.Add(GateA);
-        Hatch.Gates.Add(GateB);
-        Hatch.Gates.Add(GateC);
-        return Hatch;
-    }
-    private bool CheckActivatorKeyList()
+    private bool CheckActivatorKeyList(SaveSystem.SaveLevelDataSObject gateActivatorKey)
     {
-        return true;
+        //return gate.Keys.All(Key => Keys.Gates.Contains(Key));
+        //return GateActivatorKey.GateKeyActivatorList.All(key => gate.Keys.Contains(key));
+        //return GateActivatorKey.GateKeyActivatorList.All(key => gateActivatorKey.GateKeyActivatorList.Contains(key));
+        return Keys.Gates.All(key => GateActivatorKey.CollectedGateActivatorListKey.Contains(Keys.Gates[0].Keys[0]));
     }
     private IEnumerator OpenGate(bool GateState)
     {

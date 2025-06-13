@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Collectable
@@ -8,12 +10,12 @@ namespace Collectable
 
         private void Awake()
         {
-            ActivatorKeyList.GateKeyActivatorList.Clear();
+            ActivatorKeyList.CollectedGateActivatorListKey.Clear();
         }
         public override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);
-            ActivatorKeyList.GateKeyActivatorList.Add(name);
+            ActivatorKeyList.CollectedGateActivatorListKey.Add(name);
         }
     }
 }

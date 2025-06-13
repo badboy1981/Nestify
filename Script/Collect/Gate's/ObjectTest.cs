@@ -11,8 +11,13 @@ namespace TestSpace
         public List<string> Keys = new();
     }
 
-    public class ListTest
+    public class GatesList
     {
         public List<Gate> Gates = new();
+    }
+
+    public class ListTest
+    {
+        public List<string> Ls = new();
     }
 }

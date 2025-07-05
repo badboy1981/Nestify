@@ -1,21 +1,23 @@
 using System.Linq;
-using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Collectable
 {
     public class GateActivatorKey : Collectable
     {
-        [SerializeField] SaveSystem.SaveLevelDataSObject ActivatorKeyList;
-
-        private void Awake()
-        {
-            ActivatorKeyList.CollectedGateActivatorListKey.Clear();
-        }
+        [SerializeField] Gate.StoneHatchKeyListRef KeysList;
         public override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);
-            ActivatorKeyList.CollectedGateActivatorListKey.Add(name);
+            ChangeBoolByName();
+        }
+        private void ChangeBoolByName()
+        {
+            KeysList.GatesPropertyList.Find(g => g.SignLabel == name.ElementAt(3).ToString()).keysLists.Find(j => j.KeyName == name).Collected = true;
+        }
+        private void ChangeBoolByTag()
+        {
+            KeysList.GatesPropertyList.Find(g => g.SignLabel == tag.Last<char>().ToString());
         }
     }
 }

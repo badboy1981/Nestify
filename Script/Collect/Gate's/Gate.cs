@@ -1,16 +1,20 @@
-using UnityEngine;
+using System.Collections.Generic;
 
-public class Gate : MonoBehaviour
+namespace Collectable.Gate
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [System.Serializable]
+    public class GateProperty
     {
-        
+        public string SignLabel;
+        public string HatchName;
+        public string TargetGateName;
+        public List<KeysList> keysLists = new();
     }
 
-    // Update is called once per frame
-    void Update()
+    [System.Serializable]
+    public class KeysList
     {
-        
+        public string KeyName;
+        public bool Collected;
     }
 }

@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class StoneHatch : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class StoneHatch : MonoBehaviour
     [SerializeField] float GateOpenDuration = 3f;
 
     [Header("Key's List")]
-    [SerializeField] Collectable.StoneHatchKey Keys;
-    [SerializeField] SaveSystem.SaveLevelDataSObject GateActivatorKey;
+    [SerializeField] Collectable.Gate.StoneHatchKeyListRef KeysListRef;
+    [SerializeField] List<GameObject> Keys;
+    //[SerializeField] SaveSystem.SaveLevelDataSObject GateActivatorKey;
     //[SerializeField] MeshFilter KeyMesh;
     //[SerializeField] Mesh _Mesh;
+    [SerializeField] string[] _CollectedKey;
 
     [Header("Gate")]
     [SerializeField] Transform Gate;
@@ -23,53 +26,99 @@ public class StoneHatch : MonoBehaviour
 
     private void Start()
     {
-        TestSpace.ListTest ts = new();
-        ts.Ls.Add("One");
-        ts.Ls.Add("Two");
-        ts.Ls.Add("Three");
-
-        Debug.Log(ts.Ls.IndexOf("One"));
-        Debug.Log(JsonUtility.ToJson(Keys.Gates[0]));
-        Debug.Log(Keys.Gates.Find(g => g.TargetGateName == "GateB"));
-
+        //GateState(TargetState.Open);
     }
     public void OnTriggerEnter(Collider other)
     {
         if (other.name == DroneName)
         {
-            if (GetMissingKeys().Count > 0)
+            animator = GetComponent<Animator>();
+            //List<string> CollectedKey = new();
+            _CollectedKey = CollectedKey();
+
+
+            foreach (var Item in Keys)
             {
-                animator = GetComponent<Animator>();
-                Debug.Log($"Lost pieces: {string.Join(',', GetMissingKeys())}");
-            }
-            else
-            {
-                animator.SetBool("OpenGate", true);
+                //_CollectedKey.Where(g=>g.Contains(Item.name)).
+                if (_CollectedKey.Contains(Item.name))
+                {
+                    //StartCoroutine(HatchKeyAnimate(Item));
+                    Item.SetActive(true);
+                    //HatchKeyAnimate(Item);
+                }
             }
         }
     }
-    private List<string> GetMissingKeys()
-    {
-        var Ref = Keys.Gates.Find(g => g.HatchName == name).Keys;
-        var Target = GateActivatorKey.CollectedGateActivatorListKey;
-        return Ref.Except(Target).ToList();
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.name == DroneName)
         {
-            animator.SetBool("OpenGate", false);
+            animator = GetComponent<Animator>();
+            animator.SetBool("ActiveKey", false);
         }
     }
-
-    private bool CheckActivatorKeyList(SaveSystem.SaveLevelDataSObject gateActivatorKey)
+    //private List<string> CollectedKey()
+    private string[] CollectedKey()
     {
-        //return gate.Keys.All(Key => Keys.Gates.Contains(Key));
-        //return GateActivatorKey.GateKeyActivatorList.All(key => gate.Keys.Contains(key));
-        //return GateActivatorKey.GateKeyActivatorList.All(key => gateActivatorKey.GateKeyActivatorList.Contains(key));
-        return Keys.Gates.All(key => GateActivatorKey.CollectedGateActivatorListKey.Contains(Keys.Gates[0].Keys[0]));
+        return KeysListRef.GatesPropertyList.Find(g => g.SignLabel == name.ElementAt(5).ToString()).keysLists.Where(k => k.Collected).Select(k => k.KeyName).ToArray();
     }
+    private IEnumerator HatchKeyAnimate(GameObject Key)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < 2.5f)
+        {
+            Key.SetActive(true);
+            elapsedTime += Time.deltaTime;
+            Debug.Log(elapsedTime);
+            yield return null;
+        }
+    }
+    //private void TriggerEnterRoleB()
+    //{
+    //    KeysList.GatesPropertyList.Find(g => g.HatchName == name).keysLists.Find(g => g.KeyName == "").Collected = true;
+    //}
+    //private void TriggerEnterRoleA()
+    //{
+    //    Debug.Log($"Collected Keys: {string.Join(',', CollectedKey())}");
+    //    var MissingKey = GetMissingKeys();
+    //    if (MissingKey.Count > 0)
+    //    {
+    //        animator = GetComponent<Animator>();
+    //        string Msg = $"Find The Lost pieces for {name}: {string.Join(',', MissingKey)}";
+    //        Debug.Log(Msg);
+    //    }
+    //    else
+    //    {
+    //        animator.SetBool("OpenGate", true);
+    //    }
+    //}
+
+    //private List<string> CollectedKey()
+    //{
+    //    var Kkeys = KeysList.GatesPropertyList.Find(g => g.HatchName == name).keysLists.Find(k => k.Collected == true);
+    //    var keys = KeysList.GatesPropertyList.Find(g => g.HatchName == name).keysLists;
+    //    //var CollectedKey = keys.Find(k => k.Collected == true).KeyName;
+    //    var KeysCollected = new List<string>();
+    //    foreach (var key in keys)
+    //    {
+    //        if (key.Collected == true) KeysCollected.Add(key.KeyName);
+    //    }
+    //    return KeysCollected;
+    //}
+    //private List<string> GetMissingKeys()
+    //{
+    //    //var Ref = KeysList.GatesPropertyList.Find(g => g.HatchName == name).Keys;
+    //    //var Target = GateActivatorKey.CollectedGateActivatorListKey;
+    //    //return Ref.Except(Target).ToList();
+    //}
+
+    //private bool CheckActivatorKeyList(SaveSystem.SaveLevelDataSObject gateActivatorKey)
+    //{
+    //    //return gate.Keys.All(Key => Keys.Gates.Contains(Key));
+    //    //return GateActivatorKey.GateKeyActivatorList.All(key => gate.Keys.Contains(key));
+    //    //return GateActivatorKey.GateKeyActivatorList.All(key => gateActivatorKey.GateKeyActivatorList.Contains(key));
+    //    //return KeysList.GatesPropertyList.All(key => GateActivatorKey.CollectedGateActivatorListKey.Contains(KeysList.GatesPropertyList[0].Keys[0]));
+    //}
     private IEnumerator OpenGate(bool GateState)
     {
         float elapsedTime = 0f;
@@ -84,10 +133,40 @@ public class StoneHatch : MonoBehaviour
         }
         Gate.position = targetPosition;
     }
-    //private void test()
     private enum TargetState
     {
         Open = 1,
         Close = -1
+    }
+    private void GateState(TargetState ds)
+    {
+        switch (ds)
+        {
+            case TargetState.Open:
+                Debug.Log($"State One: {ds}");
+                break;
+            case TargetState.Close:
+                Debug.Log($"State Two: {ds}");
+                break;
+        }
+    }
+    private void Open()
+    {
+        GateState(TargetState.Open);
+    }
+    private void Close()
+    {
+        GateState(TargetState.Close);
+    }
+    private void Test()
+    {
+        //TestSpace.ListTest ts = new();
+        //ts.Ls.Add("One");
+        //ts.Ls.Add("Two");
+        //ts.Ls.Add("Three");
+
+        //Debug.Log(ts.Ls.IndexOf("One"));
+        //Debug.Log(JsonUtility.ToJson(Keys.Gates[0]));
+        //Debug.Log(Keys.Gates.Find(g => g.TargetGateName == "GateB"));
     }
 }

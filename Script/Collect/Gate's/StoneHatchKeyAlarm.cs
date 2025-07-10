@@ -6,11 +6,11 @@ public class StoneHatchKeyAlarm : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] Transform Parent;
-    [SerializeField] Collectable.Gate.StoneHatchKeyListRef Keys;
-    [SerializeField] SaveSystem.SaveLevelDataSObject GateActivatorKey;
-    [SerializeField] GameObject KeyA;
-    [SerializeField] GameObject KeyB;
-    [SerializeField] GameObject KeyC;
+    [SerializeField] Collectable.Gate.StoneHatchKeyListRef KeysListRef;
+    [SerializeField] string[] _CollectedKey;
+
+    [SerializeField] List<GameObject> Keys;
+
 
     private void Start()
     {
@@ -20,28 +20,32 @@ public class StoneHatchKeyAlarm : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        //if (GetMissingKeys().Count() > 0)
-        //{
-        //    KeyA.SetActive(true);
-        //    KeyB.SetActive(true);
-        //    KeyC.SetActive(true);
+        _CollectedKey = CollectedKey();
+        if (_CollectedKey != null)
+        {
+            foreach (var Item in Keys)
+            {
+                if (!_CollectedKey.Contains(Item.name)) { Item.SetActive(true); }
+            }
 
-        //    animator.StopPlayback();
-        //    //animator.SetBool("LostKey", true);            
-        //    string Msg = $"{name}: Find the lost pieces.";
-        //    //Debug.Log(Msg);
-        //}
+            animator.StopPlayback();
+            //animator.SetBool("LostKey", true);            
+            string Msg = $"{name}: Find the lost pieces.";
+            //Debug.Log(Msg);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        //if (GetMissingKeys() != null)
-        //{
-        //    animator.StartPlayback();
-        //    //animator.SetBool("LostKey", false);            
-        //    KeyA.SetActive(false);
-        //    KeyB.SetActive(false);
-        //    KeyC.SetActive(false);
-        //}
+        if (CollectedKey() != null)
+        {
+            animator.StartPlayback();
+            //animator.SetBool("LostKey", false);            
+            foreach (var Item in Keys) { Item.SetActive(false); }
+        }
+    }
+    private string[] CollectedKey()
+    {
+        return KeysListRef.GatesPropertyList.Find(g => g.SignLabel == name.ElementAt(5).ToString()).keysLists.Where(k => k.Collected).Select(k => k.KeyName).ToArray();
     }
 
     //private List<string> GetMissingKeys()

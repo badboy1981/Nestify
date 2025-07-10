@@ -8,8 +8,8 @@ public class HandleInput : MonoBehaviour
     [SerializeField] MyInputInit _InputControl;
     [SerializeField] SaveScript _SavePlayerData;
     [SerializeField] GameObject _Player;
-    [Range(0, 1000)][SerializeField] public float Speed;
-    [Range(0, 1000)][SerializeField] public float RotateRatio;
+    [Range(0, 1000)][SerializeField] float Speed;
+    [Range(0, 1000)][SerializeField] float RotateRatio;
     [SerializeField] ConstantForce _ConstantForce;
 
     //private Collector _CollectedName;
@@ -80,7 +80,7 @@ public class HandleInput : MonoBehaviour
         _ConstantForce.relativeForce = Movement;
         //_ConstantForce.relativeTorque = Rotation / 10;
         transform.Rotate(Rotation * Time.deltaTime);
-    }    
+    }
     private void HandleJump(float JumpValue)
     {
         _ConstantForce.relativeForce = new Vector3(0, JumpValue * Speed, 0);

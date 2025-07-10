@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StoneHatch : MonoBehaviour
 {
@@ -20,47 +21,54 @@ public class StoneHatch : MonoBehaviour
     [SerializeField] string[] _CollectedKey;
 
     [Header("Gate")]
+    [SerializeField] string GateSign;
     [SerializeField] Transform Gate;
+     
+        private readonly string DroneName = "Drone";
 
-    private readonly string DroneName = "Drone";
+    //public event UnityAction<bool> ActiveGateHandleEvent = delegate { };
+    //public void GateHandelEvent(bool Handel)
+    //{
+    //    ActiveGateHandleEvent?.Invoke(Handel);
+    //}
 
     private void Start()
     {
-        //GateState(TargetState.Open);
+        GateSign = name.ElementAt(5).ToString();
     }
     public void OnTriggerEnter(Collider other)
     {
         if (other.name == DroneName)
         {
             animator = GetComponent<Animator>();
-            //List<string> CollectedKey = new();
             _CollectedKey = CollectedKey();
-
-
             foreach (var Item in Keys)
             {
-                //_CollectedKey.Where(g=>g.Contains(Item.name)).
                 if (_CollectedKey.Contains(Item.name))
                 {
-                    //StartCoroutine(HatchKeyAnimate(Item));
                     Item.SetActive(true);
+                    //StartCoroutine(HatchKeyAnimate(Item));
                     //HatchKeyAnimate(Item);
                 }
             }
+            if (_CollectedKey.Length == 3)
+            {
+                animator.SetBool("ActiveKey", true);
+                ActiveGateHandle(true);
+            }
+            else
+            {
+                ActiveGateHandle(false);
+            }
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.name == DroneName)
-        {
-            animator = GetComponent<Animator>();
-            animator.SetBool("ActiveKey", false);
-        }
-    }
-    //private List<string> CollectedKey()
     private string[] CollectedKey()
     {
-        return KeysListRef.GatesPropertyList.Find(g => g.SignLabel == name.ElementAt(5).ToString()).keysLists.Where(k => k.Collected).Select(k => k.KeyName).ToArray();
+        return KeysListRef.GatesPropertyList.Find(g => g.SignLabel == GateSign).keysLists.Where(k => k.Collected).Select(k => k.KeyName).ToArray();
+    }
+    private void ActiveGateHandle(bool State)
+    {
+        KeysListRef.GatesPropertyList.Find(g => g.SignLabel == GateSign).ActiveGateHandleState = State;
     }
     private IEnumerator HatchKeyAnimate(GameObject Key)
     {

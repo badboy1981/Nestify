@@ -1,31 +1,42 @@
-using System.Linq;
 using Collectable.Gate;
 using UnityEngine;
 
 public class GateHandle2 : MonoBehaviour
 {
-    [SerializeField] StoneHatchKeyListRef GateData;
-    //[SerializeField] StoneHatch GateHandel;
-    [SerializeField] string SignLabel;
-
-    [SerializeField] GateProperty TargetGate;
+    [SerializeField] GateProperty TargetGateProperty;
+    [SerializeField] Transform HandleRotation;
+    [SerializeField] float deActiveHandleAngle;
+    [SerializeField] float StartHandleAngle;
+    [SerializeField] float EndHandleAngle;
 
     private void Start()
     {
-        SignLabel = name.ElementAt(0).ToString();
+        TargetGateProperty.ActiveGateHandleState = false;
+        deActiveHandleAngle = -90f;
+        StartHandleAngle = -45f;
+        EndHandleAngle = 45f;
     }
-
     private void OnEnable()
     {
-        TargetGate = GateData.GatesPropertyList.Find(g => g.SignLabel == SignLabel);
-        TargetGate?.OnStateChangedEvent.AddListener(HandleStateChange);
+        if (TargetGateProperty != null)
+        {
+            TargetGateProperty.OnGateUnlocked += ActivateHandleTure;
+            TargetGateProperty.OnGatelocked += ActivateHandleFalse;
+        }
     }
     private void OnDisable()
     {
-        TargetGate?.OnStateChangedEvent.RemoveListener(HandleStateChange);
+        TargetGateProperty.OnGateUnlocked -= ActivateHandleTure;
+        TargetGateProperty.OnGateUnlocked -= ActivateHandleFalse;
     }
-    private void HandleStateChange(bool newState)
+    private void ActivateHandleTure()
     {
-        Debug.Log($"Current State {TargetGate.TargetGateName} To {newState} Change!");
+        HandleRotation.localEulerAngles = new(StartHandleAngle, 0, 0);        
+        Debug.Log($"Gate {TargetGateProperty.TargetGateName} is open!");
+    }
+    private void ActivateHandleFalse()
+    {
+        HandleRotation.localEulerAngles = new(deActiveHandleAngle, 0, 0);
+        Debug.Log($"Gate {TargetGateProperty.TargetGateName} is close!");
     }
 }

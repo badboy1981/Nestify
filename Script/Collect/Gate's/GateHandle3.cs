@@ -1,3 +1,4 @@
+using System.Collections;
 using Collectable.Gate;
 using UnityEngine;
 
@@ -9,29 +10,28 @@ public class GateHandle3 : MonoBehaviour
     [SerializeField] Animator HandelAnimator;
     [SerializeField] Animator GateAnimator;
 
-    private readonly string DroneName = "Drone";
-
     private void Start()
     {
         TargetGateProperty.ActiveGateHandleState = false;
-        //HandelAnimator = GetComponentInChildren<Animator>();
-        //GateAnimator = TargetGate.GetComponent<Animator>();
+        TargetGateProperty.gateIsBusy = false;
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !HandelAnimator.IsInTransition(0) && !TargetGateProperty.gateIsBusy)
         {
+            TargetGateProperty.gateIsBusy = true;
             HandelAnimator.SetBool("OpenGate", true);
             GateAnimator.SetBool("OpenGate", true);
+            StartCoroutine(AnimationStop());
         }
     }
-    private void OnTriggerExit(Collider other)
+
+    private IEnumerator AnimationStop()
     {
-        if (other.CompareTag("Player"))
-        {
-            HandelAnimator.SetBool("OpenGate", false);
-            GateAnimator.SetBool("OpenGate", false);
-        }
+        yield return new WaitForSeconds(TargetGateProperty.AnimationWaitTime);
+        HandelAnimator.SetBool("OpenGate", false);
+        GateAnimator.SetBool("OpenGate", false);
+        TargetGateProperty.gateIsBusy = false;
     }
     private void OnEnable()
     {

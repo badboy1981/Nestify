@@ -11,6 +11,8 @@ namespace Collectable.Gate
         public string HatchName;
         public string TargetGateName;
         public bool ActiveGateHandleState;
+        public bool gateIsBusy = false;
+        public float AnimationWaitTime;
         public List<KeysList> keysLists = new();
 
         [System.NonSerialized] public UnityAction OnGateUnlocked;

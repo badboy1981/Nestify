@@ -7,12 +7,17 @@ namespace Collectable.Gate
     [CreateAssetMenu(fileName = "BoolData", menuName = "My Asset/Gate Property")]
     public class GateProperty : ScriptableObject
     {
-        public string SignLabel;
-        public string HatchName;
-        public string TargetGateName;
+        //public string SignLabel;
+        //public string HatchName;
+        //public string TargetGateName;
+        [Header("Bool Check")]
         public bool ActiveGateHandleState;
         public bool gateIsBusy = false;
+
+        [Header("Animation Wait Time")]
         public float AnimationWaitTime;
+
+        [Header("Key List")]
         public List<KeysList> keysLists = new();
 
         [System.NonSerialized] public UnityAction OnGateUnlocked;

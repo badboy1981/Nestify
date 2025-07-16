@@ -1,12 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using Collectable.Gate;
 using UnityEngine;
 
 public class StoneHatchKeyAlarm : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] Transform Parent;
-    [SerializeField] Collectable.Gate.StoneHatchKeyListRef KeysListRef;
+    //[SerializeField] StoneHatchKeyListRef KeysListRef;
+    [SerializeField] GateProperty gateProperty;
     [SerializeField] string[] _CollectedKey;
 
     [SerializeField] List<GameObject> Keys;
@@ -30,13 +32,13 @@ public class StoneHatchKeyAlarm : MonoBehaviour
 
             animator.StopPlayback();
             //animator.SetBool("LostKey", true);            
-            string Msg = $"{name}: Find the lost pieces.";
+            //string Msg = $"{name}: Find the lost pieces.";
             //Debug.Log(Msg);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (CollectedKey() != null)
+        if (_CollectedKey != null)
         {
             animator.StartPlayback();
             //animator.SetBool("LostKey", false);            
@@ -45,7 +47,8 @@ public class StoneHatchKeyAlarm : MonoBehaviour
     }
     private string[] CollectedKey()
     {
-        return KeysListRef.GatesPropertyList.Find(g => g.SignLabel == name.ElementAt(5).ToString()).keysLists.Where(k => k.Collected).Select(k => k.KeyName).ToArray();
+        //return KeysListRef.GatesPropertyList.Find(g => g.SignLabel == name.ElementAt(5).ToString()).keysLists.Where(k => k.Collected).Select(k => k.KeyName).ToArray();
+        return gateProperty.keysLists.Where(g => g.Collected).Select(k => k.KeyName).ToArray();
     }
 
     //private List<string> GetMissingKeys()

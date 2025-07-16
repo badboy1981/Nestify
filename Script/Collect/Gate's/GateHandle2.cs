@@ -65,12 +65,12 @@ public class GateHandle2 : MonoBehaviour
     {
         HandleRotation.localEulerAngles = new(StartHandleAngle, 0, 0);
         originalRotation = HandleRotation.rotation;
-        Debug.Log($"Gate {TargetGateProperty.TargetGateName} is open!");
+        //Debug.Log($"Gate {TargetGateProperty.TargetGateName} is open!");
     }
     private void ActivateHandleFalse()
     {
         HandleRotation.localEulerAngles = new(deActiveHandleAngle, 0, 0);
-        Debug.Log($"Gate {TargetGateProperty.TargetGateName} is close!");
+        //Debug.Log($"Gate {TargetGateProperty.TargetGateName} is close!");
     }
     private IEnumerator RotateTo(Transform target, Quaternion targetRot)
     {

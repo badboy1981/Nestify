@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GateHandle3 : MonoBehaviour
 {
+    [Header("Gate Property")]
     [SerializeField] GateProperty TargetGateProperty;
+    [Header("Transform")]
     [SerializeField] Transform HandleRotation;
     [SerializeField] Transform TargetGate;
+    [Header("Animator")]
     [SerializeField] Animator HandelAnimator;
     [SerializeField] Animator GateAnimator;
 
@@ -17,7 +20,8 @@ public class GateHandle3 : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !HandelAnimator.IsInTransition(0) && !TargetGateProperty.gateIsBusy)
+        //if (other.CompareTag("Player") && !HandelAnimator.IsInTransition(0) && !TargetGateProperty.gateIsBusy && TargetGateProperty.ActiveGateHandleState)
+        if (other.CompareTag("Player") && !TargetGateProperty.gateIsBusy && TargetGateProperty.ActiveGateHandleState)
         {
             TargetGateProperty.gateIsBusy = true;
             HandelAnimator.SetBool("OpenGate", true);
@@ -25,7 +29,6 @@ public class GateHandle3 : MonoBehaviour
             StartCoroutine(AnimationStop());
         }
     }
-
     private IEnumerator AnimationStop()
     {
         yield return new WaitForSeconds(TargetGateProperty.AnimationWaitTime);
@@ -49,11 +52,11 @@ public class GateHandle3 : MonoBehaviour
     private void ActivateHandleTure()
     {
         HandelAnimator.SetBool("ActiveHandle", true);
-        Debug.Log($"Gate {TargetGateProperty.TargetGateName} is open!");
+        //Debug.Log($"Gate {TargetGateProperty.TargetGateName} is open!");
     }
     private void ActivateHandleFalse()
     {
         HandelAnimator.SetBool("ActiveHandle", false);
-        Debug.Log($"Gate {TargetGateProperty.TargetGateName} is close!");
+        //Debug.Log($"Gate {TargetGateProperty.TargetGateName} is close!");
     }
 }

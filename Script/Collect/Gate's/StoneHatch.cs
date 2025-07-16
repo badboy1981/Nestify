@@ -20,33 +20,39 @@ public class StoneHatch : MonoBehaviour
     [SerializeField] float GateOpen = 5;
     [SerializeField] float GateOpenDuration = 3f;
 
-    private readonly string DroneName = "Drone";
+    //private readonly string DroneName = "Drone";
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.name == DroneName)
+        if (other.CompareTag("Player"))
+        //if (other.name == DroneName)
         {
             animator = GetComponent<Animator>();
             _CollectedKey = CollectedKey();
-            foreach (var Item in Keys)
-            {
-                if (_CollectedKey.Contains(Item.name))
-                {
-                    Item.SetActive(true);
-                }
-            }
-            if (_CollectedKey.Length == 3)
-            {
-                animator.SetBool("ActiveKey", true);
-                ActiveGateHandle(true);
-            }
-            else
-            {
-                ActiveGateHandle(false);
-            }
+
+            ActiveCollectedKeys();  
         }
     }
 
+    private void ActiveCollectedKeys()
+    {
+        foreach (var Item in Keys)
+        {
+            if (_CollectedKey.Contains(Item.name))
+            {
+                Item.SetActive(true);
+            }
+        }
+        if (_CollectedKey.Length == 3)
+        {
+            animator.SetBool("ActiveKey", true);
+            ActiveGateHandle(true);
+        }
+        else
+        {
+            ActiveGateHandle(false);
+        }
+    }
     private string[] CollectedKey()
     {
         return gateProperty.keysLists.Where(g => g.Collected).Select(g => g.KeyName).ToArray();
@@ -66,7 +72,7 @@ public class StoneHatch : MonoBehaviour
             yield return null;
         }
     }
- 
+
     private IEnumerator OpenGate(bool GateState)
     {
         float elapsedTime = 0f;
@@ -86,15 +92,15 @@ public class StoneHatch : MonoBehaviour
         Open = 1,
         Close = -1
     }
-    private void GateState(TargetState ds)
+    private void GateState(TargetState tState)
     {
-        switch (ds)
+        switch (tState)
         {
             case TargetState.Open:
-                Debug.Log($"State One: {ds}");
+                Debug.Log($"State One: {tState}");
                 break;
             case TargetState.Close:
-                Debug.Log($"State Two: {ds}");
+                Debug.Log($"State Two: {tState}");
                 break;
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace Collectable.Gate
 {
-    [CreateAssetMenu(fileName = "BoolData", menuName = "My Asset/Gate Property")]
+    [CreateAssetMenu(fileName = "GateProperty", menuName = "Gate/Gate Property")]
     public class GateProperty : ScriptableObject
     {
         //public string SignLabel;
@@ -40,6 +40,15 @@ namespace Collectable.Gate
                     OnGatelocked?.Invoke();
                 }
             }
+        }
+        public void ResetProperty()
+        {
+            ActiveGateHandleState = false;
+            gateIsBusy = false;
+            AnimationWaitTime = 5;
+            keysLists.Add(new KeysList() { KeyName = "KeyA", Collected = false });
+            keysLists.Add(new KeysList() { KeyName = "KeyB", Collected = false });
+            keysLists.Add(new KeysList() { KeyName = "KeyC", Collected = false });
         }
     }
 }

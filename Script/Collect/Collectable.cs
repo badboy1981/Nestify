@@ -15,7 +15,10 @@ namespace Collectable
         }
         public virtual void OnTriggerEnter(Collider other)
         {
-            Destroy(gameObject);
+            if (other.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            }
         }
         public virtual void SpeedChange()
         {

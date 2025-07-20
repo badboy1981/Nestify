@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SaveAndLoad
 {
-    [CreateAssetMenu(fileName = "SaveGame", menuName = "My Asset/Save Game")]
+    [CreateAssetMenu(fileName = "SaveGame", menuName = "Game Data/Save Game")]
     public class SaveScript : ScriptableObject
     {
         private readonly Vector3 _Position;

@@ -1,5 +1,3 @@
-using System.Linq;
-using Unity.Android.Gradle;
 using UnityEngine;
 
 namespace Collectable

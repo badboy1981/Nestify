@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class GateHandle3 : MonoBehaviour
 {
+    [Header("Animate Objects")]
+    [SerializeField] Animator GateFence;
     [Header("Gate Property")]
     [SerializeField] GateProperty TargetGateProperty;
-    [Header("Transform")]
-    [SerializeField] Transform HandleRotation;
-    [SerializeField] Transform TargetGate;
-    [Header("Animator")]
-    [SerializeField] Animator HandelAnimator;
-    [SerializeField] Animator GateAnimator;
+    [Header("Target Gate")]
+    [SerializeField] Animator TargetGateAnimator;
+    [Header("Handle")]
+    [SerializeField] Animator HandleAnimator;
 
     private void Start()
     {
+        GateFence = GameObject.Find($"Gate{name[0]}").GetComponentInChildren<Animator>();
+        //TargetGateProperty = GameObject.Find($"GatePropertyReset").GetComponent<GateProperty>();
+        TargetGateAnimator = GateFence.GetComponent<Animator>();
+        HandleAnimator = GetComponentInChildren<Animator>();
+
         TargetGateProperty.ActiveGateHandleState = false;
         TargetGateProperty.gateIsBusy = false;
     }
@@ -24,16 +29,16 @@ public class GateHandle3 : MonoBehaviour
         if (other.CompareTag("Player") && !TargetGateProperty.gateIsBusy && TargetGateProperty.ActiveGateHandleState)
         {
             TargetGateProperty.gateIsBusy = true;
-            HandelAnimator.SetBool("OpenGate", true);
-            GateAnimator.SetBool("OpenGate", true);
+            HandleAnimator.SetBool("OpenGate", true);
+            TargetGateAnimator.SetBool("OpenGate", true);
             StartCoroutine(AnimationStop());
         }
     }
     private IEnumerator AnimationStop()
     {
         yield return new WaitForSeconds(TargetGateProperty.AnimationWaitTime);
-        HandelAnimator.SetBool("OpenGate", false);
-        GateAnimator.SetBool("OpenGate", false);
+        HandleAnimator.SetBool("OpenGate", false);
+        TargetGateAnimator.SetBool("OpenGate", false);
         TargetGateProperty.gateIsBusy = false;
     }
     private void OnEnable()
@@ -51,12 +56,12 @@ public class GateHandle3 : MonoBehaviour
     }
     private void ActivateHandleTure()
     {
-        HandelAnimator.SetBool("ActiveHandle", true);
+        HandleAnimator.SetBool("ActiveHandle", true);
         //Debug.Log($"Gate {TargetGateProperty.TargetGateName} is open!");
     }
     private void ActivateHandleFalse()
     {
-        HandelAnimator.SetBool("ActiveHandle", false);
+        HandleAnimator.SetBool("ActiveHandle", false);
         //Debug.Log($"Gate {TargetGateProperty.TargetGateName} is close!");
     }
 }

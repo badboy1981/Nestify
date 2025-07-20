@@ -10,8 +10,12 @@ public class ChargeStation : MonoBehaviour
     [SerializeField] float RechargeRate = 10f; 
     [SerializeField] float RechargeInterval = 10f; 
 
-    private Coroutine chargingCoroutine; 
+    private Coroutine chargingCoroutine;
 
+    private void Start()
+    {
+        _BatteryDiagram = GameObject.Find("BatteryDiagram").GetComponent<BatteryDiagram>();
+    }
     public void OnTriggerEnter(Collider other)
     {        
         if (chargingCoroutine != null)

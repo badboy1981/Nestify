@@ -9,7 +9,7 @@ public class GateHandle : MonoBehaviour
     private Quaternion initialRotation;
     private Quaternion targetRotation;
     private Coroutine currentRotationCoroutine;
-    private bool isRotatingToTarget = false; // پرچم تشخیص وضعیت چرخش
+    private bool isRotatingToTarget = false;
 
     void Start()
     {
@@ -25,16 +25,15 @@ public class GateHandle : MonoBehaviour
             StopCoroutine(currentRotationCoroutine);
         }
 
-        isRotatingToTarget = true; // فعال کردن پرچم هنگام شروع چرخش به هدف
+        isRotatingToTarget = true;
         currentRotationCoroutine = StartCoroutine(RotateToTarget(targetRotation, () =>
         {
-            isRotatingToTarget = false; // غیرفعال کردن پرچم پس از اتمام چرخش
+            isRotatingToTarget = false;
         }));
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // اگر چرخش به هدف کامل نشده، هیچ کاری نکن
         if (isRotatingToTarget)
         {
             return;
@@ -62,6 +61,6 @@ public class GateHandle : MonoBehaviour
 
         targetObject.rotation = target;
         currentRotationCoroutine = null;
-        onComplete?.Invoke(); // اجرای کالبک پس از اتمام
+        onComplete?.Invoke();
     }
 }

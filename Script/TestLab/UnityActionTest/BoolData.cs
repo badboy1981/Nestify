@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "BoolData", menuName = "My Asset/Bool Data")]
+[CreateAssetMenu(fileName = "BoolDataTest", menuName = "My Lab/Bool Data Test")]
 public class BoolData : ScriptableObject
 {
     public bool _value;

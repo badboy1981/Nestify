@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GatePropertyReset : MonoBehaviour
 {
-    [SerializeField] List<GateProperty> gateProperties;
+    public GatePropertyGroup gatePropertyGroup;
     private void Start()
     {
-        foreach (var gate in gateProperties)
+        foreach (var gate in gatePropertyGroup.gateProperties)
         {
             gate.ActiveGateHandleState = false;
             gate.gateIsBusy = false;

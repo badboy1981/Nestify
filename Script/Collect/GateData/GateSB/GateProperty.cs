@@ -7,9 +7,6 @@ namespace Collectable.Gate
     [CreateAssetMenu(fileName = "GateProperty", menuName = "Gate/Gate Property")]
     public class GateProperty : ScriptableObject
     {
-        //public string SignLabel;
-        //public string HatchName;
-        //public string TargetGateName;
         [Header("Bool Check")]
         public bool ActiveGateHandleState;
         public bool gateIsBusy = false;
@@ -22,7 +19,6 @@ namespace Collectable.Gate
 
         [System.NonSerialized] public UnityAction OnGateUnlocked;
         [System.NonSerialized] public UnityAction OnGatelocked;
-
         public bool GateState
         {
             get => ActiveGateHandleState;

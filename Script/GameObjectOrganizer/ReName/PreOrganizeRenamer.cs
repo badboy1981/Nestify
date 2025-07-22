@@ -25,7 +25,7 @@ public class PreOrganizeRenamer : MonoBehaviour
         Undo.RecordObjects(allChildren.ToArray(), "Bulk Rename Objects");
 
         // دیکشنری برای نگهداری شمارنده هر دسته
-        Dictionary<string, int> categoryCounters = new Dictionary<string, int>();
+        Dictionary<string, int> categoryCounters = new();
         int renamedCount = 0;
 
         foreach (Transform child in allChildren)

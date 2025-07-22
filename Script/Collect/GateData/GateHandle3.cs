@@ -1,13 +1,16 @@
 using System.Collections;
+using System.Linq;
 using Collectable.Gate;
+using Unity.Android.Gradle;
 using UnityEngine;
 
 public class GateHandle3 : MonoBehaviour
 {
+    [Header("Gate Property")]
+    [SerializeField] GatePropertyGroup gatePropertyGroup;
+    [SerializeField] GateProperty TargetGateProperty;
     [Header("Animate Objects")]
     [SerializeField] Animator GateFence;
-    [Header("Gate Property")]
-    [SerializeField] GateProperty TargetGateProperty;
     [Header("Target Gate")]
     [SerializeField] Animator TargetGateAnimator;
     [Header("Handle")]
@@ -15,13 +18,16 @@ public class GateHandle3 : MonoBehaviour
 
     private void Start()
     {
-        GateFence = GameObject.Find($"Gate{name[0]}").GetComponentInChildren<Animator>();
-        //TargetGateProperty = GameObject.Find($"GatePropertyReset").GetComponent<GateProperty>();
+        GateFence = GameObject.Find($"{name[0]}Gate").GetComponentInChildren<Animator>();
+
+        TargetGateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, name);
+        //TargetGateProperty = gatePropertyGroup.gateProperties.FirstOrDefault(g => g.name[0] == name[0]);
+
         TargetGateAnimator = GateFence.GetComponent<Animator>();
         HandleAnimator = GetComponentInChildren<Animator>();
 
-        TargetGateProperty.ActiveGateHandleState = false;
-        TargetGateProperty.gateIsBusy = false;
+        //TargetGateProperty.ActiveGateHandleState = false;
+        //TargetGateProperty.gateIsBusy = false;
     }
     private void OnTriggerEnter(Collider other)
     {

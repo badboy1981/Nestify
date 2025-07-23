@@ -30,7 +30,7 @@ public class GatePropertyReset : MonoBehaviour
         var list = new List<KeysList>();
         foreach (var Sign in KeysName)
         {
-            list.Add(KeyProperty($"Key{Sign}"));
+            list.Add(KeyProperty($"{Sign}Key"));
         }
         return list;
     }

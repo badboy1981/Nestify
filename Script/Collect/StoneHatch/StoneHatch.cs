@@ -14,7 +14,7 @@ public class StoneHatch : MonoBehaviour
 
     [Header("Key's List")]
     [SerializeField] List<GameObject> Keys;
-    private string[] _CollectedKey;
+    [SerializeField] string[] _CollectedKey;
 
     [Header("Animation")]
     [SerializeField] Animator animator;

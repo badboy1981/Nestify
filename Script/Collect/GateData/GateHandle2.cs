@@ -13,7 +13,7 @@ public class GateHandle2 : MonoBehaviour
     [SerializeField] float WaitTime;
 
     [SerializeField] bool handleRotated = false;
-    [SerializeField] bool GateOpen = false;
+    //[SerializeField] bool GateOpen = false;
     private Quaternion originalRotation;
     //private Vector3 orginalPosition;
 

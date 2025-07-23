@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class StoneHatchKeyAlarm : MonoBehaviour
 {
+    [Header("Gate Property")]
+    [SerializeField] GatePropertyGroup gatePropertyGroup;
+    [SerializeField] GateProperty gateProperty;
+
     [SerializeField] Animator animator;
     [SerializeField] Transform Parent;
-    //[SerializeField] StoneHatchKeyListRef KeysListRef;
-    [SerializeField] GateProperty gateProperty;
+    
     [SerializeField] string[] _CollectedKey;
 
     [SerializeField] List<GameObject> Keys;
@@ -16,6 +19,7 @@ public class StoneHatchKeyAlarm : MonoBehaviour
 
     private void Start()
     {
+        gateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, Parent.name);
         transform.position = Parent.position;
         animator = GetComponent<Animator>();
         animator.StartPlayback();

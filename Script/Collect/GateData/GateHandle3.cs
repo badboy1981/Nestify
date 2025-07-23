@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Linq;
 using Collectable.Gate;
-using Unity.Android.Gradle;
 using UnityEngine;
 
 public class GateHandle3 : MonoBehaviour
@@ -20,7 +18,8 @@ public class GateHandle3 : MonoBehaviour
     {
         GateFence = GameObject.Find($"{name[0]}Gate").GetComponentInChildren<Animator>();
 
-        TargetGateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, name);
+        //TargetGateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, name);
+
         //TargetGateProperty = gatePropertyGroup.gateProperties.FirstOrDefault(g => g.name[0] == name[0]);
 
         TargetGateAnimator = GateFence.GetComponent<Animator>();
@@ -49,6 +48,8 @@ public class GateHandle3 : MonoBehaviour
     }
     private void OnEnable()
     {
+        TargetGateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, name);
+        Debug.Log($"OnEnable: {TargetGateProperty.name}");
         if (TargetGateProperty != null)
         {
             TargetGateProperty.OnGateUnlocked += ActivateHandleTure;
@@ -57,17 +58,18 @@ public class GateHandle3 : MonoBehaviour
     }
     private void OnDisable()
     {
+        Debug.Log($"OnDisable: {TargetGateProperty.name}");
         TargetGateProperty.OnGateUnlocked -= ActivateHandleTure;
         TargetGateProperty.OnGatelocked -= ActivateHandleFalse;
     }
     private void ActivateHandleTure()
     {
         HandleAnimator.SetBool("ActiveHandle", true);
-        //Debug.Log($"Gate {TargetGateProperty.TargetGateName} is open!");
+        Debug.Log($"Handle {name} is Active!");
     }
     private void ActivateHandleFalse()
     {
         HandleAnimator.SetBool("ActiveHandle", false);
-        //Debug.Log($"Gate {TargetGateProperty.TargetGateName} is close!");
+        Debug.Log($"Handle {name} is DeActive!");
     }
 }

@@ -65,11 +65,11 @@ public class GateHandle3 : MonoBehaviour
     private void ActivateHandleTure()
     {
         HandleAnimator.SetBool("ActiveHandle", true);
-        Debug.Log($"Handle {name} is Active!");
+        //Debug.Log($"Handle {name} is Active!");
     }
     private void ActivateHandleFalse()
     {
         HandleAnimator.SetBool("ActiveHandle", false);
-        Debug.Log($"Handle {name} is DeActive!");
+        //Debug.Log($"Handle {name} is DeActive!");
     }
 }

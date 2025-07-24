@@ -2,16 +2,12 @@ using UnityEngine;
 
 namespace Collectable
 {
-    //public interface ICollectable
-    //{
-    //    public void Collect();
-    //    public void SpeedChange();
-    //}
     public class Collectable : MonoBehaviour
     {
         public virtual void Collect()
         {
             Destroy(gameObject);
+            Debug.Log("collected!");
         }
         public virtual void OnTriggerEnter(Collider other)
         {

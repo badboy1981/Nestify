@@ -9,10 +9,17 @@ namespace Collectable
         public static event UnityAction<string> TestEvent = delegate { };
 
         [SerializeField] SaveSystem.SaveLevelDataSObject CoinCounter;
-        public override void OnTriggerEnter(Collider other)
+
+        public override void Collect()
         {
-            base.OnTriggerEnter(other);
+            base.Collect();
             CoinCounter.CoinCounter += 1;
         }
+
+        //public override void OnTriggerEnter(Collider other)
+        //{
+        //    base.OnTriggerEnter(other);
+        //    CoinCounter.CoinCounter += 1;
+        //}
     }
 }

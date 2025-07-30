@@ -49,7 +49,7 @@ public class GateHandle3 : MonoBehaviour
     private void OnEnable()
     {
         TargetGateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, name);
-        Debug.Log($"OnEnable: {TargetGateProperty.name}");
+        //Debug.Log($"OnEnable: {TargetGateProperty.name}");
         if (TargetGateProperty != null)
         {
             TargetGateProperty.OnGateUnlocked += ActivateHandleTure;
@@ -58,7 +58,7 @@ public class GateHandle3 : MonoBehaviour
     }
     private void OnDisable()
     {
-        Debug.Log($"OnDisable: {TargetGateProperty.name}");
+        //Debug.Log($"OnDisable: {TargetGateProperty.name}");
         TargetGateProperty.OnGateUnlocked -= ActivateHandleTure;
         TargetGateProperty.OnGatelocked -= ActivateHandleFalse;
     }

@@ -8,13 +8,17 @@ namespace TelePort
         [Header("Volt Beacon")]
         [SerializeField] MazeMapSB CellProperty;
         [SerializeField] PointProperty TeleportPositionData;
+        [SerializeField] float Power = -1000f;
 
-        [Header("Animation")]
-        [SerializeField] Animator CreateBeaconAnimattion;
+
+        //[Header("Animation")]
+        //[SerializeField] Animator CreateBeaconAnimation;
 
         private void OnTriggerEnter(Collider other)
         {
-            gameObject.SetActive(false);
+            var Push = other.GetComponent<ConstantForce>();
+            Push.relativeForce = new Vector3(0, 0, Power);
+            gameObject.SetActive(false);            
         }
         public void CreateBeacon()
         {

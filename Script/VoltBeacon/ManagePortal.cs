@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using CellMap;
+﻿using CellMap;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -21,6 +20,7 @@ namespace TelePort
         [SerializeField] AnimationCurve thresholdCurve;
         [SerializeField] AnimationCurve intensityCurve;
         [SerializeField] float duration = 1f;
+        [SerializeField] float distance = 1f;
 
     
         public void CreatePortal()
@@ -43,6 +43,7 @@ namespace TelePort
             SetBloomCurves(PortalBloomState.FlashOut);
             TriggerBloomEffect();
             transform.position = TeleportPositionData.Position;
+            TeleportPositionData.Position.x += distance;
             other.transform.position = TeleportPositionData.Position;
         }
         private void OnTriggerExit(Collider other)
@@ -51,22 +52,6 @@ namespace TelePort
             TriggerBloomEffect();
             gameObject.SetActive(false);
         }
-        private void TriggerBloomEffectAnimation()
-        {
-            VolumeProfile profile = volume.sharedProfile;
-            //if (volume.profile.TryGet(out bloom))            
-            if (profile.TryGet(out bloom))
-            {
-                //bloom = profile.Add<Bloom>(true);
-                bloom.threshold.value = animatedBloom.threshold;
-                bloom.intensity.value = animatedBloom.intensity;
-            }
-            else
-            {
-                Debug.Log("Portal established. Return channel to VoltBeacon activated.");
-            }
-        }
-
         public enum PortalBloomState
         {
             LowGlow,
@@ -81,22 +66,22 @@ namespace TelePort
                     intensityCurve = new AnimationCurve(
                         new Keyframe(0f, 0f),
                         new Keyframe(0.5f, 10f),
-                        new Keyframe(1f, 30f)
+                        new Keyframe(1f, 1f)                        
                     );
                     thresholdCurve = new AnimationCurve(
                         new Keyframe(0f, 1.2f),
-                        new Keyframe(1f, 0.8f)
+                        new Keyframe(1f, 1f)
                     );
                     break;
 
                 case PortalBloomState.FlashOut:
                     intensityCurve = new AnimationCurve(
                         new Keyframe(0f, 30f),
-                        new Keyframe(1f, 250f)
+                        new Keyframe(1f, 10f)
                     );
                     thresholdCurve = new AnimationCurve(
                         new Keyframe(0f, 1f),
-                        new Keyframe(1f, 0.3f)
+                        new Keyframe(1f, 0f)
                     );
                     break;
 
@@ -107,7 +92,7 @@ namespace TelePort
                     );
                     thresholdCurve = new AnimationCurve(
                         new Keyframe(0f, 0.3f),
-                        new Keyframe(1f, 1.2f)
+                        new Keyframe(1f, 0f)
                     );
                     break;
             }

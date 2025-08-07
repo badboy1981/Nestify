@@ -1,8 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using static UnityEngine.UI.Image;
+
 public class ChargeThiefBig : MonoBehaviour
 {
     [SerializeField] Vector3 PointA;

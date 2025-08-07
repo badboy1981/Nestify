@@ -13,8 +13,7 @@ public class Magnet : MonoBehaviour
     {
         if (other.name == "Drone")
         {
-            Rigidbody droneRigidbody = other.GetComponent<Rigidbody>();
-            if (droneRigidbody != null)
+            if (other.TryGetComponent<Rigidbody>(out var droneRigidbody))
             {
                 Vector3 repelDirection = (other.transform.position - _Magnet.position).normalized;
                 droneRigidbody.AddForce(repelDirection * RepelForce, ForceMode.Impulse);

@@ -10,16 +10,16 @@ namespace Collectable
 
         [SerializeField] SaveSystem.SaveLevelDataSObject CoinCounter;
 
-        public override void Collect()
-        {
-            base.Collect();
-            CoinCounter.CoinCounter += 1;
-        }
-
-        //public override void OnTriggerEnter(Collider other)
+        //public override void Collect()
         //{
-        //    base.OnTriggerEnter(other);
+        //    base.Collect();
         //    CoinCounter.CoinCounter += 1;
         //}
+
+        public override void OnTriggerEnter(Collider other)
+        {
+            base.OnTriggerEnter(other);
+            CoinCounter.CoinCounter += 1;
+        }
     }
 }

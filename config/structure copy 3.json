@@ -1,0 +1,30 @@
+{
+    "projectType": "Unity",
+    "language": "csharp",
+    "tags": [
+        "game",
+        "mobile"
+    ],
+    "root": {
+        "name": "CipherMaze",
+        "type": "folder",
+        "children": [
+            {
+                "name": "Assets",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "Art",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "Player",
+                                "type": "folder"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

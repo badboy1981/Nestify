@@ -12,5 +12,5 @@ type Template struct {
 	ProjectType string   `json:"projectType,omitempty"`
 	Language    string   `json:"language,omitempty"`
 	Tags        []string `json:"tags,omitempty"`
-	Root        Node     `json:"root"`
+	Root        []Node   `json:"root"`
 }

@@ -2,8 +2,9 @@ package types
 
 type Node struct {
 	Name     string `json:"name"`
-	Type     string `json:"type"`               // "folder" or "file"
-	Content  string `json:"content,omitempty"`  // فقط برای فایل‌ها
+	Type     string `json:"type"`              // "folder" or "file"
+	Content  string `json:"content,omitempty"` // فقط برای فایل‌ها
+	Size     int64  `json:"size,omitempty"`
 	Children []Node `json:"children,omitempty"` // زیرپوشه‌ها یا فایل‌ها
 }
 

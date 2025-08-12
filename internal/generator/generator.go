@@ -1,5 +1,7 @@
 package generator
 
+// File: generator.go
+
 import (
 	"fmt"
 	"os"
@@ -21,7 +23,6 @@ func CreateStructure(node types.Node, root string) error {
 			}
 		}
 	} else if node.Type == "file" {
-		// فایل خالی بساز
 		f, err := os.Create(path)
 		if err != nil {
 			return fmt.Errorf("خطا در ایجاد فایل %s: %v", path, err)

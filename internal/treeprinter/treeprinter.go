@@ -1,5 +1,7 @@
 package treeprinter
 
+// File: treeprinter.go
+
 import (
 	"github.com/badboy1981/Nestify/internal/types"
 	"github.com/xlab/treeprint"
@@ -11,7 +13,6 @@ func PrintTree(node *types.Node) {
 	println(tree.String())
 }
 
-// تابع جدید برای برگرداندن رشته درخت
 func GetTreeString(node *types.Node) string {
 	tree := treeprint.New()
 	addNode(tree, node)

@@ -11,6 +11,13 @@ func PrintTree(node *types.Node) {
 	println(tree.String())
 }
 
+// تابع جدید برای برگرداندن رشته درخت
+func GetTreeString(node *types.Node) string {
+	tree := treeprint.New()
+	addNode(tree, node)
+	return tree.String()
+}
+
 func addNode(branch treeprint.Tree, node *types.Node) {
 	newBranch := branch.AddBranch(node.Name)
 	for _, child := range node.Children {

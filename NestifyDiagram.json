@@ -1,23 +1,147 @@
-{
-    "cmd": {
-        "nestify": {
-            "main.go": "نقطه ورود برنامه CLI"
-        }
-    },
-    "internal": {
-        "cli": {
-            "init.go": "دستورات CLI مثل init و پارس آرگومان‌ها"
-        },
-        "generator": {
-            "generator.go": "منطق ساخت پوشه‌ها و فایل‌ها از روی قالب JSON"
-        },
-        "types": {
-            "template.go": "تعریف ساختار داده Node و تایپ‌های مرتبط"
-        }
-    },
-    "config": {
-        "structure.json": "یک نمونه قالب پیش‌فرض برای تست"
-    },
-    "go.mod": "فایل مدیریت ماژول‌های Go",
-    "go.sum": "چک‌سام پکیج‌ها"
-}
+[
+  {
+    "name": "Nestify",
+    "type": "folder",
+    "children": [
+      {
+        "name": ".gitattributes",
+        "type": "file",
+        "size": 66
+      },
+      {
+        "name": ".gitignore",
+        "type": "file",
+        "size": 532
+      },
+      {
+        "name": "LICENSE",
+        "type": "file",
+        "size": 1089
+      },
+      {
+        "name": "NestifyDiagram.json",
+        "type": "file",
+        "size": 766
+      },
+      {
+        "name": "README.md",
+        "type": "file",
+        "size": 50
+      },
+      {
+        "name": "cmd",
+        "type": "folder",
+        "children": [
+          {
+            "name": "nestify",
+            "type": "folder",
+            "children": [
+              {
+                "name": "main.go",
+                "type": "file",
+                "size": 108
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "config",
+        "type": "folder",
+        "children": [
+          {
+            "name": "structure.json",
+            "type": "file",
+            "size": 43859
+          }
+        ]
+      },
+      {
+        "name": "go.mod",
+        "type": "file",
+        "size": 90
+      },
+      {
+        "name": "go.sum",
+        "type": "file",
+        "size": 1092
+      },
+      {
+        "name": "internal",
+        "type": "folder",
+        "children": [
+          {
+            "name": "Cli",
+            "type": "folder",
+            "children": [
+              {
+                "name": "cli.go",
+                "type": "file",
+                "size": 3131
+              }
+            ]
+          },
+          {
+            "name": "generator",
+            "type": "folder",
+            "children": [
+              {
+                "name": "generator.go",
+                "type": "file",
+                "size": 751
+              }
+            ]
+          },
+          {
+            "name": "scanner",
+            "type": "folder",
+            "children": [
+              {
+                "name": "scanner.go",
+                "type": "file",
+                "size": 1007
+              }
+            ]
+          },
+          {
+            "name": "treeprinter",
+            "type": "folder",
+            "children": [
+              {
+                "name": "treeprinter.go",
+                "type": "file",
+                "size": 599
+              }
+            ]
+          },
+          {
+            "name": "types",
+            "type": "folder",
+            "children": [
+              {
+                "name": "type.go",
+                "type": "file",
+                "size": 571
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "nestify",
+        "type": "file",
+        "size": 3273216
+      },
+      {
+        "name": "scan_output.json",
+        "type": "file",
+        "size": 2717
+      },
+      {
+        "name": "scan_output.md",
+        "type": "file",
+        "size": 778
+      }
+    ]
+  }
+]

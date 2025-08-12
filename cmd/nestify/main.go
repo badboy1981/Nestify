@@ -1,7 +1,7 @@
 package main
 
-import "github.com/badboy1981/Nestify/internal/cli"
+import Cli "github.com/badboy1981/Nestify/internal/Cli"
 
 func main() {
-	cli.RunCli()
+	Cli.RunCli()
 }

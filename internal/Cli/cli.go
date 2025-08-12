@@ -1,4 +1,4 @@
-package cli
+package Cli
 
 import (
 	"encoding/json"
@@ -20,7 +20,7 @@ func RunCli() {
 	initPath := initCmd.String("path", ".", "مسیر ایجاد ساختار پروژه")
 
 	scanPath := scanCmd.String("path", ".", "مسیر پروژه برای اسکن")
-	printTreeFlag := scanCmd.Bool("tree", false, "نمایش ساختار به صورت درختی")
+	printTreeFlag := scanCmd.Bool("tree", false, "نمایش ساختار به صورت درختی و ذخیره Markdown")
 
 	if len(os.Args) < 2 {
 		fmt.Println("❌ لطفا یک ساب‌کامند وارد کنید: init یا scan")
@@ -88,8 +88,22 @@ func runScan(path string, printTree bool) {
 	fmt.Println("✅ خروجی اسکن در", outputFile, "ذخیره شد.")
 
 	if printTree {
+		// ساخت رشته کامل درخت برای همه Root ها
+		treeStr := ""
 		for _, root := range rootNodes {
-			treeprinter.PrintTree(&root)
+			treeStr += treeprinter.GetTreeString(&root) + "\n"
+		}
+
+		// چاپ در ترمینال
+		fmt.Print(treeStr)
+
+		// ذخیره در فایل Markdown
+		mdOutput := "```\n" + treeStr + "```\n"
+		err = os.WriteFile("scan_output.md", []byte(mdOutput), 0644)
+		if err != nil {
+			fmt.Println("❌ خطا در ذخیره Markdown:", err)
+		} else {
+			fmt.Println("✅ خروجی Markdown در scan_output.md ذخیره شد.")
 		}
 	}
 }

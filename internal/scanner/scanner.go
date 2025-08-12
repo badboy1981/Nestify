@@ -1,5 +1,7 @@
 package scanner
 
+// File: scanner.go
+
 import (
 	"os"
 	"path/filepath"
@@ -7,7 +9,7 @@ import (
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
-func Scan(path string) ([]types.Node, error) {
+func Scan(path string, foldersOnly bool) ([]types.Node, error) {
 	info, err := os.Stat(path)
 	if err != nil {
 		return nil, err
@@ -15,10 +17,31 @@ func Scan(path string) ([]types.Node, error) {
 	if !info.IsDir() {
 		return nil, nil
 	}
-	return scanDir(path)
+
+	// ایجاد Node برای پوشه ریشه
+	rootNode := types.Node{
+		Name: filepath.Base(path),
+		Type: "folder",
+		Size: info.Size(),
+	}
+
+	// اسکن محتوای داخل پوشه
+	children, err := scanDir(path, foldersOnly)
+	if err != nil {
+		return nil, err
+	}
+	rootNode.Children = children
+
+	return []types.Node{rootNode}, nil
 }
 
-func scanDir(path string) ([]types.Node, error) {
+func scanDir(path string, foldersOnly bool) ([]types.Node, error) {
+	// لیست پوشه‌های نادیده گرفته‌شده
+	ignoreFolders := map[string]bool{
+		".git":         true,
+		"node_modules": true,
+	}
+
 	entries, err := os.ReadDir(path)
 	if err != nil {
 		return nil, err
@@ -27,6 +50,13 @@ func scanDir(path string) ([]types.Node, error) {
 	var nodes []types.Node
 
 	for _, entry := range entries {
+		if foldersOnly && !entry.IsDir() {
+			continue // فقط پوشه‌ها رو اسکن کن
+		}
+		if entry.IsDir() && ignoreFolders[entry.Name()] {
+			continue // نادیده گرفتن پوشه‌های مشخص‌شده
+		}
+
 		fullPath := filepath.Join(path, entry.Name())
 		info, err := os.Stat(fullPath)
 		if err != nil {
@@ -45,7 +75,7 @@ func scanDir(path string) ([]types.Node, error) {
 		}
 
 		if entry.IsDir() {
-			children, err := scanDir(fullPath)
+			children, err := scanDir(fullPath, foldersOnly)
 			if err != nil {
 				return nil, err
 			}

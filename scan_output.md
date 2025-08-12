@@ -1,120 +1,47 @@
 ```
 .
-└── Collectables
-    ├── Coins
+└── Audio
+    ├── Collectables
+    │   ├── Coins
+    │   │   ├── Mixer
+    │   │   ├── Music
+    │   │   └── SFX
+    │   └── Keys
+    │       ├── Mixer
+    │       ├── Music
+    │       └── SFX
+    ├── Enemy
+    │   ├── BulkBot
+    │   │   ├── Mixer
+    │   │   ├── Music
+    │   │   └── SFX
+    │   └── ShadowBot
+    │       ├── Mixer
+    │       ├── Music
+    │       └── SFX
+    ├── Environment
     │   ├── Mixer
-    │   ├── Mixer.meta
     │   ├── Music
-    │   ├── Music.meta
+    │   ├── Prefab
     │   ├── SFX
-    │   └── SFX.meta
-    ├── Coins.meta
-    ├── Keys
-    │   ├── Mixer
-    │   ├── Mixer.meta
-    │   ├── Music
-    │   ├── Music.meta
-    │   ├── SFX
-    │   └── SFX.meta
-    └── Keys.meta
-
-.
-└── Collectables.meta
-
-.
-└── Enemy
-    ├── BulkBot
-    │   ├── Mixer
-    │   ├── Mixer.meta
-    │   ├── Music
-    │   ├── Music.meta
-    │   ├── SFX
-    │   └── SFX.meta
-    ├── BulkBot.meta
-    ├── ShadowBot
-    │   ├── Mixer
-    │   ├── Mixer.meta
-    │   ├── Music
-    │   ├── Music.meta
-    │   ├── SFX
-    │   └── SFX.meta
-    └── ShadowBot.meta
-
-.
-└── Enemy.meta
-
-.
-└── Environment
+    │   └── ScriptableObjects
     ├── Mixer
-    ├── Mixer.meta
     ├── Music
-    ├── Music.meta
+    │   ├── Effects
+    │   ├── Mixes
+    │   └── Tracks
+    ├── Player
+    │   ├── Mixer
+    │   ├── Music
+    │   └── SFX
     ├── SFX
-    └── SFX.meta
-
-.
-└── Environment.meta
-
-.
-└── Mixer
-
-.
-└── Mixer.meta
-
-.
-└── Music
-    ├── Effects
-    ├── Effects.meta
-    ├── Mixes
-    ├── Mixes.meta
-    ├── Tracks
-    └── Tracks.meta
-
-.
-└── Music.meta
-
-.
-└── Player
-    ├── Mixer
-    ├── Mixer.meta
-    ├── Music
-    ├── Music.meta
-    ├── SFX
-    └── SFX.meta
-
-.
-└── Player.meta
-
-.
-└── SFX
-    ├── Ambient
-    ├── Ambient.meta
-    ├── Combat
-    ├── Combat.meta
-    ├── Interaction
-    └── Interaction.meta
-
-.
-└── SFX.meta
-
-.
-└── Shared
-    ├── BaseClasses
-    │   ├── MazeSound.cs
-    │   ├── MazeSound.cs.meta
-    │   ├── Test.cs
-    │   └── Test.cs.meta
-    ├── BaseClasses.meta
-    ├── ScriptableObjects
-    │   ├── NewScriptableObjectScript.cs
-    │   ├── NewScriptableObjectScript.cs.meta
-    │   ├── SoundCategory.cs
-    │   └── SoundCategory.cs.meta
-    ├── ScriptableObjects.meta
-    ├── Utilities
-    └── Utilities.meta
-
-.
-└── Shared.meta
+    │   ├── Ambient
+    │   ├── Combat
+    │   └── Interaction
+    └── Shared
+        ├── BaseClasses
+        ├── Prefab
+        ├── ScriptableObjects
+        └── Utilities
 
 ```

@@ -1,71 +1,103 @@
 [
   {
-    "name": "Collectables",
+    "name": "Audio",
     "type": "folder",
+    "size": 4096,
     "children": [
       {
-        "name": "Coins",
+        "name": "Collectables",
         "type": "folder",
+        "size": 4096,
         "children": [
           {
-            "name": "Mixer",
-            "type": "folder"
+            "name": "Coins",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Mixer",
+                "type": "folder"
+              },
+              {
+                "name": "Music",
+                "type": "folder"
+              },
+              {
+                "name": "SFX",
+                "type": "folder"
+              }
+            ]
           },
           {
-            "name": "Music",
-            "type": "folder"
-          },
-          {
-            "name": "SFX",
-            "type": "folder"
+            "name": "Keys",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Mixer",
+                "type": "folder"
+              },
+              {
+                "name": "Music",
+                "type": "folder"
+              },
+              {
+                "name": "SFX",
+                "type": "folder"
+              }
+            ]
           }
         ]
       },
       {
-        "name": "Keys",
+        "name": "Enemy",
         "type": "folder",
+        "size": 4096,
         "children": [
           {
-            "name": "Mixer",
-            "type": "folder"
+            "name": "BulkBot",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Mixer",
+                "type": "folder"
+              },
+              {
+                "name": "Music",
+                "type": "folder"
+              },
+              {
+                "name": "SFX",
+                "type": "folder"
+              }
+            ]
           },
           {
-            "name": "Music",
-            "type": "folder"
-          },
-          {
-            "name": "SFX",
-            "type": "folder"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "name": "Enemy",
-    "type": "folder",
-    "children": [
-      {
-        "name": "BulkBot",
-        "type": "folder",
-        "children": [
-          {
-            "name": "Mixer",
-            "type": "folder"
-          },
-          {
-            "name": "Music",
-            "type": "folder"
-          },
-          {
-            "name": "SFX",
-            "type": "folder"
+            "name": "ShadowBot",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Mixer",
+                "type": "folder"
+              },
+              {
+                "name": "Music",
+                "type": "folder"
+              },
+              {
+                "name": "SFX",
+                "type": "folder"
+              }
+            ]
           }
         ]
       },
       {
-        "name": "ShadowBot",
+        "name": "Environment",
         "type": "folder",
+        "size": 4096,
         "children": [
           {
             "name": "Mixer",
@@ -76,100 +108,105 @@
             "type": "folder"
           },
           {
+            "name": "Prefab",
+            "type": "folder"
+          },
+          {
             "name": "SFX",
             "type": "folder"
+          },
+          {
+            "name": "ScriptableObjects",
+            "type": "folder",
+            "size": 4096
           }
         ]
-      }
-    ]
-  },
-  {
-    "name": "Environment",
-    "type": "folder",
-    "children": [
+      },
       {
         "name": "Mixer",
         "type": "folder"
       },
       {
         "name": "Music",
-        "type": "folder"
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "Effects",
+            "type": "folder"
+          },
+          {
+            "name": "Mixes",
+            "type": "folder"
+          },
+          {
+            "name": "Tracks",
+            "type": "folder"
+          }
+        ]
+      },
+      {
+        "name": "Player",
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "Mixer",
+            "type": "folder"
+          },
+          {
+            "name": "Music",
+            "type": "folder"
+          },
+          {
+            "name": "SFX",
+            "type": "folder"
+          }
+        ]
       },
       {
         "name": "SFX",
-        "type": "folder"
-      }
-    ]
-  },
-  {
-    "name": "Mixer",
-    "type": "folder"
-  },
-  {
-    "name": "Music",
-    "type": "folder",
-    "children": [
-      {
-        "name": "Effects",
-        "type": "folder"
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "Ambient",
+            "type": "folder"
+          },
+          {
+            "name": "Combat",
+            "type": "folder"
+          },
+          {
+            "name": "Interaction",
+            "type": "folder"
+          }
+        ]
       },
       {
-        "name": "Mixes",
-        "type": "folder"
-      },
-      {
-        "name": "Tracks",
-        "type": "folder"
-      }
-    ]
-  },
-  {
-    "name": "Player",
-    "type": "folder",
-    "children": [
-      {
-        "name": "Mixer",
-        "type": "folder"
-      },
-      {
-        "name": "Music",
-        "type": "folder"
-      },
-      {
-        "name": "SFX",
-        "type": "folder"
-      }
-    ]
-  },
-  {
-    "name": "SFX",
-    "type": "folder",
-    "children": [
-      {
-        "name": "Ambient",
-        "type": "folder"
-      },
-      {
-        "name": "Combat",
-        "type": "folder"
-      },
-      {
-        "name": "Interaction",
-        "type": "folder"
-      }
-    ]
-  },
-  {
-    "name": "Shared",
-    "type": "folder",
-    "children": [
-      {
-        "name": "BaseClasses",
-        "type": "folder"
-      },
-      {
-        "name": "Utilities",
-        "type": "folder"
+        "name": "Shared",
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "BaseClasses",
+            "type": "folder",
+            "size": 4096
+          },
+          {
+            "name": "Prefab",
+            "type": "folder"
+          },
+          {
+            "name": "ScriptableObjects",
+            "type": "folder",
+            "size": 4096
+          },
+          {
+            "name": "Utilities",
+            "type": "folder"
+          }
+        ]
       }
     ]
   }

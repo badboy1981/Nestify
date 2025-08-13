@@ -1,86 +1,101 @@
-Nestify
-Nestify یک ابزار خط فرمان (CLI) است که به توسعه‌دهندگان کمک می‌کند تا ساختار پوشه‌های پروژه‌هایشان را به‌صورت خودکار اسکن، تحلیل و ایجاد کنند. این ابزار با Go نوشته شده و برای پروژه‌های مختلف (مثل وب، بازی‌های Unity، یا بک‌اند) مناسب است. با Nestify می‌توانید ساختار پروژه‌ها را به‌صورت JSON یا Markdown ببینید، اسکلت پروژه را تحلیل کنید، یا با استفاده از قالب‌های آماده، ساختارهای جدید بسازید.
-ویژگی‌ها
+# Nestify
 
-اسکن پروژه: ساختار پوشه‌ها و فایل‌ها را اسکن کرده و به‌صورت JSON یا Markdown نمایش می‌دهد.
-اسکن فقط پوشه‌ها: فقط دایرکتوری‌ها را اسکن کنید تا نقشه کلی پروژه را ببینید.
-تحلیل اسکلت پروژه: نقش هر پوشه (مثل هسته کد، تست‌ها، یا منابع) را به‌صورت خودکار تشخیص می‌دهد.
-ایجاد ساختار: با استفاده از قالب‌های JSON، ساختار پوشه‌ها و فایل‌ها را در پروژه‌تان ایجاد کنید.
+Nestify is a command-line interface (CLI) tool that helps developers scan, analyze, and create project folder structures. Written in Go, it is designed for various project types (e.g., web, Unity games, or backend). With Nestify, you can visualize project structures as JSON or Markdown, analyze the project skeleton, or create new structures using predefined templates.
 
-پیش‌نیازها
+## Features
+- **Project Scanning**: Scans folders and files, outputting the structure as JSON or Markdown.
+- **Folders-Only Scanning**: Scan only directories to get a high-level project overview.
+- **Skeleton Analysis**: Automatically detects the role of each folder (e.g., core code, tests, or resources).
+- **Structure Creation**: Creates folder/file structures based on JSON templates.
 
-Go نسخه 1.16 یا بالاتر
-نصب پکیج خارجی: github.com/xlab/treeprint
+## Prerequisites
+- Go version 1.16 or higher
+- External package: `github.com/xlab/treeprint`
 
-نصب
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/badboy1981/Nestify.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Nestify
+   ```
+3. Build the project:
+   ```bash
+   go build -o nestify ./cmd/nestify
+   ```
+4. Optionally, move the `nestify` executable to your PATH:
+   ```bash
+   mv nestify /usr/local/bin/
+   ```
 
-مخزن را کلون کنید:git clone https://github.com/badboy1981/Nestify.git
+## CLI Commands
+Nestify supports three main subcommands: `init`, `scan`, and `analyze`.
 
+### 1. `init` - Create Project Structure
+Creates a folder/file structure in the specified path using a JSON template.
 
-به پوشه پروژه بروید:cd Nestify
+**Usage:**
+```bash
+./nestify init --template <template-file> --path <project-path>
+```
 
-
-پروژه را بیلد کنید:go build -o nestify ./cmd/nestify
-
-
-فایل اجرایی nestify را به PATH اضافه کنید (اختیاری):mv nestify /usr/local/bin/
-
-
-
-دستورات CLI
-Nestify از سه ساب‌کامند اصلی پشتیبانی می‌کند: init, scan, و analyze.
-1. init - ایجاد ساختار پروژه
-با استفاده از یک فایل JSON قالب، ساختار پوشه‌ها و فایل‌ها را در مسیر مشخص‌شده ایجاد می‌کند.
-استفاده:
-./nestify init --template <فایل-قالب> --path <مسیر-پروژه>
-
-مثال:
+**Example:**
+```bash
 ./nestify init --template config/structure.json --path ./myproject
+```
+This command creates the structure defined in `structure.json` in the `myproject` folder.
 
-این دستور ساختار تعریف‌شده در structure.json را در پوشه myproject ایجاد می‌کند.
-گزینه‌ها:
+**Options:**
+- `--template`: Path to the JSON template file (default: `template.json`)
+- `--path`: Target path for creating the structure (default: `.`)
 
---template: مسیر فایل JSON قالب (پیش‌فرض: template.json)
---path: مسیر مقصد برای ایجاد ساختار (پیش‌فرض: .)
+### 2. `scan` - Scan Project Structure
+Scans the project’s folders and files, saving the structure as JSON. Optionally displays a tree view in the terminal or as Markdown.
 
-2. scan - اسکن ساختار پروژه
-پوشه‌ها و فایل‌های پروژه را اسکن کرده و خروجی را به‌صورت JSON ذخیره می‌کند. همچنین می‌تواند ساختار درختی را در ترمینال یا فایل Markdown نمایش دهد.
-استفاده:
-./nestify scan --path <مسیر-پروژه> [--tree] [--folders-only]
+**Usage:**
+```bash
+./nestify scan --path <project-path> [--tree] [--folders-only]
+```
 
-مثال:
+**Example:**
+```bash
 ./nestify scan --path . --tree --folders-only
+```
+This command scans only the folders in the current project, displays a tree structure in the terminal, and saves it to `scan_output.md`.
 
-این دستور فقط پوشه‌های پروژه فعلی را اسکن کرده، ساختار درختی را در ترمینال نمایش می‌دهد و در scan_output.md ذخیره می‌کند.
-گزینه‌ها:
+**Options:**
+- `--path`: Path to the project to scan (default: `.`)
+- `--tree`: Display tree structure and save to `scan_output.md`
+- `--folders-only`: Scan only folders
 
---path: مسیر پروژه برای اسکن (پیش‌فرض: .)
---tree: نمایش ساختار درختی و ذخیره در scan_output.md
---folders-only: فقط پوشه‌ها را اسکن کن
+**Output:**
+- `scan_output.json`: Full structure as JSON
+- `scan_output.md`: Tree structure (if `--tree` is enabled)
 
-خروجی:
+### 3. `analyze` - Analyze Project Skeleton
+Analyzes the project’s folder structure and identifies the role of each folder (e.g., "entry point" or "configuration").
 
-فایل scan_output.json: ساختار کامل به‌صورت JSON
-فایل scan_output.md: ساختار درختی (اگر --tree فعال باشد)
+**Usage:**
+```bash
+./nestify analyze --path <project-path>
+```
 
-3. analyze - تحلیل اسکلت پروژه
-نقشه کلی پروژه (فقط پوشه‌ها) را تحلیل کرده و نقش هر پوشه را مشخص می‌کند (مثل "نقطه ورود برنامه" یا "تنظیمات").
-استفاده:
-./nestify analyze --path <مسیر-پروژه>
-
-مثال:
+**Example:**
+```bash
 ./nestify analyze --path .
+```
+This command analyzes the project skeleton, displays the report in the terminal, and saves it to `skeleton_report.md`.
 
-این دستور اسکلت پروژه را تحلیل کرده، گزارش را در ترمینال نمایش می‌دهد و در skeleton_report.md ذخیره می‌کند.
-گزینه‌ها:
+**Options:**
+- `--path`: Path to the project to analyze (default: `.`)
 
---path: مسیر پروژه برای تحلیل (پیش‌فرض: .)
+**Output:**
+- `skeleton_report.md`: Skeleton report with estimated folder roles
 
-خروجی:
-
-فایل skeleton_report.md: گزارش اسکلت پروژه با نقش‌های تخمینی
-
-ساختار پروژه
+## Project Structure
+```
 Nestify
 ├── .gitattributes
 ├── .gitignore
@@ -113,8 +128,10 @@ Nestify
 ├── scan_output.json
 ├── scan_output.md
 └── skeleton_report.md
+```
 
-مثال فایل قالب (structure.json)
+## Example Template File (structure.json)
+```json
 {
   "projectType": "web",
   "language": "go",
@@ -132,12 +149,13 @@ Nestify
     }
   ]
 }
+```
 
-توسعه‌دهندگان
+## Developer
+- Developed by: [badboy1981](https://github.com/badboy1981)
 
-بدست آمده توسط: badboy1981
+## Contributing
+If you have ideas for improvements, please open an issue or submit a pull request!
 
-مشارکت
-اگر ایده‌ای برای بهبود دارید، لطفاً issue باز کنید یا pull request بفرستید!
-لایسنس
-این پروژه تحت لایسنس MIT منتشر شده است. جزئیات در فایل LICENSE.
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.

@@ -19,7 +19,7 @@ namespace Collectable
             handleInput = Player.GetComponent<HandleInput>();
             AtmPanel.SetActive(false);
         }
-        public override void Collect() { }
+        //public override void Collect() { }
 
         public override void OnTriggerEnter(Collider other)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     [SerializeField] AudioLibrary audioLibrary;
-
+    [SerializeField] AudioSource audioSource;
     private AudioData AudioData()
     {
         return new()

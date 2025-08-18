@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 public class MyInputInit : ScriptableObject, Input001.IPlayerActions, Input001.IMapActions
 {
     public event UnityAction<Vector2> MoveEvent = delegate { };
+    public event UnityAction<Vector2> MoveEventStart = delegate { };
+    public event UnityAction<Vector2> MoveEventPerformed = delegate { };
+    public event UnityAction<Vector2> MoveEventCanceled = delegate { };
+
     public event UnityAction<float> JumpEvent = delegate { };
     public event UnityAction<float> GoToMap = delegate { };
     public event UnityAction<float> GoToPlay = delegate { };
@@ -49,6 +53,18 @@ public class MyInputInit : ScriptableObject, Input001.IPlayerActions, Input001.I
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        switch (context.phase)
+        {
+            case InputActionPhase.Started:
+                MoveEventStart?.Invoke(context.ReadValue<Vector2>());
+                break;
+            case InputActionPhase.Performed:
+                MoveEventPerformed?.Invoke(context.ReadValue<Vector2>());                
+                break;
+            case InputActionPhase.Canceled:
+                MoveEventCanceled?.Invoke(context.ReadValue<Vector2>());
+                break;
+        }
         MoveEvent?.Invoke(context.ReadValue<Vector2>());
     }
 

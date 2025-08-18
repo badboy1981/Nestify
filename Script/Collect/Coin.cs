@@ -10,7 +10,6 @@ namespace Collectable
 
         [SerializeField] SaveSystem.SaveLevelDataSObject CoinCounter;
 
-
         public override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);

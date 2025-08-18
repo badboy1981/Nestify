@@ -1,36 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.MazeAssets.Scripts.Parent;
 
-public class ChargeStation : MonoBehaviour
+public class ChargeStation : Parent
 {
     [SerializeField] BatteryDiagram _BatteryDiagram;
     [SerializeField] float ChargerCapacity = 100f;
     [SerializeField] float IncreaseValue = 10f;
     [SerializeField] float WaitSeconds = 1f;
-    [SerializeField] float RechargeRate = 10f; 
-    [SerializeField] float RechargeInterval = 10f; 
+    [SerializeField] float RechargeRate = 10f;
+    [SerializeField] float RechargeInterval = 10f;
 
     private Coroutine chargingCoroutine;
+    private bool isCharging;
+
+    [SerializeField] private string[] soundNames = { "Beep", "Charge" };
 
     private void Start()
     {
         _BatteryDiagram = GameObject.Find("BatteryDiagram").GetComponent<BatteryDiagram>();
     }
     public void OnTriggerEnter(Collider other)
-    {        
-        if (chargingCoroutine != null)
+    {
+        if (other.CompareTag("Player") && !isCharging)
         {
-            StopCoroutine(chargingCoroutine);
+            Debug.Log("ChargeStation: Volt entered, starting charge sound");
+            isCharging = true;
+            foreach (string soundName in soundNames)
+            {
+                PlaySound(soundName);
+            }
+            if (chargingCoroutine != null)
+            {
+                StopCoroutine(chargingCoroutine);
+            }
+            chargingCoroutine = StartCoroutine(DischargeBattery());
         }
-        chargingCoroutine = StartCoroutine(DischargeBattery());
     }
     private void OnTriggerExit(Collider other)
-    {        
-        if (chargingCoroutine != null)
+    {
+        if (other.CompareTag("Player") && isCharging)
         {
-            StopCoroutine(chargingCoroutine);
-        }        
-        chargingCoroutine = StartCoroutine(RechargeBattery());
+            Debug.Log("ChargeStation: Volt exited, stopping charge sound");
+            isCharging = false;
+            foreach (string soundName in soundNames)
+            {
+                StopSound(soundName);
+            }
+            if (chargingCoroutine != null)
+            {
+                StopCoroutine(chargingCoroutine);
+            }
+            chargingCoroutine = StartCoroutine(RechargeBattery());
+        }
     }
 
     private IEnumerator DischargeBattery()

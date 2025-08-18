@@ -1,28 +1,18 @@
 ﻿using Assets.MazeAssets.Audio.Shared.BaseClasses;
+using Assets.MazeAssets.Scripts.Parent;
 using UnityEngine;
 
 namespace Collectable
 {
-    public class Collectable : MonoBehaviour
+    public class Collectable : Parent
     {
-        [SerializeField] AudioLibrary PrefabAudioLibrary;
-        [SerializeField] SoundController soundController;
         private bool isCollected;
-
-        [System.Obsolete]
-        private void Awake()
+        
+        protected override void Awake()
         {
             isCollected = false;
-            Test();
         }
-        [System.Obsolete]
-        private void Test()
-        {
-            if (soundController == null)
-            {
-                soundController = FindObjectOfType<SoundController>();
-            }
-        }
+
         public virtual void Collect()
         {
             Destroy(gameObject);
@@ -32,15 +22,13 @@ namespace Collectable
         {
             if (other.CompareTag("Player") && !isCollected)
             {
+                //Debug.Log("Collectable: Player collided and not collected");
                 isCollected = true;
-                if (other.CompareTag("Player") && !isCollected)
-                {
-                    isCollected = true;
-                    soundController?.PlaySound(PrefabAudioLibrary, "Coin_Collect");
-                    AudioData audioData = PrefabAudioLibrary?.GetAudioData("Coin_Collect");
-                    float destroyDelay = audioData != null && audioData.clip != null ? audioData.clip.length : 0f;
-                    Destroy(gameObject, destroyDelay); // حذف با تأخیر
-                }
+                PlaySound("Collected");
+                AudioData audioData = PrefabAudioLibrary?.GetAudioData("Collected");
+                float destroyDelay = audioData != null && audioData.clip != null ? audioData.clip.length : 0f;
+                //Debug.Log($"Collectable: Destroying {gameObject.name} after {destroyDelay} seconds");
+                Destroy(gameObject, destroyDelay);
             }
         }
         public virtual void SpeedChange()

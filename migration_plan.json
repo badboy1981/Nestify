@@ -1,0 +1,172 @@
+{
+  "migration_plan": [
+    {
+      "source": "Assets/.gitignore",
+      "destination": "MazeAssets/Misc/.gitignore"
+    },
+    {
+      "source": "Assets/Adaptive Performance",
+      "destination": "MazeAssets/ThirdParty/AdaptivePerformance"
+    },
+    {
+      "source": "Assets/Adaptive Performance.meta",
+      "destination": "MazeAssets/ThirdParty/AdaptivePerformance.meta"
+    },
+    {
+      "source": "Assets/Adaptive Performance/AdaptivePerformanceGeneralSettings.asset",
+      "destination": "MazeAssets/ThirdParty/AdaptivePerformance/AdaptivePerformanceGeneralSettings.asset"
+    },
+    {
+      "source": "Assets/Adaptive Performance/AdaptivePerformanceGeneralSettings.asset.meta",
+      "destination": "MazeAssets/ThirdParty/AdaptivePerformance/AdaptivePerformanceGeneralSettings.asset.meta"
+    },
+    {
+      "source": "Assets/Adaptive Performance/Provider",
+      "destination": "MazeAssets/ThirdParty/AdaptivePerformance/Provider"
+    },
+    {
+      "source": "Assets/Adaptive Performance/Provider.meta",
+      "destination": "MazeAssets/ThirdParty/AdaptivePerformance/Provider.meta"
+    },
+    {
+      "source": "Assets/Adaptive Performance/Settings",
+      "destination": "MazeAssets/ThirdParty/AdaptivePerformance/Settings"
+    },
+    {
+      "source": "Assets/Adaptive Performance/Settings.meta",
+      "destination": "MazeAssets/ThirdParty/AdaptivePerformance/Settings.meta"
+    },
+    {
+      "source": "Assets/Animation/CollectableMove.anim",
+      "destination": "MazeAssets/Art/Player/Animations/CollectableMove.anim"
+    },
+    {
+      "source": "Assets/Animation/CollectableMove.anim.meta",
+      "destination": "MazeAssets/Art/Player/Animations/CollectableMove.anim.meta"
+    },
+    {
+      "source": "Assets/Animation/CollectableMoveController.controller",
+      "destination": "MazeAssets/Art/Player/Animations/CollectableMoveController.controller"
+    },
+    {
+      "source": "Assets/Animation/CollectableMoveController.controller.meta",
+      "destination": "MazeAssets/Art/Player/Animations/CollectableMoveController.controller.meta"
+    },
+    {
+      "source": "Assets/Animation/DoorClose.anim",
+      "destination": "MazeAssets/Art/Environment/Animations/DoorClose.anim"
+    },
+    {
+      "source": "Assets/Animation/DoorClose.anim.meta",
+      "destination": "MazeAssets/Art/Environment/Animations/DoorClose.anim.meta"
+    },
+    {
+      "source": "Assets/Animation/DoorControll.controller",
+      "destination": "MazeAssets/Art/Environment/Animations/DoorControll.controller"
+    },
+    {
+      "source": "Assets/Animation/DoorControll.controller.meta",
+      "destination": "MazeAssets/Art/Environment/Animations/DoorControll.controller.meta"
+    },
+    {
+      "source": "Assets/Animation/DoorOpen.anim",
+      "destination": "MazeAssets/Art/Environment/Animations/DoorOpen.anim"
+    },
+    {
+      "source": "Assets/Animation/DoorOpen.anim.meta",
+      "destination": "MazeAssets/Art/Environment/Animations/DoorOpen.anim.meta"
+    },
+    {
+      "source": "Assets/Animation",
+      "destination": "MazeAssets/Art/Player/Animations"
+    },
+    {
+      "source": "Assets/Animation.meta",
+      "destination": "MazeAssets/Art/Player/Animations.meta"
+    },
+    {
+      "source": "Assets/ApplicationPathData.json",
+      "destination": "MazeAssets/Misc/ApplicationPathData.json"
+    },
+    {
+      "source": "Assets/ApplicationPathData.json.meta",
+      "destination": "MazeAssets/Misc/ApplicationPathData.json.meta"
+    },
+    {
+      "source": "Assets/Canvas/CanvasUI.prefab",
+      "destination": "MazeAssets/UI/Canvas/CanvasUI.prefab"
+    },
+    {
+      "source": "Assets/Canvas/CanvasUI.prefab.meta",
+      "destination": "MazeAssets/UI/Canvas/CanvasUI.prefab.meta"
+    },
+    {
+      "source": "Assets/Canvas",
+      "destination": "MazeAssets/UI/Canvas"
+    },
+    {
+      "source": "Assets/Canvas.meta",
+      "destination": "MazeAssets/UI/Canvas.meta"
+    },
+    {
+      "source": "Assets/Default.unity",
+      "destination": "MazeAssets/Scenes/Default.unity"
+    },
+    {
+      "source": "Assets/Default.unity.meta",
+      "destination": "MazeAssets/Scenes/Default.unity.meta"
+    },
+    {
+      "source": "Assets/DefaultVolumeProfile.asset",
+      "destination": "MazeAssets/Misc/DefaultVolumeProfile.asset"
+    },
+    {
+      "source": "Assets/DefaultVolumeProfile.asset.meta",
+      "destination": "MazeAssets/Misc/DefaultVolumeProfile.asset.meta"
+    },
+    {
+      "source": "Assets/ExternalDependencyManager",
+      "destination": "MazeAssets/ThirdParty/ExternalDependencyManager"
+    },
+    {
+      "source": "Assets/ExternalDependencyManager.meta",
+      "destination": "MazeAssets/ThirdParty/ExternalDependencyManager.meta"
+    },
+    {
+      "source": "Assets/GoogleMobileAds",
+      "destination": "MazeAssets/ThirdParty/GoogleMobileAds"
+    },
+    {
+      "source": "Assets/GoogleMobileAds.meta",
+      "destination": "MazeAssets/ThirdParty/GoogleMobileAds.meta"
+    },
+    {
+      "source": "Assets/TextMesh Pro",
+      "destination": "MazeAssets/ThirdParty/TextMeshPro"
+    },
+    {
+      "source": "Assets/TextMesh Pro.meta",
+      "destination": "MazeAssets/ThirdParty/TextMeshPro.meta"
+    },
+    {
+      "source": "Assets/UniversalRenderPipelineGlobalSettings.asset",
+      "destination": "MazeAssets/Misc/UniversalRenderPipelineGlobalSettings.asset"
+    },
+    {
+      "source": "Assets/UniversalRenderPipelineGlobalSettings.asset.meta",
+      "destination": "MazeAssets/Misc/UniversalRenderPipelineGlobalSettings.asset.meta"
+    },
+    {
+      "source": "Assets/gitignore/.gitignore",
+      "destination": "MazeAssets/Misc/.gitignore"
+    },
+    {
+      "source": "Assets/gitignore",
+      "destination": "MazeAssets/Misc"
+    },
+    {
+      "source": "Assets/gitignore.meta",
+      "destination": "MazeAssets/Misc.meta"
+    }
+  ]
+}

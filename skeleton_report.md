@@ -1,0 +1,13 @@
+اسکلت پروژه:
+- matiec: پوشه نگهدارنده
+  - AnnexF: نامشخص
+  - absyntax: نامشخص
+  - absyntax_utils: نامشخص
+  - config: تنظیمات و templateها
+  - debian: نامشخص
+  - lib: پوشه نگهدارنده
+  - stage1_2: نامشخص
+  - stage3: نامشخص
+  - stage4: پوشه نگهدارنده
+  - tests: تست‌ها
+  - util: نامشخص

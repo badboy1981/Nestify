@@ -40,6 +40,7 @@ func scanDir(path string, foldersOnly bool) ([]types.Node, error) {
 	ignoreFolders := map[string]bool{
 		".git":         true,
 		"node_modules": true,
+		".github":      true,
 	}
 
 	entries, err := os.ReadDir(path)

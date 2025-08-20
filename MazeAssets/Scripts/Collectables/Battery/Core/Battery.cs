@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace Collectable
 {
-    public class Battery : Collectable
+    internal class Battery : Collectable
     {
         [SerializeField] BatteryDiagram _BatteryDiagram;
         [SerializeField] float IncreaseValue = 20f;
 
-        public override void OnTriggerEnter(Collider other)
+        protected override void OnTriggerEnter(Collider other)
         {
             _BatteryDiagram = GameObject.Find("BatteryDiagram").GetComponent<BatteryDiagram>();
             base.OnTriggerEnter(other);

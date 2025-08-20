@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace Collectable
 {
-    public class MagnetKey : Collectable
+    internal class MagnetKey : Collectable
     {
         [Header("Target Gate Property")]
         [SerializeField] Transform GateTarget;

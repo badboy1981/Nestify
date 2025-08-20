@@ -2,7 +2,7 @@ using System.Collections;
 using Collectable.Gate;
 using UnityEngine;
 
-public class GateHandle3 : MonoBehaviour
+internal class GateHandle3 : Interactive
 {
     [Header("Gate Property")]
     [SerializeField] GatePropertyGroup gatePropertyGroup;
@@ -18,30 +18,33 @@ public class GateHandle3 : MonoBehaviour
     {
         GateFence = GameObject.Find($"{name[0]}Gate").GetComponentInChildren<Animator>();
 
-        //TargetGateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, name);
-
-        //TargetGateProperty = gatePropertyGroup.gateProperties.FirstOrDefault(g => g.name[0] == name[0]);
-
         TargetGateAnimator = GateFence.GetComponent<Animator>();
         HandleAnimator = GetComponentInChildren<Animator>();
-
-        //TargetGateProperty.ActiveGateHandleState = false;
-        //TargetGateProperty.gateIsBusy = false;
     }
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
-        //if (other.CompareTag("Player") && !HandelAnimator.IsInTransition(0) && !TargetGateProperty.gateIsBusy && TargetGateProperty.ActiveGateHandleState)
         if (other.CompareTag("Player") && !TargetGateProperty.gateIsBusy && TargetGateProperty.ActiveGateHandleState)
         {
             TargetGateProperty.gateIsBusy = true;
             HandleAnimator.SetBool("OpenGate", true);
             TargetGateAnimator.SetBool("OpenGate", true);
+            PlaySound("OpenGateSound");
             StartCoroutine(AnimationStop());
         }
+    }
+    protected override void OnTriggerExit(Collider other)
+    {
+        //if (other.CompareTag("Player") && TargetGateProperty.gateIsBusy)
+        //{
+        //    TargetGateProperty.gateIsBusy = false;
+        //    HandleAnimator.SetBool("OpenGate", false);
+        //    TargetGateAnimator.SetBool("OpenGate", false);
+        //}
     }
     private IEnumerator AnimationStop()
     {
         yield return new WaitForSeconds(TargetGateProperty.AnimationWaitTime);
+        PlaySound("OpenGateSound");
         HandleAnimator.SetBool("OpenGate", false);
         TargetGateAnimator.SetBool("OpenGate", false);
         TargetGateProperty.gateIsBusy = false;

@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 namespace Collectable
 {
-    public class OtherThings : Collectable
+    internal class OtherThings : Collectable
     {
-        public static event UnityAction OtherThingsCollectedEvent = delegate { };
-        public override void Collect()
+        internal static event UnityAction OtherThingsCollectedEvent = delegate { };
+        internal override void Collect()
         {
             base.Collect();
             OtherThingsCollectedEvent?.Invoke();

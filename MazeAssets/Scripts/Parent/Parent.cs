@@ -2,7 +2,7 @@
 
 namespace Assets.MazeAssets.Scripts.Parent
 {
-    public class Parent : MonoBehaviour
+    internal class Parent : MonoBehaviour
     {
         [SerializeField] protected AudioLibrary PrefabAudioLibrary;
         [SerializeField] protected SoundData soundDataEvent;

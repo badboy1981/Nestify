@@ -2,7 +2,7 @@
 using System.Collections;
 using Assets.MazeAssets.Scripts.Parent;
 
-public class ChargeStation : Parent
+internal class ChargeStation : Parent
 {
     [SerializeField] BatteryDiagram _BatteryDiagram;
     [SerializeField] float ChargerCapacity = 100f;

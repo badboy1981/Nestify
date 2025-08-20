@@ -1,12 +1,9 @@
-using Collectable;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using Assets.MazeAssets.Scripts.Parent;
 using UnityEngine;
 
 namespace Collectable
 {
-    public class ParkingBarrier : Collectable
+    internal class ParkingBarrier : Interactive
     {
         [SerializeField] Animator _Animator;
         [SerializeField] GameObject _Collector;
@@ -15,28 +12,22 @@ namespace Collectable
 
         [SerializeField] SaveSystem.SaveLevelDataSObject Gate;
 
-        private void Awake()
+        protected override void Awake()
         {
             _CollectorScript = _Collector.GetComponent<Collector>();
         }
-        public override void OnTriggerEnter(Collider other)
+        protected override void OnTriggerEnter(Collider other)
         {
             if (Gate.KeyList.Contains(CrainHandle.name.Replace("CH", "Key")))
             {
+                base.OnTriggerEnter(other);
                 _Animator.SetBool("CheckKey", true);
             }
         }
-        private void OnTriggerExit(Collider other)
+        protected override void OnTriggerExit(Collider other)
         {
+            base.OnTriggerExit(other);
             _Animator.SetBool("CheckKey", false);
-        }
-
-        private void OpenGateOldWay()
-        {
-            if (_CollectorScript._PlayerData.KeyLists.Contains(CrainHandle.name.Replace("CH", "Key")))
-            {
-                _Animator.SetBool("CheckKey", true);
-            }
         }
     }
 }

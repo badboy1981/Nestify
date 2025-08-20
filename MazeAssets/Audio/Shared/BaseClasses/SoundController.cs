@@ -100,24 +100,6 @@ public class SoundController : MonoBehaviour
             sound.source.Pause();
         }
     }
-    //private void SetVolume(string soundName, float startVolume, float endVolume, float duration)
-    //{
-    //    //Debug.Log($"SoundController: SetVolume called for {soundName}, from {startVolume} to {endVolume} over {duration}s");
-    //    var sound = activeSounds.Find(s => s.soundName == soundName);
-    //    if (sound.source != null)
-    //    {
-    //        StartCoroutine(FadeVolume(sound.source, startVolume, endVolume, duration));
-    //    }
-    //}
-    //private void SetVolume(string soundName, float startVolume, float endVolume, float duration, bool stopAfterFade)
-    //{
-    //    Debug.Log($"SoundController: SetVolume called for {soundName}, from {startVolume} to {endVolume} over {duration}s, stopAfterFade: {stopAfterFade}");
-    //    var sound = activeSounds.Find(s => s.soundName == soundName);
-    //    if (sound.source != null)
-    //    {
-    //        StartCoroutine(FadeVolume(sound.source, startVolume, endVolume, duration, stopAfterFade, soundName));
-    //    }
-    //}
     private void SetVolume(SoundData.SoundVolumeParams volumeParams)
     {
         Debug.Log($"SoundController: SetVolume called for {volumeParams.soundName}, from {volumeParams.startVolume} to {volumeParams.endVolume} over {volumeParams.duration}s, stopAfterFade: {volumeParams.stopAfterFade}");
@@ -143,16 +125,4 @@ public class SoundController : MonoBehaviour
             StopSound(soundName);
         }
     }
-    //private IEnumerator FadeVolume(AudioSource source, float startVolume, float endVolume, float duration)
-    //{
-    //    source.volume = startVolume;
-    //    float elapsed = 0f;
-    //    while (elapsed < duration)
-    //    {
-    //        elapsed += Time.deltaTime;
-    //        source.volume = Mathf.Lerp(startVolume, endVolume, elapsed / duration);
-    //        yield return null;
-    //    }
-    //    source.volume = endVolume;
-    //}
 }

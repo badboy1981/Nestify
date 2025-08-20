@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace Collectable
 {
-    public class Collectable : Parent
+    internal class Collectable : Parent
     {
         private bool isCollected;
-        
+
         protected override void Awake()
         {
             isCollected = false;
         }
 
-        public virtual void Collect()
+        internal virtual void Collect()
         {
             Destroy(gameObject);
             Debug.Log("collected!");
         }
-        public virtual void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player") && !isCollected)
             {
@@ -31,7 +31,7 @@ namespace Collectable
                 Destroy(gameObject, destroyDelay);
             }
         }
-        public virtual void SpeedChange()
+        protected virtual void SpeedChange()
         {
 
         }

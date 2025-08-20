@@ -1,27 +1,23 @@
-using Collectable;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 namespace Collectable
 {
-    public class ATMTriggerHandle : Collectable
+    internal class ATMTriggerHandle : Collectable
     {
         [SerializeField] TextMeshProUGUI AtmID;
         [SerializeField] GameObject AtmPanel;
         [SerializeField] GameObject Player;
         private HandleInput handleInput;
 
-        private void Awake()
+        protected override void Awake()
         {
             handleInput = Player.GetComponent<HandleInput>();
             AtmPanel.SetActive(false);
         }
         //public override void Collect() { }
 
-        public override void OnTriggerEnter(Collider other)
+        protected override void OnTriggerEnter(Collider other)
         {
             handleInput.EnableMove = false;
             AtmPanel.SetActive(true);

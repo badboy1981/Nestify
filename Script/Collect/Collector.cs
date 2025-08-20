@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 namespace Collectable
 {
-    public class Collector : MonoBehaviour
+    internal class Collector : MonoBehaviour
     {
-        public TextMeshProUGUI CointText;
-        public TextMeshProUGUI KeyText;
-
-        public DataManagment.PlayerData _PlayerData;
+        [SerializeField] TextMeshProUGUI CointText;
+        [SerializeField] TextMeshProUGUI KeyText;
+        
+       internal DataManagment.PlayerData _PlayerData;
 
         //private Collector collector;
 

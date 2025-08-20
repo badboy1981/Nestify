@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Collectable
 {
-    public class DataTestScript : Collectable
+    internal class DataTestScript : Collectable
     {
         [SerializeField] DataTest.ScriptableObjectDataTEST dataTEST;
 
-        public override void Collect()
+        internal override void Collect()
         {
             base.Collect();
         }
-        public void Test()
+        protected void Test()
         {
             if (dataTEST != null)
             {
@@ -20,7 +20,7 @@ namespace Collectable
                 Debug.Log(cnt);
             }
         }
-        public override void OnTriggerEnter(Collider other)
+        protected override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);
             Test();

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Assets.MazeAssets.Scripts.Parent;
 
-public class EnvironmentAudio : Parent
+internal class EnvironmentAudio : Parent
 {
     [SerializeField] private string[] soundNames = { "Wind", "Birds" };
 

@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Collectable
 {
-    public class CraineKey : Collectable
+    internal class CraineKey : Collectable
     {
         [SerializeField] CrainKeySB KeyCollected;
 
-        public override void OnTriggerEnter(Collider other)
+        protected override void OnTriggerEnter(Collider other)
         {
             base.OnTriggerEnter(other);
             KeyCollected.KeysName.Add(name);

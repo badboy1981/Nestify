@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.MazeAssets.Scripts.Parent;
 
-internal class ChargeStation : Parent
+internal class ChargeStation : Interactive
 {
     [SerializeField] BatteryDiagram _BatteryDiagram;
     [SerializeField] float ChargerCapacity = 100f;
@@ -12,24 +11,20 @@ internal class ChargeStation : Parent
     [SerializeField] float RechargeInterval = 10f;
 
     private Coroutine chargingCoroutine;
-    private bool isCharging;
-
-    [SerializeField] private string[] soundNames = { "Beep", "Charge" };
+    //private bool isCharging;
 
     private void Start()
     {
         _BatteryDiagram = GameObject.Find("BatteryDiagram").GetComponent<BatteryDiagram>();
     }
-    public void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !isCharging)
+        if (other.CompareTag("Player"))// && !isCharging)
         {
             Debug.Log("ChargeStation: Volt entered, starting charge sound");
-            isCharging = true;
-            foreach (string soundName in soundNames)
-            {
-                PlaySound(soundName);
-            }
+            //isCharging = true;
+      
+            PlaySoundByList(PrefabAudioLibrary.SoundCategoryLists);
             if (chargingCoroutine != null)
             {
                 StopCoroutine(chargingCoroutine);
@@ -37,16 +32,13 @@ internal class ChargeStation : Parent
             chargingCoroutine = StartCoroutine(DischargeBattery());
         }
     }
-    private void OnTriggerExit(Collider other)
+    protected override void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && isCharging)
+        if (other.CompareTag("Player"))// && isCharging)
         {
             Debug.Log("ChargeStation: Volt exited, stopping charge sound");
-            isCharging = false;
-            foreach (string soundName in soundNames)
-            {
-                StopSound(soundName);
-            }
+            //isCharging = false;
+                 StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
             if (chargingCoroutine != null)
             {
                 StopCoroutine(chargingCoroutine);

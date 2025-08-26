@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-//using Assets.MazeAssets.Audio.Shared.BaseClasses;
 
 [CreateAssetMenu(fileName = "SoundDataEvent", menuName = "Audio Maze/Sound Data Event")]
 public class SoundData : ScriptableObject

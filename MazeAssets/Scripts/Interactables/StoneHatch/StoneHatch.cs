@@ -4,7 +4,7 @@ using System.Linq;
 using Collectable.Gate;
 using UnityEngine;
 
-public class StoneHatch : MonoBehaviour
+internal class StoneHatch : Interactive
 {
     [Header("GateProperties")]
     [SerializeField] GatePropertyGroup gatePropertyGroup;
@@ -14,7 +14,7 @@ public class StoneHatch : MonoBehaviour
 
     [Header("Key's List")]
     [SerializeField] List<GameObject> Keys;
-    [SerializeField] string[] _CollectedKey;
+    //[SerializeField] string[] _CollectedKey;
 
     [Header("Animation")]
     [SerializeField] Animator animator;
@@ -23,19 +23,26 @@ public class StoneHatch : MonoBehaviour
     {
         gateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, name);
     }
-
-    public void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
+    {
+        //if(gateProperty.GateState) return;
+        if (other.CompareTag("Player") && !gateProperty.GateState)
+        {
+            animator = GetComponent<Animator>();
+            //if (!gateProperty.GateState) 
+            ActiveCollectedKeys();
+        }
+    }
+    protected override void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            animator = GetComponent<Animator>();
-            _CollectedKey = CollectedKey();
-
-            ActiveCollectedKeys();
+            StopSound("NeedKey");
         }
     }
     private void ActiveCollectedKeys()
     {
+        string[] _CollectedKey = CollectedKey();
         foreach (var Item in Keys)
         {
             if (_CollectedKey.Contains(Item.name))
@@ -46,10 +53,12 @@ public class StoneHatch : MonoBehaviour
         if (_CollectedKey.Length == 3)
         {
             animator.SetBool("ActiveKey", true);
+            PlaySound("HatchSound");
             ActiveGateHandle(true);
         }
         else
         {
+            PlaySound("NeedKey");
             ActiveGateHandle(false);
         }
     }

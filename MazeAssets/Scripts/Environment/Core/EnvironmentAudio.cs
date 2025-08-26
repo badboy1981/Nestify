@@ -7,17 +7,18 @@ internal class EnvironmentAudio : Parent
 
     private void Start()
     {
-        foreach (string soundName in soundNames)
-        {
-            PlaySound(soundName);
-        }
+        //foreach (string soundName in soundNames)
+        //{
+        //    PlaySound(soundName);
+        //}
+        PlaySoundByList(PrefabAudioLibrary.SoundCategoryLists);
     }
 
     public void StopAllSounds()
     {
-        foreach (string soundName in soundNames)
-        {
-            StopSound(soundName);
-        }
+        //foreach (string soundName in soundNames)
+        //{
+        //    StopSound(soundName);
+        //}
     }
 }

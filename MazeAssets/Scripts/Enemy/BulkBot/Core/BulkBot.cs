@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BulkBot : MonoBehaviour
+internal class BulkBot : Enemy
 {
     [SerializeField] Animator animator;
     [SerializeField] ConstantForce DroneForce;
@@ -13,8 +12,9 @@ public class BulkBot : MonoBehaviour
         float randomStartTime = Random.Range(0f, 1f);
         animator.Play("WalkCycle", 0, randomStartTime);
     }
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
+        base.OnTriggerEnter(other);
         if (DroneForce == null)
         {
             DroneForce = other.GetComponent<ConstantForce>();

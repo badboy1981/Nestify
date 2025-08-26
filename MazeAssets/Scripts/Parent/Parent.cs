@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Assets.MazeAssets.Audio.Shared.BaseClasses;
+using UnityEngine;
 
 namespace Assets.MazeAssets.Scripts.Parent
 {
@@ -19,7 +21,22 @@ namespace Assets.MazeAssets.Scripts.Parent
                 Debug.LogError($"Parent: PrefabAudioLibrary is null on {gameObject.name}");
             }
         }
-
+        protected void PlaySoundByList(List<AudioConfig> SoundList)
+        {
+            foreach (var sound in SoundList)
+            {
+                //Debug.Log($"Parent: PlaySoundByList called for {sound.SoundName} on {gameObject.name}");
+                soundDataEvent?.Play(sound.SoundName, PrefabAudioLibrary);
+            }
+        }
+        protected void StopSoundByList(List<AudioConfig> SoundList)
+        {
+            foreach (var sound in SoundList)
+            {
+                //Debug.Log($"Parent: StopSoundByList called for {sound.SoundName} on {gameObject.name}");
+                soundDataEvent?.StopSound(sound.SoundName);
+            }
+        }
         protected void PlaySound(string soundName)
         {
             Debug.Log($"Parent: PlaySound called for {soundName} on {gameObject.name}");

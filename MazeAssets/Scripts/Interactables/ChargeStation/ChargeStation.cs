@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
+using static ChargeStationEvent;
 
 internal class ChargeStation : Interactive
 {
@@ -11,7 +12,7 @@ internal class ChargeStation : Interactive
     [SerializeField] float RechargeInterval = 10f;
 
     private Coroutine chargingCoroutine;
-    //private bool isCharging;
+    private ChargeStationEvent chargeStationEvent;
 
     private void Start()
     {
@@ -19,12 +20,15 @@ internal class ChargeStation : Interactive
     }
     protected override void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))// && !isCharging)
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("ChargeStation: Volt entered, starting charge sound");
-            //isCharging = true;
-      
+            //Debug.Log("ChargeStation: Volt entered, starting charge sound");
+
+            //chargeStationEvent.OnStatusChanged(ChargeStationEvent.ChargeStationState.Charging);
+            //chargeStationEvent.ChargeStatus = ChargeStationState.Charging;
+
             PlaySoundByList(PrefabAudioLibrary.SoundCategoryLists);
+
             if (chargingCoroutine != null)
             {
                 StopCoroutine(chargingCoroutine);
@@ -32,12 +36,15 @@ internal class ChargeStation : Interactive
             chargingCoroutine = StartCoroutine(DischargeBattery());
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        
+    }
     protected override void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))// && isCharging)
         {
             Debug.Log("ChargeStation: Volt exited, stopping charge sound");
-            //isCharging = false;
                  StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
             if (chargingCoroutine != null)
             {

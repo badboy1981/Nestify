@@ -49,7 +49,7 @@ namespace SaveAndLoad
             PlayerData.Write(JsonUtility.ToJson(Pdata));
 
         }
-        public void SaveTest2(Vector3 Position,Quaternion Angle,List<string> KeyList,List<string>CoinList)
+        public void SaveTest2(Vector3 Position, Quaternion Angle, List<string> KeyList, List<string> CoinList)
         {
             var Pdata = new PlayerData()
             {
@@ -60,7 +60,7 @@ namespace SaveAndLoad
             };
             using var PlayerData = new StreamWriter(Application.dataPath + JsonPath);
             PlayerData.Write(JsonUtility.ToJson(Pdata, true));
-            }
+        }
         public void SaveTest()
         {
             SaveSlot saveSlot = CreateSaveObject();

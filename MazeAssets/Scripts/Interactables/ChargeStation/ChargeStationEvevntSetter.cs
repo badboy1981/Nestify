@@ -1,15 +1,88 @@
 using UnityEngine;
 
-public class ChargeStationEvevntSetter : MonoBehaviour
+public class ChargeStationEventSetter : MonoBehaviour
 {
-    private readonly ChargeStationEvent ch;
+    [SerializeField] private ChargeStationEvent chargeStationEvent;
+    [SerializeField] private ChargeManagment chargeManagment;
+    [SerializeField] private string stationId; // Unique ID for this ChargeStation
+    private float rechargeTimer = 0f;
+    private bool isRecharging = false;
+
+    private void Start()
+    {
+        chargeManagment.Initialize();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        //ch.OnStatusChanged(ChargeStationEvent.ChargeStationState.Charging);//No. 1
-        ch.ChargeStatus = ChargeStationEvent.ChargeStationState.Charging;//No. 2
+        if (other.CompareTag("Player"))
+        {
+            var stationStatus = chargeManagment.GetStationStatus(stationId);
+            if (stationStatus != null && chargeManagment.ChargeVoltStatus.VoltChargeLevel < chargeManagment.ChargeVoltStatus.MaxVoltCharge)
+            {
+                if (stationStatus.CurrentChargeLevel > 0)
+                {
+                    chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.Charging;
+                }
+                else
+                {
+                    chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.Empty;
+                }
+            }
+        }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && chargeStationEvent.ChargeStatus == ChargeStationEvent.ChargeStationState.Charging)
+        {
+            var stationStatus = chargeManagment.GetStationStatus(stationId);
+            if (stationStatus != null && stationStatus.CurrentChargeLevel > 0 && chargeManagment.ChargeVoltStatus.VoltChargeLevel < chargeManagment.ChargeVoltStatus.MaxVoltCharge)
+            {
+                float chargeAmount = chargeManagment.ChargeStationProperties.Rate * Time.deltaTime;
+                chargeManagment.UpdateVoltCharge(chargeAmount);
+                stationStatus.CurrentChargeLevel = Mathf.Max(stationStatus.CurrentChargeLevel - chargeAmount, 0);
+
+                if (chargeManagment.ChargeVoltStatus.VoltChargeLevel >= chargeManagment.ChargeVoltStatus.MaxVoltCharge)
+                {
+                    chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.FullyCharged;
+                }
+                else if (stationStatus.CurrentChargeLevel <= 0)
+                {
+                    chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.Empty;
+                }
+            }
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.Empty;
+            isRecharging = true;
+            rechargeTimer = 0f;
+        }
+    }
 
+    private void Update()
+    {
+        if (isRecharging)
+        {
+            var stationStatus = chargeManagment.GetStationStatus(stationId);
+            if (stationStatus != null)
+            {
+                rechargeTimer += Time.deltaTime;
+                if (rechargeTimer >= chargeManagment.ChargeStationProperties.RechargeDelay)
+                {
+                    stationStatus.CurrentChargeLevel = Mathf.Min(stationStatus.CurrentChargeLevel + chargeManagment.ChargeStationProperties.RechargeRate * Time.deltaTime, chargeManagment.ChargeStationProperties.Capacity);
+                    if (stationStatus.CurrentChargeLevel >= chargeManagment.ChargeStationProperties.Capacity)
+                    {
+                        isRecharging = false;
+                        chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.FullyCharged;
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,24 +1,9 @@
-﻿using UnityEngine;
-using Assets.MazeAssets.Scripts.Parent;
+﻿using Assets.MazeAssets.Scripts.Parent;
 
 internal class EnvironmentAudio : Parent
 {
-    [SerializeField] private string[] soundNames = { "Wind", "Birds" };
-
     private void Start()
     {
-        //foreach (string soundName in soundNames)
-        //{
-        //    PlaySound(soundName);
-        //}
         PlaySoundByList(PrefabAudioLibrary.SoundCategoryLists);
-    }
-
-    public void StopAllSounds()
-    {
-        //foreach (string soundName in soundNames)
-        //{
-        //    StopSound(soundName);
-        //}
     }
 }

@@ -3,7 +3,7 @@ using static ChargeStationEvent;
 
 internal class ChargeStationEventListener : Interactive
 {
-    internal ChargeStationEvent chargeStationEvent;
+    [SerializeField] private ChargeStationEvent chargeStationEvent;
 
     private void OnEnable()
     {
@@ -21,15 +21,22 @@ internal class ChargeStationEventListener : Interactive
         {
             case ChargeStationState.Charging:
                 Debug.Log("Station is now charging.");
-                PlaySound("Charge");
+                PlaySound("Charge"); // Looping charge sound
                 break;
             case ChargeStationState.FullyCharged:
-                Debug.Log("Station is fully charged.");
-                PlaySound("ChargeFull");
+                Debug.Log("Station or Volt is fully charged.");
+                StopSound("Charge");
+                PlaySound("ChargeFull"); // One-shot sound
                 break;
             case ChargeStationState.Empty:
                 Debug.Log("Station is empty.");
-                PlaySound("Empty");
+                StopSound("Charge");
+                PlaySound("Empty"); // One-shot sound or silence
+                break;
+            case ChargeStationState.Depleted:
+                Debug.Log("Volt is depleted.");
+                StopSound("Charge");
+                PlaySound("Depleted"); // One-shot sound for Volt depletion
                 break;
         }
     }

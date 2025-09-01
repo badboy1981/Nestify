@@ -7,7 +7,8 @@ internal class ChargeStationEvent
     {
         Charging,
         FullyCharged,
-        Empty
+        Empty,
+        Depleted // When Volt's charge reaches zero
     }
 
     [System.NonSerialized]

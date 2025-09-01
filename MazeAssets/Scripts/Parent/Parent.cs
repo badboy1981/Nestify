@@ -8,6 +8,7 @@ namespace Assets.MazeAssets.Scripts.Parent
     {
         [SerializeField] protected AudioLibrary PrefabAudioLibrary;
         [SerializeField] protected SoundData soundDataEvent;
+        [SerializeField] protected ChargeManagment chargeManagment;
 
         protected virtual void Awake()
         {

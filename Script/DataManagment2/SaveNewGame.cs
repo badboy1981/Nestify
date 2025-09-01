@@ -9,9 +9,7 @@ namespace SaveSystem
     {
         [SerializeField] ObjectActiveSlot slot;
         //[SerializeField] GamkeObject SavePrefab;
-        [SerializeField] Test.SavePlayerData NewPlayerData;
-
-   
+        [SerializeField] Test.SavePlayerData NewPlayerData;   
 
         private void SaveActiveSlotNameSlot()
         {

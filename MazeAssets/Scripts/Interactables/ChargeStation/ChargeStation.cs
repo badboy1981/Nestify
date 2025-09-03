@@ -9,11 +9,11 @@ internal class ChargeStation : Interactive
     //[SerializeField] BatteryDiagram _BatteryDiagram;
     [SerializeField] ChargeManagment _ChargeManagment;
     [SerializeField] SaveLevelDataSObject PlayerData;
-    //[SerializeField] float ChargerCapacity = 100f;
-    //[SerializeField] float IncreaseValue = 10f;
+    [SerializeField] float ChargerCapacity = 100f;
+    [SerializeField] float IncreaseValue = 10f;
     [SerializeField] float WaitSeconds = 1f;
-    //[SerializeField] float RechargeRate = 10f;
-    //[SerializeField] float RechargeInterval = 10f;
+    [SerializeField] float RechargeRate = 10f;
+    [SerializeField] float RechargeInterval = 10f;
 
 
     private Coroutine chargingCoroutine;

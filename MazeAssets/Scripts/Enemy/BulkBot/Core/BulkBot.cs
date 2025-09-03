@@ -20,7 +20,8 @@ internal class BulkBot : Enemy
             DroneForce = other.GetComponent<ConstantForce>();
         }
         DroneForce.relativeForce = new(0, 0, Power);
-        Debug.Log($"Self Name: {name} || Input Name: {other.tag}");
+        //Debug.Log($"Self Name: {name} || Input Name: {other.tag}");
+        DecreaseStealCharge(EnemyList.BulkBot);
     }
     private void Temp()
     {

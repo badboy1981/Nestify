@@ -25,24 +25,17 @@ internal class Enemy : Parent
             StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
         }
     }
-    protected int HandleChargeSteal(EnemyList enemyTag)
+    protected EnemyList GetEnemyTypeValue(EnemyList enemy)
     {
-        return enemyTag switch
+        return enemy switch
         {
-            EnemyList.ShadowBot => (int)EnemyList.ShadowBot,
-            EnemyList.BulkBot => (int)EnemyList.BulkBot,
-            _ => 0,
+            EnemyList.ShadowBot => EnemyList.ShadowBot,
+            EnemyList.BulkBot => EnemyList.BulkBot,
+            _ => 0
         };
     }
-    
-    private void Temp()
+    protected void DecreaseStealCharge(EnemyList enemy)
     {
-        //float shadowBotTheftRate = chargeManagment.ChargeTheftRates.ShadowBot;
-        //chargeManagment.UpdateVoltCharge(-shadowBotTheftRate);
-        //Debug.Log($"ShadowBot stole {shadowBotTheftRate} charge from Volt. Current VoltChargeLevel: {chargeManagment.ChargeVoltStatus.VoltChargeLevel}");
-        if (chargeManagment.ChargeVoltStatus.VoltChargeLevel <= 0)
-        {
-            Debug.Log("Volt's charge is depleted!");
-        }
+        _ChargeManagment.ChargeVoltStatus.VoltChargeLevel -= (int)GetEnemyTypeValue(enemy);
     }
 }

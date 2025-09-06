@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Collectable.Gate;
 using UnityEngine;
 
 namespace Collectable.Gate

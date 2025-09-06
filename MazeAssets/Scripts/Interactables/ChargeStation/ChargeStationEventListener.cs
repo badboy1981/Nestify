@@ -7,6 +7,11 @@ internal class ChargeStationEventListener : Interactive
 
     private void OnEnable()
     {
+        if (chargeStationEvent == null)
+        {
+            Debug.LogError("ChargeStationEvent is not assigned in the inspector.");
+            return;
+        }
         chargeStationEvent.OnStatusChanged += OnStatusChanged;
     }
 

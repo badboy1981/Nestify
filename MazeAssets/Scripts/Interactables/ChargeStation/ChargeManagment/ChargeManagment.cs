@@ -5,10 +5,8 @@ using UnityEngine;
 public class ChargeManagment : ScriptableObject
 {
     [Header("Charge Station")]
-    public List<ChargeStationStatus> ChargeStationStatus;
+    public List<ChargeStationStatus> ChargeStationStatus = new(4);
     public ChargeStationProperty ChargeStationProperties;
-    //[Header("Charge Thief")]
-    //public ChargeTheftRate ChargeTheftRates;
     [Header("Volt Charge")]
     public ChargeVoltStatus ChargeVoltStatus;
     [Header("Battery")]

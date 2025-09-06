@@ -17,41 +17,105 @@ internal class ChargeStation : Interactive
 
 
     private Coroutine chargingCoroutine;
-    private ChargeStationEvent chargeStationEvent;
+    private  ChargeStationEvent chargeStationEvent;
 
-    private void Start()
+    [SerializeField] ChargeStationEventListener eventListener;
+
+    protected override void Awake()
     {
-        //_BatteryDiagram = GameObject.Find("BatteryDiagram").GetComponent<BatteryDiagram>();
+        base.Awake();
+        eventListener = GetComponent<ChargeStationEventListener>();
+        if (eventListener == null)
+        {
+            Debug.Log("ChargeStationEventListener component is missing on this GameObject.");
+        }
+        if (_ChargeManagment == null)
+        {
+            Debug.Log("ChargeManagment ScriptableObject is not assigned.");
+        }
+        else
+        {
+            _ChargeManagment.Initialize();
+        }
     }
+
     protected override void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            if (!_ChargeManagment.ChargeStationStatus.Any(s => s.StationID == name))
+            {
+                _ChargeManagment.ChargeStationStatus.Add(new ChargeStationStatus
+                {
+                    StationID = name,
+                    CurrentChargeLevel = _ChargeManagment.ChargeStationProperties.Capacity
+                });
+            }
             //Debug.Log("ChargeStation: Volt entered, starting charge sound");
 
             //chargeStationEvent.OnStatusChanged(ChargeStationEvent.ChargeStationState.Charging);
             //chargeStationEvent.ChargeStatus = ChargeStationState.Charging;
 
             //PlaySoundByList(PrefabAudioLibrary.SoundCategoryLists);
-           
+
 
             if (chargingCoroutine != null)
             {
                 StopCoroutine(chargingCoroutine);
             }
             chargingCoroutine = StartCoroutine(DischargeBattery());
+
+            //PlaySound("Charge");
+            ChargeState();
         }
     }
     private void OnTriggerStay(Collider other)
     {
         
+        //ChargeState();
+    }
+    private void ChargeState()
+    {
+        if (_ChargeManagment.ChargeStationStatus.Find(ChargeStationStatus => ChargeStationStatus.StationID == name).CurrentChargeLevel <= 0)
+        {
+            //chargeStationEvent = GetComponent<ChargeStationEvent>();
+            chargeStationEvent.ChargeStatus = ChargeStationState.Empty;
+            //Debug.Log("ChargeStation: Station is empty");
+            StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
+            if (chargingCoroutine != null)
+            {
+                StopCoroutine(chargingCoroutine);
+                chargingCoroutine = null;
+            }
+        }
+        //else if (PlayerData.ChargeStatus >= PlayerData.ChargeCapacityMax)
+        else if (_ChargeManagment.ChargeVoltStatus.VoltChargeLevel >= _ChargeManagment.ChargeVoltStatus.MaxVoltCharge)
+        {
+            //chargeStationEvent = GetComponent<ChargeStationEvent>();
+            chargeStationEvent.ChargeStatus = ChargeStationState.FullyCharged;
+            //Debug.Log("ChargeStation: Volt is fully charged");
+            StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
+            if (chargingCoroutine != null)
+            {
+                StopCoroutine(chargingCoroutine);
+                chargingCoroutine = null;
+            }
+        }
+        else
+        {
+            //chargeStationEvent = GetComponent<ChargeStationEvent>();
+            chargeStationEvent.ChargeStatus = ChargeStationState.Charging;
+            //Debug.Log("ChargeStation: Volt is charging");
+            //PlaySoundByList(PrefabAudioLibrary.SoundCategoryLists);
+            PlaySound("Charge");
+        }
     }
     protected override void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))// && isCharging)
         {
             Debug.Log("ChargeStation: Volt exited, stopping charge sound");
-                 StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
+            StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
             if (chargingCoroutine != null)
             {
                 StopCoroutine(chargingCoroutine);

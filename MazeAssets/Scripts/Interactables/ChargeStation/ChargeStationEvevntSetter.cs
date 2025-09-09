@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class ChargeStationEventSetter : MonoBehaviour
 {
-    [SerializeField] private ChargeStationEvent chargeStationEvent;
-    [SerializeField] private ChargeManagment chargeManagment;
-    [SerializeField] private string stationId; // Unique ID for this ChargeStation
+    [SerializeField] ChargeStationEvent chargeStationEvent;
+    [SerializeField] ChargeManagment chargeManagment;
+    [SerializeField] string stationId;
     private float rechargeTimer = 0f;
     private bool isRecharging = false;
 
     private void Start()
     {
-        chargeManagment.Initialize();
+        stationId = name;
     }
 
     private void OnTriggerEnter(Collider other)

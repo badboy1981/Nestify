@@ -3,13 +3,16 @@ using static ChargeStationEvent;
 
 internal class ChargeStationEventListener : Interactive
 {
-    [SerializeField] private ChargeStationEvent chargeStationEvent;
-
+    [SerializeField] ChargeStationEvent chargeStationEvent;
+    //private void Awake()
+    //{
+    //    chargeStationEvent ??= chargeStationEvent = new();
+    //}
     private void OnEnable()
     {
         if (chargeStationEvent == null)
         {
-            Debug.LogError("ChargeStationEvent is not assigned in the inspector.");
+            //Debug.LogError("ChargeStationEvent is not assigned in the inspector.");
             return;
         }
         chargeStationEvent.OnStatusChanged += OnStatusChanged;
@@ -22,6 +25,11 @@ internal class ChargeStationEventListener : Interactive
 
     private void OnStatusChanged(ChargeStationState status)
     {
+        //chargeStationEvent.ChargeStatus = status;
+        Debug.Log($"ChargeStationEventListener: Charge status changed to {status}");
+        //ChargeStation chargeStation = GetComponent<ChargeStation>();
+        //chargeStation.HandleChargeState(status);
+
         switch (status)
         {
             case ChargeStationState.Charging:
@@ -31,17 +39,17 @@ internal class ChargeStationEventListener : Interactive
             case ChargeStationState.FullyCharged:
                 Debug.Log("Station or Volt is fully charged.");
                 StopSound("Charge");
-                PlaySound("ChargeFull"); // One-shot sound
+                //PlaySound("ChargeFull"); // One-shot sound
                 break;
             case ChargeStationState.Empty:
                 Debug.Log("Station is empty.");
                 StopSound("Charge");
-                PlaySound("Empty"); // One-shot sound or silence
+                //PlaySound("Empty"); // One-shot sound or silence
                 break;
             case ChargeStationState.Depleted:
                 Debug.Log("Volt is depleted.");
                 StopSound("Charge");
-                PlaySound("Depleted"); // One-shot sound for Volt depletion
+                //PlaySound("Depleted"); // One-shot sound for Volt depletion
                 break;
         }
     }

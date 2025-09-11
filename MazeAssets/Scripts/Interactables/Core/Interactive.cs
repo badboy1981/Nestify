@@ -17,7 +17,7 @@ internal class Interactive : Parent
         {
             Debug.Log($"Interactive: Player entered {gameObject.name}");
             isActive = true;
-            PlaySound("Activate");
+            //PlaySound("Activate");
         }
     }
 
@@ -27,7 +27,7 @@ internal class Interactive : Parent
         {
             Debug.Log($"Interactive: Player exited {gameObject.name}");
             isActive = false;
-            StopSound("Activate");
+            //StopSound("Activate");
         }
     }
 }

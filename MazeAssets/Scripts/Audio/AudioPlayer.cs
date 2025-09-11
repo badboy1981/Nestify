@@ -22,7 +22,7 @@ public class AudioPlayer : MonoBehaviour
 
     public void PlaySound(string soundName, AudioLibrary library, GameObject sourceObject = null)
     {
-        Debug.Log($"AudioPlayer: PlaySound called for {soundName}");
+        //Debug.Log($"AudioPlayer: PlaySound called for {soundName}");
         if (library == null || string.IsNullOrEmpty(soundName))
         {
             Debug.LogWarning("AudioPlayer: Library or soundName is null/empty");

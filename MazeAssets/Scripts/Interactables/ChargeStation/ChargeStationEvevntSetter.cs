@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using static ChargeStationStateEnum;
 public class ChargeStationEventSetter : MonoBehaviour
 {
     [SerializeField] ChargeStationEvent chargeStationEvent;
@@ -22,11 +22,11 @@ public class ChargeStationEventSetter : MonoBehaviour
             {
                 if (stationStatus.CurrentChargeLevel > 0)
                 {
-                    chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.Charging;
+                    chargeStationEvent.ChargeStatus = ChargeStationStateEnum.Charging;
                 }
                 else
                 {
-                    chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.Empty;
+                    chargeStationEvent.ChargeStatus = ChargeStationStateEnum.Empty;
                 }
             }
         }
@@ -34,7 +34,7 @@ public class ChargeStationEventSetter : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && chargeStationEvent.ChargeStatus == ChargeStationEvent.ChargeStationState.Charging)
+        if (other.CompareTag("Player") && chargeStationEvent.ChargeStatus == ChargeStationStateEnum.Charging)
         {
             var stationStatus = chargeManagment.GetStationStatus(stationId);
             if (stationStatus != null && stationStatus.CurrentChargeLevel > 0 && chargeManagment.ChargeVoltStatus.VoltChargeLevel < chargeManagment.ChargeVoltStatus.MaxVoltCharge)
@@ -45,11 +45,11 @@ public class ChargeStationEventSetter : MonoBehaviour
 
                 if (chargeManagment.ChargeVoltStatus.VoltChargeLevel >= chargeManagment.ChargeVoltStatus.MaxVoltCharge)
                 {
-                    chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.FullyCharged;
+                    chargeStationEvent.ChargeStatus = ChargeStationStateEnum.FullyCharged;
                 }
                 else if (stationStatus.CurrentChargeLevel <= 0)
                 {
-                    chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.Empty;
+                    chargeStationEvent.ChargeStatus = ChargeStationStateEnum.Empty;
                 }
             }
         }
@@ -59,7 +59,7 @@ public class ChargeStationEventSetter : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.Empty;
+            chargeStationEvent.ChargeStatus =   ChargeStationStateEnum.Empty;
             isRecharging = true;
             rechargeTimer = 0f;
         }
@@ -79,7 +79,7 @@ public class ChargeStationEventSetter : MonoBehaviour
                     if (stationStatus.CurrentChargeLevel >= chargeManagment.ChargeStationProperties.Capacity)
                     {
                         isRecharging = false;
-                        chargeStationEvent.ChargeStatus = ChargeStationEvent.ChargeStationState.FullyCharged;
+                        chargeStationEvent.ChargeStatus = ChargeStationStateEnum.FullyCharged;
                     }
                 }
             }

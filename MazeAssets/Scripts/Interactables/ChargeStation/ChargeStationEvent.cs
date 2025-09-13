@@ -1,33 +1,40 @@
 using UnityEngine;
 using UnityEngine.Events;
+//using static ChargeStationStateEnum;
 
 [CreateAssetMenu(fileName = "ChargeStationEventHandler", menuName = "Audio Maze/Charge Station Event Handler")]
 internal class ChargeStationEvent : ScriptableObject
 {
     [SerializeField] ChargeManagment chargeManagment;
-    private ChargeStationState _chargeStatus;
-    internal enum ChargeStationState
-    {
-        Charging,
-        FullyCharged,
-        Empty,
-        Depleted // When Volt's charge reaches zero
-    }
+    private ChargeStationStateEnum _chargeStatus;
+    private VoltChargeStateEnum _VoltChargeChange;
 
-    [System.NonSerialized]
-    internal UnityAction<ChargeStationState> OnStatusChanged;
 
-    internal ChargeStationState ChargeStatus
+    //[System.NonSerialized]
+    //internal UnityAction<ChargeStationStateEnum> OnStatusChanged;
+    internal UnityAction<ChargeStationStateEnum> OnChargeStationStatusChanged;
+    internal UnityAction<VoltChargeStateEnum> OnVoltChargeStatus;
+
+    internal ChargeStationStateEnum ChargeStatus
     {
         get => _chargeStatus;
         set
         {
             if (_chargeStatus == value) return;
             _chargeStatus = value;
-            OnStatusChanged?.Invoke(_chargeStatus);
+            OnChargeStationStatusChanged?.Invoke(_chargeStatus);
         }
     }
-    internal ChargeStationState SelectState(string stationId)
+    internal VoltChargeStateEnum VoltChargeStatus
+    {
+        get => _VoltChargeChange; set
+        {
+            if (_VoltChargeChange == value) return;
+            _VoltChargeChange = value;
+            OnVoltChargeStatus?.Invoke(_VoltChargeChange);
+        }
+    }
+    internal ChargeStationStateEnum SelectState(string stationId)
     {
         var stationStatus = chargeManagment.GetStationStatus(stationId);
         if (stationStatus != null &&
@@ -37,12 +44,12 @@ internal class ChargeStationEvent : ScriptableObject
             if (stationStatus.CurrentChargeLevel > 0)
             {
                 //Debug.Log($"Charge State: Charging");
-               ChargeStatus = ChargeStationState.Charging;
+                ChargeStatus = ChargeStationStateEnum.Charging;
             }
             else
             {
                 //Debug.Log($"Charge State: Station Is Empty!");
-                ChargeStatus = ChargeStationState.Empty;
+                ChargeStatus = ChargeStationStateEnum.Empty;
             }
         }
         else if
@@ -52,12 +59,12 @@ internal class ChargeStationEvent : ScriptableObject
             )
         {
             //Debug.Log("ChargeStationEvent: Volt is fully charged.");
-            ChargeStatus = ChargeStationState.FullyCharged;
+            ChargeStatus = ChargeStationStateEnum.FullyCharged;
         }
         else if (chargeManagment.GetStationStatus(stationId).CurrentChargeLevel == 0)
         {
             //Debug.Log("ChargeStationEvent: Station is empty.");
-            ChargeStatus = ChargeStationState.Depleted;
+            ChargeStatus = ChargeStationStateEnum.Depleted;
         }
         else
         {

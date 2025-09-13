@@ -11,13 +11,15 @@ public class ChargeManagmentReset : MonoBehaviour
     {
         chargeManagment.ChargeStationStatus.Clear();
 
+        chargeManagment.ActiveChargeStation = null;
+
         chargeManagment.ChargeStationProperties.Capacity = 100f;
-        chargeManagment.ChargeStationProperties.Rate = 20f;
+        chargeManagment.ChargeStationProperties.Rate = 5f;
         chargeManagment.ChargeStationProperties.RechargeDelay = 5f;
-        chargeManagment.ChargeStationProperties.RechargeRate = 10f;
+        chargeManagment.ChargeStationProperties.RechargeRate = 2f;
 
         chargeManagment.ChargeVoltStatus.MaxVoltCharge = 100f;
-        chargeManagment.ChargeVoltStatus.VoltChargeLevel = 0;
+        chargeManagment.ChargeVoltStatus.VoltChargeLevel = 100f;
 
         chargeManagment.BatteryProperties.Capacity = 20f;
     }

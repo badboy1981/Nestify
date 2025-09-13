@@ -6,7 +6,7 @@ namespace Collectable
     internal class Battery : Collectable
     {
         [SerializeField] SaveLevelDataSObject PlayerData;
-        [SerializeField] ChargeManagment ChargeManagment;
+        [SerializeField] ChargeManagment chargeManagment;
         //[SerializeField] BatteryDiagram _BatteryDiagram;
         //[SerializeField] float IncreaseValue = 20f;
 

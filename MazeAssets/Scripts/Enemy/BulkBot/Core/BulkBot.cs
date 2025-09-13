@@ -23,14 +23,4 @@ internal class BulkBot : Enemy
         //Debug.Log($"Self Name: {name} || Input Name: {other.tag}");
         DecreaseStealCharge(EnemyList.BulkBot);
     }
-    private void Temp()
-    {
-        //float theftRate = chargeManagment.ChargeTheftRates.BulkBotTheftRate;
-        //chargeManagment.UpdateVoltCharge(-theftRate);
-        //Debug.Log($"BulkBot stole {theftRate} charge from Volt. Current VoltChargeLevel: {chargeManagment.ChargeVoltStatus.VoltChargeLevel}");
-        if (chargeManagment.ChargeVoltStatus.VoltChargeLevel <= 0)
-        {
-            Debug.Log("Volt's charge is depleted!");
-        }
-    }
 }

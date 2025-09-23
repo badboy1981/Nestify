@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ChargeStation2 : MonoBehaviour
@@ -10,88 +13,80 @@ public class ChargeStation2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+        //0
+        chargeManagment.VoltInSide = true;
+        //1
+        chargeStationStatus = new()
         {
-            //0
-            chargeManagment.VoltInSide = true;
-            //1
-            chargeStationStatus = new()
-            {
-                StationID = name,
-                CurrentChargeLevel = chargeManagment.ChargeStationProperties.Capacity,
-                State = ChargeStationStateEnum.VoltEnter
-            };
-            //2
-            if (chargeManagment.ActiveChargeStation.StationID != name)
-            {
-                chargeManagment.ActiveChargeStation = chargeStationStatus;
-            }
-            if (CheckChargeStationCharge())
-            {
-                ChangeState(ChargeStationStateEnum.HasCharge);
-            }
-            else
-            {
-                ChangeState(ChargeStationStateEnum.NoCharge);
-            }
+            StationID = name,
+            CurrentChargeLevel = chargeManagment.ChargeStationProperties.Capacity,
+            State = ChargeStationStateEnum.VoltEnter
+        };
+        //2
+        if (chargeManagment.ActiveChargeStation.StationID != name)
+        {
+            chargeManagment.ActiveChargeStation = chargeStationStatus;
+        }
+        if (chargeManagment.CheckChargeStationCharge())
+        {
+            ChangeState(ChargeStationStateEnum.HasCharge);
+        }
+        else
+        {
+            ChangeState(ChargeStationStateEnum.NoCharge);
         }
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+        if (chargeManagment.CheckChargeStationCharge())
         {
-            if (CheckChargeStationCharge())
+            if (chargeManagment.ChargeVoltStatus.VoltChargeLevel ==
+                chargeManagment.ChargeVoltStatus.MaxVoltCharge)
             {
-                if (chargeManagment.ChargeVoltStatus.VoltChargeLevel ==
-                    chargeManagment.ChargeVoltStatus.MaxVoltCharge)
-                {
-                    ChangeState(ChargeStationStateEnum.VoltFullCharged);
-                }
-                else
-                {
-                    ChangeState(ChargeStationStateEnum.HasCharge);
-                    float chargeAmount = chargeManagment.ChargeStationProperties.Rate * Time.deltaTime;
-                    chargeManagment.UpdateVoltCharge(chargeAmount);
-                    chargeManagment.ActiveChargeStation.CurrentChargeLevel = Mathf.Max(chargeManagment.ActiveChargeStation.CurrentChargeLevel - chargeAmount, 0);
-
-                    //chargeManagment.ActiveChargeStation.CurrentChargeLevel -= 0.25f;
-                    //chargeManagment.ChargeVoltStatus.VoltChargeLevel += 0.25f;
-                }
+                ChangeState(ChargeStationStateEnum.VoltFullCharged);
             }
             else
             {
-                ChangeState(ChargeStationStateEnum.NoCharge);
+                ChangeState(ChargeStationStateEnum.HasCharge);
+                chargeManagment.UpdateVoltCharge();
+                chargeManagment.DeChargeStation();
             }
-            Debug.Log($"{other.name}: Stay Charge Station! {State()}");
+        }
+        else
+        {
+            ChangeState(ChargeStationStateEnum.NoCharge);
         }
     }
+    private bool StayConditions(Collider other)
+    {
+        var conditions = new List<Func<bool>>
+        {
+            () => other.CompareTag("Player"),
+            () => chargeManagment.CheckChargeStationCharge(),
+        };
+        return conditions.All(condition => condition());
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             chargeManagment.VoltInSide = false;
-            ChangeState(ChargeStationStateEnum.VoltExit);            
-            //Debug.Log($"{other.name}: Exit Charge Station! {State()}");
+            ChangeState(ChargeStationStateEnum.VoltExit);
             if (chargingCoroutine != null)
             {
                 StopCoroutine(chargingCoroutine);
             }
-            chargingCoroutine = StartCoroutine(RechargeBattery());
+            chargingCoroutine = StartCoroutine(chargeManagment.RechargeStation());
+            chargingCoroutine = null;
         }
     }
     private void ChangeState(ChargeStationStateEnum State)
     {
         chargeManagment.ActiveChargeStation.State = State;
         chargeStationEvent.ChargeStatus = State;
-    }
-    private ChargeStationStateEnum State()
-    {
-        return new ChargeStationStateEnum();
-    }
-    private bool CheckChargeStationCharge()
-    {
-        if (chargeManagment.ActiveChargeStation.CurrentChargeLevel > 0) return true;
-        return false;
     }
     private IEnumerator DischargeBattery()
     {
@@ -111,7 +106,8 @@ public class ChargeStation2 : MonoBehaviour
         {
             chargeStation.CurrentChargeLevel = Mathf.Min(
                 chargeStation.CurrentChargeLevel +
-                chargeManagment.ChargeStationProperties.Rate, chargeManagment.ChargeStationProperties.Capacity);
+                chargeManagment.ChargeStationProperties.Rate,
+                chargeManagment.ChargeStationProperties.Capacity);
 
             yield return new WaitForSeconds(chargeManagment.ChargeStationProperties.RechargeRate);
         }

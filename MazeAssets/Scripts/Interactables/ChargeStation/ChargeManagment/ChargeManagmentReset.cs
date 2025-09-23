@@ -14,9 +14,9 @@ public class ChargeManagmentReset : MonoBehaviour
         chargeManagment.ActiveChargeStation = null;
 
         chargeManagment.ChargeStationProperties.Capacity = 100f;
-        chargeManagment.ChargeStationProperties.Rate = 5f;
+        chargeManagment.ChargeStationProperties.Rate = 20f;
         chargeManagment.ChargeStationProperties.RechargeDelay = 5f;
-        chargeManagment.ChargeStationProperties.RechargeRate = 2f;
+        chargeManagment.ChargeStationProperties.RechargeRate = 1f;
 
         chargeManagment.ChargeVoltStatus.MaxVoltCharge = 100f;
         chargeManagment.ChargeVoltStatus.VoltChargeLevel = 100f;

@@ -18,7 +18,7 @@ public class G2Listener : MonoBehaviour
 
     void Respond()
     {
-        Debug.Log($"G2 = {data._value}");
+        Debug.Log($"G2 = {data._value}");        
     }
     void OnTrue()
     {

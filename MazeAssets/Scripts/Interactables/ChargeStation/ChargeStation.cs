@@ -117,7 +117,7 @@ internal class ChargeStation : MonoBehaviour//Interactive
                 chargeManagment.ChargeVoltStatus.MaxVoltCharge)
             {
                 float chargeAmount = chargeManagment.ChargeStationProperties.Rate * Time.deltaTime;
-                chargeManagment.UpdateVoltCharge(chargeAmount);
+                chargeManagment.UpdateVoltCharge();
                 stationStatus.CurrentChargeLevel = Mathf.Max(stationStatus.CurrentChargeLevel - chargeAmount, 0);
 
                 if (chargeManagment.ChargeVoltStatus.VoltChargeLevel >=
@@ -132,66 +132,17 @@ internal class ChargeStation : MonoBehaviour//Interactive
             }
         }
     }
-
-    private void ChargeState()
-    {
-        if (chargeManagment.ChargeStationStatus.Find(ChargeStationStatus => ChargeStationStatus.StationID == name).CurrentChargeLevel <= 0)
-        {
-            //chargeStationEvent = GetComponent<ChargeStationEvent>();
-            chargeStationEvent.ChargeStatus = ChargeStationStateEnum.Empty;
-            //Debug.Log("ChargeStation: Station is empty");
-            //StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
-            if (chargingCoroutine != null)
-            {
-                StopCoroutine(chargingCoroutine);
-                chargingCoroutine = null;
-            }
-        }
-        //else if (PlayerData.ChargeStatus >= PlayerData.ChargeCapacityMax)
-        else if (chargeManagment.ChargeVoltStatus.VoltChargeLevel >= chargeManagment.ChargeVoltStatus.MaxVoltCharge)
-        {
-            //chargeStationEvent = GetComponent<ChargeStationEvent>();
-            chargeStationEvent.ChargeStatus = ChargeStationStateEnum.FullyCharged;
-            //Debug.Log("ChargeStation: Volt is fully charged");
-            //StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
-            if (chargingCoroutine != null)
-            {
-                StopCoroutine(chargingCoroutine);
-                chargingCoroutine = null;
-            }
-        }
-        else
-        {
-            //chargeStationEvent = GetComponent<ChargeStationEvent>();
-            chargeStationEvent.ChargeStatus = ChargeStationStateEnum.Charging;
-            //Debug.Log("ChargeStation: Volt is charging");
-            //PlaySoundByList(PrefabAudioLibrary.SoundCategoryLists);
-            //PlaySound("Charge");
-        }
-    }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Volt Exit!");
-        if (other.CompareTag("Player"))// && isCharging)
+        if (other.CompareTag("Player")) return;
+        chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltExit;
+
+        if (chargingCoroutine != null)
         {
-            chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltExit;
-            Debug.Log($"Player Exit! {chargeStationEvent.ChargeStatus}");
-            //Debug.Log("ChargeStation: Volt exited, stopping charge sound");
-            //این تمام صداهای شارژ رو قطع میکنه ولی ما باید فقط صدای شارژ رو قطع کنیم.
-            //دوباره چکش کن ولی احتمالا درسته
-            //StopSoundByList(PrefabAudioLibrary.SoundCategoryLists);
-
-            if (chargingCoroutine != null)
-            {
-                StopCoroutine(chargingCoroutine);
-            }
-            chargingCoroutine = StartCoroutine(RechargeBattery());
-
-
-            chargeStationEvent.ChargeStatus = ChargeStationStateEnum.Empty;
-            //isRecharging = true;
-            //rechargeTimer = 0f;           
+            StopCoroutine(chargingCoroutine);
         }
+        chargingCoroutine = StartCoroutine(RechargeBattery());
+        chargeStationEvent.ChargeStatus = ChargeStationStateEnum.Empty;
     }
 
     private IEnumerator DischargeBattery()

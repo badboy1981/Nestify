@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +7,8 @@ public class ChargeManagment : ScriptableObject
 {
     //[Header("ChargeStation Event Listener")]
     //[SerializeField] ChargeStationEventListener Listener;
+    //[Header("Charge Settings")]
+    //public ChargeProperty ChargeSettings;
     [Header("Charge Station")]
     public List<ChargeStationStatus> ChargeStationStatus;
     public ChargeStationStatus ActiveChargeStation;
@@ -52,7 +53,7 @@ public class ChargeManagment : ScriptableObject
     }
     private float RateAmount()
     {
-        return ChargeStationProperties.Rate * Time.deltaTime;
+        return ChargeStationProperties.ChargeRate * Time.deltaTime;
     }
     public bool CheckChargeStationCharge()
     {

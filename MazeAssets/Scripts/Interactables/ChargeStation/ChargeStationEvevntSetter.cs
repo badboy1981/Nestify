@@ -39,7 +39,7 @@ public class ChargeStationEventSetter : MonoBehaviour
             var stationStatus = chargeManagment.GetStationStatus(stationId);
             if (stationStatus != null && stationStatus.CurrentChargeLevel > 0 && chargeManagment.ChargeVoltStatus.VoltChargeLevel < chargeManagment.ChargeVoltStatus.MaxVoltCharge)
             {
-                float chargeAmount = chargeManagment.ChargeStationProperties.Rate * Time.deltaTime;
+                float chargeAmount = chargeManagment.ChargeStationProperties.ChargeRate * Time.deltaTime;
                 chargeManagment.UpdateVoltCharge();
                 stationStatus.CurrentChargeLevel = Mathf.Max(stationStatus.CurrentChargeLevel - chargeAmount, 0);
 

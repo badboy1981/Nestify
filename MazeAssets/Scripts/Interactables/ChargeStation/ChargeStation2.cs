@@ -8,7 +8,7 @@ public class ChargeStation2 : MonoBehaviour
 {
     [SerializeField] ChargeManagment chargeManagment;
     [SerializeField] ChargeStationEvent chargeStationEvent;
-    [SerializeField] ChargeStationStatus chargeStationStatus;
+
     private Coroutine chargingCoroutine;
 
     private void OnTriggerEnter(Collider other)
@@ -17,7 +17,7 @@ public class ChargeStation2 : MonoBehaviour
         //0
         chargeManagment.VoltInSide = true;
         //1
-        chargeStationStatus = new()
+        ChargeStationStatus chargeStationStatus = new()
         {
             StationID = name,
             CurrentChargeLevel = chargeManagment.ChargeStationProperties.Capacity,
@@ -31,16 +31,34 @@ public class ChargeStation2 : MonoBehaviour
         if (chargeManagment.CheckChargeStationCharge())
         {
             ChangeState(ChargeStationStateEnum.HasCharge);
+            InitChargrSetting();
         }
         else
         {
             ChangeState(ChargeStationStateEnum.NoCharge);
         }
     }
+    private bool InitCheck()
+    {
+        var conditions = new List<Func<bool>>
+        {
+         //() => chargeManagment.ChargeSettings.timer < chargeManagment.ChargeSettings.duration,
+         //() => chargeManagment.ChargeSettings.timer > 0,
+        };
+        return conditions.All(condition => condition());
+    }
+    private void InitChargrSetting()
+    {
+        if (!InitCheck())
+        {
+            //chargeManagment.ChargeSettings.timer = chargeManagment.ChargeSettings.duration;
+            //chargeManagment.ChargeSettings.currentValue = 45f;// chargeManagment.ActiveChargeStation.CurrentChargeLevel;
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-        if (chargeManagment.CheckChargeStationCharge())
+        if (!chargeManagment.VoltInSide) return;
+        if (chargeManagment.ActiveChargeStation.State == ChargeStationStateEnum.HasCharge)
         {
             if (chargeManagment.ChargeVoltStatus.VoltChargeLevel ==
                 chargeManagment.ChargeVoltStatus.MaxVoltCharge)
@@ -50,8 +68,10 @@ public class ChargeStation2 : MonoBehaviour
             else
             {
                 ChangeState(ChargeStationStateEnum.HasCharge);
-                chargeManagment.UpdateVoltCharge();
-                chargeManagment.DeChargeStation();
+                //chargeManagment.UpdateVoltCharge();
+                //chargeManagment.DeChargeStation();
+                //chargeManagment.ChargeSettings.CalCurrentValue();
+                //chargeManagment.ActiveChargeStation.CurrentChargeLevel = chargeManagment.ChargeSettings.currentValue;
             }
         }
         else
@@ -59,41 +79,50 @@ public class ChargeStation2 : MonoBehaviour
             ChangeState(ChargeStationStateEnum.NoCharge);
         }
     }
-    private bool StayConditions(Collider other)
-    {
-        var conditions = new List<Func<bool>>
-        {
-            () => other.CompareTag("Player"),
-            () => chargeManagment.CheckChargeStationCharge(),
-        };
-        return conditions.All(condition => condition());
-    }
-
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!chargeManagment.VoltInSide) return;
+        chargeManagment.VoltInSide = false;
+        ChangeState(ChargeStationStateEnum.VoltExit);        
+        if (chargingCoroutine != null)
         {
-            chargeManagment.VoltInSide = false;
-            ChangeState(ChargeStationStateEnum.VoltExit);
-            if (chargingCoroutine != null)
-            {
-                StopCoroutine(chargingCoroutine);
-            }
-            chargingCoroutine = StartCoroutine(chargeManagment.RechargeStation());
-            chargingCoroutine = null;
+            StopCoroutine(chargingCoroutine);
         }
+        chargingCoroutine = StartCoroutine(chargeManagment.RechargeStation());
+        chargingCoroutine = null;
+
     }
     private void ChangeState(ChargeStationStateEnum State)
     {
         chargeManagment.ActiveChargeStation.State = State;
         chargeStationEvent.ChargeStatus = State;
     }
+    private bool StayConditions()
+    {
+        var conditions = new List<Func<bool>>
+        {
+            //() => chargeManagment.CheckChargeStationCharge(),
+            () => chargeManagment.ActiveChargeStation.State == ChargeStationStateEnum.HasCharge,
+        };
+        return conditions.All(condition => condition());
+    }
+
+    //private void ChargeProce()
+    //{
+    //    if (chargeManagment.ChargeSettings.timer < chargeManagment.ChargeSettings.duration)
+    //    {
+    //        chargeManagment.ChargeSettings.timer += Time.deltaTime;
+    //        float t = Mathf.Clamp01(chargeManagment.ChargeSettings.timer / chargeManagment.ChargeSettings.duration);
+    //        chargeManagment.ChargeSettings.currentValue = Mathf.Lerp(chargeManagment.ChargeSettings.maxValue, 0f, t);
+    //        //Debug.Log($"Current Value: {chargeManagment.ChargeSettings.currentValue}");
+    //    }
+    //}
     private IEnumerator DischargeBattery()
     {
         var currentChargeLevel = chargeManagment.ActiveChargeStation?.CurrentChargeLevel ?? 0f;
         while (currentChargeLevel > 0f)
         {
-            currentChargeLevel -= chargeManagment.ChargeStationProperties.Rate;
+            currentChargeLevel -= chargeManagment.ChargeStationProperties.ChargeRate;
             yield return new WaitForSeconds(chargeManagment.ChargeStationProperties.RechargeRate);
         }
         chargeManagment.ActiveChargeStation.CurrentChargeLevel = currentChargeLevel;
@@ -106,7 +135,7 @@ public class ChargeStation2 : MonoBehaviour
         {
             chargeStation.CurrentChargeLevel = Mathf.Min(
                 chargeStation.CurrentChargeLevel +
-                chargeManagment.ChargeStationProperties.Rate,
+                chargeManagment.ChargeStationProperties.ChargeRate,
                 chargeManagment.ChargeStationProperties.Capacity);
 
             yield return new WaitForSeconds(chargeManagment.ChargeStationProperties.RechargeRate);

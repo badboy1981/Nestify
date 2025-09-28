@@ -116,7 +116,7 @@ internal class ChargeStation : MonoBehaviour//Interactive
                 chargeManagment.ChargeVoltStatus.VoltChargeLevel <
                 chargeManagment.ChargeVoltStatus.MaxVoltCharge)
             {
-                float chargeAmount = chargeManagment.ChargeStationProperties.Rate * Time.deltaTime;
+                float chargeAmount = chargeManagment.ChargeStationProperties.ChargeRate * Time.deltaTime;
                 chargeManagment.UpdateVoltCharge();
                 stationStatus.CurrentChargeLevel = Mathf.Max(stationStatus.CurrentChargeLevel - chargeAmount, 0);
 
@@ -150,7 +150,7 @@ internal class ChargeStation : MonoBehaviour//Interactive
         var currentChargeLevel = chargeManagment.ChargeStationStatus.FirstOrDefault(c => c.StationID == name)?.CurrentChargeLevel ?? 0f;
         while (currentChargeLevel > 0f)
         {
-            currentChargeLevel -= chargeManagment.ChargeStationProperties.Rate;
+            currentChargeLevel -= chargeManagment.ChargeStationProperties.ChargeRate;
             yield return new WaitForSeconds(chargeManagment.ChargeStationProperties.RechargeRate);
         }
         chargeManagment.ChargeStationStatus.FirstOrDefault(c => c.StationID == name).CurrentChargeLevel = currentChargeLevel;
@@ -164,7 +164,7 @@ internal class ChargeStation : MonoBehaviour//Interactive
         {
             chargeStation.CurrentChargeLevel = Mathf.Min(
                 chargeStation.CurrentChargeLevel +
-                chargeManagment.ChargeStationProperties.Rate, chargeManagment.ChargeStationProperties.Capacity);
+                chargeManagment.ChargeStationProperties.ChargeRate, chargeManagment.ChargeStationProperties.Capacity);
 
             yield return new WaitForSeconds(chargeManagment.ChargeStationProperties.RechargeRate);
         }

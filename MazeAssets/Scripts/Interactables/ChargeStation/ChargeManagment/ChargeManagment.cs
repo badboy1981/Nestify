@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ChargeManagment", menuName = "Charge Managment/Charge Managment")]
@@ -8,9 +9,9 @@ public class ChargeManagment : ScriptableObject
     //[Header("ChargeStation Event Listener")]
     //[SerializeField] ChargeStationEventListener Listener;
     //[Header("Charge Settings")]
-    //public ChargeProperty ChargeSettings;
+    //public float time;
     [Header("Charge Station")]
-    public List<ChargeStationStatus> ChargeStationStatus;
+    public List<ChargeStationStatus> ChargeStationStatusList;
     public ChargeStationStatus ActiveChargeStation;
     public ChargeStationProperty ChargeStationProperties;
     [Header("Volt Charge")]
@@ -21,7 +22,7 @@ public class ChargeManagment : ScriptableObject
 
     public ChargeStationStatus GetStationStatus(string id)
     {
-        return ChargeStationStatus.Find(s => s.StationID == id);
+        return ChargeStationStatusList.Find(s => s.StationID == id);
     }
     public void UpdateVoltCharge()
     {
@@ -31,6 +32,14 @@ public class ChargeManagment : ScriptableObject
               0,
               ChargeVoltStatus.MaxVoltCharge
             );
+    }
+    public void InitChargeStationProperty()
+    {
+        int time = 5;
+        ChargeStationProperties.timer.duration = time;
+        ChargeStationProperties.timer.timer = time;
+        ChargeStationProperties.timer.minValue = 0;
+
     }
     public void DeCahrgeVolt()
     {

@@ -71,9 +71,9 @@ internal class ChargeStation : MonoBehaviour//Interactive
                 StationID = name,
                 CurrentChargeLevel = chargeManagment.ChargeStationProperties.Capacity
             };
-            if (!chargeManagment.ChargeStationStatus.Any(s => s.StationID == name))
+            if (!chargeManagment.ChargeStationStatusList.Any(s => s.StationID == name))
             {
-                chargeManagment.ChargeStationStatus.Add(CsStatus);
+                chargeManagment.ChargeStationStatusList.Add(CsStatus);
             }
             if (chargeManagment.ActiveChargeStation.StationID != name)
             {
@@ -147,19 +147,19 @@ internal class ChargeStation : MonoBehaviour//Interactive
 
     private IEnumerator DischargeBattery()
     {
-        var currentChargeLevel = chargeManagment.ChargeStationStatus.FirstOrDefault(c => c.StationID == name)?.CurrentChargeLevel ?? 0f;
+        var currentChargeLevel = chargeManagment.ChargeStationStatusList.FirstOrDefault(c => c.StationID == name)?.CurrentChargeLevel ?? 0f;
         while (currentChargeLevel > 0f)
         {
             currentChargeLevel -= chargeManagment.ChargeStationProperties.ChargeRate;
             yield return new WaitForSeconds(chargeManagment.ChargeStationProperties.RechargeRate);
         }
-        chargeManagment.ChargeStationStatus.FirstOrDefault(c => c.StationID == name).CurrentChargeLevel = currentChargeLevel;
+        chargeManagment.ChargeStationStatusList.FirstOrDefault(c => c.StationID == name).CurrentChargeLevel = currentChargeLevel;
 
         chargingCoroutine = null;
     }
     private IEnumerator RechargeBattery()
     {
-        var chargeStation = chargeManagment.ChargeStationStatus.FirstOrDefault(c => c.StationID == name);
+        var chargeStation = chargeManagment.ChargeStationStatusList.FirstOrDefault(c => c.StationID == name);
         while (chargeStation.CurrentChargeLevel < chargeManagment.ChargeStationProperties.Capacity)
         {
             chargeStation.CurrentChargeLevel = Mathf.Min(

@@ -9,7 +9,7 @@ public class ChargeManagmentReset : MonoBehaviour
     }
     private void ResetManagment()
     {
-        chargeManagment.ChargeStationStatus.Clear();
+        chargeManagment.ChargeStationStatusList.Clear();
 
         //chargeManagment.ChargeSettings.duration = 20f;
         //chargeManagment.ChargeSettings.timer = 0;

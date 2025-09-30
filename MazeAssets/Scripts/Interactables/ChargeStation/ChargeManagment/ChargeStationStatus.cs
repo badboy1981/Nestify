@@ -5,5 +5,6 @@ public class ChargeStationStatus
 {
     public string StationID;
     public float CurrentChargeLevel; // Current charge level for the station
+    public float LastExitTime;
     public ChargeStationStateEnum State;
 }

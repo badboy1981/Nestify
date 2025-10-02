@@ -27,7 +27,8 @@ internal class ChargeStationEvent : ScriptableObject
     }
     internal VoltChargeStateEnum VoltChargeStatus
     {
-        get => _VoltChargeChange; set
+        get => _VoltChargeChange;
+        set
         {
             if (_VoltChargeChange == value) return;
             _VoltChargeChange = value;

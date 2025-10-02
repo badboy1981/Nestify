@@ -26,6 +26,7 @@ public class ChargeManagmentReset : MonoBehaviour
 
         chargeManagment.ChargeVoltStatus.MaxVoltCharge = 100f;
         chargeManagment.ChargeVoltStatus.VoltChargeLevel = 100f;
+        chargeManagment.ChargeVoltStatus.DeChargeRate = 1f;
         chargeManagment.VoltInSide = false;
 
         chargeManagment.BatteryProperties.Capacity = 20f;

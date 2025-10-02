@@ -17,6 +17,8 @@ public class ChargeStation2 : MonoBehaviour
         //0
         chargeManagment.VoltInSide = true;
 
+        chargeManagment.ChargeVoltStatus.ChargeState = VoltChargeStateEnum.StopDrain;
+
         AddActiveStation();
         if (TimeSinceExit())
         {
@@ -80,7 +82,10 @@ public class ChargeStation2 : MonoBehaviour
             else
             {
                 ChangeState(ChargeStationStateEnum.HasCharge);
+                chargeManagment.ChargeStationProperties.timer.currentValue=
+                    chargeManagment.ChargeStationProperties.timer.CalCurrentValue();
                 ChargeProce();
+
             }
         }
         else
@@ -91,6 +96,8 @@ public class ChargeStation2 : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!chargeManagment.VoltInSide) return;
+
+        chargeManagment.ChargeVoltStatus.ChargeState = VoltChargeStateEnum.Charging;
 
         ChangeExitTime();
 
@@ -117,7 +124,7 @@ public class ChargeStation2 : MonoBehaviour
     }
     private void ChangeState(ChargeStationStateEnum State)
     {
-        chargeManagment.ActiveChargeStation.State = State;
+        //chargeManagment.ActiveChargeStation.State = State;
         chargeStationEvent.ChargeStatus = State;
     }
 

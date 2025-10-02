@@ -15,12 +15,12 @@ namespace MazeCore
 
         public float CalCurrentValue()
         {
-            if (timer > 0)
+            if (timer > minValue)
             {
                 timer -= Time.deltaTime;
                 timer = Mathf.Clamp(timer, minValue, duration);
                 t = Mathf.Clamp01(timer / duration);
-                currentValue = Mathf.Lerp(maxValue, minValue, t);                
+                currentValue = Mathf.Lerp(maxValue, minValue, t);
             }
             else
             {
@@ -28,6 +28,7 @@ namespace MazeCore
             }
             return currentValue;
         }
+
         public void SelectMetod()
         {
             if (maxValue > minValue)

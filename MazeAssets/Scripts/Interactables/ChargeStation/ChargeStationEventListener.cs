@@ -7,22 +7,11 @@ internal class ChargeStationEventListener : MonoBehaviour
     [SerializeField] ChargeManagment chargeManagment;
     [SerializeField] AudioLibrary ChargeStationAudioLibrary;
     [SerializeField] SoundData soundDataEvent;
-    //[SerializeField] ChargeStation chargeStation;
-    //private void Awake()
-    //{
-    //    chargeStationEvent ??= chargeStationEvent = new();
-    //}
-    //internal UnityAction<ChargeStationStateEnum> OnStatusChangedEvent;
+
     private void OnEnable()
     {
-        //if (chargeStationEvent == null)
-        //{
-        //    //Debug.LogError("ChargeStationEvent is not assigned in the inspector.");
-        //    return;
-        //}
         chargeStationEvent.OnChargeStationStatusChanged += OnChargeStationStatusChanged;
         chargeStationEvent.OnVoltChargeStatus += OnVoltChargeStatus;
-        //OnStatusChangedEvent += OnStatusChanged;
     }
 
     private void OnDisable()
@@ -32,11 +21,9 @@ internal class ChargeStationEventListener : MonoBehaviour
     }
     private void OnChargeStationStatusChanged(ChargeStationStateEnum status)
     {
+        chargeManagment.ActiveChargeStation.State = status;
         switch (status)
         {
-            //case ChargeStationStateEnum.Charging:
-            //    PlaySound("Charge");
-            //    break;
             case ChargeStationStateEnum.HasCharge:
                 PlaySound("Charge");
                 break;
@@ -78,5 +65,20 @@ internal class ChargeStationEventListener : MonoBehaviour
     private void OnVoltChargeStatus(VoltChargeStateEnum status)
     {
         chargeManagment.ChargeVoltStatus.ChargeState = status;
+        switch (status)
+        {
+            case VoltChargeStateEnum.Empty:                
+                //PlaySound("Empty");
+                break;
+            case VoltChargeStateEnum.Partial:
+                //PlaySound("Charge");
+                break;
+            case VoltChargeStateEnum.Charging:
+                //PlaySound("Charge");
+                break;
+            case VoltChargeStateEnum.FullyCharged:
+                //PlaySound("ChargeFull");
+                break;
+        }
     }
 }

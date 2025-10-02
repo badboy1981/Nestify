@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ChargeManagment", menuName = "Charge Managment/Charge Managment")]
@@ -19,6 +18,7 @@ public class ChargeManagment : ScriptableObject
     public bool VoltInSide;
     [Header("Battery")]
     public BatteryProperty BatteryProperties;
+
 
     public ChargeStationStatus GetStationStatus(string id)
     {
@@ -41,12 +41,9 @@ public class ChargeManagment : ScriptableObject
         ChargeStationProperties.timer.minValue = 0;
 
     }
-    public void DeCahrgeVolt()
+    public void DrainVoltCharge()
     {
-        //ChargeVoltStatus.VoltChargeLevel = Mathf.Clamp
-        //    (
-
-        //    );
+        //chargingCoroutine=
     }
     public void DeChargeStation()
     {

@@ -1,9 +1,9 @@
-using UnityEngine;
 
 public enum VoltChargeStateEnum
 {
     FullyCharged,
-    Charging,
+    Charging,    
     Partial,
-    Empty
+    Empty,
+    StopDrain
 }

@@ -7,7 +7,6 @@ using UnityEngine;
 public class ChargeStation2 : MonoBehaviour
 {
     [SerializeField] ChargeManagment chargeManagment;
-    [SerializeField] ChargeStationEvent chargeStationEvent;
 
     private Coroutine chargingCoroutine;
 
@@ -42,7 +41,7 @@ public class ChargeStation2 : MonoBehaviour
 
         if (existingStation == null)
         {
-            chargeManagment.ActiveChargeStation = stationStatus();
+            chargeManagment.ActiveChargeStation = StationStatus();
             chargeManagment.ChargeStationStatusList.Add(chargeManagment.ActiveChargeStation);
             chargeManagment.InitChargeStationProperty();
         }
@@ -51,7 +50,7 @@ public class ChargeStation2 : MonoBehaviour
             chargeManagment.ActiveChargeStation = existingStation;
         }
     }
-    private ChargeStationStatus stationStatus()
+    private ChargeStationStatus StationStatus()
     {
         return new()
         {
@@ -64,8 +63,8 @@ public class ChargeStation2 : MonoBehaviour
     {
         var conditions = new List<Func<bool>>
         {
-         //() => chargeManagment.ChargeStationProperties.timer < chargeManagment.ChargeStationProperties.duration,
-         //() => chargeManagment.ChargeStationProperties.timer > 0,
+            //() => chargeManagment.ChargeStationProperties.timer < chargeManagment.ChargeStationProperties.duration,
+            //() => chargeManagment.ChargeStationProperties.timer > 0,
         };
         return conditions.All(condition => condition());
     }
@@ -82,7 +81,7 @@ public class ChargeStation2 : MonoBehaviour
             else
             {
                 ChangeState(ChargeStationStateEnum.HasCharge);
-                chargeManagment.ChargeStationProperties.timer.currentValue=
+                chargeManagment.ChargeStationProperties.timer.currentValue =
                     chargeManagment.ChargeStationProperties.timer.CalCurrentValue();
                 ChargeProce();
 
@@ -99,7 +98,7 @@ public class ChargeStation2 : MonoBehaviour
 
         chargeManagment.ChargeVoltStatus.ChargeState = VoltChargeStateEnum.Charging;
 
-        ChangeExitTime();
+        UpdateExitTime();
 
         chargeManagment.VoltInSide = false;
         ChangeState(ChargeStationStateEnum.VoltExit);
@@ -110,9 +109,9 @@ public class ChargeStation2 : MonoBehaviour
         chargingCoroutine = StartCoroutine(chargeManagment.RechargeStation());
         chargingCoroutine = null;
     }
-    private void ChangeExitTime()
+    private void UpdateExitTime()
     {
-        if(TimeSinceExit())
+        if (TimeSinceExit())
         {
             chargeManagment.ActiveChargeStation.LastExitTime = Time.time;
         }
@@ -125,7 +124,8 @@ public class ChargeStation2 : MonoBehaviour
     private void ChangeState(ChargeStationStateEnum State)
     {
         //chargeManagment.ActiveChargeStation.State = State;
-        chargeStationEvent.ChargeStatus = State;
+        //chargeStationEvent.ChargeStatus = State;
+        chargeManagment.chargeStationEvent.ChargeStatus = State;
     }
 
 

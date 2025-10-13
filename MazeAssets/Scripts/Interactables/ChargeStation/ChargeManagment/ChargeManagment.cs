@@ -5,10 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ChargeManagment", menuName = "Charge Managment/Charge Managment")]
 public class ChargeManagment : ScriptableObject
 {
+    private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
+
     //[Header("ChargeStation Event Listener")]
     //[SerializeField] ChargeStationEventListener Listener;
     //[Header("Charge Settings")]
     //public float time;
+    [Header("Charge Event")]
+    public ChargeStationEvent chargeStationEvent;
     [Header("Charge Station")]
     public List<ChargeStationStatus> ChargeStationStatusList;
     public ChargeStationStatus ActiveChargeStation;
@@ -78,7 +82,7 @@ public class ChargeManagment : ScriptableObject
                     ChargeStationProperties.RechargeRate,
                     0,
                     ChargeStationProperties.Capacity);
-            yield return new WaitForSeconds(1f);
+            yield return _waitForSeconds1;
         }
     }
 }

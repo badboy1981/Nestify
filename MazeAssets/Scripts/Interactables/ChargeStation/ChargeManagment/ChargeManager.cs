@@ -3,13 +3,16 @@ using UnityEngine;
 public class ChargeManager : MonoBehaviour
 {
     [SerializeField] ChargeManagment chargeManagment;
-    //[SerializeField] ChargeStationEvent chargeStationEvent;
-
     Coroutine drainRoutine;
+
     private void Start()
     {
-        chargeManagment.ChargeVoltStatus.ChargeState = VoltChargeStateEnum.FullyCharged;
+
         StartDrain();
+    }
+    private void Update()
+    {
+        chargeManagment.chargeStationEvent.VoltChargeStatus = chargeManagment.ChargeVoltStatus.ChargeState;
     }
     private void StartDrain()
     {

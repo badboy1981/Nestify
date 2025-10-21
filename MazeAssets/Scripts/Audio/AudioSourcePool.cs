@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class AudioSourcePool : MonoBehaviour
 {
-    [SerializeField] private int poolSize = 5;
-    private List<AudioSource> audioSources;
+    [SerializeField] private int poolSize = 8;
+    [SerializeField] private List<AudioSource> audioSources;
 
     private void Awake()
     {
@@ -15,6 +15,7 @@ public class AudioSourcePool : MonoBehaviour
             AudioSource source = gameObject.AddComponent<AudioSource>();
             audioSources.Add(source);
         }
+        Debug.Log($"Audio Source List Lenght: {audioSources.Count} && Audio Source List: {string.Join(',', audioSources)}");
     }
 
     public AudioSource GetFreeAudioSource()

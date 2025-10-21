@@ -7,7 +7,6 @@ public class ChargeManager : MonoBehaviour
 
     private void Start()
     {
-
         StartDrain();
     }
     private void Update()

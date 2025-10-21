@@ -1,12 +1,14 @@
+using System;
 using System.Collections.Generic;
 using Assets.MazeAssets.Audio.Shared.BaseClasses;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSourcePool))]
 public class AudioPlayer : MonoBehaviour
 {
-    private AudioSourcePool audioSourcePool;
-    private List<(string soundName, AudioSource source, GameObject sourceObject)> activeSounds;
-    private GameObject player; // „—Ã⁄ »Â Ê·  (Player)
+    [SerializeField] private AudioSourcePool audioSourcePool;
+    [SerializeField] private List<(string soundName, AudioSource source, GameObject sourceObject)> activeSounds;
+    [SerializeField] private GameObject player; // (Player)
 
     private void Awake()
     {
@@ -17,6 +19,11 @@ public class AudioPlayer : MonoBehaviour
         if (player == null)
         {
             Debug.LogError("AudioPlayer: Player with tag 'Player' not found");
+        }
+        if (activeSounds != null)
+        {
+            Debug.Log($"Active Sounds List Lenght: {activeSounds.Count} ||" +
+                $" Active Sound List: {String.Join(',', activeSounds)}");
         }
     }
 

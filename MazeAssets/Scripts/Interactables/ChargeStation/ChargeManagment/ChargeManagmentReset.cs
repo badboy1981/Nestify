@@ -11,11 +11,11 @@ public class ChargeManagmentReset : MonoBehaviour
     {
         chargeManagment.ChargeStationStatusList.Clear();
 
-        //chargeManagment.ChargeSettings.duration = 20f;
-        //chargeManagment.ChargeSettings.timer = 0;
-        //chargeManagment.ChargeSettings.currentValue = 100f;
-        //chargeManagment.ChargeSettings.maxValue = 100f;
-        //chargeManagment.ChargeSettings.minValue = 0f;
+        chargeManagment.ChargeStationProperties.timer.duration = 20f;
+        chargeManagment.ChargeStationProperties.timer.timer = 0;
+        chargeManagment.ChargeStationProperties.timer.currentValue = 100f;
+        chargeManagment.ChargeStationProperties.timer.maxValue = 100f;
+        chargeManagment.ChargeStationProperties.timer.minValue = 0f;
 
         chargeManagment.ActiveChargeStation = null;
 

@@ -14,7 +14,7 @@ public class ChargeVoltStatus
     {
         while (VoltChargeLevel > 0f)
         {
-            if(ChargeState == VoltChargeStateEnum.StopDrain)
+            if (ChargeState == VoltChargeStateEnum.StopDrain)
             {
                 yield return null;
                 continue;

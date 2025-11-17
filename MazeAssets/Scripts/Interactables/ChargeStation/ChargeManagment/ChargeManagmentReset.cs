@@ -11,11 +11,11 @@ public class ChargeManagmentReset : MonoBehaviour
     {
         chargeManagment.ChargeStationStatusList.Clear();
 
-        chargeManagment.ChargeStationProperties.timer.duration = 20f;
-        chargeManagment.ChargeStationProperties.timer.timer = 0;
-        chargeManagment.ChargeStationProperties.timer.currentValue = 100f;
-        chargeManagment.ChargeStationProperties.timer.maxValue = 100f;
-        chargeManagment.ChargeStationProperties.timer.minValue = 0f;
+        //chargeManagment.ChargeStationProperties.timer.duration = 20f;
+        //chargeManagment.ChargeStationProperties.timer.timer = 0;
+        //chargeManagment.ChargeStationProperties.timer.currentValue = 100f;
+        //chargeManagment.ChargeStationProperties.timer.maxValue = 100f;
+        //chargeManagment.ChargeStationProperties.timer.minValue = 0f;
 
         chargeManagment.ActiveChargeStation = null;
 
@@ -27,7 +27,8 @@ public class ChargeManagmentReset : MonoBehaviour
         chargeManagment.ChargeVoltStatus.MaxVoltCharge = 100f;
         chargeManagment.ChargeVoltStatus.VoltChargeLevel = 100f;
         chargeManagment.ChargeVoltStatus.DeChargeRate = 1f;
-        chargeManagment.ChargeVoltStatus.ChargeState = VoltChargeStateEnum.FullyCharged;
+        chargeManagment.ChargeVoltStatus.ChargeDelaySeconds = 1f;
+        chargeManagment.ChargeVoltStatus.VoltChargeState = VoltChargeStateEnum.FullyCharged;
         chargeManagment.VoltInSide = false;
 
         chargeManagment.BatteryProperties.Capacity = 20f;

@@ -11,5 +11,13 @@ public static class AppConstant
     public static string UnlockedLevel { get { return "UnlockedLevel"; } }
     public static string UnlockedLevelPathName { get { return BasePath + UnlockedLevel + JsonExtension; } }
 
-    public static Vector2 SafeArea = new(Screen.safeArea.width, Screen.safeArea.height);
+
+    //public static Vector2 SafeArea = new(Screen.safeArea.width, Screen.safeArea.height);
+    public static Vector2 SafeArea { get; private set; }
+
+    [RuntimeInitializeOnLoadMethod]
+    private static void InitializeSafeArea()
+    {
+        SafeArea = new Vector2(Screen.safeArea.width, Screen.safeArea.height);
+    }
 }

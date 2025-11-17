@@ -7,7 +7,7 @@ internal class ChargeStationEventListener : MonoBehaviour
     [SerializeField] ChargeManagment chargeManagment;
     [SerializeField] AudioLibrary ChargeStationAudioLibrary;
     [SerializeField] SoundData soundDataEvent;
-        
+
     private void OnEnable()
     {
         chargeManagment.chargeStationEvent.OnChargeStationStatusChanged += OnChargeStationStatusChanged;
@@ -21,7 +21,7 @@ internal class ChargeStationEventListener : MonoBehaviour
     }
     private void OnChargeStationStatusChanged(ChargeStationStateEnum status)
     {
-        chargeManagment.ActiveChargeStation.State = status;
+        chargeManagment.ActiveChargeStation.ChargeStationState = status;
         switch (status)
         {
             case ChargeStationStateEnum.HasCharge:
@@ -66,7 +66,7 @@ internal class ChargeStationEventListener : MonoBehaviour
     private void OnVoltChargeStatus(VoltChargeStateEnum status)
     {
         //Debug.Log($"Volt Charge State: {status}");
-        chargeManagment.ChargeVoltStatus.ChargeState = status;
+        chargeManagment.ChargeVoltStatus.VoltChargeState = status;
         switch (status)
         {
             case VoltChargeStateEnum.Empty:
@@ -89,8 +89,8 @@ internal class ChargeStationEventListener : MonoBehaviour
                 Debug.Log($"Volt Charge State: {status}");
                 //ChargeVoltStatus.DeChargeVoltRoutine();
                 break;
-            //default:
-            //    break;
+                //default:
+                //    break;
         }
     }
 }

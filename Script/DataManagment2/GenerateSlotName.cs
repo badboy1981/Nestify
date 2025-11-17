@@ -1,13 +1,23 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace SaveSystem.Test
 {
     public class GenerateSlotName
     {
-        private string[] SlotList = { "Slot_1", "Slot_2", "Slot_3", "Slot_4", "Slot_5", "Slot_6", "Slot_7", "Slot_8", "Slot_9", "Slot_10" };
+        private readonly string[] SlotList = 
+            {
+            "Slot_1", 
+            "Slot_2", 
+            "Slot_3", 
+            "Slot_4", 
+            "Slot_5", 
+            "Slot_6", 
+            "Slot_7", 
+            "Slot_8", 
+            "Slot_9",
+            "Slot_10" 
+        };
         public string SlotName()
         {
             return A_GenerateAlotName.SlotName;
@@ -22,7 +32,7 @@ namespace SaveSystem.Test
                 };
             }
         }
-        private Dictionary<string, bool> SlotLists = new Dictionary<string, bool>()
+        private readonly Dictionary<string, bool> SlotLists = new()
         {
             { "Slot_1",false},
             { "Slot_2",false},
@@ -39,7 +49,18 @@ namespace SaveSystem.Test
 
     public static class SlotLists
     {
-        public static string[] SlotList = { "Slot_1", "Slot_2", "Slot_3", "Slot_4", "Slot_5", "Slot_6", "Slot_7", "Slot_8", "Slot_9", "Slot_10" };
+        public readonly static string[] SlotList =
+            {
+            "Slot_1",
+            "Slot_2",
+            "Slot_3",
+            "Slot_4",
+            "Slot_5",
+            "Slot_6",
+            "Slot_7",
+            "Slot_8",
+            "Slot_9",
+            "Slot_10" };
     }
 
     [Serializable]

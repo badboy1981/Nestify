@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace MazeCore
 {
     [Serializable]
-    public class Timer
+    public class MazeTimer
     {
         public float duration; // total time to deplete from full to empty
         public float timer; // current time left
@@ -20,15 +21,18 @@ namespace MazeCore
                 timer -= Time.deltaTime;
                 timer = Mathf.Clamp(timer, minValue, duration);
                 t = Mathf.Clamp01(timer / duration);
-                currentValue = Mathf.Lerp(maxValue, minValue, t);
-            }
-            else
-            {
-                currentValue = minValue;
+                currentValue = Mathf.Lerp(minValue, maxValue, t);
             }
             return currentValue;
         }
-
+        public IEnumerator TimerCoroutine()
+        {
+            while (timer > minValue)
+            {
+                CalCurrentValue();
+                yield return null;
+            }
+        }
         public void SelectMetod()
         {
             if (maxValue > minValue)

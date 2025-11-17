@@ -68,7 +68,7 @@ namespace SaveSystem.Data2
 
     public static class PlayableSceneList
     {
-        private static string[] sceneList =
+        private readonly static string[] sceneList =
             {
             "B_Maze",
             "C_Maze",

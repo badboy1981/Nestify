@@ -16,7 +16,9 @@ public class ChargeStation2 : MonoBehaviour
         //0
         chargeManagment.VoltInSide = true;
 
-        VoltChargeStateChange(VoltChargeStateEnum.StopDrain);        
+        //VoltChargeStateChange(VoltChargeStateEnum.StopDrain);        
+        chargeManagment.UpdateVoltChargeState(VoltChargeStateEnum.StopDrain);
+        //chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.Charging);
 
         AddActiveStation();
         if (TimeSinceExit())
@@ -27,11 +29,13 @@ public class ChargeStation2 : MonoBehaviour
 
         if (chargeManagment.CheckChargeStationCharge())
         {
-            ChargeStationChangeState(ChargeStationStateEnum.HasCharge);
+            //ChargeStationChangeState(ChargeStationStateEnum.HasCharge);
+            chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.HasCharge);
         }
         else
         {
-            ChargeStationChangeState(ChargeStationStateEnum.NoCharge);
+            //ChargeStationChangeState(ChargeStationStateEnum.NoCharge);
+            chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.NoCharge);
         }
     }
     private void AddActiveStation()
@@ -56,22 +60,27 @@ public class ChargeStation2 : MonoBehaviour
         {
             StationID = name,
             CurrentChargeLevel = chargeManagment.ChargeStationProperties.Capacity,
-            State = ChargeStationStateEnum.VoltEnter
+            ChargeStationState = ChargeStationStateEnum.VoltEnter
         };
     }
-    private bool InitCheck()
+    private bool ChargeStatusChack()
     {
         var conditions = new List<Func<bool>>
         {
-            //() => chargeManagment.ChargeStationProperties.timer < chargeManagment.ChargeStationProperties.duration,
-            //() => chargeManagment.ChargeStationProperties.timer > 0,
+            () => chargeManagment.ActiveChargeStation.CurrentChargeLevel > 0,
+            () => chargeManagment.ChargeVoltStatus.VoltChargeLevel < chargeManagment.ChargeVoltStatus.MaxVoltCharge,
+            () => chargeManagment.VoltInSide
         };
-        return conditions.All(condition => condition());
+        bool inSide = chargeManagment.VoltInSide;
+        return inSide && conditions.Any(condition => condition());
     }
-    
+
     private void OnTriggerStay(Collider other)
     {
-        if (!chargeManagment.VoltInSide) return;
+        if (!ChargeStatusChack()) return;
+
+        //if (!chargeManagment.VoltInSide) return;
+        //if (!ChargeStatusChack()) return;
         //if (chargeManagment.ActiveChargeStation.State == ChargeStationStateEnum.HasCharge)
         //{
         //    if (chargeManagment.ChargeVoltStatus.VoltChargeLevel ==
@@ -94,14 +103,16 @@ public class ChargeStation2 : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (!chargeManagment.VoltInSide) return;
+        //if (!chargeManagment.VoltInSide) return;
 
-        VoltChargeStateChange(VoltChargeStateEnum.Charging);
-        
+        //VoltChargeStateChange(VoltChargeStateEnum.Charging);
+        chargeManagment.UpdateVoltChargeState(VoltChargeStateEnum.Charging);
+
         UpdateExitTime();
 
         chargeManagment.VoltInSide = false;
-        ChargeStationChangeState(ChargeStationStateEnum.VoltExit);
+        //ChargeStationChangeState(ChargeStationStateEnum.VoltExit);
+        chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.VoltExit);
         if (chargingCoroutine != null)
         {
             StopCoroutine(chargingCoroutine);
@@ -121,23 +132,37 @@ public class ChargeStation2 : MonoBehaviour
         return (Time.time - chargeManagment.ActiveChargeStation.LastExitTime) >=
             chargeManagment.ChargeStationProperties.RechargeDelay;
     }
-    private void ChargeStationChangeState(ChargeStationStateEnum State)
-    {
-        //chargeManagment.ActiveChargeStation.State = State;
-        //chargeStationEvent.ChargeStatus = State;
-        chargeManagment.chargeStationEvent.ChargeStatus = State;        
-    }
-    private void VoltChargeStateChange(VoltChargeStateEnum State)
-    {
-        chargeManagment.chargeStationEvent.VoltChargeStatus = State;
-    }
+    //private void ChargeStationChangeState(ChargeStationStateEnum State)
+    //{
+    //    //chargeManagment.ActiveChargeStation.State = State;
+    //    //chargeStationEvent.ChargeStatus = State;
+    //    chargeManagment.chargeStationEvent.ChargeStatus = State;        
+    //}
+    //private void VoltChargeStateChange(VoltChargeStateEnum State)
+    //{
+    //    chargeManagment.chargeStationEvent.VoltChargeStatus = State;
+    //    chargeManagment.ChargeVoltStatus.VoltChargeState = State;
+    //}
 
     private void ChargeProce()
     {
-        if (chargeManagment.ActiveChargeStation.CurrentChargeLevel < chargeManagment.ChargeStationProperties.Capacity)
+        //Debug.Log($"");
+        //if (chargeManagment.ActiveChargeStation.CurrentChargeLevel < chargeManagment.ChargeStationProperties.Capacity)
+        //{
+        if (chargeManagment.ChargeStationProperties.timer.timer <=
+            chargeManagment.ChargeStationProperties.timer.minValue)
         {
-            chargeManagment.ActiveChargeStation.CurrentChargeLevel = chargeManagment.ChargeStationProperties.timer.CalCurrentValue();
+            chargeManagment.ChargeStationProperties.timer.timer =
+                chargeManagment.ChargeStationProperties.timer.duration;
+            chargeManagment.ChargeStationProperties.timer.currentValue =
+                chargeManagment.ChargeStationProperties.timer.minValue;
         }
+        chargeManagment.ActiveChargeStation.CurrentChargeLevel =
+        chargeManagment.ChargeStationProperties.timer.CalCurrentValue();
+
+        chargeManagment.ChargeStationProperties.timer.currentValue =
+                chargeManagment.ActiveChargeStation.CurrentChargeLevel;
+        //}
     }
     private IEnumerator DischargeBattery()
     {

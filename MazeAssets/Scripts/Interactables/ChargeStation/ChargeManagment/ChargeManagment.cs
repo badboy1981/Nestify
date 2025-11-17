@@ -23,7 +23,6 @@ public class ChargeManagment : ScriptableObject
     [Header("Battery")]
     public BatteryProperty BatteryProperties;
 
-
     public ChargeStationStatus GetStationStatus(string id)
     {
         return ChargeStationStatusList.Find(s => s.StationID == id);
@@ -39,11 +38,11 @@ public class ChargeManagment : ScriptableObject
     }
     public void InitChargeStationProperty()
     {
-        int time = 5;
+        int time = 20;
         ChargeStationProperties.timer.duration = time;
-        ChargeStationProperties.timer.timer = time;
+        //ChargeStationProperties.timer.timer = time;
+        ChargeStationProperties.timer.maxValue = ChargeStationProperties.Capacity;
         ChargeStationProperties.timer.minValue = 0;
-
     }
     public void DrainVoltCharge()
     {
@@ -84,5 +83,15 @@ public class ChargeManagment : ScriptableObject
                     ChargeStationProperties.Capacity);
             yield return _waitForSeconds1;
         }
+    }
+    public void UpdateVoltChargeState(VoltChargeStateEnum State)
+    {
+        chargeStationEvent.VoltChargeStatus = State;
+        ChargeVoltStatus.VoltChargeState = State;
+    }
+    public void UpdateChargeStationState(ChargeStationStateEnum State)
+    {
+        chargeStationEvent.ChargeStatus = State;
+        ActiveChargeStation.ChargeStationState = State;
     }
 }

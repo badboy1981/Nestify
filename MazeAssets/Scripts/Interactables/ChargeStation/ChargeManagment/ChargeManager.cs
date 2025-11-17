@@ -4,15 +4,14 @@ public class ChargeManager : MonoBehaviour
 {
     [SerializeField] ChargeManagment chargeManagment;
     Coroutine drainRoutine;
-
     private void Start()
     {
         StartDrain();
     }
-    private void Update()
-    {
-        chargeManagment.chargeStationEvent.VoltChargeStatus = chargeManagment.ChargeVoltStatus.ChargeState;
-    }
+    //private void Update()
+    //{
+    //    chargeManagment.chargeStationEvent.VoltChargeStatus = chargeManagment.ChargeVoltStatus.VoltChargeState;
+    //}
     private void StartDrain()
     {
         drainRoutine = StartCoroutine(chargeManagment.ChargeVoltStatus.DeChargeVoltRoutine());

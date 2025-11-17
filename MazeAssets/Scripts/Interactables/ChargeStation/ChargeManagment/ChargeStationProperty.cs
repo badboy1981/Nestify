@@ -7,5 +7,5 @@ public class ChargeStationProperty
     public float ChargeRate; // Charge transfer rate per second
     public float RechargeDelay; // Delay before recharging starts (seconds)
     public float RechargeRate; // Charge Station Recharge rate per second
-    public MazeCore.Timer timer;
+    public MazeCore.MazeTimer timer;
 }

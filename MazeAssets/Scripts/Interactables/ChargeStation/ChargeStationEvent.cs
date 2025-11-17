@@ -31,8 +31,8 @@ public class ChargeStationEvent //: ScriptableObject
         set
         {
             if (_VoltChargeChange == value) return;
-            _VoltChargeChange = value;
-            OnVoltChargeStatus?.Invoke(_VoltChargeChange);
+            //_VoltChargeChange = value;
+            OnVoltChargeStatus?.Invoke(value);
         }
     }
 }

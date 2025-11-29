@@ -11,15 +11,21 @@ public class ChargeManagment : ScriptableObject
     //[SerializeField] ChargeStationEventListener Listener;
     //[Header("Charge Settings")]
     //public float time;
+    [Header("Public ChargeStation Property")]
+    [Header("ChargeStation Property")]
+    public ChargeStationProperty ChargeStationProperties;
+    [Header("----------------------")]
     [Header("Charge Event")]
     public ChargeStationEvent chargeStationEvent;
+    [Header("----------------------")]
     [Header("Charge Station")]
     public List<ChargeStationStatus> ChargeStationStatusList;
     public ChargeStationStatus ActiveChargeStation;
-    public ChargeStationProperty ChargeStationProperties;
+    [Header("----------------------")]
     [Header("Volt Charge")]
     public ChargeVoltStatus ChargeVoltStatus;
     public bool VoltInSide;
+    [Header("----------------------")]
     [Header("Battery")]
     public BatteryProperty BatteryProperties;
 
@@ -36,14 +42,7 @@ public class ChargeManagment : ScriptableObject
               ChargeVoltStatus.MaxVoltCharge
             );
     }
-    public void InitChargeStationProperty()
-    {
-        int time = 20;
-        ChargeStationProperties.timer.duration = time;
-        //ChargeStationProperties.timer.timer = time;
-        ChargeStationProperties.timer.maxValue = ChargeStationProperties.Capacity;
-        ChargeStationProperties.timer.minValue = 0;
-    }
+
     public void DrainVoltCharge()
     {
         //chargingCoroutine=
@@ -87,11 +86,11 @@ public class ChargeManagment : ScriptableObject
     public void UpdateVoltChargeState(VoltChargeStateEnum State)
     {
         chargeStationEvent.VoltChargeStatus = State;
-        ChargeVoltStatus.VoltChargeState = State;
+        //ChargeVoltStatus.VoltChargeState = State;
     }
     public void UpdateChargeStationState(ChargeStationStateEnum State)
     {
         chargeStationEvent.ChargeStatus = State;
-        ActiveChargeStation.ChargeStationState = State;
+        //ActiveChargeStation.ChargeStationState = State;
     }
 }

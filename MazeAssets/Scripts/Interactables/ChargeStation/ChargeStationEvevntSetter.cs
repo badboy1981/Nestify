@@ -1,5 +1,5 @@
 using UnityEngine;
-using static ChargeStationStateEnum;
+//using static ChargeStationStateEnum;
 public class ChargeStationEventSetter : MonoBehaviour
 {
     [SerializeField] ChargeStationEvent chargeStationEvent;

@@ -21,8 +21,8 @@ public class ChargeStationEvent //: ScriptableObject
         set
         {
             if (_chargeStatus == value) return;
-            //_chargeStatus = value;
-            OnChargeStationStatusChanged?.Invoke(value);
+            _chargeStatus = value;
+            OnChargeStationStatusChanged?.Invoke(_chargeStatus);
         }
     }
     public VoltChargeStateEnum VoltChargeStatus
@@ -31,8 +31,8 @@ public class ChargeStationEvent //: ScriptableObject
         set
         {
             if (_VoltChargeChange == value) return;
-            //_VoltChargeChange = value;
-            OnVoltChargeStatus?.Invoke(value);
+            _VoltChargeChange = value;
+            OnVoltChargeStatus?.Invoke(_VoltChargeChange);
         }
     }
 }

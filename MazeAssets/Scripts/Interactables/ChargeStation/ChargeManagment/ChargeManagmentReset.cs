@@ -2,35 +2,42 @@ using UnityEngine;
 
 public class ChargeManagmentReset : MonoBehaviour
 {
-    [SerializeField] ChargeManagment chargeManagment;
+    [SerializeField] ChargeManagment2 chargeManagment;
     void Start()
     {
-        ResetManagment();
+        ResetManagment2();
     }
-    private void ResetManagment()
+    private void ResetManagment2()
     {
-        chargeManagment.ChargeStationStatusList.Clear();
+        chargeManagment.chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltExit;
 
-        //chargeManagment.ChargeStationProperties.timer.duration = 20f;
-        //chargeManagment.ChargeStationProperties.timer.timer = 0;
-        //chargeManagment.ChargeStationProperties.timer.currentValue = 100f;
-        //chargeManagment.ChargeStationProperties.timer.maxValue = 100f;
-        //chargeManagment.ChargeStationProperties.timer.minValue = 0f;
-
-        chargeManagment.ActiveChargeStation = null;
-
-        chargeManagment.ChargeStationProperties.Capacity = 100f;
-        chargeManagment.ChargeStationProperties.ChargeRate = 20f;
-        chargeManagment.ChargeStationProperties.RechargeDelay = 5f;
-        chargeManagment.ChargeStationProperties.RechargeRate = 1f;
-
-        chargeManagment.ChargeVoltStatus.MaxVoltCharge = 100f;
-        chargeManagment.ChargeVoltStatus.VoltChargeLevel = 100f;
-        chargeManagment.ChargeVoltStatus.DeChargeRate = 1f;
-        chargeManagment.ChargeVoltStatus.ChargeDelaySeconds = 1f;
-        chargeManagment.ChargeVoltStatus.VoltChargeState = VoltChargeStateEnum.FullyCharged;
-        chargeManagment.VoltInSide = false;
-
-        chargeManagment.BatteryProperties.Capacity = 20f;
+        chargeManagment.CVStatus.VoltChargeLevel = 100f;
+        chargeManagment.CVStatus.MaxVoltCharge = 100f;
+        chargeManagment.CVStatus.DeChargeRate = 1f;
+        chargeManagment.CVStatus.ChargeDelaySeconds = 1f;
+        //chargeManagment.CVStatus.VoltChargeState = VoltChargeStateEnum.FullyCharged;
     }
 }
+    //private void ResetManagment()
+    //{
+    //    chargeManagment.ChargeStationStatusList.Clear();
+
+
+    //    chargeManagment.ActiveChargeStation = null;
+
+    //    chargeManagment.ChargeStationProperties.Capacity = 100f;
+    //    chargeManagment.ChargeStationProperties.ChargeRate = 1f;
+    //    chargeManagment.ChargeStationProperties.ChargeInterval = 0.5f;
+    //    chargeManagment.ChargeStationProperties.RechargeDelay = 5f;
+    //    chargeManagment.ChargeStationProperties.RechargeRate = 1f;
+
+    //    chargeManagment.ChargeVoltStatus.MaxVoltCharge = 100f;
+    //    chargeManagment.ChargeVoltStatus.VoltChargeLevel = 100f;
+    //    chargeManagment.ChargeVoltStatus.DeChargeRate = 1f;
+    //    chargeManagment.ChargeVoltStatus.ChargeDelaySeconds = 1f;
+    //    chargeManagment.ChargeVoltStatus.VoltChargeState = VoltChargeStateEnum.FullyCharged;
+    //    chargeManagment.VoltInSide = false;
+
+    //    chargeManagment.BatteryProperties.Capacity = 20f;
+    //}
+//}

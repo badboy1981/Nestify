@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChargeManager : MonoBehaviour
 {
-    [SerializeField] ChargeManagment chargeManagment;
+    [SerializeField] ChargeManagment2 chargeManagment;
     Coroutine drainRoutine;
     private void Start()
     {
@@ -14,7 +14,7 @@ public class ChargeManager : MonoBehaviour
     //}
     private void StartDrain()
     {
-        drainRoutine = StartCoroutine(chargeManagment.ChargeVoltStatus.DeChargeVoltRoutine());
+        drainRoutine = StartCoroutine(chargeManagment.DeChargeVoltRoutine());
     }
     private void StopDrain()
     {

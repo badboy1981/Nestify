@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-using Assets.MazeAssets.Audio.Shared.BaseClasses;
+﻿using Assets.MazeAssets.Audio.Shared.BaseClasses;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.MazeAssets.Scripts.Parent
 {
-    internal class Parent : MonoBehaviour
+    [Serializable]
+    public class Parent : MonoBehaviour
     {
         [SerializeField] protected AudioLibrary PrefabAudioLibrary;
         [SerializeField] protected SoundData soundDataEvent;

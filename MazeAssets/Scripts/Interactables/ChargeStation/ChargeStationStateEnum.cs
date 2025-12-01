@@ -7,8 +7,8 @@ public enum ChargeStationStateEnum
     HasCharge,
     NoCharge,
 
-    Charging,
-    FullyCharged,
+    //Charging,
+    //FullyCharged,
     Depleted, // When Volt's charge reaches zero
 
     Full,

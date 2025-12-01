@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Collectable
 {
-    internal class Collectable : Parent
+    public class Collectable : Parent
     {
         private bool isCollected;
 

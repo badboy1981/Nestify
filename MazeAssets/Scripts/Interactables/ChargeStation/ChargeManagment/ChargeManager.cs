@@ -8,10 +8,6 @@ public class ChargeManager : MonoBehaviour
     {
         StartDrain();
     }
-    //private void Update()
-    //{
-    //    chargeManagment.chargeStationEvent.VoltChargeStatus = chargeManagment.ChargeVoltStatus.VoltChargeState;
-    //}
     private void StartDrain()
     {
         drainRoutine = StartCoroutine(chargeManagment.DeChargeVoltRoutine());

@@ -8,6 +8,7 @@ namespace Assets.MazeAssets.Audio.Shared.BaseClasses
     {
         //public string SoundName;
         public AudioClip clip;
+        public float NumberOfRepetitions;//Number of times the sound repeats if it is not looped
         public bool loop;
         public bool is3D;
         public float spatialBlend;

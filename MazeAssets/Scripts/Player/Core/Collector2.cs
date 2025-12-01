@@ -1,10 +1,11 @@
+using Assets.MazeAssets.Scripts.Parent;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Collectable
 {
-    public class Collector2 : MonoBehaviour
+    public class Collector2 : Parent
     {
         [SerializeField] TextMeshProUGUI CoinBank;
         [SerializeField] TextMeshProUGUI CointText;
@@ -12,7 +13,7 @@ namespace Collectable
         [SerializeField] TextMeshProUGUI LevelNumber;
         [SerializeField] SaveSystem.SaveLevelDataSObject LevelData;
 
-        private void Awake()
+        protected override void Awake()
         {
             transform.SetPositionAndRotation(new Vector3(0, 0.5f, 0), Quaternion.identity);
             LevelData.SceneName = SceneManager.GetActiveScene().name;

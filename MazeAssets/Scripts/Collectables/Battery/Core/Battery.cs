@@ -1,12 +1,14 @@
 using SaveSystem;
+using System;
 using UnityEngine;
 
 namespace Collectable
 {
-    internal class Battery : Collectable
+    [Serializable]
+    public class Battery : Collectable
     {
         [SerializeField] SaveLevelDataSObject PlayerData;
-        [SerializeField] ChargeManagment chargeManagment;
+        [SerializeField] ChargeManagment2 chargeManagment;
         //[SerializeField] BatteryDiagram _BatteryDiagram;
         //[SerializeField] float IncreaseValue = 20f;
 
@@ -14,10 +16,13 @@ namespace Collectable
         {
             //_BatteryDiagram = GameObject.Find("BatteryDiagram").GetComponent<BatteryDiagram>();
             base.OnTriggerEnter(other);
-            chargeManagment.ChargeVoltStatus.VoltChargeLevel += chargeManagment.BatteryProperties.Capacity;
-            //_BatteryDiagram.IncreaseValue(IncreaseValue);
-            //AddCharge(IncreaseValue);
-            //PlayerData.ChargeStatus = IncreaseValue;
+            chargeManagment.CVStatus.VoltChargeLevel += chargeManagment.battery.Capacity;
+            chargeManagment.CVStatus.VoltChargeLevel = Mathf.Clamp
+                (
+                    chargeManagment.CVStatus.VoltChargeLevel,
+                    0,
+                    chargeManagment.CVStatus.MaxVoltCharge
+                );
         }
     }
 }

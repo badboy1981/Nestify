@@ -14,6 +14,7 @@ public class ChargeStationEvent //: ScriptableObject
     //internal UnityAction<ChargeStationStateEnum> OnStatusChanged;
     public UnityAction<ChargeStationStateEnum> OnChargeStationStatusChanged;
     public UnityAction<VoltChargeStateEnum> OnVoltChargeStatus;
+    //public UnityAction<bool> VoltInsideStation;
 
     public ChargeStationStateEnum ChargeStatus
     {

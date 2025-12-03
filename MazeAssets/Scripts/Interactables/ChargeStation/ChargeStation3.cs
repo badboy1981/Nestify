@@ -21,6 +21,7 @@ public class ChargeStation3 : MonoBehaviour
     }
     private void VoltEnter()
     {
+        chargeManagment.chargeStationEvent.VoltInsideStation = true;
         chargeManagment.VoltInside = true;
         chargeManagment.chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltEnter;
     }
@@ -30,6 +31,7 @@ public class ChargeStation3 : MonoBehaviour
     }
     private void VoltExit()
     {
+        chargeManagment.chargeStationEvent.VoltInsideStation = false;
         chargeManagment.VoltInside = false;
         chargeManagment.chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltExit;
     }

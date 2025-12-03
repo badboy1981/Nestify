@@ -3,38 +3,47 @@ using UnityEngine;
 //[CreateAssetMenu(fileName = "ChargeStationEventListener", menuName = "Charge Managment/ChargeStation Event Listener")]
 internal class ChargeStationEventListener : MonoBehaviour
 {
-    //[SerializeField] ChargeStationEvent chargeStationEvent;
+    [SerializeField] SoundData soundDataEvent;
     [SerializeField] ChargeManagment2 chargeManagment;
     [SerializeField] AudioLibrary ChargeStationAudioLibrary;
-    [SerializeField] SoundData soundDataEvent;
-
-    private ChargeStationStateEnum chargeStationState;
-    private VoltChargeStateEnum voltChargeState;
+   
 
     private void OnEnable()
     {
-        chargeManagment.chargeStationEvent.OnChargeStationStatusChanged += OnChargeStationStatusChanged;
+        chargeManagment.chargeStationEvent.OnChargeStationStatus += OnChargeStationStatusChanged;
         chargeManagment.chargeStationEvent.OnVoltChargeStatus += OnVoltChargeStatus;
+        chargeManagment.chargeStationEvent.OnVoltInsideStation += OnVoltInsideStationStatusChange;
     }
 
     private void OnDisable()
     {
-        chargeManagment.chargeStationEvent.OnChargeStationStatusChanged -= OnChargeStationStatusChanged;
+        chargeManagment.chargeStationEvent.OnChargeStationStatus -= OnChargeStationStatusChanged;
         chargeManagment.chargeStationEvent.OnVoltChargeStatus -= OnVoltChargeStatus;
+        chargeManagment.chargeStationEvent.OnVoltInsideStation -= OnVoltInsideStationStatusChange;
+    }
+    private void OnVoltInsideStationStatusChange(bool status)
+    {
+        //Debug.Log($"Volt Inside Station: {status}");
+        if(status)
+        {
+            PlaySound("Charge");
+        }
+        else
+        {
+            StopSound("Charge");
+        }
     }
     private void OnChargeStationStatusChanged(ChargeStationStateEnum status)
     {
-        Debug.Log($"CCCharge Station State: {status}");
-        chargeStationState = status;
-        if (chargeStationState == ChargeStationStateEnum.VoltExit) return;
+        //Debug.Log($"CCCharge Station State: {status}");
         switch (status)
         {
             case ChargeStationStateEnum.VoltEnter:
-                PlaySound("Charge");
+                //PlaySound("Charge");
                 //PlaySound("Empty");
                 break;
             case ChargeStationStateEnum.VoltExit:
-                StopSound("Charge");
+                //StopSound("Charge");
                 //PlaySound("Empty");
                 break;
             case ChargeStationStateEnum.HasCharge:
@@ -45,25 +54,22 @@ internal class ChargeStationEventListener : MonoBehaviour
                 //PlaySound("ChargeFull");
                 break;
             case ChargeStationStateEnum.Empty:
-                StopSound("Charge");
-                PlaySound("Empty");
+                //StopSound("Charge");
+                //PlaySound("Empty");
                 break;
             case ChargeStationStateEnum.NoCharge:
-                StopSound("Charge");
-                PlaySound("Empty");
+                //StopSound("Charge");
+                //PlaySound("Empty");
                 break;
             case ChargeStationStateEnum.VoltFullCharged:
-                StopSound("Charge");
+                //StopSound("Charge");
                 break;
         }
     }
     private void OnVoltChargeStatus(VoltChargeStateEnum status)
     {
-        voltChargeState = status;
-        Debug.Log($"Volt Charge State: {status}");
-        if (chargeStationState == ChargeStationStateEnum.VoltEnter || chargeStationState == ChargeStationStateEnum.VoltFullCharged)
-            return;
-        switch (status)
+        //Debug.Log($"Volt Charge State: {status}");
+         switch (status)
         {
             case VoltChargeStateEnum.Empty:
                 //PlaySound("Empty");

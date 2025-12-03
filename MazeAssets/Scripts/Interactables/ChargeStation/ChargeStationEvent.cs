@@ -6,16 +6,26 @@ using UnityEngine.Events;
 [Serializable]
 public class ChargeStationEvent //: ScriptableObject
 {
+    public bool _voltInsideStation;
     public ChargeStationStateEnum _chargeStatus;
-    public VoltChargeStateEnum _VoltChargeChange;
-
+    public VoltChargeStateEnum _VoltChargeStatus;    
 
     //[System.NonSerialized]
     //internal UnityAction<ChargeStationStateEnum> OnStatusChanged;
-    public UnityAction<ChargeStationStateEnum> OnChargeStationStatusChanged;
+    public UnityAction<bool> OnVoltInsideStation;
+    public UnityAction<ChargeStationStateEnum> OnChargeStationStatus;
     public UnityAction<VoltChargeStateEnum> OnVoltChargeStatus;
-    //public UnityAction<bool> VoltInsideStation;
-
+    
+    public bool VoltInsideStation
+    {
+        get => _voltInsideStation;
+        set
+        {
+            if (_voltInsideStation == value) return;
+            _voltInsideStation = value;
+            OnVoltInsideStation?.Invoke(_voltInsideStation);
+        }
+    }
     public ChargeStationStateEnum ChargeStatus
     {
         get => _chargeStatus;
@@ -23,17 +33,17 @@ public class ChargeStationEvent //: ScriptableObject
         {
             if (_chargeStatus == value) return;
             _chargeStatus = value;
-            OnChargeStationStatusChanged?.Invoke(_chargeStatus);
+            OnChargeStationStatus?.Invoke(_chargeStatus);
         }
     }
     public VoltChargeStateEnum VoltChargeStatus
     {
-        get => _VoltChargeChange;
+        get => _VoltChargeStatus;
         set
         {
-            if (_VoltChargeChange == value) return;
-            _VoltChargeChange = value;
-            OnVoltChargeStatus?.Invoke(_VoltChargeChange);
+            if (_VoltChargeStatus == value) return;
+            _VoltChargeStatus = value;
+            OnVoltChargeStatus?.Invoke(_VoltChargeStatus);
         }
     }
 }

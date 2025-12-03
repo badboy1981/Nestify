@@ -6,16 +6,16 @@ public class ChargeManager : MonoBehaviour
     Coroutine drainRoutine;
     private void Start()
     {
-        StartDrain();
-    }
-    private void StartDrain()
-    {
         drainRoutine = StartCoroutine(chargeManagment.DeChargeVoltRoutine());
     }
-    private void StopDrain()
-    {
-        if (drainRoutine != null)
-            StopCoroutine(drainRoutine);
-        drainRoutine = null;
-    }
+    //private void StartDrain()
+    //{
+    //    drainRoutine = StartCoroutine(chargeManagment.DeChargeVoltRoutine());
+    //}
+    //private void StopDrain()
+    //{
+    //    if (drainRoutine != null)
+    //        StopCoroutine(drainRoutine);
+    //    drainRoutine = null;
+    //}
 }

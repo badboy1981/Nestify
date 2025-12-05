@@ -6,50 +6,54 @@ internal class ChargeStationEventListener : MonoBehaviour
     [SerializeField] SoundData soundDataEvent;
     [SerializeField] ChargeManagment2 chargeManagment;
     [SerializeField] AudioLibrary ChargeStationAudioLibrary;
-   
+
+    //private bool VoltInsidestation;
 
     private void OnEnable()
     {
+        //chargeManagment.chargeStationEvent.OnVoltInsideStation += OnVoltInsideStationStatusChange;
         chargeManagment.chargeStationEvent.OnChargeStationStatus += OnChargeStationStatusChanged;
         chargeManagment.chargeStationEvent.OnVoltChargeStatus += OnVoltChargeStatus;
-        chargeManagment.chargeStationEvent.OnVoltInsideStation += OnVoltInsideStationStatusChange;
     }
 
     private void OnDisable()
     {
+        //chargeManagment.chargeStationEvent.OnVoltInsideStation -= OnVoltInsideStationStatusChange;
         chargeManagment.chargeStationEvent.OnChargeStationStatus -= OnChargeStationStatusChanged;
         chargeManagment.chargeStationEvent.OnVoltChargeStatus -= OnVoltChargeStatus;
-        chargeManagment.chargeStationEvent.OnVoltInsideStation -= OnVoltInsideStationStatusChange;
     }
-    private void OnVoltInsideStationStatusChange(bool status)
-    {
+    //private void OnVoltInsideStationStatusChange(bool status)
+    //{
+        //VoltInsidestation = status;
         //Debug.Log($"Volt Inside Station: {status}");
-        if(status)
-        {
-            PlaySound("Charge");
-        }
-        else
-        {
-            StopSound("Charge");
-        }
-    }
+        //if (status)
+        //{
+        //    PlaySound("Charge");
+        //}
+        //else
+        //{
+        //    StopSound("Charge");
+        //}
+    //}
     private void OnChargeStationStatusChanged(ChargeStationStateEnum status)
     {
         //Debug.Log($"CCCharge Station State: {status}");
+        //if (!VoltInsidestation) return;
+        
         switch (status)
         {
-            case ChargeStationStateEnum.VoltEnter:
+            case ChargeStationStateEnum.Idle:
                 //PlaySound("Charge");
                 //PlaySound("Empty");
                 break;
-            case ChargeStationStateEnum.VoltExit:
+            case ChargeStationStateEnum.Available:
                 //StopSound("Charge");
                 //PlaySound("Empty");
                 break;
-            case ChargeStationStateEnum.HasCharge:
+            case ChargeStationStateEnum.Charging:
                 //PlaySound("Charge");
                 break;
-            case ChargeStationStateEnum.Full:
+            case ChargeStationStateEnum.CoolingDown:
                 //StopSound("Charge");
                 //PlaySound("ChargeFull");
                 break;
@@ -57,11 +61,11 @@ internal class ChargeStationEventListener : MonoBehaviour
                 //StopSound("Charge");
                 //PlaySound("Empty");
                 break;
-            case ChargeStationStateEnum.NoCharge:
+            case ChargeStationStateEnum.Disabled:
                 //StopSound("Charge");
                 //PlaySound("Empty");
                 break;
-            case ChargeStationStateEnum.VoltFullCharged:
+            case ChargeStationStateEnum.Overloaded:
                 //StopSound("Charge");
                 break;
         }
@@ -69,25 +73,38 @@ internal class ChargeStationEventListener : MonoBehaviour
     private void OnVoltChargeStatus(VoltChargeStateEnum status)
     {
         //Debug.Log($"Volt Charge State: {status}");
-         switch (status)
+        Debug.Log($"Volt is {status}!!!");
+        //if (VoltInsidestation) return;
+        if (status != VoltChargeStateEnum.Charging)
+            StopSound("Charge");
+        
+        switch (status)
         {
             case VoltChargeStateEnum.Empty:
+                //PlaySound("Empty");
+                break;
+            case VoltChargeStateEnum.Emergency:
+                //PlaySound("Empty");
+                break;
+            case VoltChargeStateEnum.Critical:
+                //PlaySound("Empty");
+                break;
+            case VoltChargeStateEnum.Low:
                 //PlaySound("Empty");
                 break;
             case VoltChargeStateEnum.Partial:
                 //PlaySound("Charge");
                 break;
-            case VoltChargeStateEnum.Charging:
+            case VoltChargeStateEnum.Normal:
                 //PlaySound("Charge");
                 //StopSound("Charge");
                 break;
             case VoltChargeStateEnum.FullyCharged:
                 //PlaySound("ChargeFull");
-                StopSound("Charge");
+                //StopSound("Charge");
                 break;
-            case VoltChargeStateEnum.StopDrain:
-                //PlaySound("Charge");
-                //ChargeVoltStatus.DeChargeVoltRoutine();
+            case VoltChargeStateEnum.Charging:
+                PlaySound("Charge");                
                 break;
                 //default:
                 //    break;

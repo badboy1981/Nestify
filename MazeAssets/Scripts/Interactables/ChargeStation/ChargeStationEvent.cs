@@ -6,26 +6,26 @@ using UnityEngine.Events;
 [Serializable]
 public class ChargeStationEvent //: ScriptableObject
 {
-    public bool _voltInsideStation;
+    //public bool _voltNeedCharge;
     public ChargeStationStateEnum _chargeStatus;
     public VoltChargeStateEnum _VoltChargeStatus;    
 
     //[System.NonSerialized]
     //internal UnityAction<ChargeStationStateEnum> OnStatusChanged;
-    public UnityAction<bool> OnVoltInsideStation;
+    //public UnityAction<bool> OnVoltInsideStation;
     public UnityAction<ChargeStationStateEnum> OnChargeStationStatus;
     public UnityAction<VoltChargeStateEnum> OnVoltChargeStatus;
     
-    public bool VoltInsideStation
-    {
-        get => _voltInsideStation;
-        set
-        {
-            if (_voltInsideStation == value) return;
-            _voltInsideStation = value;
-            OnVoltInsideStation?.Invoke(_voltInsideStation);
-        }
-    }
+    //public bool VoltNeedCharge
+    //{
+    //    get => _voltNeedCharge;
+    //    set
+    //    {
+    //        if (_voltNeedCharge == value) return;
+    //        _voltNeedCharge = value;
+    //        OnVoltInsideStation?.Invoke(_voltNeedCharge);
+    //    }
+    //}
     public ChargeStationStateEnum ChargeStatus
     {
         get => _chargeStatus;

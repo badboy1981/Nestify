@@ -7,32 +7,12 @@ public class ChargeStation3 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        VoltEnter();
+        chargeManagment.voltInsideStation = true;
     }
-    private void OnTriggerStay(Collider other)
-    {
-        //if (!other.CompareTag("Player")) return;
-        //VoltStay();
-    }
+
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        VoltExit();
-    }
-    private void VoltEnter()
-    {
-        chargeManagment.chargeStationEvent.VoltInsideStation = true;
-        chargeManagment.VoltInside = true;
-        chargeManagment.chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltEnter;
-    }
-    private void VoltStay()
-    {
-
-    }
-    private void VoltExit()
-    {
-        chargeManagment.chargeStationEvent.VoltInsideStation = false;
-        chargeManagment.VoltInside = false;
-        chargeManagment.chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltExit;
+        chargeManagment.voltInsideStation = false;
     }
 }

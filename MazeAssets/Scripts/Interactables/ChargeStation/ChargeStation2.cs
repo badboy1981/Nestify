@@ -17,7 +17,7 @@ public class ChargeStation2 : MonoBehaviour
         chargeManagment.VoltInSide = true;
 
         //VoltChargeStateChange(VoltChargeStateEnum.StopDrain);        
-        chargeManagment.UpdateVoltChargeState(VoltChargeStateEnum.StopDrain);
+        //chargeManagment.UpdateVoltChargeState(VoltChargeStateEnum.StopDrain);
         //chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.Charging);
 
         chargeManagment.ActiveChargeStation = ChargeStation3();
@@ -31,12 +31,12 @@ public class ChargeStation2 : MonoBehaviour
         if (chargeManagment.CheckChargeStationCharge())
         {
             //ChargeStationChangeState(ChargeStationStateEnum.HasCharge);
-            chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.HasCharge);
+            //chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.HasCharge);
         }
         else
         {
             //ChargeStationChangeState(ChargeStationStateEnum.NoCharge);
-            chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.NoCharge);
+            //chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.NoCharge);
         }
     }
     private ChargeStationStatus ChargeStation3()
@@ -108,7 +108,7 @@ public class ChargeStation2 : MonoBehaviour
         if (ChargeStatusChack2())
         {
             ChargeProce2();
-            chargeManagment.ActiveChargeStation.UpdateVoltChargeState(chargeManagment.ChargeStationProperties.Capacity);
+            //chargeManagment.ActiveChargeStation.UpdateVoltChargeState(chargeManagment.ChargeStationProperties.Capacity);
         }
     }
     //private float ChargeAmount;
@@ -137,14 +137,14 @@ public class ChargeStation2 : MonoBehaviour
         //if (!chargeManagment.VoltInSide) return;
 
         //VoltChargeStateChange(VoltChargeStateEnum.Charging);
-        chargeManagment.UpdateVoltChargeState(VoltChargeStateEnum.Charging);
+        chargeManagment.UpdateVoltChargeState(VoltChargeStateEnum.Normal);
 
         UpdateExitTime();
 
 
         chargeManagment.VoltInSide = false;
         //ChargeStationChangeState(ChargeStationStateEnum.VoltExit);
-        chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.VoltExit);
+        //chargeManagment.UpdateChargeStationState(ChargeStationStateEnum.VoltExit);
         //if (chargingCoroutine != null)
         //{
         //    StopCoroutine(chargingCoroutine);

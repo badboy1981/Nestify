@@ -7,9 +7,9 @@ public class ChargeManagment2 : ScriptableObject
     [Header("Charge Event")]
     public ChargeStationEvent chargeStationEvent;
     [Header("----------------------")]
-    [Header("Volt Charge")]
+    [Header("Volt Charge Status")]
+    public bool voltInsideStation;
     public ChargeVoltStatus CVStatus;
-    public bool VoltInside;
     [Header("----------------------")]
     [Header("Battery")]
     public BatteryProperty battery;
@@ -18,17 +18,18 @@ public class ChargeManagment2 : ScriptableObject
     {
         while (CVStatus.VoltChargeLevel >= 0f)
         {
-            if (VoltInside)
+            if (voltInsideStation)
             {
-                CVStatus.VoltChargeLevel++;
-                CVStatus.VoltChargeLevel = Mathf.Clamp(CVStatus.VoltChargeLevel, 0, CVStatus.MaxVoltCharge);
-                chargeStationEvent.VoltChargeStatus = CVStatus.UpdateChargeState();
-                //if (CVStatus.VoltChargeLevel >= CVStatus.MaxVoltCharge)
-                //{
-                //    chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltFullCharged;
-                //    yield return null;
-                //    continue;
-                //}
+                if (CVStatus.VoltChargeLevel >= CVStatus.MaxVoltCharge)
+                {
+                    chargeStationEvent.VoltChargeStatus = VoltChargeStateEnum.FullyCharged;
+                }
+                else
+                {
+                    chargeStationEvent.VoltChargeStatus = VoltChargeStateEnum.Charging; // Volt is charging
+                    CVStatus.VoltChargeLevel++;
+                    CVStatus.VoltChargeLevel = Mathf.Clamp(CVStatus.VoltChargeLevel, 0, CVStatus.MaxVoltCharge);
+                }
                 yield return new WaitForSeconds(CVStatus.ChargeDelaySeconds / 2);
                 continue;
             }

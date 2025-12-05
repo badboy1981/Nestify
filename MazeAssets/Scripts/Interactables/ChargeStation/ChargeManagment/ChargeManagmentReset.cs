@@ -9,9 +9,9 @@ public class ChargeManagmentReset : MonoBehaviour
     }
     private void ResetManagment2()
     {
-        chargeManagment.chargeStationEvent.ChargeStatus = ChargeStationStateEnum.VoltExit;
+        chargeManagment.chargeStationEvent.ChargeStatus = ChargeStationStateEnum.Available;
         chargeManagment.chargeStationEvent.VoltChargeStatus = VoltChargeStateEnum.FullyCharged;
-        chargeManagment.chargeStationEvent.VoltInsideStation = false;
+        chargeManagment.voltInsideStation = false;
 
         chargeManagment.CVStatus.VoltChargeLevel = 100f;
         chargeManagment.CVStatus.MaxVoltCharge = 100f;

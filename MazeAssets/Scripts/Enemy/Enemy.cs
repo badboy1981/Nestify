@@ -36,6 +36,6 @@ internal class Enemy : Parent
     }
     protected void DecreaseStealCharge(EnemyList enemy)
     {
-        _ChargeManagment.ChargeVoltStatus.VoltChargeLevel -= (int)GetEnemyTypeValue(enemy);
+        _ChargeManagment.CVStatus.VoltChargeLevel -= (int)GetEnemyTypeValue(enemy);
     }
 }

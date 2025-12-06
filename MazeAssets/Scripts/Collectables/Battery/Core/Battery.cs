@@ -8,7 +8,7 @@ namespace Collectable
     public class Battery : Collectable
     {
         [SerializeField] SaveLevelDataSObject PlayerData;
-        [SerializeField] ChargeManagment2 chargeManagment;
+        [SerializeField] ChargeManagment chargeManagment;
         //[SerializeField] BatteryDiagram _BatteryDiagram;
         //[SerializeField] float IncreaseValue = 20f;
 

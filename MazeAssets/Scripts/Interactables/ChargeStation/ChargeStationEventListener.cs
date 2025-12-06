@@ -4,7 +4,7 @@ using UnityEngine;
 internal class ChargeStationEventListener : MonoBehaviour
 {
     [SerializeField] SoundData soundDataEvent;
-    [SerializeField] ChargeManagment2 chargeManagment;
+    [SerializeField] ChargeManagment chargeManagment;
     [SerializeField] AudioLibrary ChargeStationAudioLibrary;
 
     //private bool VoltInsidestation;

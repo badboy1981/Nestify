@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChargeManagmentReset : MonoBehaviour
 {
-    [SerializeField] ChargeManagment2 chargeManagment;
+    [SerializeField] ChargeManagment chargeManagment;
     void Start()
     {
         ResetManagment2();

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ChargeStation3 : MonoBehaviour
+public class ChargeStation : MonoBehaviour
 {
-    [SerializeField] ChargeManagment2 chargeManagment;
+    [SerializeField] ChargeManagment chargeManagment;
 
     private void OnTriggerEnter(Collider other)
     {

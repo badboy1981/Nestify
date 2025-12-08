@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,8 +18,9 @@ namespace Collectable.Gate
         [Header("Key List")]
         public List<KeysList> keysLists = new();
 
-        [System.NonSerialized] public UnityAction OnGateUnlocked;
-        [System.NonSerialized] public UnityAction OnGatelocked;
+        [NonSerialized] public UnityAction OnGateUnlocked;
+        [NonSerialized] public UnityAction OnGatelocked;
+
         public bool GateState
         {
             get => ActiveGateHandleState;

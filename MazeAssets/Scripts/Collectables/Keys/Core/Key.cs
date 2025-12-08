@@ -5,15 +5,17 @@ namespace Collectable
     internal class Key : Collectable
     {
         [SerializeField] SaveSystem.SaveLevelDataSObject KeyList;
-
-        protected override void Awake()
+        [SerializeField] KeyManagment keyManagment;
+        [SerializeField] KeyProperty keyProperty;
+        private void Start()
         {
             KeyList.KeyList.Clear();
+            keyManagment.collectedKeyIDs.Clear();
         }
         protected override void OnTriggerEnter(Collider other)
         {
+            keyManagment.keyGetEvent.KeyProperty = keyProperty;
             base.OnTriggerEnter(other);
-            KeyList.KeyList.Add(gameObject.name);
         }
     }
 }

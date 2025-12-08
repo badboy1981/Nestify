@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.Events;
 //using static ChargeStationStateEnum;
 
@@ -7,8 +8,8 @@ using UnityEngine.Events;
 public class ChargeStationEvent //: ScriptableObject
 {
     //public bool _voltNeedCharge;
-    public ChargeStationStateEnum _chargeStatus;
-    public VoltChargeStateEnum _VoltChargeStatus;    
+    [SerializeField] ChargeStationStateEnum _chargeStatus;
+    [SerializeField] VoltChargeStateEnum _VoltChargeStatus;    
 
     //[System.NonSerialized]
     //internal UnityAction<ChargeStationStateEnum> OnStatusChanged;

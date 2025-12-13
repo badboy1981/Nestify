@@ -5,14 +5,23 @@ namespace Collectable
 {
     internal class Key : Collectable
     {
-        [SerializeField] GameEntityProperty KeyProperty;
-        [SerializeField] SaveSystem.SaveLevelDataSObject KeyList;
+        //[SerializeField] SaveSystem.SaveLevelDataSObject KeyList;
+        [Header("Internal Parameter")]
+        [SerializeField] GameEntityProperty keyProperty;        
         [SerializeField] GateManagment gateManagment;
         //private KeyCollectedEvent keyCollected;
-        private UnityAction<GameEntityProperty> OnCollectedKeyEvent;
+        private event UnityAction<GameEntityProperty> OnCollectedKeyEvent;
+
+        private void Start()
+        {
+            keyProperty.IsCollected = false;    
+            gateManagment.KeyCollectedCounter = 0;
+        } 
         protected override void OnTriggerEnter(Collider other)
         {
-            OnCollectedKeyEvent?.Invoke(KeyProperty);
+            keyProperty.IsCollected = true;
+            OnCollectedKeyEvent?.Invoke(keyProperty);
+            gateManagment.KeyCollectedCounter++;
             base.OnTriggerEnter(other);
         }
         private void OnEnable()
@@ -25,7 +34,7 @@ namespace Collectable
         }
         private void OnKeyCollected(GameEntityProperty property)
         {
-            gateManagment.UpdateNew(property.UniqueID);
+            gateManagment.UpdateKeyStatus(property.UniqueID);
         }
     }
 }

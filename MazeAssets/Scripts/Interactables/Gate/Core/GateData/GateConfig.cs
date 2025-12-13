@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class GateConfig
 {    
-    public GameEntityProperty gate;
+    public GameEntityProperty gate; // gateMangment.AllKeyCollected bayad dar gate false shavad
     public GameEntityProperty stoneHatch;
     public List<GameEntityProperty> handle;
     public List<GameEntityProperty> RequiredKeys;

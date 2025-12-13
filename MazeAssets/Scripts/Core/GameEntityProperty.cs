@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameEntityProperty", menuName = "Public Property/Game Entity Property")]
 [System.Serializable]
-public class GameEntityProperty : ScriptableObject
+public class GameEntityProperty //: ScriptableObject
 {
     public string ID;                           // Unique identifier for the stage or group (e.g., A, B, C)
     public string Name;                         // Name of the object type (e.g., Gate, Hatch, Handle, Key1)

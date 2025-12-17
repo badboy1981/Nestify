@@ -1,0 +1,1000 @@
+{
+    "projectType": "Unity",
+    "language": "csharp",
+    "tags": [
+        "maze",
+        "cipher",
+        "game",
+        "3d"
+    ],
+    "root": [
+        {
+            "name": "MazeAssets",
+            "type": "folder",
+            "children": [
+                {
+                    "name": "Art",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Player",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "FBX",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Prefab",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Textures",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Materials",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Animations",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Enemy",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "BulkBot",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "FBX",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Prefab",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Textures",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Materials",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Animations",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "ShadowBot",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "FBX",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Prefab",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Textures",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Materials",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Animations",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Environment",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Structures",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Item1",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Item2",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Interactables",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Item1",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Item2",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Decoratives",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Item1",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Item2",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Specials",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Item1",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Item2",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Audio",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Shared",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "BaseClasses",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Utilities",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Music",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Tracks",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Effects",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Mixes",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "SFX",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Ambient",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Interaction",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Combat",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Mixer",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Player",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Music",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "SFX",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Mixer",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Enemy",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "BulkBot",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Music",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "SFX",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Mixer",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "ShadowBot",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Music",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "SFX",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Mixer",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Environment",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Music",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "SFX",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Mixer",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Collectables",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Coins",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Music",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "SFX",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Mixer",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Keys",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Music",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "SFX",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Mixer",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Camera",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "MainCamera",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Script",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Prefab",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Settings",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "CameraB",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Script",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Prefab",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Settings",
+                                    "type": "folder"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Light",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "MainLight",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Script",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Prefab",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Settings",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "LightB",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Script",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Prefab",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Settings",
+                                    "type": "folder"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "RenderPipelineBackup",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "URP_Test1",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "URP_PerformanceMode",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "HDRP_Experimental",
+                            "type": "folder"
+                        }
+                    ]
+                },
+                {
+                    "name": "Scripts",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Core",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "GameManager",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "InputHandler",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Systems",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Inventory",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "ItemManager",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "ItemDatabase",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "ItemInteraction",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Dialogue",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "DialogueManager",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "DialogueDatabase",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "DialogueInteraction",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "SaveLoad",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "SaveManager",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "LoadManager",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "SaveLoadInteraction",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "UI",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Buttons",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "ButtonManager",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "ButtonDatabase",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "ButtonInteraction",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Menus",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "MenuManager",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "MenuDatabase",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "MenuInteraction",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Maze",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Generator",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Solver",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "MazeInteraction",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Player",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Core",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Systems",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "UI",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Maze",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Enemy",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "BulkBot",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Core",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Systems",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "UI",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Maze",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "ShadowBot",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Core",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Systems",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "UI",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Maze",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Environment",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Core",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Systems",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "UI",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Maze",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Collectables",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Coins",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Core",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Systems",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "UI",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Maze",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Keys",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Core",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Systems",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "UI",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Maze",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "UI",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Buttons",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Menus",
+                            "type": "folder"
+                        }
+                    ]
+                },
+                {
+                    "name": "Scenes",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "MainScene",
+                            "type": "file"
+                        },
+                        {
+                            "name": "LevelScenes",
+                            "type": "folder"
+                        }
+                    ]
+                },
+                {
+                    "name": "ScriptableObjects",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Player",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "PlayerConfig",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "PlayerSettings",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Enemy",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "BulkBot",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "BulkBotConfig",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "BulkBotSettings",
+                                            "type": "file"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "ShadowBot",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "ShadowBotConfig",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "ShadowBotSettings",
+                                            "type": "file"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Collectables",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Coins",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "CoinConfig",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "CoinSettings",
+                                            "type": "file"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Keys",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "KeyConfig",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "name": "KeySettings",
+                                            "type": "file"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Puzzle",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "PuzzleConfig",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "PuzzleSettings",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Shared",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "GlobalSettings",
+                                    "type": "file"
+                                },
+                                {
+                                    "name": "UIConfig",
+                                    "type": "file"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "ThirdParty",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Plugins",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Assets",
+                            "type": "folder"
+                        }
+                    ]
+                },
+                {
+                    "name": "DevTools",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "EditorTools",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Transform",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Debug",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Utilities",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "LogicTest",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "CameraTest",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "DebugHelpers",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "BuildTools",
+                            "type": "folder"
+                        }
+                    ]
+                },
+                {
+                    "name": "Lab",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Animations",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Scripts",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Scenes",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Prefabs",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Materials",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Audio",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Notes",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Archive",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "OldAnimations",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "DeprecatedScripts",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "LegacyPrefabs",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "UnusedMaterials",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "AudioArchive",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "NotesArchive",
+                                    "type": "folder"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

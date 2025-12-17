@@ -14,23 +14,23 @@ import (
 func runInit(templateFile string, path string) {
 	data, err := os.ReadFile(templateFile)
 	if err != nil {
-		fmt.Println("❌ خطا در خواندن فایل قالب:", err)
+		fmt.Println("❌ failed to read template file:", err)
 		return
 	}
 
 	var template types.Template
 	if err := json.Unmarshal(data, &template); err != nil {
-		fmt.Println("❌ خطا در پارس JSON:", err)
+		fmt.Println("❌ failed to parse JSON:", err)
 		return
 	}
 
 	for _, rootNode := range template.Root {
 		err = generator.CreateStructure(rootNode, path)
 		if err != nil {
-			fmt.Println("❌ خطا در ایجاد ساختار:", err)
+			fmt.Println("❌ failed to create structure:", err)
 			return
 		}
 	}
 
-	fmt.Println("✅ ساختار پروژه با موفقیت ایجاد شد.")
+	fmt.Println("✅ the project structure was created successfully.")
 }

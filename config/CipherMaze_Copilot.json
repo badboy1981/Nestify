@@ -1,0 +1,629 @@
+{
+    "projectType": "Unity Modular Game Engine",
+    "language": "C# / Unity",
+    "tags": [
+        "modular",
+        "entity-based",
+        "lighting-integrated",
+        "maintainable",
+        "scalable"
+    ],
+    "root": [
+        {
+            "name": "Copliot",
+            "type": "folder",
+            "children": [
+                {
+                    "name": "Art",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Actors",
+                            "type": "folder",
+                            "role": "Players and Enemies",
+                            "children": [
+                                {
+                                    "name": "Players",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Shared",
+                                            "type": "folder",
+                                            "role": "Base player logic and common assets"
+                                        },
+                                        {
+                                            "name": "Volt",
+                                            "type": "folder",
+                                            "children": [
+                                                {
+                                                    "name": "Prefabs",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Models",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Animations",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Audio",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Scripts",
+                                                    "type": "folder",
+                                                    "children": [
+                                                        {
+                                                            "name": "Logic",
+                                                            "type": "folder",
+                                                            "role": "Movement, combat, health"
+                                                        },
+                                                        {
+                                                            "name": "View",
+                                                            "type": "folder",
+                                                            "role": "Animation and sound handlers"
+                                                        },
+                                                        {
+                                                            "name": "UI",
+                                                            "type": "folder",
+                                                            "role": "Entity-specific HUD logic"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Settings",
+                                                    "type": "folder",
+                                                    "role": "ScriptableObject instances"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Enemies",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Shared",
+                                            "type": "folder",
+                                            "role": "Common enemy logic and assets"
+                                        },
+                                        {
+                                            "name": "RobotGuard",
+                                            "type": "folder",
+                                            "children": [
+                                                {
+                                                    "name": "Prefabs",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Models",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Animations",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Audio",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Scripts",
+                                                    "type": "folder",
+                                                    "children": [
+                                                        {
+                                                            "name": "Logic",
+                                                            "type": "folder",
+                                                            "role": "Movement, combat, health"
+                                                        },
+                                                        {
+                                                            "name": "View",
+                                                            "type": "folder",
+                                                            "role": "Animation and sound handlers"
+                                                        },
+                                                        {
+                                                            "name": "UI",
+                                                            "type": "folder",
+                                                            "role": "Entity-specific HUD logic"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "Settings",
+                                                    "type": "folder",
+                                                    "role": "ScriptableObject instances"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Items",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Collectables",
+                                    "type": "folder",
+                                    "role": "Battery, coins, EMP",
+                                    "children": [
+                                        {
+                                            "name": "Shared",
+                                            "type": "folder",
+                                            "role": "Common collectable assets"
+                                        },
+                                        {
+                                            "name": "Battery",
+                                            "type": "folder",
+                                            "children": [
+                                                {
+                                                    "name": "Prefabs",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Animations",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Models",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Audio",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Scripts",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Settings",
+                                                    "type": "folder"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Interactables",
+                                    "type": "folder",
+                                    "role": "Gates and stations",
+                                    "children": [
+                                        {
+                                            "name": "Shared",
+                                            "type": "folder",
+                                            "role": "Common interactable assets"
+                                        },
+                                        {
+                                            "name": "Gate",
+                                            "type": "folder",
+                                            "children": [
+                                                {
+                                                    "name": "Prefabs",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Animations",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Models",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Audio",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Scripts",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Settings",
+                                                    "type": "folder"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "World",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Global_Audio",
+                                    "type": "folder",
+                                    "role": "Non-entity sounds",
+                                    "children": [
+                                        {
+                                            "name": "Prefabs",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Music",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Ambience",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "UI_Sounds",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Environment",
+                                    "type": "folder",
+                                    "role": "Maze environment structure",
+                                    "children": [
+                                        {
+                                            "name": "Modular",
+                                            "type": "folder",
+                                            "role": "Walls, columns, floors",
+                                            "children": [
+                                                {
+                                                    "name": "Prefabs",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Models",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Textures",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Materials",
+                                                    "type": "folder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Props",
+                                            "type": "folder",
+                                            "role": "Decorative non-interactive objects",
+                                            "children": [
+                                                {
+                                                    "name": "Prefabs",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Models",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Textures",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Materials",
+                                                    "type": "folder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Architecture",
+                                            "type": "folder",
+                                            "role": "Unique large structures",
+                                            "children": [
+                                                {
+                                                    "name": "Prefabs",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Models",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Textures",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Materials",
+                                                    "type": "folder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Materials",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Textures",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "VFX_Projectiles",
+                                    "type": "folder",
+                                    "role": "Bullets and explosions"
+                                },
+                                {
+                                    "name": "Lighting",
+                                    "type": "folder",
+                                    "role": "Dedicated lighting folder",
+                                    "children": [
+                                        {
+                                            "name": "Prefabs",
+                                            "type": "folder",
+                                            "role": "Torches, lamps, neon"
+                                        },
+                                        {
+                                            "name": "Profiles",
+                                            "type": "folder",
+                                            "role": "Skybox and global illumination"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "System",
+                    "type": "folder",
+                    "role": "Game subsystems and infrastructure",
+                    "children": [
+                        {
+                            "name": "AudioSystem",
+                            "type": "folder",
+                            "role": "Central audio player and object pool",
+                            "children": [
+                                {
+                                    "name": "Poolers",
+                                    "type": "folder",
+                                    "role": "8-socket pool logic"
+                                },
+                                {
+                                    "name": "Emitters",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Managers",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Prefabs",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Cameras",
+                            "type": "folder",
+                            "role": "Main camera and virtual cameras",
+                            "children": [
+                                {
+                                    "name": "Prefabs",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Scripts",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Managers",
+                            "type": "folder",
+                            "role": "Spawn points and game state"
+                        },
+                        {
+                            "name": "UI",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "HUD",
+                                    "type": "folder",
+                                    "role": "Health, battery, crosshair",
+                                    "children": [
+                                        {
+                                            "name": "Prefabs",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Scripts",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Menus",
+                                    "type": "folder",
+                                    "role": "Pause, game over, main menu",
+                                    "children": [
+                                        {
+                                            "name": "Prefabs",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Scripts",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Scripts",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Core",
+                            "type": "folder",
+                            "role": "Game core infrastructure",
+                            "children": [
+                                {
+                                    "name": "Managers",
+                                    "type": "folder",
+                                    "role": "GameManager, SaveSystem, SceneLoader"
+                                },
+                                {
+                                    "name": "Input",
+                                    "type": "folder",
+                                    "role": "Input system readers"
+                                },
+                                {
+                                    "name": "Events",
+                                    "type": "folder",
+                                    "role": "Game events and listeners"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Definitions",
+                            "type": "folder",
+                            "role": "ScriptableObject data classes",
+                            "children": [
+                                {
+                                    "name": "Actors",
+                                    "type": "folder",
+                                    "role": "Stats for players and enemies"
+                                },
+                                {
+                                    "name": "Items",
+                                    "type": "folder",
+                                    "role": "Data for collectables and weapons"
+                                },
+                                {
+                                    "name": "Environment",
+                                    "type": "folder",
+                                    "role": "Lighting and world data"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Utilities",
+                            "type": "folder",
+                            "role": "General helpers and extensions",
+                            "children": [
+                                {
+                                    "name": "Extensions",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "Helpers",
+                                    "type": "folder"
+                                },
+                                {
+                                    "name": "DebugTools",
+                                    "type": "folder",
+                                    "role": "Profilers, visualizers, test harnesses"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Prototypes",
+                    "type": "folder",
+                    "role": "Rapid testing and sandbox scenes",
+                    "children": [
+                        {
+                            "name": "Scenes",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Prefabs",
+                            "type": "folder"
+                        },
+                        {
+                            "name": "Scripts",
+                            "type": "folder"
+                        }
+                    ]
+                },
+                {
+                    "name": "Docs",
+                    "type": "folder",
+                    "role": "Architecture notes and onboarding",
+                    "children": [
+                        {
+                            "name": "README.md",
+                            "type": "file",
+                            "content": "# CipherMaze\nProject structure, conventions, and module overview."
+                        },
+                        {
+                            "name": "CONTRIBUTING.md",
+                            "type": "file",
+                            "content": "Guidelines for assets, scripts, and naming."
+                        },
+                        {
+                            "name": "CHANGELOG.md",
+                            "type": "file",
+                            "content": "Versioned changes and migration notes."
+                        }
+                    ]
+                },
+                {
+                    "name": "Scenes",
+                    "type": "folder",
+                    "role": "All playable and non-playable game scenes",
+                    "children": [
+                        {
+                            "name": "Menus",
+                            "type": "folder",
+                            "role": "UI-related scenes such as MainMenu, Loading, Pause"
+                        },
+                        {
+                            "name": "Levels",
+                            "type": "folder",
+                            "role": "Main gameplay levels",
+                            "children": [
+                                {
+                                    "name": "Campaign",
+                                    "type": "folder",
+                                    "role": "Story-driven campaign stages"
+                                },
+                                {
+                                    "name": "Bonus",
+                                    "type": "folder",
+                                    "role": "Optional or reward-based stages"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Sandboxes",
+                            "type": "folder",
+                            "role": "Technical test scenes for mechanics, lighting, or prototyping"
+                        },
+                        {
+                            "name": "Cutscenes",
+                            "type": "folder",
+                            "role": "Narrative-driven non-interactive cinematic scenes"
+                        },
+                        {
+                            "name": "Docs",
+                            "type": "folder",
+                            "role": "Scene documentation and guidelines",
+                            "children": [
+                                {
+                                    "name": "SCENES_README.md",
+                                    "type": "file",
+                                    "content": "# Scenes Folder\n\nThis folder contains all Unity scenes used in the project.\n\n- **Menus**: UI-related scenes (MainMenu, Loading, Pause).\n- **Levels**: Main gameplay stages, divided into Campaign and Bonus.\n- **Sandboxes**: Technical test scenes for mechanics and lighting.\n- **Cutscenes**: Narrative-driven non-interactive cinematic scenes.\n\n## Naming Convention\n- Levels: `Level_01`, `Level_02`, etc.\n- Campaign: `Campaign_X`.\n- Bonus: `Bonus_X`.\n- Sandboxes: `Sandbox_Test_X`.\n- Cutscenes: `Cutscene_X`.\n"
+                                },
+                                {
+                                    "name": "SCENES_GUIDELINES.md",
+                                    "type": "file",
+                                    "content": "## Guidelines for Scenes\n\n1. Keep scene names short and descriptive.\n2. Use prefixes for clarity (e.g., `Menu_Main`, `Level_01`).\n3. Document any special lighting or mechanics in the scene.\n4. Sandbox scenes should not be included in builds.\n5. Cutscenes must be optimized for performance and memory usage."
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

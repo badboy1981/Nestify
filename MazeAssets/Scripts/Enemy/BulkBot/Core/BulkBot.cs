@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 internal class BulkBot : Enemy
 {
     [SerializeField] Animator animator;
@@ -21,6 +22,7 @@ internal class BulkBot : Enemy
         }
         DroneForce.relativeForce = new(0, 0, Power);
         //Debug.Log($"Self Name: {name} || Input Name: {other.tag}");
-        DecreaseStealCharge(EnemyList.BulkBot);
+        //DecreaseStealCharge(EnemyList.BulkBot);
+
     }
 }

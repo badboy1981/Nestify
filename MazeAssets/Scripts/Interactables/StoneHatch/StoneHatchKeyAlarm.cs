@@ -3,6 +3,7 @@ using System.Linq;
 using Collectable.Gate;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class StoneHatchKeyAlarm : MonoBehaviour
 {
     [Header("Gate Property")]

@@ -16,7 +16,8 @@ namespace Collectable
         {
             //_BatteryDiagram = GameObject.Find("BatteryDiagram").GetComponent<BatteryDiagram>();
             base.OnTriggerEnter(other);
-            chargeManagment.CVStatus.VoltChargeLevel += chargeManagment.battery.Capacity;
+            //chargeManagment.CVStatus.VoltChargeLevel += chargeManagment.chargeEffect.Battery;
+            chargeManagment.ChargeModifier("Battery");
             chargeManagment.CVStatus.VoltChargeLevel = Mathf.Clamp
                 (
                     chargeManagment.CVStatus.VoltChargeLevel,

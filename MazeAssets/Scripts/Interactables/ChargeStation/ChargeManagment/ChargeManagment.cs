@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq.Expressions;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ChargeManagment", menuName = "Charge Managment/ChargeManagment")]
@@ -11,10 +12,37 @@ public class ChargeManagment : ScriptableObject
     public bool voltInsideStation;
     public ChargeVoltStatus CVStatus;
     [Header("----------------------")]
-    [Header("Battery")]
-    public BatteryProperty battery;
+    [Header("Charge Effect")]
+    //public BatteryProperty battery;
+    public ChargeEffect chargeEffect;
 
-    public IEnumerator DeChargeVoltRoutine()
+    public void ChargeModifier(string Tag)
+    {
+        switch (Tag)
+        {
+            case "BulkBot":
+                CalculateChargeModify(-chargeEffect.BulkBot);
+                break;
+            case "ShadowBot":
+                CalculateChargeModify(-chargeEffect.ShadowBot);
+                break;
+            case "Battery":
+                CalculateChargeModify(chargeEffect.Battery);
+                break;
+            default:
+                break;
+        }
+    }
+    private void CalculateChargeModify(int value)
+    {
+        CVStatus.VoltChargeLevel = Mathf.Clamp
+           (
+               CVStatus.VoltChargeLevel += value,
+               0,
+               CVStatus.MaxVoltCharge
+           );
+    }
+public IEnumerator DeChargeVoltRoutine()
     {
         while (CVStatus.VoltChargeLevel >= 0f)
         {

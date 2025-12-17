@@ -18,6 +18,8 @@ public class ChargeManagmentReset : MonoBehaviour
         chargeManagment.CVStatus.DeChargeRate = 1f;
         chargeManagment.CVStatus.ChargeDelaySeconds = 1f;
 
-        chargeManagment.battery.Capacity = 20f;
+        chargeManagment.chargeEffect.BulkBot = 5;
+        chargeManagment.chargeEffect.ShadowBot = 10;
+        chargeManagment.chargeEffect.Battery = 20;
     }
 }

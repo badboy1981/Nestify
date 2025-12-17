@@ -25,11 +25,10 @@ internal class StoneHatch : Interactive
     }
     protected override void OnTriggerEnter(Collider other)
     {
-        //if(gateProperty.GateState) return;
-        if (other.CompareTag("Player") && !gateProperty.GateState)
+        if (!other.CompareTag("Player")) return;
+        if (!gateProperty.GateState)
         {
             animator = GetComponent<Animator>();
-            //if (!gateProperty.GateState) 
             ActiveCollectedKeys();
         }
     }

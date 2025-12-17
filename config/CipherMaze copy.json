@@ -1,0 +1,352 @@
+{
+    "projectType": "Unity Modular Game Engine",
+    "language": "C# / Unity",
+    "tags": [
+        "modular",
+        "entity-based",
+        "lighting-integrated"
+    ],
+    "root": [
+        {
+            "name": "Assets",
+            "type": "folder",
+            "children": [
+                {
+                    "name": "Maze",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "Art",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Actors",
+                                    "type": "folder",
+                                    "role": "Players and Enemies",
+                                    "children": [
+                                        {
+                                            "name": "Players",
+                                            "type": "folder",
+                                            "children": [
+                                                {
+                                                    "name": "Shared",
+                                                    "type": "folder",
+                                                    "role": "Base Player Logic"
+                                                },
+                                                {
+                                                    "name": "Volt",
+                                                    "type": "folder",
+                                                    "children": [
+                                                        {
+                                                            "name": "Models",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Animations",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Scripts",
+                                                            "type": "folder",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Logic",
+                                                                    "type": "folder",
+                                                                    "role": "Movement, Combat, Health"
+                                                                },
+                                                                {
+                                                                    "name": "View",
+                                                                    "type": "folder",
+                                                                    "role": "Animation & Sound Handlers"
+                                                                },
+                                                                {
+                                                                    "name": "UI",
+                                                                    "type": "folder",
+                                                                    "role": "Entity-specific HUD logic"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Settings",
+                                                            "type": "folder",
+                                                            "role": "ScriptableObject Instances"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Enemies",
+                                            "type": "folder",
+                                            "children": [
+                                                {
+                                                    "name": "Shared",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "RobotGuard",
+                                                    "type": "folder",
+                                                    "children": [
+                                                        {
+                                                            "name": "Models",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Animations",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Scripts",
+                                                            "type": "folder",
+                                                            "children": [
+                                                                {
+                                                                    "name": "Logic",
+                                                                    "type": "folder",
+                                                                    "role": "Movement, Combat, Health"
+                                                                },
+                                                                {
+                                                                    "name": "View",
+                                                                    "type": "folder",
+                                                                    "role": "Animation & Sound Handlers"
+                                                                },
+                                                                {
+                                                                    "name": "UI",
+                                                                    "type": "folder",
+                                                                    "role": "Entity-specific HUD logic"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "name": "Settings",
+                                                            "type": "folder"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Items",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Collectables",
+                                            "type": "folder",
+                                            "role": "Battery, Coins, EMP",
+                                            "children": [
+                                                {
+                                                    "name": "Shared",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Battery",
+                                                    "type": "folder",
+                                                    "children": [
+                                                        {
+                                                            "name": "Animations",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Models",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Scripts",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Settings",
+                                                            "type": "folder"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "Interactables",
+                                            "type": "folder",
+                                            "role": "Gates, Stations",
+                                            "children": [
+                                                {
+                                                    "name": "Shared",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Gate",
+                                                    "type": "folder",
+                                                    "children": [
+                                                        {
+                                                            "name": "Animations",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Models",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Scripts",
+                                                            "type": "folder"
+                                                        },
+                                                        {
+                                                            "name": "Settings",
+                                                            "type": "folder"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "World",
+                                    "type": "folder",
+                                    "children": [
+                                        {
+                                            "name": "Environment",
+                                            "type": "folder",
+                                            "role": "ساختار اصلی محیط ماز",
+                                            "children": [
+                                                {
+                                                    "name": "Modular",
+                                                    "type": "folder",
+                                                    "role": "دیوارها، ستون‌ها و کف‌های تکرار شونده"
+                                                },
+                                                {
+                                                    "name": "Props",
+                                                    "type": "folder",
+                                                    "role": "اشیاء تزئینی غیر تعاملی محیط"
+                                                },
+                                                {
+                                                    "name": "Architecture",
+                                                    "type": "folder",
+                                                    "role": "سازه‌های بزرگ و منحصر به فرد"
+                                                },
+                                                {
+                                                    "name": "Materials",
+                                                    "type": "folder"
+                                                },
+                                                {
+                                                    "name": "Textures",
+                                                    "type": "folder"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "name": "VFX_Projectiles",
+                                            "type": "folder",
+                                            "role": "Bullets and Explosions"
+                                        },
+                                        {
+                                            "name": "Lighting",
+                                            "type": "folder",
+                                            "role": "پوشه اختصاصی نورها",
+                                            "children": [
+                                                {
+                                                    "name": "Prefabs",
+                                                    "type": "folder",
+                                                    "role": "Torches, Lamps, Neon"
+                                                },
+                                                {
+                                                    "name": "Profiles",
+                                                    "type": "folder",
+                                                    "role": "Skybox and Global Illumination"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "System",
+                            "type": "folder",
+                            "role": "آبجکت‌های جانبی و زیرساختی",
+                            "children": [
+                                {
+                                    "name": "Cameras",
+                                    "type": "folder",
+                                    "role": "MainCamera, VirtualCameras"
+                                },
+                                {
+                                    "name": "Managers",
+                                    "type": "folder",
+                                    "role": "SpawnPoints, GameState"
+                                },
+                                {
+                                    "name": "UI",
+                                    "type": "folder"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Scripts",
+                            "type": "folder",
+                            "children": [
+                                {
+                                    "name": "Core",
+                                    "type": "folder",
+                                    "role": "زیرساخت‌های سیستمی بازی",
+                                    "children": [
+                                        {
+                                            "name": "Managers",
+                                            "type": "folder",
+                                            "role": "GameManager, SaveSystem, SceneLoader"
+                                        },
+                                        {
+                                            "name": "Input",
+                                            "type": "folder",
+                                            "role": "Input System Readers"
+                                        },
+                                        {
+                                            "name": "Events",
+                                            "type": "folder",
+                                            "role": "Game Events & Listeners"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Definitions",
+                                    "type": "folder",
+                                    "role": "قالب‌های داده‌ای (ScriptableObject Classes)",
+                                    "children": [
+                                        {
+                                            "name": "Actors",
+                                            "type": "folder",
+                                            "role": "Stats for Players & Enemies"
+                                        },
+                                        {
+                                            "name": "Items",
+                                            "type": "folder",
+                                            "role": "Data for Collectables & Weapons"
+                                        },
+                                        {
+                                            "name": "Environment",
+                                            "type": "folder",
+                                            "role": "Lighting & World Data"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Utilities",
+                                    "type": "folder",
+                                    "role": "کدهای کمکی و افزونه‌ها",
+                                    "children": [
+                                        {
+                                            "name": "Extensions",
+                                            "type": "folder"
+                                        },
+                                        {
+                                            "name": "Helpers",
+                                            "type": "folder"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

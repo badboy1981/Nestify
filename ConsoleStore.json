@@ -1,0 +1,3855 @@
+[
+  {
+    "name": "ConsoleStore",
+    "type": "folder",
+    "size": 4096,
+    "children": [
+      {
+        "name": ".gitattributes",
+        "type": "file",
+        "size": 2581
+      },
+      {
+        "name": ".gitignore",
+        "type": "file",
+        "size": 6585
+      },
+      {
+        "name": ".vs",
+        "type": "folder",
+        "children": [
+          {
+            "name": "ConsoleStore",
+            "type": "folder",
+            "children": [
+              {
+                "name": "CopilotIndices",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "18.0.955.22606",
+                    "type": "folder",
+                    "size": 4096,
+                    "children": [
+                      {
+                        "name": "CodeChunks.db",
+                        "type": "file",
+                        "size": 348160
+                      },
+                      {
+                        "name": "SemanticSymbols.db",
+                        "type": "file",
+                        "size": 204800
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "ConsoleStore.slnx",
+            "type": "folder",
+            "children": [
+              {
+                "name": "DesignTimeBuild",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": ".dtbcache.v2",
+                    "type": "file",
+                    "size": 443001
+                  }
+                ]
+              },
+              {
+                "name": "FileContentIndex",
+                "type": "folder",
+                "size": 4096,
+                "children": [
+                  {
+                    "name": "03eeb50b-6537-42e6-90aa-c6b5e24594e7.vsidx",
+                    "type": "file",
+                    "size": 46675
+                  },
+                  {
+                    "name": "4b731c3f-d843-4f47-b800-6f338eca4024.vsidx",
+                    "type": "file",
+                    "size": 1322616
+                  },
+                  {
+                    "name": "8e4f9823-250d-4607-91ad-8a25d9f1c8ba.vsidx",
+                    "type": "file",
+                    "size": 28640
+                  },
+                  {
+                    "name": "a2f965fb-fa8f-4b7c-9c08-62df12d0bbd3.vsidx",
+                    "type": "file",
+                    "size": 1328468
+                  },
+                  {
+                    "name": "ac4714f0-e548-4f90-9230-f8b4308b6403.vsidx",
+                    "type": "file",
+                    "size": 28775
+                  }
+                ]
+              },
+              {
+                "name": "config",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "applicationhost.config",
+                    "type": "file",
+                    "size": 86045
+                  }
+                ]
+              },
+              {
+                "name": "copilot-chat",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "d25d07ba",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "sessions",
+                        "type": "folder"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "v18",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": ".futdcache.v2",
+                    "type": "file",
+                    "size": 892
+                  },
+                  {
+                    "name": ".suo",
+                    "type": "file",
+                    "size": 94208
+                  },
+                  {
+                    "name": "DocumentLayout.backup.json",
+                    "type": "file",
+                    "size": 2657
+                  },
+                  {
+                    "name": "DocumentLayout.json",
+                    "type": "file",
+                    "size": 2657
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "ProjectEvaluation",
+            "type": "folder",
+            "children": [
+              {
+                "name": "consolestore.metadata.v10.bin",
+                "type": "file",
+                "size": 4820
+              },
+              {
+                "name": "consolestore.projects.v10.bin",
+                "type": "file",
+                "size": 445336
+              },
+              {
+                "name": "consolestore.strings.v10.bin",
+                "type": "file",
+                "size": 257386
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "API",
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "API.csproj",
+            "type": "file",
+            "size": 848
+          },
+          {
+            "name": "API.csproj.user",
+            "type": "file",
+            "size": 389
+          },
+          {
+            "name": "API.http",
+            "type": "file",
+            "size": 119
+          },
+          {
+            "name": "Controllers",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ProductsController.cs",
+                "type": "file",
+                "size": 2210
+              },
+              {
+                "name": "WeatherForecastController.cs",
+                "type": "file",
+                "size": 852
+              }
+            ]
+          },
+          {
+            "name": "Program.cs",
+            "type": "file",
+            "size": 944
+          },
+          {
+            "name": "Properties",
+            "type": "folder",
+            "children": [
+              {
+                "name": "launchSettings.json",
+                "type": "file",
+                "size": 644
+              }
+            ]
+          },
+          {
+            "name": "WeatherForecast.cs",
+            "type": "file",
+            "size": 283
+          },
+          {
+            "name": "appsettings.Development.json",
+            "type": "file",
+            "size": 127
+          },
+          {
+            "name": "appsettings.json",
+            "type": "file",
+            "size": 345
+          },
+          {
+            "name": "bin",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 28672,
+                    "children": [
+                      {
+                        "name": "API.deps.json",
+                        "type": "file",
+                        "size": 57403
+                      },
+                      {
+                        "name": "API.dll",
+                        "type": "file",
+                        "size": 32256
+                      },
+                      {
+                        "name": "API.exe",
+                        "type": "file",
+                        "size": 162304
+                      },
+                      {
+                        "name": "API.pdb",
+                        "type": "file",
+                        "size": 35724
+                      },
+                      {
+                        "name": "API.runtimeconfig.json",
+                        "type": "file",
+                        "size": 488
+                      },
+                      {
+                        "name": "API.staticwebassets.endpoints.json",
+                        "type": "file",
+                        "size": 51
+                      },
+                      {
+                        "name": "Application.dll",
+                        "type": "file",
+                        "size": 17408
+                      },
+                      {
+                        "name": "Application.pdb",
+                        "type": "file",
+                        "size": 15672
+                      },
+                      {
+                        "name": "AutoMapper.Extensions.Microsoft.DependencyInjection.dll",
+                        "type": "file",
+                        "size": 12800
+                      },
+                      {
+                        "name": "AutoMapper.dll",
+                        "type": "file",
+                        "size": 263680
+                      },
+                      {
+                        "name": "Azure.Core.dll",
+                        "type": "file",
+                        "size": 437304
+                      },
+                      {
+                        "name": "Azure.Identity.dll",
+                        "type": "file",
+                        "size": 356912
+                      },
+                      {
+                        "name": "BuildHost-net472",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.Build.Locator.dll",
+                            "type": "file",
+                            "size": 34848
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe",
+                            "type": "file",
+                            "size": 446344
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.exe.config",
+                            "type": "file",
+                            "size": 2901
+                          },
+                          {
+                            "name": "Microsoft.IO.Redist.dll",
+                            "type": "file",
+                            "size": 131232
+                          },
+                          {
+                            "name": "Newtonsoft.Json.dll",
+                            "type": "file",
+                            "size": 722304
+                          },
+                          {
+                            "name": "System.Buffers.dll",
+                            "type": "file",
+                            "size": 20856
+                          },
+                          {
+                            "name": "System.Collections.Immutable.dll",
+                            "type": "file",
+                            "size": 259360
+                          },
+                          {
+                            "name": "System.CommandLine.dll",
+                            "type": "file",
+                            "size": 148504
+                          },
+                          {
+                            "name": "System.Memory.dll",
+                            "type": "file",
+                            "size": 142240
+                          },
+                          {
+                            "name": "System.Numerics.Vectors.dll",
+                            "type": "file",
+                            "size": 115856
+                          },
+                          {
+                            "name": "System.Runtime.CompilerServices.Unsafe.dll",
+                            "type": "file",
+                            "size": 18024
+                          },
+                          {
+                            "name": "System.Threading.Tasks.Extensions.dll",
+                            "type": "file",
+                            "size": 25984
+                          },
+                          {
+                            "name": "cs",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18992
+                              }
+                            ]
+                          },
+                          {
+                            "name": "de",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18984
+                              }
+                            ]
+                          },
+                          {
+                            "name": "es",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18992
+                              }
+                            ]
+                          },
+                          {
+                            "name": "fr",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18976
+                              }
+                            ]
+                          },
+                          {
+                            "name": "it",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18992
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ja",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19016
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ko",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19016
+                              }
+                            ]
+                          },
+                          {
+                            "name": "pl",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19000
+                              }
+                            ]
+                          },
+                          {
+                            "name": "pt-BR",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18976
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ru",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19512
+                              }
+                            ]
+                          },
+                          {
+                            "name": "tr",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18992
+                              }
+                            ]
+                          },
+                          {
+                            "name": "zh-Hans",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18976
+                              }
+                            ]
+                          },
+                          {
+                            "name": "zh-Hant",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19016
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "BuildHost-netcore",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.Build.Locator.dll",
+                            "type": "file",
+                            "size": 43568
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.deps.json",
+                            "type": "file",
+                            "size": 11309
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll",
+                            "type": "file",
+                            "size": 442664
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll.config",
+                            "type": "file",
+                            "size": 33939
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.runtimeconfig.json",
+                            "type": "file",
+                            "size": 282
+                          },
+                          {
+                            "name": "Newtonsoft.Json.dll",
+                            "type": "file",
+                            "size": 722808
+                          },
+                          {
+                            "name": "System.Collections.Immutable.dll",
+                            "type": "file",
+                            "size": 259360
+                          },
+                          {
+                            "name": "System.CommandLine.dll",
+                            "type": "file",
+                            "size": 148504
+                          },
+                          {
+                            "name": "cs",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18992
+                              }
+                            ]
+                          },
+                          {
+                            "name": "de",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18984
+                              }
+                            ]
+                          },
+                          {
+                            "name": "es",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18992
+                              }
+                            ]
+                          },
+                          {
+                            "name": "fr",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18976
+                              }
+                            ]
+                          },
+                          {
+                            "name": "it",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18992
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ja",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19016
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ko",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19016
+                              }
+                            ]
+                          },
+                          {
+                            "name": "pl",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19000
+                              }
+                            ]
+                          },
+                          {
+                            "name": "pt-BR",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18976
+                              }
+                            ]
+                          },
+                          {
+                            "name": "ru",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19512
+                              }
+                            ]
+                          },
+                          {
+                            "name": "tr",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18992
+                              }
+                            ]
+                          },
+                          {
+                            "name": "zh-Hans",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 18976
+                              }
+                            ]
+                          },
+                          {
+                            "name": "zh-Hant",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "System.CommandLine.resources.dll",
+                                "type": "file",
+                                "size": 19016
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Domain.dll",
+                        "type": "file",
+                        "size": 6144
+                      },
+                      {
+                        "name": "Domain.pdb",
+                        "type": "file",
+                        "size": 11544
+                      },
+                      {
+                        "name": "FluentValidation.DependencyInjectionExtensions.dll",
+                        "type": "file",
+                        "size": 15360
+                      },
+                      {
+                        "name": "FluentValidation.dll",
+                        "type": "file",
+                        "size": 531456
+                      },
+                      {
+                        "name": "Humanizer.dll",
+                        "type": "file",
+                        "size": 355944
+                      },
+                      {
+                        "name": "Infrastructure.dll",
+                        "type": "file",
+                        "size": 22016
+                      },
+                      {
+                        "name": "Infrastructure.pdb",
+                        "type": "file",
+                        "size": 16244
+                      },
+                      {
+                        "name": "MediatR.Contracts.dll",
+                        "type": "file",
+                        "size": 6656
+                      },
+                      {
+                        "name": "MediatR.dll",
+                        "type": "file",
+                        "size": 86528
+                      },
+                      {
+                        "name": "Microsoft.AspNetCore.OpenApi.dll",
+                        "type": "file",
+                        "size": 194872
+                      },
+                      {
+                        "name": "Microsoft.Bcl.AsyncInterfaces.dll",
+                        "type": "file",
+                        "size": 19104
+                      },
+                      {
+                        "name": "Microsoft.Bcl.Cryptography.dll",
+                        "type": "file",
+                        "size": 16688
+                      },
+                      {
+                        "name": "Microsoft.Build.Framework.dll",
+                        "type": "file",
+                        "size": 361232
+                      },
+                      {
+                        "name": "Microsoft.Build.Tasks.Core.dll",
+                        "type": "file",
+                        "size": 1150216
+                      },
+                      {
+                        "name": "Microsoft.Build.Utilities.Core.dll",
+                        "type": "file",
+                        "size": 306456
+                      },
+                      {
+                        "name": "Microsoft.Build.dll",
+                        "type": "file",
+                        "size": 1881208
+                      },
+                      {
+                        "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.dll",
+                        "type": "file",
+                        "size": 935720
+                      },
+                      {
+                        "name": "Microsoft.CodeAnalysis.CSharp.dll",
+                        "type": "file",
+                        "size": 6697768
+                      },
+                      {
+                        "name": "Microsoft.CodeAnalysis.ExternalAccess.RazorCompiler.dll",
+                        "type": "file",
+                        "size": 21304
+                      },
+                      {
+                        "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.dll",
+                        "type": "file",
+                        "size": 131368
+                      },
+                      {
+                        "name": "Microsoft.CodeAnalysis.Workspaces.dll",
+                        "type": "file",
+                        "size": 4179256
+                      },
+                      {
+                        "name": "Microsoft.CodeAnalysis.dll",
+                        "type": "file",
+                        "size": 3029800
+                      },
+                      {
+                        "name": "Microsoft.Data.SqlClient.dll",
+                        "type": "file",
+                        "size": 929912
+                      },
+                      {
+                        "name": "Microsoft.EntityFrameworkCore.Abstractions.dll",
+                        "type": "file",
+                        "size": 34848
+                      },
+                      {
+                        "name": "Microsoft.EntityFrameworkCore.Design.dll",
+                        "type": "file",
+                        "size": 630856
+                      },
+                      {
+                        "name": "Microsoft.EntityFrameworkCore.Relational.dll",
+                        "type": "file",
+                        "size": 2191904
+                      },
+                      {
+                        "name": "Microsoft.EntityFrameworkCore.SqlServer.dll",
+                        "type": "file",
+                        "size": 638496
+                      },
+                      {
+                        "name": "Microsoft.EntityFrameworkCore.dll",
+                        "type": "file",
+                        "size": 2821664
+                      },
+                      {
+                        "name": "Microsoft.Extensions.DependencyModel.dll",
+                        "type": "file",
+                        "size": 85264
+                      },
+                      {
+                        "name": "Microsoft.Identity.Client.Extensions.Msal.dll",
+                        "type": "file",
+                        "size": 66616
+                      },
+                      {
+                        "name": "Microsoft.Identity.Client.dll",
+                        "type": "file",
+                        "size": 1028656
+                      },
+                      {
+                        "name": "Microsoft.IdentityModel.Abstractions.dll",
+                        "type": "file",
+                        "size": 19504
+                      },
+                      {
+                        "name": "Microsoft.IdentityModel.JsonWebTokens.dll",
+                        "type": "file",
+                        "size": 172064
+                      },
+                      {
+                        "name": "Microsoft.IdentityModel.Logging.dll",
+                        "type": "file",
+                        "size": 36896
+                      },
+                      {
+                        "name": "Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
+                        "type": "file",
+                        "size": 128032
+                      },
+                      {
+                        "name": "Microsoft.IdentityModel.Protocols.dll",
+                        "type": "file",
+                        "size": 40992
+                      },
+                      {
+                        "name": "Microsoft.IdentityModel.Tokens.dll",
+                        "type": "file",
+                        "size": 384544
+                      },
+                      {
+                        "name": "Microsoft.NET.StringTools.dll",
+                        "type": "file",
+                        "size": 31016
+                      },
+                      {
+                        "name": "Microsoft.OpenApi.dll",
+                        "type": "file",
+                        "size": 477768
+                      },
+                      {
+                        "name": "Microsoft.SqlServer.Server.dll",
+                        "type": "file",
+                        "size": 23976
+                      },
+                      {
+                        "name": "Mono.TextTemplating.dll",
+                        "type": "file",
+                        "size": 177664
+                      },
+                      {
+                        "name": "Newtonsoft.Json.dll",
+                        "type": "file",
+                        "size": 712464
+                      },
+                      {
+                        "name": "Swashbuckle.AspNetCore.Swagger.dll",
+                        "type": "file",
+                        "size": 17408
+                      },
+                      {
+                        "name": "Swashbuckle.AspNetCore.SwaggerGen.dll",
+                        "type": "file",
+                        "size": 157184
+                      },
+                      {
+                        "name": "Swashbuckle.AspNetCore.SwaggerUI.dll",
+                        "type": "file",
+                        "size": 724480
+                      },
+                      {
+                        "name": "System.ClientModel.dll",
+                        "type": "file",
+                        "size": 175664
+                      },
+                      {
+                        "name": "System.CodeDom.dll",
+                        "type": "file",
+                        "size": 185112
+                      },
+                      {
+                        "name": "System.Composition.AttributedModel.dll",
+                        "type": "file",
+                        "size": 20248
+                      },
+                      {
+                        "name": "System.Composition.Convention.dll",
+                        "type": "file",
+                        "size": 54040
+                      },
+                      {
+                        "name": "System.Composition.Hosting.dll",
+                        "type": "file",
+                        "size": 56072
+                      },
+                      {
+                        "name": "System.Composition.Runtime.dll",
+                        "type": "file",
+                        "size": 27424
+                      },
+                      {
+                        "name": "System.Composition.TypedParts.dll",
+                        "type": "file",
+                        "size": 65816
+                      },
+                      {
+                        "name": "System.Configuration.ConfigurationManager.dll",
+                        "type": "file",
+                        "size": 443192
+                      },
+                      {
+                        "name": "System.Formats.Nrbf.dll",
+                        "type": "file",
+                        "size": 67848
+                      },
+                      {
+                        "name": "System.IdentityModel.Tokens.Jwt.dll",
+                        "type": "file",
+                        "size": 89016
+                      },
+                      {
+                        "name": "System.Memory.Data.dll",
+                        "type": "file",
+                        "size": 30472
+                      },
+                      {
+                        "name": "System.Reflection.MetadataLoadContext.dll",
+                        "type": "file",
+                        "size": 242296
+                      },
+                      {
+                        "name": "System.Resources.Extensions.dll",
+                        "type": "file",
+                        "size": 106768
+                      },
+                      {
+                        "name": "System.Security.Cryptography.ProtectedData.dll",
+                        "type": "file",
+                        "size": 38712
+                      },
+                      {
+                        "name": "System.Security.Permissions.dll",
+                        "type": "file",
+                        "size": 117520
+                      },
+                      {
+                        "name": "System.Windows.Extensions.dll",
+                        "type": "file",
+                        "size": 28944
+                      },
+                      {
+                        "name": "appsettings.Development.json",
+                        "type": "file",
+                        "size": 127
+                      },
+                      {
+                        "name": "appsettings.json",
+                        "type": "file",
+                        "size": 345
+                      },
+                      {
+                        "name": "cs",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17704
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 441640
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17696
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 46368
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 48424
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 257656
+                          }
+                        ]
+                      },
+                      {
+                        "name": "de",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17712
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 471848
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17720
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 47928
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 50456
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 267384
+                          }
+                        ]
+                      },
+                      {
+                        "name": "es",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17672
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 461608
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17688
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 47400
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 49960
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 259192
+                          }
+                        ]
+                      },
+                      {
+                        "name": "fr",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17696
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 473880
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17688
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 48912
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 50488
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 268432
+                          }
+                        ]
+                      },
+                      {
+                        "name": "it",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17712
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 468240
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17720
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 48408
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 50440
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 260216
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ja",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17696
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 515376
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17680
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 50960
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 54040
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 289400
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ko",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17712
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 473392
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17720
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 48400
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 50464
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 267416
+                          }
+                        ]
+                      },
+                      {
+                        "name": "pl",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17688
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 474416
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17688
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 47896
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 50488
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 266896
+                          }
+                        ]
+                      },
+                      {
+                        "name": "pt-BR",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17672
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 453928
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17704
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 47408
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 49424
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 255128
+                          }
+                        ]
+                      },
+                      {
+                        "name": "ru",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 18232
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 621360
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17688
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 55064
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 60728
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 344696
+                          }
+                        ]
+                      },
+                      {
+                        "name": "runtimes",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "unix",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "lib",
+                                "type": "folder",
+                                "children": [
+                                  {
+                                    "name": "net9.0",
+                                    "type": "folder",
+                                    "children": [
+                                      {
+                                        "name": "Microsoft.Data.SqlClient.dll",
+                                        "type": "file",
+                                        "size": 2102944
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "win",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "lib",
+                                "type": "folder",
+                                "children": [
+                                  {
+                                    "name": "net9.0",
+                                    "type": "folder",
+                                    "children": [
+                                      {
+                                        "name": "Microsoft.Data.SqlClient.dll",
+                                        "type": "file",
+                                        "size": 2167440
+                                      },
+                                      {
+                                        "name": "System.Windows.Extensions.dll",
+                                        "type": "file",
+                                        "size": 75552
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "win-arm64",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "native",
+                                "type": "folder",
+                                "children": [
+                                  {
+                                    "name": "Microsoft.Data.SqlClient.SNI.dll",
+                                    "type": "file",
+                                    "size": 551976
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "win-x64",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "native",
+                                "type": "folder",
+                                "children": [
+                                  {
+                                    "name": "Microsoft.Data.SqlClient.SNI.dll",
+                                    "type": "file",
+                                    "size": 566832
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "win-x86",
+                            "type": "folder",
+                            "children": [
+                              {
+                                "name": "native",
+                                "type": "folder",
+                                "children": [
+                                  {
+                                    "name": "Microsoft.Data.SqlClient.SNI.dll",
+                                    "type": "file",
+                                    "size": 477736
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "name": "tr",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17672
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 449848
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17672
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 46896
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 48936
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 250528
+                          }
+                        ]
+                      },
+                      {
+                        "name": "zh-Hans",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17704
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 401168
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17712
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 44320
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 45368
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 225912
+                          }
+                        ]
+                      },
+                      {
+                        "name": "zh-Hant",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 17704
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.CSharp.resources.dll",
+                            "type": "file",
+                            "size": 400680
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll",
+                            "type": "file",
+                            "size": 17688
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.Workspaces.resources.dll",
+                            "type": "file",
+                            "size": 44312
+                          },
+                          {
+                            "name": "Microsoft.CodeAnalysis.resources.dll",
+                            "type": "file",
+                            "size": 45328
+                          },
+                          {
+                            "name": "Microsoft.Data.SqlClient.resources.dll",
+                            "type": "file",
+                            "size": 229520
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "obj",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "API.csproj.nuget.dgspec.json",
+                "type": "file",
+                "size": 99748
+              },
+              {
+                "name": "API.csproj.nuget.g.props",
+                "type": "file",
+                "size": 44862
+              },
+              {
+                "name": "API.csproj.nuget.g.targets",
+                "type": "file",
+                "size": 1303
+              },
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 8192,
+                    "children": [
+                      {
+                        "name": ".NETCoreApp,Version=v10.0.AssemblyAttributes.cs",
+                        "type": "file",
+                        "size": 200
+                      },
+                      {
+                        "name": "API.AssemblyInfo.cs",
+                        "type": "file",
+                        "size": 982
+                      },
+                      {
+                        "name": "API.AssemblyInfoInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "API.GeneratedMSBuildEditorConfig.editorconfig",
+                        "type": "file",
+                        "size": 1478
+                      },
+                      {
+                        "name": "API.GlobalUsings.g.cs",
+                        "type": "file",
+                        "size": 642
+                      },
+                      {
+                        "name": "API.MvcApplicationPartsAssemblyInfo.cache",
+                        "type": "file"
+                      },
+                      {
+                        "name": "API.MvcApplicationPartsAssemblyInfo.cs",
+                        "type": "file",
+                        "size": 737
+                      },
+                      {
+                        "name": "API.assets.cache",
+                        "type": "file",
+                        "size": 60280
+                      },
+                      {
+                        "name": "API.csproj.AssemblyReference.cache",
+                        "type": "file",
+                        "size": 24529
+                      },
+                      {
+                        "name": "API.csproj.BuildWithSkipAnalyzers",
+                        "type": "file"
+                      },
+                      {
+                        "name": "API.csproj.CoreCompileInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "API.csproj.FileListAbsolute.txt",
+                        "type": "file",
+                        "size": 24831
+                      },
+                      {
+                        "name": "API.csproj.Up2Date",
+                        "type": "file"
+                      },
+                      {
+                        "name": "API.dll",
+                        "type": "file",
+                        "size": 32256
+                      },
+                      {
+                        "name": "API.genruntimeconfig.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "API.pdb",
+                        "type": "file",
+                        "size": 35724
+                      },
+                      {
+                        "name": "ApiEndpoints.json",
+                        "type": "file",
+                        "size": 1748
+                      },
+                      {
+                        "name": "EndpointInfo",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "API.OpenApiFiles.cache",
+                            "type": "file",
+                            "size": 10
+                          },
+                          {
+                            "name": "API.json",
+                            "type": "file",
+                            "size": 4557
+                          }
+                        ]
+                      },
+                      {
+                        "name": "apphost.exe",
+                        "type": "file",
+                        "size": 162304
+                      },
+                      {
+                        "name": "ref",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "API.dll",
+                            "type": "file",
+                            "size": 14336
+                          }
+                        ]
+                      },
+                      {
+                        "name": "refint",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "API.dll",
+                            "type": "file",
+                            "size": 14336
+                          }
+                        ]
+                      },
+                      {
+                        "name": "rjsmcshtml.dswa.cache.json",
+                        "type": "file",
+                        "size": 2807
+                      },
+                      {
+                        "name": "rjsmrazor.dswa.cache.json",
+                        "type": "file",
+                        "size": 2807
+                      },
+                      {
+                        "name": "rpswa.dswa.cache.json",
+                        "type": "file",
+                        "size": 2661
+                      },
+                      {
+                        "name": "staticwebassets",
+                        "type": "folder"
+                      },
+                      {
+                        "name": "staticwebassets.build.endpoints.json",
+                        "type": "file",
+                        "size": 51
+                      },
+                      {
+                        "name": "staticwebassets.build.json",
+                        "type": "file",
+                        "size": 221
+                      },
+                      {
+                        "name": "staticwebassets.build.json.cache",
+                        "type": "file",
+                        "size": 44
+                      },
+                      {
+                        "name": "staticwebassets.references.upToDateCheck.txt",
+                        "type": "file"
+                      },
+                      {
+                        "name": "staticwebassets.removed.txt",
+                        "type": "file"
+                      },
+                      {
+                        "name": "swae.build.ex.cache",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "project.assets.json",
+                "type": "file",
+                "size": 264431
+              },
+              {
+                "name": "project.nuget.cache",
+                "type": "file",
+                "size": 9058
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Admin",
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "Admin.csproj",
+            "type": "file",
+            "size": 488
+          },
+          {
+            "name": "Admin.csproj.user",
+            "type": "file",
+            "size": 238
+          },
+          {
+            "name": "Components",
+            "type": "folder",
+            "children": [
+              {
+                "name": "App.razor",
+                "type": "file",
+                "size": 663
+              },
+              {
+                "name": "Layout",
+                "type": "folder",
+                "size": 4096,
+                "children": [
+                  {
+                    "name": "MainLayout.razor",
+                    "type": "file",
+                    "size": 547
+                  },
+                  {
+                    "name": "MainLayout.razor.css",
+                    "type": "file",
+                    "size": 1940
+                  },
+                  {
+                    "name": "NavMenu.razor",
+                    "type": "file",
+                    "size": 1084
+                  },
+                  {
+                    "name": "NavMenu.razor.css",
+                    "type": "file",
+                    "size": 3418
+                  },
+                  {
+                    "name": "ReconnectModal.razor",
+                    "type": "file",
+                    "size": 1320
+                  },
+                  {
+                    "name": "ReconnectModal.razor.css",
+                    "type": "file",
+                    "size": 3873
+                  },
+                  {
+                    "name": "ReconnectModal.razor.js",
+                    "type": "file",
+                    "size": 2364
+                  }
+                ]
+              },
+              {
+                "name": "Pages",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "Counter.razor",
+                    "type": "file",
+                    "size": 363
+                  },
+                  {
+                    "name": "Error.razor",
+                    "type": "file",
+                    "size": 1215
+                  },
+                  {
+                    "name": "Home.razor",
+                    "type": "file",
+                    "size": 99
+                  },
+                  {
+                    "name": "NotFound.razor",
+                    "type": "file",
+                    "size": 126
+                  },
+                  {
+                    "name": "Weather.razor",
+                    "type": "file",
+                    "size": 1922
+                  }
+                ]
+              },
+              {
+                "name": "Routes.razor",
+                "type": "file",
+                "size": 300
+              },
+              {
+                "name": "_Imports.razor",
+                "type": "file",
+                "size": 414
+              }
+            ]
+          },
+          {
+            "name": "Program.cs",
+            "type": "file",
+            "size": 1121
+          },
+          {
+            "name": "Properties",
+            "type": "folder",
+            "children": [
+              {
+                "name": "launchSettings.json",
+                "type": "file",
+                "size": 681
+              }
+            ]
+          },
+          {
+            "name": "appsettings.Development.json",
+            "type": "file",
+            "size": 127
+          },
+          {
+            "name": "appsettings.json",
+            "type": "file",
+            "size": 151
+          },
+          {
+            "name": "bin",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "obj",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Admin.csproj.nuget.dgspec.json",
+                "type": "file",
+                "size": 99447
+              },
+              {
+                "name": "Admin.csproj.nuget.g.props",
+                "type": "file",
+                "size": 1963
+              },
+              {
+                "name": "Admin.csproj.nuget.g.targets",
+                "type": "file",
+                "size": 565
+              },
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 4096,
+                    "children": [
+                      {
+                        "name": ".NETCoreApp,Version=v10.0.AssemblyAttributes.cs",
+                        "type": "file",
+                        "size": 200
+                      },
+                      {
+                        "name": "Admin.AssemblyInfo.cs",
+                        "type": "file",
+                        "size": 988
+                      },
+                      {
+                        "name": "Admin.AssemblyInfoInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Admin.GeneratedMSBuildEditorConfig.editorconfig",
+                        "type": "file",
+                        "size": 3511
+                      },
+                      {
+                        "name": "Admin.GlobalUsings.g.cs",
+                        "type": "file",
+                        "size": 698
+                      },
+                      {
+                        "name": "Admin.assets.cache",
+                        "type": "file",
+                        "size": 24608
+                      },
+                      {
+                        "name": "Admin.csproj.AssemblyReference.cache",
+                        "type": "file",
+                        "size": 18302
+                      },
+                      {
+                        "name": "Admin.csproj.FileListAbsolute.txt",
+                        "type": "file",
+                        "size": 185
+                      },
+                      {
+                        "name": "EmbeddedAttribute.cs",
+                        "type": "file",
+                        "size": 144
+                      },
+                      {
+                        "name": "ValidatableTypeAttribute.cs",
+                        "type": "file",
+                        "size": 285
+                      },
+                      {
+                        "name": "ref",
+                        "type": "folder"
+                      },
+                      {
+                        "name": "refint",
+                        "type": "folder"
+                      },
+                      {
+                        "name": "rpswa.dswa.cache.json",
+                        "type": "file",
+                        "size": 44123
+                      },
+                      {
+                        "name": "staticwebassets",
+                        "type": "folder"
+                      },
+                      {
+                        "name": "staticwebassets.removed.txt",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "project.assets.json",
+                "type": "file",
+                "size": 86013
+              },
+              {
+                "name": "project.nuget.cache",
+                "type": "file",
+                "size": 4670
+              }
+            ]
+          },
+          {
+            "name": "wwwroot",
+            "type": "folder",
+            "children": [
+              {
+                "name": "app.css",
+                "type": "file",
+                "size": 2900
+              },
+              {
+                "name": "favicon.png",
+                "type": "file",
+                "size": 1148
+              },
+              {
+                "name": "lib",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "bootstrap",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "dist",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "css",
+                            "type": "folder",
+                            "size": 8192,
+                            "children": [
+                              {
+                                "name": "bootstrap-grid.css",
+                                "type": "file",
+                                "size": 70329
+                              },
+                              {
+                                "name": "bootstrap-grid.css.map",
+                                "type": "file",
+                                "size": 203221
+                              },
+                              {
+                                "name": "bootstrap-grid.min.css",
+                                "type": "file",
+                                "size": 51795
+                              },
+                              {
+                                "name": "bootstrap-grid.min.css.map",
+                                "type": "file",
+                                "size": 115986
+                              },
+                              {
+                                "name": "bootstrap-grid.rtl.css",
+                                "type": "file",
+                                "size": 70403
+                              },
+                              {
+                                "name": "bootstrap-grid.rtl.css.map",
+                                "type": "file",
+                                "size": 203225
+                              },
+                              {
+                                "name": "bootstrap-grid.rtl.min.css",
+                                "type": "file",
+                                "size": 51870
+                              },
+                              {
+                                "name": "bootstrap-grid.rtl.min.css.map",
+                                "type": "file",
+                                "size": 116063
+                              },
+                              {
+                                "name": "bootstrap-reboot.css",
+                                "type": "file",
+                                "size": 12065
+                              },
+                              {
+                                "name": "bootstrap-reboot.css.map",
+                                "type": "file",
+                                "size": 129371
+                              },
+                              {
+                                "name": "bootstrap-reboot.min.css",
+                                "type": "file",
+                                "size": 10126
+                              },
+                              {
+                                "name": "bootstrap-reboot.min.css.map",
+                                "type": "file",
+                                "size": 51369
+                              },
+                              {
+                                "name": "bootstrap-reboot.rtl.css",
+                                "type": "file",
+                                "size": 12058
+                              },
+                              {
+                                "name": "bootstrap-reboot.rtl.css.map",
+                                "type": "file",
+                                "size": 129386
+                              },
+                              {
+                                "name": "bootstrap-reboot.rtl.min.css",
+                                "type": "file",
+                                "size": 10198
+                              },
+                              {
+                                "name": "bootstrap-reboot.rtl.min.css.map",
+                                "type": "file",
+                                "size": 63943
+                              },
+                              {
+                                "name": "bootstrap-utilities.css",
+                                "type": "file",
+                                "size": 107823
+                              },
+                              {
+                                "name": "bootstrap-utilities.css.map",
+                                "type": "file",
+                                "size": 267535
+                              },
+                              {
+                                "name": "bootstrap-utilities.min.css",
+                                "type": "file",
+                                "size": 85352
+                              },
+                              {
+                                "name": "bootstrap-utilities.min.css.map",
+                                "type": "file",
+                                "size": 180381
+                              },
+                              {
+                                "name": "bootstrap-utilities.rtl.css",
+                                "type": "file",
+                                "size": 107691
+                              },
+                              {
+                                "name": "bootstrap-utilities.rtl.css.map",
+                                "type": "file",
+                                "size": 267476
+                              },
+                              {
+                                "name": "bootstrap-utilities.rtl.min.css",
+                                "type": "file",
+                                "size": 85281
+                              },
+                              {
+                                "name": "bootstrap-utilities.rtl.min.css.map",
+                                "type": "file",
+                                "size": 180217
+                              },
+                              {
+                                "name": "bootstrap.css",
+                                "type": "file",
+                                "size": 281046
+                              },
+                              {
+                                "name": "bootstrap.css.map",
+                                "type": "file",
+                                "size": 679755
+                              },
+                              {
+                                "name": "bootstrap.min.css",
+                                "type": "file",
+                                "size": 232803
+                              },
+                              {
+                                "name": "bootstrap.min.css.map",
+                                "type": "file",
+                                "size": 589892
+                              },
+                              {
+                                "name": "bootstrap.rtl.css",
+                                "type": "file",
+                                "size": 280259
+                              },
+                              {
+                                "name": "bootstrap.rtl.css.map",
+                                "type": "file",
+                                "size": 679615
+                              },
+                              {
+                                "name": "bootstrap.rtl.min.css",
+                                "type": "file",
+                                "size": 232911
+                              },
+                              {
+                                "name": "bootstrap.rtl.min.css.map",
+                                "type": "file",
+                                "size": 589087
+                              }
+                            ]
+                          },
+                          {
+                            "name": "js",
+                            "type": "folder",
+                            "size": 4096,
+                            "children": [
+                              {
+                                "name": "bootstrap.bundle.js",
+                                "type": "file",
+                                "size": 207819
+                              },
+                              {
+                                "name": "bootstrap.bundle.js.map",
+                                "type": "file",
+                                "size": 444579
+                              },
+                              {
+                                "name": "bootstrap.bundle.min.js",
+                                "type": "file",
+                                "size": 80721
+                              },
+                              {
+                                "name": "bootstrap.bundle.min.js.map",
+                                "type": "file",
+                                "size": 332090
+                              },
+                              {
+                                "name": "bootstrap.esm.js",
+                                "type": "file",
+                                "size": 135829
+                              },
+                              {
+                                "name": "bootstrap.esm.js.map",
+                                "type": "file",
+                                "size": 305438
+                              },
+                              {
+                                "name": "bootstrap.esm.min.js",
+                                "type": "file",
+                                "size": 73935
+                              },
+                              {
+                                "name": "bootstrap.esm.min.js.map",
+                                "type": "file",
+                                "size": 222455
+                              },
+                              {
+                                "name": "bootstrap.js",
+                                "type": "file",
+                                "size": 145401
+                              },
+                              {
+                                "name": "bootstrap.js.map",
+                                "type": "file",
+                                "size": 306606
+                              },
+                              {
+                                "name": "bootstrap.min.js",
+                                "type": "file",
+                                "size": 60635
+                              },
+                              {
+                                "name": "bootstrap.min.js.map",
+                                "type": "file",
+                                "size": 220561
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Application",
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "Application.csproj",
+            "type": "file",
+            "size": 615
+          },
+          {
+            "name": "Common",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Behaviors",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "ValidationBehavior.cs",
+                    "type": "file",
+                    "size": 1702
+                  }
+                ]
+              },
+              {
+                "name": "Interfaces",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "IDateTimeService.cs",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "Mapping",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "MappingProfile.cs",
+                    "type": "file",
+                    "size": 983
+                  },
+                  {
+                    "name": "ProductProfile.cs",
+                    "type": "file",
+                    "size": 661
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "DependencyInjection.cs",
+            "type": "file",
+            "size": 1114
+          },
+          {
+            "name": "Features",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Orders",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "Commands",
+                    "type": "folder"
+                  },
+                  {
+                    "name": "Dtos",
+                    "type": "folder"
+                  },
+                  {
+                    "name": "Queries",
+                    "type": "folder"
+                  }
+                ]
+              },
+              {
+                "name": "Products",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "Commands",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "CreateProduct",
+                        "type": "folder",
+                        "size": 4096,
+                        "children": [
+                          {
+                            "name": "CreateProductCommand.cs",
+                            "type": "file",
+                            "size": 345
+                          },
+                          {
+                            "name": "CreateProductCommandHandler.cs",
+                            "type": "file",
+                            "size": 1181
+                          },
+                          {
+                            "name": "CreateProductCommandValidator.cs",
+                            "type": "file",
+                            "size": 1077
+                          },
+                          {
+                            "name": "CreateProductDto.cs",
+                            "type": "file",
+                            "size": 420
+                          }
+                        ]
+                      },
+                      {
+                        "name": "CreateProductCommand.cs",
+                        "type": "file"
+                      },
+                      {
+                        "name": "CreateProductCommandHandler.cs",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Dtos",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "Class1.cs",
+                        "type": "file",
+                        "size": 168
+                      },
+                      {
+                        "name": "ProductDto.cs",
+                        "type": "file",
+                        "size": 531
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Queries",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "GetProductListQuery.cs",
+                        "type": "file",
+                        "size": 422
+                      },
+                      {
+                        "name": "GetProductListQueryHandler.cs",
+                        "type": "file",
+                        "size": 1489
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Validators",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "CreateProductCommandValidator.cs",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Interfaces",
+            "type": "folder",
+            "children": [
+              {
+                "name": "IProductRepository.cs",
+                "type": "file",
+                "size": 289
+              },
+              {
+                "name": "IUserRepository.cs",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "bin",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "Application.deps.json",
+                        "type": "file",
+                        "size": 10768
+                      },
+                      {
+                        "name": "Application.dll",
+                        "type": "file",
+                        "size": 17408
+                      },
+                      {
+                        "name": "Application.pdb",
+                        "type": "file",
+                        "size": 15672
+                      },
+                      {
+                        "name": "Domain.dll",
+                        "type": "file",
+                        "size": 6144
+                      },
+                      {
+                        "name": "Domain.pdb",
+                        "type": "file",
+                        "size": 11544
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "obj",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Application.csproj.nuget.dgspec.json",
+                "type": "file",
+                "size": 44319
+              },
+              {
+                "name": "Application.csproj.nuget.g.props",
+                "type": "file",
+                "size": 1302
+              },
+              {
+                "name": "Application.csproj.nuget.g.targets",
+                "type": "file",
+                "size": 583
+              },
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 4096,
+                    "children": [
+                      {
+                        "name": ".NETCoreApp,Version=v10.0.AssemblyAttributes.cs",
+                        "type": "file",
+                        "size": 200
+                      },
+                      {
+                        "name": "Applicat.44B5EDA2.Up2Date",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Application.AssemblyInfo.cs",
+                        "type": "file",
+                        "size": 966
+                      },
+                      {
+                        "name": "Application.AssemblyInfoInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Application.GeneratedMSBuildEditorConfig.editorconfig",
+                        "type": "file",
+                        "size": 802
+                      },
+                      {
+                        "name": "Application.GlobalUsings.g.cs",
+                        "type": "file",
+                        "size": 239
+                      },
+                      {
+                        "name": "Application.assets.cache",
+                        "type": "file",
+                        "size": 9478
+                      },
+                      {
+                        "name": "Application.csproj.AssemblyReference.cache",
+                        "type": "file",
+                        "size": 8823
+                      },
+                      {
+                        "name": "Application.csproj.BuildWithSkipAnalyzers",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Application.csproj.CoreCompileInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Application.csproj.FileListAbsolute.txt",
+                        "type": "file",
+                        "size": 1492
+                      },
+                      {
+                        "name": "Application.dll",
+                        "type": "file",
+                        "size": 17408
+                      },
+                      {
+                        "name": "Application.pdb",
+                        "type": "file",
+                        "size": 15672
+                      },
+                      {
+                        "name": "ref",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "Application.dll",
+                            "type": "file",
+                            "size": 10240
+                          }
+                        ]
+                      },
+                      {
+                        "name": "refint",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "Application.dll",
+                            "type": "file",
+                            "size": 10240
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "project.assets.json",
+                "type": "file",
+                "size": 47871
+              },
+              {
+                "name": "project.nuget.cache",
+                "type": "file",
+                "size": 2139
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ConsoleStore.slnx",
+        "type": "file",
+        "size": 346
+      },
+      {
+        "name": "Domain",
+        "type": "folder",
+        "children": [
+          {
+            "name": "Domain.csproj",
+            "type": "file",
+            "size": 299
+          },
+          {
+            "name": "Entities",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Category.cs",
+                "type": "file",
+                "size": 369
+              },
+              {
+                "name": "Interfaces",
+                "type": "folder"
+              },
+              {
+                "name": "Product.cs",
+                "type": "file",
+                "size": 1068
+              }
+            ]
+          },
+          {
+            "name": "bin",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "Domain.deps.json",
+                        "type": "file",
+                        "size": 412
+                      },
+                      {
+                        "name": "Domain.dll",
+                        "type": "file",
+                        "size": 6144
+                      },
+                      {
+                        "name": "Domain.pdb",
+                        "type": "file",
+                        "size": 11544
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "obj",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 4096,
+                    "children": [
+                      {
+                        "name": ".NETCoreApp,Version=v10.0.AssemblyAttributes.cs",
+                        "type": "file",
+                        "size": 200
+                      },
+                      {
+                        "name": "Domain.AssemblyInfo.cs",
+                        "type": "file",
+                        "size": 951
+                      },
+                      {
+                        "name": "Domain.AssemblyInfoInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Domain.GeneratedMSBuildEditorConfig.editorconfig",
+                        "type": "file",
+                        "size": 792
+                      },
+                      {
+                        "name": "Domain.GlobalUsings.g.cs",
+                        "type": "file",
+                        "size": 239
+                      },
+                      {
+                        "name": "Domain.assets.cache",
+                        "type": "file",
+                        "size": 228
+                      },
+                      {
+                        "name": "Domain.csproj.BuildWithSkipAnalyzers",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Domain.csproj.CoreCompileInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Domain.csproj.FileListAbsolute.txt",
+                        "type": "file",
+                        "size": 995
+                      },
+                      {
+                        "name": "Domain.dll",
+                        "type": "file",
+                        "size": 6144
+                      },
+                      {
+                        "name": "Domain.pdb",
+                        "type": "file",
+                        "size": 11544
+                      },
+                      {
+                        "name": "ref",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "Domain.dll",
+                            "type": "file",
+                            "size": 6144
+                          }
+                        ]
+                      },
+                      {
+                        "name": "refint",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "Domain.dll",
+                            "type": "file",
+                            "size": 6144
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Domain.csproj.nuget.dgspec.json",
+                "type": "file",
+                "size": 21856
+              },
+              {
+                "name": "Domain.csproj.nuget.g.props",
+                "type": "file",
+                "size": 1302
+              },
+              {
+                "name": "Domain.csproj.nuget.g.targets",
+                "type": "file",
+                "size": 150
+              },
+              {
+                "name": "project.assets.json",
+                "type": "file",
+                "size": 21273
+              },
+              {
+                "name": "project.nuget.cache",
+                "type": "file",
+                "size": 214
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Infrastructure",
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "DependencyInjection.cs",
+            "type": "file",
+            "size": 1541
+          },
+          {
+            "name": "Infrastructure.csproj",
+            "type": "file",
+            "size": 788
+          },
+          {
+            "name": "Migrations",
+            "type": "folder",
+            "children": [
+              {
+                "name": "20251215214617_InitialSetup.Designer.cs",
+                "type": "file",
+                "size": 3205
+              },
+              {
+                "name": "20251215214617_InitialSetup.cs",
+                "type": "file",
+                "size": 2528
+              },
+              {
+                "name": "ApplicationDbContextModelSnapshot.cs",
+                "type": "file",
+                "size": 3111
+              }
+            ]
+          },
+          {
+            "name": "Persistence",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ApplicationDbContext.cs",
+                "type": "file",
+                "size": 1744
+              },
+              {
+                "name": "Repositories",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "ProductRepository.cs",
+                    "type": "file",
+                    "size": 966
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "bin",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 4096,
+                    "children": [
+                      {
+                        "name": "Application.dll",
+                        "type": "file",
+                        "size": 17408
+                      },
+                      {
+                        "name": "Application.pdb",
+                        "type": "file",
+                        "size": 15672
+                      },
+                      {
+                        "name": "Domain.dll",
+                        "type": "file",
+                        "size": 6144
+                      },
+                      {
+                        "name": "Domain.pdb",
+                        "type": "file",
+                        "size": 11544
+                      },
+                      {
+                        "name": "Infrastructure.deps.json",
+                        "type": "file",
+                        "size": 65292
+                      },
+                      {
+                        "name": "Infrastructure.dll",
+                        "type": "file",
+                        "size": 22016
+                      },
+                      {
+                        "name": "Infrastructure.pdb",
+                        "type": "file",
+                        "size": 16244
+                      },
+                      {
+                        "name": "Infrastructure.runtimeconfig.json",
+                        "type": "file",
+                        "size": 339
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "obj",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 4096,
+                    "children": [
+                      {
+                        "name": ".NETCoreApp,Version=v10.0.AssemblyAttributes.cs",
+                        "type": "file",
+                        "size": 200
+                      },
+                      {
+                        "name": "Infrastr.15EFFBFE.Up2Date",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Infrastructure.AssemblyInfo.cs",
+                        "type": "file",
+                        "size": 1015
+                      },
+                      {
+                        "name": "Infrastructure.AssemblyInfoInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Infrastructure.GeneratedMSBuildEditorConfig.editorconfig",
+                        "type": "file",
+                        "size": 1167
+                      },
+                      {
+                        "name": "Infrastructure.GlobalUsings.g.cs",
+                        "type": "file",
+                        "size": 239
+                      },
+                      {
+                        "name": "Infrastructure.assets.cache",
+                        "type": "file",
+                        "size": 64421
+                      },
+                      {
+                        "name": "Infrastructure.csproj.AssemblyReference.cache",
+                        "type": "file",
+                        "size": 26020
+                      },
+                      {
+                        "name": "Infrastructure.csproj.BuildWithSkipAnalyzers",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Infrastructure.csproj.CoreCompileInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Infrastructure.csproj.FileListAbsolute.txt",
+                        "type": "file",
+                        "size": 1985
+                      },
+                      {
+                        "name": "Infrastructure.dll",
+                        "type": "file",
+                        "size": 22016
+                      },
+                      {
+                        "name": "Infrastructure.genruntimeconfig.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Infrastructure.pdb",
+                        "type": "file",
+                        "size": 16244
+                      },
+                      {
+                        "name": "ref",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "Infrastructure.dll",
+                            "type": "file",
+                            "size": 9216
+                          }
+                        ]
+                      },
+                      {
+                        "name": "refint",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "Infrastructure.dll",
+                            "type": "file",
+                            "size": 9216
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Infrastructure.csproj.nuget.dgspec.json",
+                "type": "file",
+                "size": 66955
+              },
+              {
+                "name": "Infrastructure.csproj.nuget.g.props",
+                "type": "file",
+                "size": 2772
+              },
+              {
+                "name": "Infrastructure.csproj.nuget.g.targets",
+                "type": "file",
+                "size": 1367
+              },
+              {
+                "name": "project.assets.json",
+                "type": "file",
+                "size": 249616
+              },
+              {
+                "name": "project.nuget.cache",
+                "type": "file",
+                "size": 9921
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "type": "file",
+        "size": 14
+      },
+      {
+        "name": "Tests.Unit",
+        "type": "folder",
+        "children": [
+          {
+            "name": "FactAttribute.cs",
+            "type": "file",
+            "size": 91
+          },
+          {
+            "name": "Tests.Unit.csproj",
+            "type": "file",
+            "size": 797
+          },
+          {
+            "name": "UnitTest1.cs",
+            "type": "file",
+            "size": 142
+          },
+          {
+            "name": "bin",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": ".msCoverageSourceRootsMapping_Tests.Unit",
+                        "type": "file",
+                        "size": 1370
+                      },
+                      {
+                        "name": "CoverletSourceRootsMapping_Tests.Unit",
+                        "type": "file",
+                        "size": 1370
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "obj",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 4096,
+                    "children": [
+                      {
+                        "name": ".NETCoreApp,Version=v10.0.AssemblyAttributes.cs",
+                        "type": "file",
+                        "size": 200
+                      },
+                      {
+                        "name": "Tests.Unit.AssemblyInfo.cs",
+                        "type": "file",
+                        "size": 1003
+                      },
+                      {
+                        "name": "Tests.Unit.AssemblyInfoInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Tests.Unit.GeneratedMSBuildEditorConfig.editorconfig",
+                        "type": "file",
+                        "size": 800
+                      },
+                      {
+                        "name": "Tests.Unit.GlobalUsings.g.cs",
+                        "type": "file",
+                        "size": 260
+                      },
+                      {
+                        "name": "Tests.Unit.assets.cache",
+                        "type": "file",
+                        "size": 40012
+                      },
+                      {
+                        "name": "Tests.Unit.csproj.AssemblyReference.cache",
+                        "type": "file",
+                        "size": 19519
+                      },
+                      {
+                        "name": "Tests.Unit.csproj.FileListAbsolute.txt",
+                        "type": "file"
+                      },
+                      {
+                        "name": "ref",
+                        "type": "folder"
+                      },
+                      {
+                        "name": "refint",
+                        "type": "folder"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Tests.Unit.csproj.nuget.dgspec.json",
+                "type": "file",
+                "size": 67068
+              },
+              {
+                "name": "Tests.Unit.csproj.nuget.g.props",
+                "type": "file",
+                "size": 2790
+              },
+              {
+                "name": "Tests.Unit.csproj.nuget.g.targets",
+                "type": "file",
+                "size": 1745
+              },
+              {
+                "name": "project.assets.json",
+                "type": "file",
+                "size": 93811
+              },
+              {
+                "name": "project.nuget.cache",
+                "type": "file",
+                "size": 3739
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Web",
+        "type": "folder",
+        "size": 4096,
+        "children": [
+          {
+            "name": "App.razor",
+            "type": "file",
+            "size": 292
+          },
+          {
+            "name": "Layout",
+            "type": "folder",
+            "children": [
+              {
+                "name": "MainLayout.razor",
+                "type": "file",
+                "size": 372
+              },
+              {
+                "name": "MainLayout.razor.css",
+                "type": "file",
+                "size": 1478
+              },
+              {
+                "name": "NavMenu.razor",
+                "type": "file",
+                "size": 1376
+              },
+              {
+                "name": "NavMenu.razor.css",
+                "type": "file",
+                "size": 2682
+              }
+            ]
+          },
+          {
+            "name": "Pages",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Counter.razor",
+                "type": "file",
+                "size": 332
+              },
+              {
+                "name": "Home.razor",
+                "type": "file",
+                "size": 99
+              },
+              {
+                "name": "NotFound.razor",
+                "type": "file",
+                "size": 126
+              },
+              {
+                "name": "Weather.razor",
+                "type": "file",
+                "size": 1440
+              }
+            ]
+          },
+          {
+            "name": "Program.cs",
+            "type": "file",
+            "size": 613
+          },
+          {
+            "name": "Properties",
+            "type": "folder",
+            "children": [
+              {
+                "name": "launchSettings.json",
+                "type": "file",
+                "size": 877
+              }
+            ]
+          },
+          {
+            "name": "Web.csproj",
+            "type": "file",
+            "size": 727
+          },
+          {
+            "name": "Web.csproj.user",
+            "type": "file",
+            "size": 238
+          },
+          {
+            "name": "_Imports.razor",
+            "type": "file",
+            "size": 369
+          },
+          {
+            "name": "bin",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "obj",
+            "type": "folder",
+            "size": 4096,
+            "children": [
+              {
+                "name": "Debug",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "net10.0",
+                    "type": "folder",
+                    "size": 4096,
+                    "children": [
+                      {
+                        "name": ".NETCoreApp,Version=v10.0.AssemblyAttributes.cs",
+                        "type": "file",
+                        "size": 200
+                      },
+                      {
+                        "name": "EmbeddedAttribute.cs",
+                        "type": "file",
+                        "size": 144
+                      },
+                      {
+                        "name": "ValidatableTypeAttribute.cs",
+                        "type": "file",
+                        "size": 285
+                      },
+                      {
+                        "name": "Web.AssemblyInfo.cs",
+                        "type": "file",
+                        "size": 982
+                      },
+                      {
+                        "name": "Web.AssemblyInfoInputs.cache",
+                        "type": "file",
+                        "size": 66
+                      },
+                      {
+                        "name": "Web.GeneratedMSBuildEditorConfig.editorconfig",
+                        "type": "file",
+                        "size": 2895
+                      },
+                      {
+                        "name": "Web.GlobalUsings.g.cs",
+                        "type": "file",
+                        "size": 445
+                      },
+                      {
+                        "name": "Web.assets.cache",
+                        "type": "file",
+                        "size": 26786
+                      },
+                      {
+                        "name": "Web.csproj.AssemblyReference.cache",
+                        "type": "file",
+                        "size": 24660
+                      },
+                      {
+                        "name": "Web.csproj.FileListAbsolute.txt",
+                        "type": "file",
+                        "size": 181
+                      },
+                      {
+                        "name": "ref",
+                        "type": "folder"
+                      },
+                      {
+                        "name": "refint",
+                        "type": "folder"
+                      },
+                      {
+                        "name": "rpswa.dswa.cache.json",
+                        "type": "file",
+                        "size": 46046
+                      },
+                      {
+                        "name": "staticwebassets",
+                        "type": "folder"
+                      },
+                      {
+                        "name": "staticwebassets.removed.txt",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Web.csproj.nuget.dgspec.json",
+                "type": "file",
+                "size": 68004
+              },
+              {
+                "name": "Web.csproj.nuget.g.props",
+                "type": "file",
+                "size": 3632
+              },
+              {
+                "name": "Web.csproj.nuget.g.targets",
+                "type": "file",
+                "size": 2477
+              },
+              {
+                "name": "project.assets.json",
+                "type": "file",
+                "size": 137576
+              },
+              {
+                "name": "project.nuget.cache",
+                "type": "file",
+                "size": 6532
+              }
+            ]
+          },
+          {
+            "name": "wwwroot",
+            "type": "folder",
+            "children": [
+              {
+                "name": "css",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "app.css",
+                    "type": "file",
+                    "size": 4172
+                  }
+                ]
+              },
+              {
+                "name": "favicon.png",
+                "type": "file",
+                "size": 1148
+              },
+              {
+                "name": "icon-192.png",
+                "type": "file",
+                "size": 2626
+              },
+              {
+                "name": "index.html",
+                "type": "file",
+                "size": 1063
+              },
+              {
+                "name": "lib",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "bootstrap",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "dist",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "css",
+                            "type": "folder",
+                            "size": 8192,
+                            "children": [
+                              {
+                                "name": "bootstrap-grid.css",
+                                "type": "file",
+                                "size": 70329
+                              },
+                              {
+                                "name": "bootstrap-grid.css.map",
+                                "type": "file",
+                                "size": 203221
+                              },
+                              {
+                                "name": "bootstrap-grid.min.css",
+                                "type": "file",
+                                "size": 51795
+                              },
+                              {
+                                "name": "bootstrap-grid.min.css.map",
+                                "type": "file",
+                                "size": 115986
+                              },
+                              {
+                                "name": "bootstrap-grid.rtl.css",
+                                "type": "file",
+                                "size": 70403
+                              },
+                              {
+                                "name": "bootstrap-grid.rtl.css.map",
+                                "type": "file",
+                                "size": 203225
+                              },
+                              {
+                                "name": "bootstrap-grid.rtl.min.css",
+                                "type": "file",
+                                "size": 51870
+                              },
+                              {
+                                "name": "bootstrap-grid.rtl.min.css.map",
+                                "type": "file",
+                                "size": 116063
+                              },
+                              {
+                                "name": "bootstrap-reboot.css",
+                                "type": "file",
+                                "size": 12065
+                              },
+                              {
+                                "name": "bootstrap-reboot.css.map",
+                                "type": "file",
+                                "size": 129371
+                              },
+                              {
+                                "name": "bootstrap-reboot.min.css",
+                                "type": "file",
+                                "size": 10126
+                              },
+                              {
+                                "name": "bootstrap-reboot.min.css.map",
+                                "type": "file",
+                                "size": 51369
+                              },
+                              {
+                                "name": "bootstrap-reboot.rtl.css",
+                                "type": "file",
+                                "size": 12058
+                              },
+                              {
+                                "name": "bootstrap-reboot.rtl.css.map",
+                                "type": "file",
+                                "size": 129386
+                              },
+                              {
+                                "name": "bootstrap-reboot.rtl.min.css",
+                                "type": "file",
+                                "size": 10198
+                              },
+                              {
+                                "name": "bootstrap-reboot.rtl.min.css.map",
+                                "type": "file",
+                                "size": 63943
+                              },
+                              {
+                                "name": "bootstrap-utilities.css",
+                                "type": "file",
+                                "size": 107823
+                              },
+                              {
+                                "name": "bootstrap-utilities.css.map",
+                                "type": "file",
+                                "size": 267535
+                              },
+                              {
+                                "name": "bootstrap-utilities.min.css",
+                                "type": "file",
+                                "size": 85352
+                              },
+                              {
+                                "name": "bootstrap-utilities.min.css.map",
+                                "type": "file",
+                                "size": 180381
+                              },
+                              {
+                                "name": "bootstrap-utilities.rtl.css",
+                                "type": "file",
+                                "size": 107691
+                              },
+                              {
+                                "name": "bootstrap-utilities.rtl.css.map",
+                                "type": "file",
+                                "size": 267476
+                              },
+                              {
+                                "name": "bootstrap-utilities.rtl.min.css",
+                                "type": "file",
+                                "size": 85281
+                              },
+                              {
+                                "name": "bootstrap-utilities.rtl.min.css.map",
+                                "type": "file",
+                                "size": 180217
+                              },
+                              {
+                                "name": "bootstrap.css",
+                                "type": "file",
+                                "size": 281046
+                              },
+                              {
+                                "name": "bootstrap.css.map",
+                                "type": "file",
+                                "size": 679755
+                              },
+                              {
+                                "name": "bootstrap.min.css",
+                                "type": "file",
+                                "size": 232803
+                              },
+                              {
+                                "name": "bootstrap.min.css.map",
+                                "type": "file",
+                                "size": 589892
+                              },
+                              {
+                                "name": "bootstrap.rtl.css",
+                                "type": "file",
+                                "size": 280259
+                              },
+                              {
+                                "name": "bootstrap.rtl.css.map",
+                                "type": "file",
+                                "size": 679615
+                              },
+                              {
+                                "name": "bootstrap.rtl.min.css",
+                                "type": "file",
+                                "size": 232911
+                              },
+                              {
+                                "name": "bootstrap.rtl.min.css.map",
+                                "type": "file",
+                                "size": 589087
+                              }
+                            ]
+                          },
+                          {
+                            "name": "js",
+                            "type": "folder",
+                            "size": 4096,
+                            "children": [
+                              {
+                                "name": "bootstrap.bundle.js",
+                                "type": "file",
+                                "size": 207819
+                              },
+                              {
+                                "name": "bootstrap.bundle.js.map",
+                                "type": "file",
+                                "size": 444579
+                              },
+                              {
+                                "name": "bootstrap.bundle.min.js",
+                                "type": "file",
+                                "size": 80721
+                              },
+                              {
+                                "name": "bootstrap.bundle.min.js.map",
+                                "type": "file",
+                                "size": 332090
+                              },
+                              {
+                                "name": "bootstrap.esm.js",
+                                "type": "file",
+                                "size": 135829
+                              },
+                              {
+                                "name": "bootstrap.esm.js.map",
+                                "type": "file",
+                                "size": 305438
+                              },
+                              {
+                                "name": "bootstrap.esm.min.js",
+                                "type": "file",
+                                "size": 73935
+                              },
+                              {
+                                "name": "bootstrap.esm.min.js.map",
+                                "type": "file",
+                                "size": 222455
+                              },
+                              {
+                                "name": "bootstrap.js",
+                                "type": "file",
+                                "size": 145401
+                              },
+                              {
+                                "name": "bootstrap.js.map",
+                                "type": "file",
+                                "size": 306606
+                              },
+                              {
+                                "name": "bootstrap.min.js",
+                                "type": "file",
+                                "size": 60635
+                              },
+                              {
+                                "name": "bootstrap.min.js.map",
+                                "type": "file",
+                                "size": 220561
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "sample-data",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "weather.json",
+                    "type": "file",
+                    "size": 453
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

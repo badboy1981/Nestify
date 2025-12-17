@@ -15,7 +15,7 @@ func CreateStructure(node types.Node, root string) error {
 
 	if node.Type == "folder" {
 		if err := os.MkdirAll(path, os.ModePerm); err != nil {
-			return fmt.Errorf("خطا در ایجاد پوشه %s: %v", path, err)
+			return fmt.Errorf("failed to create directory %s: %v", path, err)
 		}
 		for _, child := range node.Children {
 			if err := CreateStructure(child, path); err != nil {
@@ -25,7 +25,7 @@ func CreateStructure(node types.Node, root string) error {
 	} else if node.Type == "file" {
 		f, err := os.Create(path)
 		if err != nil {
-			return fmt.Errorf("خطا در ایجاد فایل %s: %v", path, err)
+			return fmt.Errorf("error creating file %s: %v", path, err)
 		}
 		defer f.Close()
 	}

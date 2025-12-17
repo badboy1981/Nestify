@@ -14,14 +14,14 @@ import (
 func runScan(path string, printTree bool, foldersOnly bool) {
 	rootNodes, err := scanner.Scan(path, foldersOnly)
 	if err != nil {
-		fmt.Println("❌ خطا در اسکن مسیر:", err)
+		fmt.Println("❌ Failed to scan path:", err)
 		return
 	}
 
 	outputFile := "scan_output.json"
 	file, err := os.Create(outputFile)
 	if err != nil {
-		fmt.Println("❌ خطا در ایجاد فایل خروجی:", err)
+		fmt.Println("❌ Failed to create output file:", err)
 		return
 	}
 	defer file.Close()
@@ -29,11 +29,11 @@ func runScan(path string, printTree bool, foldersOnly bool) {
 	encoder := json.NewEncoder(file)
 	encoder.SetIndent("", "  ")
 	if err := encoder.Encode(rootNodes); err != nil {
-		fmt.Println("❌ خطا در نوشتن JSON:", err)
+		fmt.Println("❌ Failed to write JSON:", err)
 		return
 	}
 
-	fmt.Println("✅ خروجی اسکن در", outputFile, "ذخیره شد.")
+	fmt.Println("✅ The scan output has been saved in", outputFile)
 
 	if printTree {
 		// ساخت رشته کامل درخت برای همه Root ها
@@ -49,9 +49,9 @@ func runScan(path string, printTree bool, foldersOnly bool) {
 		mdOutput := "```\n" + treeStr + "```\n"
 		err = os.WriteFile("scan_output.md", []byte(mdOutput), 0644)
 		if err != nil {
-			fmt.Println("❌ خطا در ذخیره Markdown:", err)
+			fmt.Println("❌ Failed to save Markdown:", err)
 		} else {
-			fmt.Println("✅ خروجی Markdown در scan_output.md ذخیره شد.")
+			fmt.Println("✅ Markdown output saved in scan_output.md.")
 		}
 	}
 }

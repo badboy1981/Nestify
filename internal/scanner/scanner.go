@@ -1,14 +1,15 @@
 package scanner
 
-// File: scanner.go
-
+// بالای فایل، import جدید اضافه کن
 import (
 	"os"
 	"path/filepath"
 
+	"github.com/badboy1981/Nestify/internal/ignore" // اضافه شد
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
+// تغییر تابع Scan برای دریافت matcher
 func Scan(path string, foldersOnly bool) ([]types.Node, error) {
 	info, err := os.Stat(path)
 	if err != nil {
@@ -18,15 +19,19 @@ func Scan(path string, foldersOnly bool) ([]types.Node, error) {
 		return nil, nil
 	}
 
-	// ایجاد Node برای پوشه ریشه
+	// ساخت ignore matcher از ریشه پروژه
+	matcher, err := ignore.NewIgnoreMatcher(path)
+	if err != nil {
+		return nil, err
+	}
+
 	rootNode := types.Node{
 		Name: filepath.Base(path),
 		Type: "folder",
 		Size: info.Size(),
 	}
 
-	// اسکن محتوای داخل پوشه
-	children, err := scanDir(path, foldersOnly)
+	children, err := scanDir(path, path, matcher, foldersOnly) // path دوم برای ریشه
 	if err != nil {
 		return nil, err
 	}
@@ -35,15 +40,9 @@ func Scan(path string, foldersOnly bool) ([]types.Node, error) {
 	return []types.Node{rootNode}, nil
 }
 
-func scanDir(path string, foldersOnly bool) ([]types.Node, error) {
-	// لیست پوشه‌های نادیده گرفته‌شده
-	ignoreFolders := map[string]bool{
-		".git":         true,
-		"node_modules": true,
-		".github":      true,
-	}
-
-	entries, err := os.ReadDir(path)
+// تغییر scanDir برای دریافت rootPath و matcher
+func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, foldersOnly bool) ([]types.Node, error) {
+	entries, err := os.ReadDir(currentPath)
 	if err != nil {
 		return nil, err
 	}
@@ -52,13 +51,28 @@ func scanDir(path string, foldersOnly bool) ([]types.Node, error) {
 
 	for _, entry := range entries {
 		if foldersOnly && !entry.IsDir() {
-			continue // فقط پوشه‌ها رو اسکن کن
-		}
-		if entry.IsDir() && ignoreFolders[entry.Name()] {
-			continue // نادیده گرفتن پوشه‌های مشخص‌شده
+			continue
 		}
 
-		fullPath := filepath.Join(path, entry.Name())
+		fullPath := filepath.Join(currentPath, entry.Name())
+
+		// مسیر نسبی نسبت به ریشه پروژه
+		relPath, err := filepath.Rel(rootPath, fullPath)
+		if err != nil {
+			relPath = entry.Name()
+		}
+
+		// اگر پوشه باشه، به relPath یه / اضافه کن (مثل gitignore)
+		if entry.IsDir() {
+			// relPath += string(filepath.Separator)
+			relPath += "/" // همیشه از / استفاده کن، حتی در ویندوز
+		}
+
+		// چک ignore
+		if matcher.ShouldIgnore(relPath) {
+			continue
+		}
+
 		info, err := os.Stat(fullPath)
 		if err != nil {
 			return nil, err
@@ -76,7 +90,7 @@ func scanDir(path string, foldersOnly bool) ([]types.Node, error) {
 		}
 
 		if entry.IsDir() {
-			children, err := scanDir(fullPath, foldersOnly)
+			children, err := scanDir(fullPath, rootPath, matcher, foldersOnly)
 			if err != nil {
 				return nil, err
 			}

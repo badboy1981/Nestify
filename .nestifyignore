@@ -1,0 +1,14 @@
+.gitattributes
+.gitignore
+# کامنت
+.vscode/
+.vs/
+build/
+dist/
+*.tmp
+*.log
+*.bak
+Thumbs.db
+.DS_Store
+node_modules/
+__pycache__/

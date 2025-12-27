@@ -1,0 +1,266 @@
+{
+  "projectType": "AI Agent",
+  "language": "C# .NET 10",
+  "tags": [
+    "CleanArchitecture",
+    "Blazor",
+    "LLM",
+    "VectorDB",
+    "SQLite",
+    "MongoDB"
+  ],
+  "root": [
+    {
+      "name": "ExternalMemoryAI",
+      "type": "folder",
+      "children": [
+        {
+          "name": "docs",
+          "type": "folder",
+          "children": [
+            {
+              "name": "PRD.md",
+              "type": "file",
+              "role": "requirements"
+            },
+            {
+              "name": "Roadmap.md",
+              "type": "file",
+              "role": "planning"
+            },
+            {
+              "name": "Architecture.md",
+              "type": "file",
+              "role": "design"
+            }
+          ]
+        },
+        {
+          "name": "models",
+          "type": "folder",
+          "children": [
+            {
+              "name": "MiniLM",
+              "type": "folder"
+            },
+            {
+              "name": "LLaMA",
+              "type": "folder"
+            }
+          ]
+        },
+        {
+          "name": "src",
+          "type": "folder",
+          "children": [
+            {
+              "name": "AiMemory.Core",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "Entities",
+                  "type": "folder"
+                },
+                {
+                  "name": "ValueObjects",
+                  "type": "folder"
+                },
+                {
+                  "name": "Interfaces",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "IAI",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "IPersistence",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "IVectorStore",
+                      "type": "folder"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "AiMemory.Application",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "Agents",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "Ingestion",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "Indexing",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "Retrieval",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "Export",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "Filtering",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "Versioning",
+                      "type": "folder"
+                    }
+                  ]
+                },
+                {
+                  "name": "Commands",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "CommandPalette",
+                      "type": "folder"
+                    }
+                  ]
+                },
+                {
+                  "name": "Services",
+                  "type": "folder"
+                }
+              ]
+            },
+            {
+              "name": "AiMemory.Infrastructure",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "AI-Inference",
+                  "type": "folder"
+                },
+                {
+                  "name": "Persistence",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "SQLite",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "MongoDB",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "Migration",
+                      "type": "folder",
+                      "children": [
+                        {
+                          "name": "Services",
+                          "type": "folder"
+                        },
+                        {
+                          "name": "Scripts",
+                          "type": "folder"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "VectorStores",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "SqliteVSS",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "Qdrant",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "FAISS",
+                      "type": "folder"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "AiMemory.UI",
+              "type": "folder",
+              "children": [
+                {
+                  "name": "Components",
+                  "type": "folder",
+                  "children": [
+                    {
+                      "name": "CommandPalette",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "TopicTree",
+                      "type": "folder"
+                    },
+                    {
+                      "name": "ChatViewer",
+                      "type": "folder"
+                    }
+                  ]
+                },
+                {
+                  "name": "Pages",
+                  "type": "folder"
+                },
+                {
+                  "name": "Shared",
+                  "type": "folder"
+                },
+                {
+                  "name": "wwwroot",
+                  "type": "folder"
+                },
+                {
+                  "name": "appsettings.json",
+                  "type": "file",
+                  "role": "config"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tests",
+          "type": "folder",
+          "children": [
+            {
+              "name": "AiMemory.Core.Tests",
+              "type": "folder"
+            },
+            {
+              "name": "AiMemory.Application.Tests",
+              "type": "folder"
+            },
+            {
+              "name": "AiMemory.Infrastructure.Tests",
+              "type": "folder"
+            },
+            {
+              "name": "AiMemory.UI.Tests",
+              "type": "folder"
+            },
+            {
+              "name": "Integration.Tests",
+              "type": "folder"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

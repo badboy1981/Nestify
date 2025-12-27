@@ -1,0 +1,90 @@
+{
+  "projectType": "AI-Second-Brain-Engine-Pro",
+  "language": "C#",
+  "tags": ["DotNet10", "Blazor-Hybrid", "Clean-Architecture", "Command-Palette"],
+  "root": [
+    {
+      "name": "src",
+      "type": "folder",
+      "children": [
+        {
+          "name": "AiMemory.Core",
+          "type": "folder",
+          "children": [
+            { "name": "Entities", "type": "folder" },
+            { "name": "Interfaces", "type": "folder", "children": [
+                { "name": "IPersistence", "type": "folder" },
+                { "name": "IAI", "type": "folder" }
+            ]},
+            { "name": "ValueObjects", "type": "folder" }
+          ]
+        },
+        {
+          "name": "AiMemory.Application",
+          "type": "folder",
+          "children": [
+            { "name": "Agents", "type": "folder", "children": [
+                { "name": "Ingestion", "type": "folder" },
+                { "name": "Indexing", "type": "folder" },
+                { "name": "Retrieval", "type": "folder" },
+                { "name": "Export", "type": "folder" }
+            ]},
+            { "name": "Commands", "type": "folder" },
+            { "name": "Services", "type": "folder" }
+          ]
+        },
+        {
+          "name": "AiMemory.Infrastructure",
+          "type": "folder",
+          "children": [
+            { "name": "Persistence", "type": "folder", "children": [
+                { "name": "SQLite", "type": "folder" },
+                { "name": "MongoDB", "type": "folder" },
+                { "name": "Migration", "type": "folder" }
+            ]},
+            { "name": "VectorStores", "type": "folder", "children": [
+                { "name": "SqliteVSS", "type": "folder" },
+                { "name": "Qdrant", "type": "folder" }
+            ]},
+            { "name": "AI-Inference", "type": "folder", "role": "LLamaSharp Implementation" }
+          ]
+        },
+        {
+          "name": "AiMemory.UI",
+          "type": "folder",
+          "role": "MAUI Blazor Hybrid",
+          "children": [
+            { "name": "Components", "type": "folder", "children": [
+                { "name": "CommandPalette", "type": "folder" },
+                { "name": "TopicTree", "type": "folder" }
+            ]},
+            { "name": "Pages", "type": "folder" },
+            { "name": "Shared", "type": "folder" },
+            { "name": "appsettings.json", "type": "file", "content": "{\n  \"DatabaseProvider\": \"SQLite\",\n  \"VectorStoreProvider\": \"SqliteVSS\"\n}" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "docs",
+      "type": "folder",
+      "children": [
+        {
+          "name": "PRD.md",
+          "type": "file",
+          "content": "# PRD - External Memory AI\n\n## 1. Project Overview\n- Name: External Memory AI Agent\n- Tech: .NET 10, MAUI Blazor Hybrid.\n\n## 2. Key Features\n- Universal Ingestion\n- Agentic Indexing (LLaMA & MiniLM)\n- Command Palette (Ctrl+K)\n- Topic Tree Versioning\n\n## 3. Data Strategy\n- Provider Agnostic (SQLite/MongoDB ready)\n- Vector Abstraction (IVectorStore)"
+        },
+        {
+          "name": "Roadmap.md",
+          "type": "file",
+          "content": "# Project Roadmap\n\n- Phase 1: Foundation (Clean Architecture & Repository Setup)\n- Phase 2: AI Engine (LLamaSharp & Vector Memory)\n- Phase 3: Hybrid UI (MAUI Blazor & Command Palette)\n- Phase 4: Advanced Agents (Versioning & Migration Tools)"
+        }
+      ]
+    },
+    {
+      "name": "models",
+      "type": "folder",
+      "role": "Storage for GGUF and Embedding models"
+    }
+  ]
+}

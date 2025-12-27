@@ -1,161 +1,208 @@
 # Nestify
 
-Nestify is a command-line interface (CLI) tool that helps developers scan, analyze, and create project folder structures. Written in Go, it is designed for various project types (e.g., web, Unity games, or backend). With Nestify, you can visualize project structures as JSON or Markdown, analyze the project skeleton, or create new structures using predefined templates.
+**Nestify** is a powerful, lightweight command-line (CLI) tool written in Go that helps developers **scan**, **analyze**, and **create** project folder structures effortlessly.
 
-## Features
-- **Project Scanning**: Scans folders and files, outputting the structure as JSON or Markdown.
-- **Folders-Only Scanning**: Scan only directories to get a high-level project overview.
-- **Skeleton Analysis**: Automatically detects the role of each folder (e.g., core code, tests, or resources).
-- **Structure Creation**: Creates folder/file structures based on JSON templates.
+It works with any type of project: backend (Go, .NET, Node.js), frontend (React, Vue, Angular), mobile (Flutter, MAUI), games (Unity), Python projects, and more.
+
+## Key Features
+
+- **Smart Project Scanning**  
+  Generates complete folder/file structure as JSON or readable Markdown.
+
+- **Folders-Only Mode** (`--folders-only`)  
+  Shows a clean high-level architecture view without file clutter.
+
+- **`.nestifyignore` Support**  
+  Works just like `.gitignore` — exclude unwanted items (e.g., `bin/`, `obj/`, `.vs/`, `node_modules/`, `TestResults/`) for perfectly clean output.
+
+- **Skeleton Analysis** (`analyze`)  
+  Automatically identifies the role of each folder (entry point, core code, tests, assets, configuration, etc.).
+
+- **Project Generation from Templates** (`init`)  
+  Instantly create folder and file structures from JSON templates.
+
+- **Beautiful Tree View**  
+  Displays project structure in an easy-to-read tree format in the terminal.
 
 ## Prerequisites
-- Go version 1.16 or higher
+
+- Go 1.16 or higher
 - External package: `github.com/xlab/treeprint`
 
 ## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/badboy1981/Nestify.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd Nestify
-   ```
-3. Build the project:
-   ```bash
-   go build -o nestify ./cmd/nestify
-   ```
-4. Optionally, move the `nestify` executable to your PATH:
-   ```bash
-   mv nestify /usr/local/bin/
-   ```
 
-## CLI Commands
-Nestify supports three main subcommands: `init`, `scan`, and `analyze`.
-
-### 1. `init` - Create Project Structure
-Creates a folder/file structure in the specified path using a JSON template.
-
-**Usage:**
 ```bash
-./nestify init --template <template-file> --path <project-path>
+git clone https://github.com/badboy1981/Nestify.git
+cd Nestify
+go build -o nestify ./cmd/nestify
+
+# Optional: add to your system PATH
+sudo mv nestify /usr/local/bin/   # Linux/macOS
+# On Windows, copy to a folder in your PATH
 ```
+
+Now you can run `nestify` from anywhere.
+
+## Commands
+
+### 1. Scan a Project (`scan`)
+
+```bash
+nestify scan --path <project-path> [options]
+```
+
+**Useful options:**
+
+- `--tree` → Pretty tree view in terminal + Markdown output (`scan_output.md`)
+- `--folders-only` → Show only directories (great for architecture overviews)
+- JSON output is always saved to `scan_output.json`
 
 **Example:**
 ```bash
-./nestify init --template config/structure.json --path ./myproject
+nestify scan --path ./MyProject --tree --folders-only
 ```
-This command creates the structure defined in `structure.json` in the `myproject` folder.
 
-**Options:**
-- `--template`: Path to the JSON template file (default: `template.json`)
-- `--path`: Target path for creating the structure (default: `.`)
+### 2. Analyze Project Skeleton (`analyze`)
 
-### 2. `scan` - Scan Project Structure
-Scans the project’s folders and files, saving the structure as JSON. Optionally displays a tree view in the terminal or as Markdown.
-
-**Usage:**
 ```bash
-./nestify scan --path <project-path> [--tree] [--folders-only]
+nestify analyze --path <project-path>
 ```
 
-**Example:**
+Prints an estimated role report for each folder and saves it to `skeleton_report.md`.
+
+### 3. Create Project from Template (`init`)
+
 ```bash
-./nestify scan --path . --tree --folders-only
+nestify init --template <template-json-file> --path <target-path>
 ```
-This command scans only the folders in the current project, displays a tree structure in the terminal, and saves it to `scan_output.md`.
 
-**Options:**
-- `--path`: Path to the project to scan (default: `.`)
-- `--tree`: Display tree structure and save to `scan_output.md`
-- `--folders-only`: Scan only folders
-
-**Output:**
-- `scan_output.json`: Full structure as JSON
-- `scan_output.md`: Tree structure (if `--tree` is enabled)
-
-### 3. `analyze` - Analyze Project Skeleton
-Analyzes the project’s folder structure and identifies the role of each folder (e.g., "entry point" or "configuration").
-
-**Usage:**
+**Example using a predefined template:**
 ```bash
-./nestify analyze --path <project-path>
+nestify init --template templates/dotnet-maui.json --path ./MyNewApp
 ```
 
-**Example:**
-```bash
-./nestify analyze --path .
+### Reusing Structure from an Existing Project
+
+One of Nestify's most practical features is the ability to **capture the folder structure of any existing project** and reuse it as a template.
+
+**How to do it:**
+
+1. Scan the existing project (use `--folders-only` and a good `.nestifyignore` for the cleanest result):
+
+   ```bash
+   nestify scan --path ./ExistingProject --folders-only
+   ```
+
+   This creates a clean `scan_output.json`.
+
+2. (Optional) Edit `scan_output.json` to add, remove, or tweak folders/files.
+
+3. Create a new project with the exact same structure:
+
+   ```bash
+   nestify init --template ./ExistingProject/scan_output.json --path ./MyNewProject
+   ```
+
+**Result:** A fresh project with identical folder layout — ideal for standardizing microservices, modules, or team templates.
+
+> **Pro tip:** Collect your favorite project structures as JSON files in a `templates/` folder for quick reuse!
+
+## Example Output
+
+Here’s a real-world example of a clean scan (`--tree --folders-only`) of a .NET MAUI project with a proper `.nestifyignore`:
+
 ```
-This command analyzes the project skeleton, displays the report in the terminal, and saves it to `skeleton_report.md`.
-
-**Options:**
-- `--path`: Path to the project to analyze (default: `.`)
-
-**Output:**
-- `skeleton_report.md`: Skeleton report with estimated folder roles
-
-## Project Structure
-```
-Nestify
-├── .gitattributes
-├── .gitignore
-├── LICENSE
-├── NestifyDiagram.json
-├── README.md
-├── cmd
-│   └── nestify
-│       └── main.go
-├── config
-│   └── structure.json
-├── go.mod
-├── go.sum
-├── internal
-│   ├── Cli
-│   │   ├── cli.go
-│   │   ├── init.go
-│   │   └── scan.go
-│   ├── analyzer
-│   │   └── analyzer.go
-│   ├── generator
-│   │   └── generator.go
-│   ├── scanner
-│   │   └── scanner.go
-│   ├── treeprinter
-│   │   └── treeprinter.go
-│   ├── types
-│   │   └── type.go
-├── nestify
-├── scan_output.json
-├── scan_output.md
-└── skeleton_report.md
+.
+└── ExternalMemoryAI
+    ├── ExternalMemoryAI.sln
+    ├── docs
+    │   ├── Architecture.md
+    │   ├── PRD.md
+    │   ├── PRDBase.md
+    │   └── Roadmap.md
+    ├── models
+    │   ├── LLaMA
+    │   └── MiniLM
+    ├── src
+    │   ├── AiMemory.Application
+    │   │   └── Agents
+    │   │       ├── Export
+    │   │       ├── Filtering
+    │   │       ├── Indexing
+    │   │       ├── Ingestion
+    │   │       ├── Retrieval
+    │   │       └── Versioning
+    │   ├── AiMemory.Core
+    │   │   ├── Entities
+    │   │   ├── Enums
+    │   │   ├── Interfaces
+    │   │   └── ValueObjects
+    │   ├── AiMemory.Infrastructure
+    │   │   ├── Persistence
+    │   │   └── VectorStores
+    │   └── AiMemory.UI
+    │       ├── Components
+    │       ├── Resources
+    │       └── wwwroot
+    └── tests
+        ├── AiMemory.Application.Tests
+        ├── AiMemory.Core.Tests
+        ├── AiMemory.Infrastructure.Tests
+        ├── AiMemory.Tests.Unit
+        ├── AiMemory.UI.Tests
+        └── Integration.Tests
 ```
 
-## Example Template File (structure.json)
-```json
-{
-  "projectType": "web",
-  "language": "go",
-  "tags": ["backend", "api"],
-  "root": [
-    {
-      "name": "src",
-      "type": "folder",
-      "children": [
-        {
-          "name": "main.go",
-          "type": "file"
-        }
-      ]
-    }
-  ]
-}
-```
+The corresponding `scan_output.json` contains a structured array ready to be used as a template.
 
-## Developer
-- Developed by: [badboy1981](https://github.com/badboy1981)
+## `.nestifyignore` Example
+
+Place this file in the root of the project you scan to hide noise.
+
+**Example for .NET / MAUI projects:**
+
+```gitignore
+# Build & IDE artifacts
+bin/
+obj/
+.vs/
+.vscode/
+packages/
+
+# Test results
+TestResults/
+*.trx
+
+# EF Core generated migrations
+**/Migrations/*Designer.cs
+**/Migrations/*ModelSnapshot.cs
+
+# MAUI platform details
+**/Platforms/
+
+# Placeholder files
+**/Class1.cs
+**/UnitTest1.cs
+
+# Nestify outputs (avoid loops)
+scan_output.*
+docs/scan_output.*
+```
 
 ## Contributing
-If you have ideas for improvements, please open an issue or submit a pull request!
+
+Contributions are welcome!
+
+- Open issues for bugs or ideas
+- Submit pull requests
+- Add new ready-to-use templates to the `templates/` folder
 
 ## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+Nestify is released under the **MIT License** — free to use, modify, and distribute.
+
+---
+
+**Built with ❤️ by [badboy1981](https://github.com/badboy1981)**
+
+> Nestify — Because your project structure deserves clarity, beauty, and order. 🚀

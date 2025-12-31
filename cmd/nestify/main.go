@@ -2,8 +2,8 @@ package main
 
 // File: main.go
 
-import Cli "github.com/badboy1981/Nestify/internal/Cli"
+import cli "github.com/badboy1981/Nestify/internal/cli"
 
 func main() {
-	Cli.RunCli()
+	cli.RunCli()
 }

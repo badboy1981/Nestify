@@ -16,6 +16,12 @@
 
 G:/Programming/Customer/Javid/ConsoleStore
 ./nestify scan --path G:/Programming/Customer/Javid/ConsoleStore --tree --folders-only
+./nestify scan --path . --tree --folders-only
+
+
+./nestify init --template config/templates-ignore.json --path .
+
 
 G:/Programming/AiMemory/Copilot/ExternalMemoryAI
 G:/Programming/AiMemory/Test
+G:\Programming\Customer\Javid\ConsoleStore

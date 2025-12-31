@@ -1,4 +1,4 @@
-package Cli
+package cli
 
 // File: init.go
 

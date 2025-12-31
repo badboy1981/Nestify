@@ -1,6 +1,5 @@
-package Cli
-
-// File: cli.go
+// internal/cli/cli.go
+package cli
 
 import (
 	"flag"
@@ -11,35 +10,71 @@ import (
 )
 
 func RunCli() {
-	initCmd := flag.NewFlagSet("init", flag.ExitOnError)
-	scanCmd := flag.NewFlagSet("scan", flag.ExitOnError)
-	analyzeCmd := flag.NewFlagSet("analyze", flag.ExitOnError)
-
-	initTemplate := initCmd.String("template", "template.json", "فایل JSON معماری پروژه")
-	initPath := initCmd.String("path", ".", "مسیر ایجاد ساختار پروژه")
-
-	scanPath := scanCmd.String("path", ".", "مسیر پروژه برای اسکن")
-	printTreeFlag := scanCmd.Bool("tree", false, "نمایش ساختار به صورت درختی و ذخیره Markdown")
-	foldersOnlyFlag := scanCmd.Bool("folders-only", false, "فقط پوشه‌ها را اسکن کن")
-
-	analyzePath := analyzeCmd.String("path", ".", "مسیر پروژه برای تحلیل اسکلت")
-
-	if len(os.Args) < 2 {
-		fmt.Println("❌ لطفا یک ساب‌کامند وارد کنید: init، scan یا analyze")
+	// چک کردن global flags اول
+	if len(os.Args) == 1 {
+		ShowHelp()
 		return
 	}
 
-	switch os.Args[1] {
-	case "init":
-		initCmd.Parse(os.Args[2:])
-		runInit(*initTemplate, *initPath)
-	case "scan":
-		scanCmd.Parse(os.Args[2:])
-		runScan(*scanPath, *printTreeFlag, *foldersOnlyFlag)
-	case "analyze":
-		analyzeCmd.Parse(os.Args[2:])
-		analyzer.RunAnalyze(*analyzePath)
-	default:
-		fmt.Println("❌ ساب‌کامند نامعتبر. فقط init، scan یا analyze پشتیبانی می‌شود.")
+	arg := os.Args[1]
+
+	if arg == "--help" || arg == "-h" {
+		ShowHelp()
+		return
 	}
+
+	if arg == "--version" || arg == "version" {
+		ShowVersion()
+		return
+	}
+
+	if len(os.Args) < 2 {
+		fmt.Println("❌ لطفا یک ساب‌کامند وارد کنید: init، scan یا analyze")
+		fmt.Println("برای راهنمایی بیشتر: nestify --help")
+		return
+	}
+
+	switch arg {
+	case "init":
+		runInitCmd()
+	case "scan":
+		runScanCmd()
+	case "analyze":
+		runAnalyzeCmd()
+	default:
+		fmt.Printf("❌ ساب‌کامند نامعتبر: %s\n", arg)
+		fmt.Println("ساب‌کامندهای معتبر: init، scan، analyze")
+		fmt.Println("برای راهنمایی بیشتر: nestify --help")
+	}
+}
+
+// زیرکامندها رو جدا کردیم تا ماژولار بشه (می‌تونی بعداً به فایل جدا منتقل کنی)
+func runInitCmd() {
+	cmd := flag.NewFlagSet("init", flag.ExitOnError)
+	template := cmd.String("template", "template.json", "فایل JSON معماری پروژه")
+	path := cmd.String("path", ".", "مسیر ایجاد ساختار پروژه")
+
+	cmd.Parse(os.Args[2:])
+
+	runInit(*template, *path)
+}
+
+func runScanCmd() {
+	cmd := flag.NewFlagSet("scan", flag.ExitOnError)
+	path := cmd.String("path", ".", "مسیر پروژه برای اسکن")
+	tree := cmd.Bool("tree", false, "نمایش ساختار به صورت درختی و ذخیره Markdown")
+	foldersOnly := cmd.Bool("folders-only", false, "فقط پوشه‌ها را اسکن کن")
+
+	cmd.Parse(os.Args[2:])
+
+	runScan(*path, *tree, *foldersOnly)
+}
+
+func runAnalyzeCmd() {
+	cmd := flag.NewFlagSet("analyze", flag.ExitOnError)
+	path := cmd.String("path", ".", "مسیر پروژه برای تحلیل اسکلت")
+
+	cmd.Parse(os.Args[2:])
+
+	analyzer.RunAnalyze(*path)
 }

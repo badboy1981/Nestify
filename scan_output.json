@@ -1,859 +1,196 @@
 [
   {
-    "name": "ExternalMemoryAI",
+    "name": ".",
     "type": "folder",
     "size": 4096,
     "children": [
       {
-        "name": "ExternalMemoryAI.sln",
+        "name": ".gitattributes",
         "type": "file",
-        "size": 13345
+        "size": 68
       },
       {
-        "name": "docs",
+        "name": ".gitignore",
+        "type": "file",
+        "size": 264
+      },
+      {
+        "name": ".nestifyignore",
+        "type": "file",
+        "size": 118
+      },
+      {
+        "name": "Error.txt",
+        "type": "file",
+        "size": 3907
+      },
+      {
+        "name": "LICENSE",
+        "type": "file",
+        "size": 1090
+      },
+      {
+        "name": "README.md",
+        "type": "file",
+        "size": 5979
+      },
+      {
+        "name": "README_fa.md",
+        "type": "file",
+        "size": 4797
+      },
+      {
+        "name": "cmd",
+        "type": "folder"
+      },
+      {
+        "name": "config",
+        "type": "folder"
+      },
+      {
+        "name": "go.mod",
+        "type": "file",
+        "size": 173
+      },
+      {
+        "name": "go.sum",
+        "type": "file",
+        "size": 1343
+      },
+      {
+        "name": "internal",
         "type": "folder",
-        "size": 4096,
         "children": [
           {
-            "name": "Architecture.md",
-            "type": "file",
-            "size": 4272
+            "name": "analyzer",
+            "type": "folder",
+            "children": [
+              {
+                "name": "analyzer.go",
+                "type": "file",
+                "size": 1980
+              }
+            ]
           },
           {
-            "name": "PRD.md",
-            "type": "file",
-            "size": 4375
+            "name": "cli",
+            "type": "folder",
+            "children": [
+              {
+                "name": "cli.go",
+                "type": "file",
+                "size": 2075
+              },
+              {
+                "name": "help.go",
+                "type": "file",
+                "size": 983
+              },
+              {
+                "name": "init.go",
+                "type": "file",
+                "size": 785
+              },
+              {
+                "name": "scan.go",
+                "type": "file",
+                "size": 1387
+              },
+              {
+                "name": "version.go",
+                "type": "file",
+                "size": 583
+              }
+            ]
           },
           {
-            "name": "PRDBase.md",
-            "type": "file",
-            "size": 3694
+            "name": "generator",
+            "type": "folder",
+            "children": [
+              {
+                "name": "generator.go",
+                "type": "file",
+                "size": 726
+              }
+            ]
           },
           {
-            "name": "Roadmap.md",
-            "type": "file",
-            "size": 2136
+            "name": "ignore",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ignore.go",
+                "type": "file",
+                "size": 1892
+              }
+            ]
           },
           {
-            "name": "scan_output.json",
-            "type": "file",
-            "size": 6705
+            "name": "scanner",
+            "type": "folder",
+            "children": [
+              {
+                "name": "scanner.go",
+                "type": "file",
+                "size": 1893
+              }
+            ]
           },
           {
-            "name": "scan_output.md",
-            "type": "file",
-            "size": 2094
+            "name": "treeprinter",
+            "type": "folder",
+            "children": [
+              {
+                "name": "treeprinter.go",
+                "type": "file",
+                "size": 556
+              }
+            ]
+          },
+          {
+            "name": "types",
+            "type": "folder",
+            "children": [
+              {
+                "name": "type.go",
+                "type": "file",
+                "size": 679
+              }
+            ]
           }
         ]
       },
       {
-        "name": "full_setup.bat",
-        "type": "file",
-        "size": 2701
-      },
-      {
-        "name": "models",
+        "name": "templates",
         "type": "folder",
         "children": [
           {
-            "name": "LLaMA",
-            "type": "folder"
-          },
-          {
-            "name": "MiniLM",
-            "type": "folder"
-          }
-        ]
-      },
-      {
-        "name": "src",
-        "type": "folder",
-        "children": [
-          {
-            "name": "AiMemory.Application",
+            "name": "ignore",
             "type": "folder",
-            "size": 4096,
             "children": [
               {
-                "name": "Agents",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Export",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Filtering",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Indexing",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Ingestion",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Retrieval",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Versioning",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "AiMemory.Application.csproj",
-                "type": "file",
-                "size": 326
-              },
-              {
-                "name": "Class1.cs",
-                "type": "file",
-                "size": 67
-              },
-              {
-                "name": "Commands",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "CommandPalette",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "Services",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "ITopicService.cs",
-                    "type": "file",
-                    "size": 270
-                  },
-                  {
-                    "name": "TopicService.cs",
-                    "type": "file",
-                    "size": 884
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "AiMemory.Core",
-            "type": "folder",
-            "size": 4096,
-            "children": [
-              {
-                "name": "AiMemory.Core.csproj",
-                "type": "file",
-                "size": 219
-              },
-              {
-                "name": "Class1.cs",
-                "type": "file",
-                "size": 60
-              },
-              {
-                "name": "Entities",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Conversation.cs",
-                    "type": "file",
-                    "size": 567
-                  },
-                  {
-                    "name": "Message.cs",
-                    "type": "file",
-                    "size": 646
-                  },
-                  {
-                    "name": "TopicNode.cs",
-                    "type": "file",
-                    "size": 894
-                  }
-                ]
-              },
-              {
-                "name": "Enums",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "MessageRole.cs",
-                    "type": "file",
-                    "size": 233
-                  }
-                ]
-              },
-              {
-                "name": "Interfaces",
-                "type": "folder",
-                "size": 4096,
-                "children": [
-                  {
-                    "name": "IAI",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "IPersistence",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "ITopicRepository.cs",
-                    "type": "file",
-                    "size": 315
-                  },
-                  {
-                    "name": "IVectorStore",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "ValueObjects",
-                "type": "folder"
-              }
-            ]
-          },
-          {
-            "name": "AiMemory.Infrastructure",
-            "type": "folder",
-            "size": 4096,
-            "children": [
-              {
-                "name": "AI-Inference",
-                "type": "folder"
-              },
-              {
-                "name": "AiMemory.Infrastructure.csproj",
-                "type": "file",
-                "size": 795
-              },
-              {
-                "name": "AiMemory.db",
-                "type": "file",
-                "size": 49152
-              },
-              {
-                "name": "Class1.cs",
-                "type": "file",
-                "size": 70
-              },
-              {
-                "name": "DependencyInjection.cs",
-                "type": "file",
-                "size": 678
-              },
-              {
-                "name": "Persistence",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Migration",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "Scripts",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Services",
-                        "type": "folder"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "MongoDB",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "SQLite",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "AppDbContext.cs",
-                        "type": "file",
-                        "size": 1494
-                      },
-                      {
-                        "name": "Migrations",
-                        "type": "folder",
-                        "children": [
-                          {
-                            "name": "20251227152823_InitialCreate.Designer.cs",
-                            "type": "file",
-                            "size": 5327
-                          },
-                          {
-                            "name": "20251227152823_InitialCreate.cs",
-                            "type": "file",
-                            "size": 4547
-                          },
-                          {
-                            "name": "AppDbContextModelSnapshot.cs",
-                            "type": "file",
-                            "size": 5223
-                          }
-                        ]
-                      },
-                      {
-                        "name": "SQLiteTopicRepository.cs",
-                        "type": "file",
-                        "size": 1306
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "name": "VectorStores",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "FAISS",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Qdrant",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "SqliteVSS",
-                    "type": "folder"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "AiMemory.UI",
-            "type": "folder",
-            "size": 4096,
-            "children": [
-              {
-                "name": "AiMemory.UI.csproj",
-                "type": "file",
-                "size": 3961
-              },
-              {
-                "name": "App.xaml",
-                "type": "file",
-                "size": 631
-              },
-              {
-                "name": "App.xaml.cs",
-                "type": "file",
-                "size": 625
-              },
-              {
-                "name": "Components",
-                "type": "folder",
-                "size": 4096,
-                "children": [
-                  {
-                    "name": "ChatViewer",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "CommandPalette",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Layout",
-                    "type": "folder",
-                    "size": 4096,
-                    "children": [
-                      {
-                        "name": "MainLayout.razor",
-                        "type": "file",
-                        "size": 994
-                      },
-                      {
-                        "name": "MainLayout.razor.css",
-                        "type": "file",
-                        "size": 1478
-                      },
-                      {
-                        "name": "NavMenu.razor",
-                        "type": "file",
-                        "size": 1084
-                      },
-                      {
-                        "name": "NavMenu.razor.css",
-                        "type": "file",
-                        "size": 3418
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Pages",
-                    "type": "folder",
-                    "size": 4096,
-                    "children": [
-                      {
-                        "name": "Counter.razor",
-                        "type": "file",
-                        "size": 298
-                      },
-                      {
-                        "name": "Home.razor",
-                        "type": "file",
-                        "size": 1117
-                      },
-                      {
-                        "name": "NotFound.razor",
-                        "type": "file",
-                        "size": 128
-                      },
-                      {
-                        "name": "Weather.razor",
-                        "type": "file",
-                        "size": 1858
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Routes.razor",
-                    "type": "file",
-                    "size": 304
-                  },
-                  {
-                    "name": "Shared",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "CommandPalette.razor",
-                        "type": "file",
-                        "size": 2487
-                      }
-                    ]
-                  },
-                  {
-                    "name": "TopicTree",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "_Imports.razor",
-                    "type": "file",
-                    "size": 406
-                  }
-                ]
-              },
-              {
-                "name": "MainPage.xaml",
-                "type": "file",
-                "size": 638
-              },
-              {
-                "name": "MainPage.xaml.cs",
-                "type": "file",
-                "size": 134
-              },
-              {
-                "name": "MauiProgram.cs",
-                "type": "file",
-                "size": 1846
-              },
-              {
-                "name": "Pages",
-                "type": "folder"
-              },
-              {
-                "name": "Platforms",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Android",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "AndroidManifest.xml",
-                        "type": "file",
-                        "size": 433
-                      },
-                      {
-                        "name": "MainActivity.cs",
-                        "type": "file",
-                        "size": 410
-                      },
-                      {
-                        "name": "MainApplication.cs",
-                        "type": "file",
-                        "size": 330
-                      },
-                      {
-                        "name": "Resources",
-                        "type": "folder",
-                        "children": [
-                          {
-                            "name": "values",
-                            "type": "folder",
-                            "children": [
-                              {
-                                "name": "colors.xml",
-                                "type": "file",
-                                "size": 212
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "name": "MacCatalyst",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "AppDelegate.cs",
-                        "type": "file",
-                        "size": 214
-                      },
-                      {
-                        "name": "Entitlements.plist",
-                        "type": "file",
-                        "size": 679
-                      },
-                      {
-                        "name": "Info.plist",
-                        "type": "file",
-                        "size": 1714
-                      },
-                      {
-                        "name": "Program.cs",
-                        "type": "file",
-                        "size": 357
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Windows",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "App.xaml",
-                        "type": "file",
-                        "size": 314
-                      },
-                      {
-                        "name": "App.xaml.cs",
-                        "type": "file",
-                        "size": 720
-                      },
-                      {
-                        "name": "Package.appxmanifest",
-                        "type": "file",
-                        "size": 1863
-                      },
-                      {
-                        "name": "app.manifest",
-                        "type": "file",
-                        "size": 853
-                      }
-                    ]
-                  },
-                  {
-                    "name": "iOS",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "AppDelegate.cs",
-                        "type": "file",
-                        "size": 214
-                      },
-                      {
-                        "name": "Info.plist",
-                        "type": "file",
-                        "size": 1141
-                      },
-                      {
-                        "name": "Program.cs",
-                        "type": "file",
-                        "size": 359
-                      },
-                      {
-                        "name": "Resources",
-                        "type": "folder",
-                        "children": [
-                          {
-                            "name": "PrivacyInfo.xcprivacy",
-                            "type": "file",
-                            "size": 1887
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "name": "Properties",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "launchSettings.json",
-                    "type": "file",
-                    "size": 124
-                  }
-                ]
-              },
-              {
-                "name": "Resources",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "AppIcon",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "appicon.svg",
-                        "type": "file",
-                        "size": 231
-                      },
-                      {
-                        "name": "appiconfg.svg",
-                        "type": "file",
-                        "size": 1811
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Fonts",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "OpenSans-Regular.ttf",
-                        "type": "file",
-                        "size": 107320
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Images",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "dotnet_bot.svg",
-                        "type": "file",
-                        "size": 12862
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Raw",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "AboutAssets.txt",
-                        "type": "file",
-                        "size": 687
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Splash",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "splash.svg",
-                        "type": "file",
-                        "size": 1811
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "name": "Shared",
-                "type": "folder"
-              },
-              {
-                "name": "appsettings.json",
+                "name": "dotnet.txt",
                 "type": "file"
               },
               {
-                "name": "wwwroot",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "app.css",
-                    "type": "file",
-                    "size": 3782
-                  },
-                  {
-                    "name": "index.html",
-                    "type": "file",
-                    "size": 882
-                  },
-                  {
-                    "name": "lib",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "bootstrap",
-                        "type": "folder",
-                        "children": [
-                          {
-                            "name": "dist",
-                            "type": "folder",
-                            "children": [
-                              {
-                                "name": "css",
-                                "type": "folder",
-                                "children": [
-                                  {
-                                    "name": "bootstrap.min.css",
-                                    "type": "file",
-                                    "size": 232810
-                                  },
-                                  {
-                                    "name": "bootstrap.min.css.map",
-                                    "type": "file",
-                                    "size": 589893
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "tests",
-        "type": "folder",
-        "size": 4096,
-        "children": [
-          {
-            "name": "AiMemory.Application.Tests",
-            "type": "folder",
-            "children": [
-              {
-                "name": "AiMemory.Application.Tests.csproj",
-                "type": "file",
-                "size": 634
+                "name": "flutter.txt",
+                "type": "file"
               },
               {
-                "name": "TestResults",
-                "type": "folder"
+                "name": "general.txt",
+                "type": "file"
               },
               {
-                "name": "UnitTest1.cs",
-                "type": "file",
-                "size": 127
-              }
-            ]
-          },
-          {
-            "name": "AiMemory.Core.Tests",
-            "type": "folder",
-            "children": [
-              {
-                "name": "AiMemory.Core.Tests.csproj",
-                "type": "file",
-                "size": 634
+                "name": "go.txt",
+                "type": "file"
               },
               {
-                "name": "TestResults",
-                "type": "folder"
+                "name": "nodejs.txt",
+                "type": "file"
               },
               {
-                "name": "UnitTest1.cs",
-                "type": "file",
-                "size": 120
-              }
-            ]
-          },
-          {
-            "name": "AiMemory.Infrastructure.Tests",
-            "type": "folder",
-            "children": [
-              {
-                "name": "AiMemory.Infrastructure.Tests.csproj",
-                "type": "file",
-                "size": 634
-              },
-              {
-                "name": "TestResults",
-                "type": "folder"
-              },
-              {
-                "name": "UnitTest1.cs",
-                "type": "file",
-                "size": 130
-              }
-            ]
-          },
-          {
-            "name": "AiMemory.Tests.Unit",
-            "type": "folder",
-            "size": 4096,
-            "children": [
-              {
-                "name": "AiMemory.Tests.Unit.csproj",
-                "type": "file",
-                "size": 901
-              },
-              {
-                "name": "TopicServiceTests.cs",
-                "type": "file",
-                "size": 702
-              },
-              {
-                "name": "UnitTest1.cs",
-                "type": "file",
-                "size": 120
-              }
-            ]
-          },
-          {
-            "name": "AiMemory.UI.Tests",
-            "type": "folder",
-            "children": [
-              {
-                "name": "AiMemory.UI.Tests.csproj",
-                "type": "file",
-                "size": 634
-              },
-              {
-                "name": "TestResults",
-                "type": "folder"
-              },
-              {
-                "name": "UnitTest1.cs",
-                "type": "file",
-                "size": 118
-              }
-            ]
-          },
-          {
-            "name": "Integration.Tests",
-            "type": "folder",
-            "size": 4096,
-            "children": [
-              {
-                "name": "Integration.Tests.csproj",
-                "type": "file",
-                "size": 939
-              },
-              {
-                "name": "TestResults",
-                "type": "folder"
-              },
-              {
-                "name": "UnitTest1.cs",
-                "type": "file",
-                "size": 1299
+                "name": "python.txt",
+                "type": "file"
               }
             ]
           }

@@ -1,14 +1,10 @@
-.gitattributes
-.gitignore
-# کامنت
-.vscode/
-.vs/
-build/
-dist/
-*.tmp
-*.log
-*.bak
-Thumbs.db
-.DS_Store
-node_modules/
-__pycache__/
+nestify
+nestify.exe
+scan_output.*
+skeleton_report.md
+archive/
+config/examples/
+go.work
+go.work.sum
+.git
+.Test

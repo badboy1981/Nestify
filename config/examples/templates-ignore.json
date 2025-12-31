@@ -1,0 +1,46 @@
+{
+  "root": [
+    {
+      "name": "templates",
+      "type": "folder",
+      "children": [
+        {
+          "name": "ignore",
+          "type": "folder",
+          "children": [
+            {
+              "name": "dotnet.txt",
+              "type": "file",
+              "content": "# .NET / MAUI / Blazor - ساختار تمیز\n.vs/\n.vscode/\n.idea/\n\nbin/\nobj/\npublish/\n\nTestResults/\n*.trx\n\n**/Migrations/*Designer.cs\n**/Migrations/*ModelSnapshot.cs\n\n**/Platforms/\n\n**/Class1.cs\n**/UnitTest1.cs\n\n*.user\n*.suo\n\nscan_output.*"
+            },
+            {
+              "name": "go.txt",
+              "type": "file",
+              "content": "# Go projects\nbin/\nobj/\n*.exe\n*.exe~\n*.dll\n*.so\n*.dylib\n\n# Test cache\ntestdata/\n\n# Vendor (if not using modules)\nvendor/\n\n# IDE\n.vscode/\n.idea/\n\nscan_output.*"
+            },
+            {
+              "name": "nodejs.txt",
+              "type": "file",
+              "content": "# Node.js / React / Vue / Next.js\nnode_modules/\n.dist/\nbuild/\n.cache/\n.env.local\n.env.development.local\n.env.production.local\n\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n\n# IDE\n.vscode/\n.idea/\n\nscan_output.*"
+            },
+            {
+              "name": "python.txt",
+              "type": "file",
+              "content": "# Python / Django / Flask\n__pycache__/\n*.py[cod]\n*$py.class\n*.so\n.Python\nenv/\nvenv/\n.venv/\n\npip-log.txt\npip-delete-this-directory.txt\n\n# IDE\n.vscode/\n.idea/\n\nscan_output.*"
+            },
+            {
+              "name": "flutter.txt",
+              "type": "file",
+              "content": "# Flutter\n.dart_tool/\n.flutter-plugins\n.flutter-plugins-dependencies\n.packages\n.build/\nios/Flutter/flutter_export_environment.sh\n\n# Android\nandroid/app/src/main/kotlin/io/flutter/plugins/GeneratedPluginRegistrant.java\n\n# IDE\n.vscode/\n.idea/\n\nscan_output.*"
+            },
+            {
+              "name": "general.txt",
+              "type": "file",
+              "content": "# قالب عمومی برای همه پروژه‌ها\n.vs/\n.vscode/\n.idea/\nnode_modules/\nbin/\nobj/\ndist/\nbuild/\n*.log\n*.tmp\n*.cache\n\nscan_output.*"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

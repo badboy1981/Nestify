@@ -1,3 +1,0 @@
-# github.com/xlab/treeprint v1.2.0
-## explicit; go 1.13
-github.com/xlab/treeprint

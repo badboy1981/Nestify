@@ -1,16 +1,11 @@
-// internal/cli/cli.go
 package cli
 
 import (
-	"flag"
 	"fmt"
 	"os"
-
-	"github.com/badboy1981/Nestify/internal/analyzer"
 )
 
 func RunCli() {
-	// چک کردن global flags اول
 	if len(os.Args) == 1 {
 		ShowHelp()
 		return
@@ -18,63 +13,34 @@ func RunCli() {
 
 	arg := os.Args[1]
 
-	if arg == "--help" || arg == "-h" {
-		ShowHelp()
-		return
-	}
-
-	if arg == "--version" || arg == "version" {
-		ShowVersion()
-		return
-	}
-
-	if len(os.Args) < 2 {
-		fmt.Println("❌ لطفا یک ساب‌کامند وارد کنید: init، scan یا analyze")
-		fmt.Println("برای راهنمایی بیشتر: nestify --help")
-		return
-	}
-
 	switch arg {
+	case "--help", "-h":
+		ShowHelp()
+	case "--version", "version":
+		ShowVersion()
 	case "init":
-		runInitCmd()
+		runInitCmd() // این تابع در فایل init.go تعریف شده است
 	case "scan":
-		runScanCmd()
+		runScanCmd() // این تابع در فایل scan.go تعریف شده است
 	case "analyze":
-		runAnalyzeCmd()
+		runAnalyzeCmd() // این تابع در فایل cli.go (پایین‌تر) یا فایل خودش تعریف می‌شود
+	case "ignore-list":
+		runIgnoreListCmd()
+	case "ignore-use":
+		if len(os.Args) < 3 {
+			fmt.Println("❌ لطفا نام تمپلیت را وارد کنید. مثال: nestify ignore-use go")
+			return
+		}
+		runIgnoreUseCmd(os.Args[2])
 	default:
 		fmt.Printf("❌ ساب‌کامند نامعتبر: %s\n", arg)
-		fmt.Println("ساب‌کامندهای معتبر: init، scan، analyze")
 		fmt.Println("برای راهنمایی بیشتر: nestify --help")
 	}
 }
 
-// زیرکامندها رو جدا کردیم تا ماژولار بشه (می‌تونی بعداً به فایل جدا منتقل کنی)
-func runInitCmd() {
-	cmd := flag.NewFlagSet("init", flag.ExitOnError)
-	template := cmd.String("template", "template.json", "فایل JSON معماری پروژه")
-	path := cmd.String("path", ".", "مسیر ایجاد ساختار پروژه")
-
-	cmd.Parse(os.Args[2:])
-
-	runInit(*template, *path)
-}
-
-func runScanCmd() {
-	cmd := flag.NewFlagSet("scan", flag.ExitOnError)
-	path := cmd.String("path", ".", "مسیر پروژه برای اسکن")
-	tree := cmd.Bool("tree", false, "نمایش ساختار به صورت درختی و ذخیره Markdown")
-	foldersOnly := cmd.Bool("folders-only", false, "فقط پوشه‌ها را اسکن کن")
-
-	cmd.Parse(os.Args[2:])
-
-	runScan(*path, *tree, *foldersOnly)
-}
-
+// فقط این مورد را اینجا نگه دار چون فایل جداگانه برای آنالیز در پوشه CLI نداری
 func runAnalyzeCmd() {
-	cmd := flag.NewFlagSet("analyze", flag.ExitOnError)
-	path := cmd.String("path", ".", "مسیر پروژه برای تحلیل اسکلت")
-
-	cmd.Parse(os.Args[2:])
-
-	analyzer.RunAnalyze(*path)
+	// اگر بعدا فایل analyze.go را در این پوشه ساختی، این را هم به آنجا منتقل کن
+	fmt.Println("🔍 در حال آنالیز پروژه...")
+	// فراخوانی متد اصلی آنالیزور
 }

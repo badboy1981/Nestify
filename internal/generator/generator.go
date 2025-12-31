@@ -1,34 +1,34 @@
 package generator
 
-// File: generator.go
-
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
+// CreateStructure به صورت بازگشتی پوشه‌ها و فایل‌ها را ایجاد می‌کند
 func CreateStructure(node types.Node, root string) error {
 	path := filepath.Join(root, node.Name)
 
 	if node.Type == "folder" {
-		if err := os.MkdirAll(path, os.ModePerm); err != nil {
-			return fmt.Errorf("failed to create directory %s: %v", path, err)
+		// ایجاد پوشه
+		if err := os.MkdirAll(path, 0755); err != nil {
+			return err
 		}
+		// ایجاد زیرمجموعه‌ها
 		for _, child := range node.Children {
 			if err := CreateStructure(child, path); err != nil {
 				return err
 			}
 		}
-	} else if node.Type == "file" {
-		f, err := os.Create(path)
-		if err != nil {
-			return fmt.Errorf("error creating file %s: %v", path, err)
+	} else {
+		// ایجاد فایل با محتوا
+		// اگر node.Content خالی باشد، یک فایل خالی ساخته می‌شود
+		data := []byte(node.Content)
+		if err := os.WriteFile(path, data, 0644); err != nil {
+			return err
 		}
-		defer f.Close()
 	}
-
 	return nil
 }

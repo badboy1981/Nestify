@@ -4,8 +4,6 @@ import (
 	"os"
 	"path/filepath"
 
-	// "strings" <- این خط حذف شد چون دیگر استفاده نمی‌شود
-
 	"github.com/badboy1981/Nestify/internal/ignore"
 	"github.com/badboy1981/Nestify/internal/types"
 )
@@ -14,9 +12,6 @@ func Scan(path string, foldersOnly bool) ([]types.Node, error) {
 	info, err := os.Stat(path)
 	if err != nil {
 		return nil, err
-	}
-	if !info.IsDir() {
-		return nil, nil
 	}
 
 	matcher, err := ignore.NewIgnoreMatcher(path)
@@ -46,28 +41,20 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 	}
 
 	var nodes []types.Node
-
 	for _, entry := range entries {
 		if foldersOnly && !entry.IsDir() {
 			continue
 		}
 
 		fullPath := filepath.Join(currentPath, entry.Name())
-		relPath, err := filepath.Rel(rootPath, fullPath)
-		if err != nil {
-			relPath = entry.Name()
-		}
+		relPath, _ := filepath.Rel(rootPath, fullPath)
 
-		// بررسی ایگنور شدن قبل از پردازش (بهینه برای سرعت)
+		// بررسی ایگنور با دقت بالا (ارسال وضعیت پوشه بودن)
 		if matcher.ShouldIgnore(relPath, entry.IsDir()) {
 			continue
 		}
 
-		info, err := entry.Info()
-		if err != nil {
-			continue
-		}
-
+		info, _ := entry.Info()
 		node := types.Node{
 			Name: entry.Name(),
 			Size: info.Size(),
@@ -83,9 +70,7 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 		} else {
 			node.Type = "file"
 		}
-
 		nodes = append(nodes, node)
 	}
-
 	return nodes, nil
 }

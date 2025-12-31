@@ -1,148 +1,22 @@
 [{
-	"resource": "/G:/Programming/Nestify/internal/ignore/ignore.go",
-	"owner": "_generated_diagnostic_collection_name_#3",
+	"resource": "/G:/Programming/Nestify/internal/cli/scan.go",
+	"owner": "_generated_diagnostic_collection_name_#1",
 	"code": {
-		"value": "BrokenImport",
+		"value": "UndeclaredImportedName",
 		"target": {
 			"$mid": 1,
 			"path": "/golang.org/x/tools/internal/typesinternal",
 			"scheme": "https",
 			"authority": "pkg.go.dev",
-			"fragment": "BrokenImport"
+			"fragment": "UndeclaredImportedName"
 		}
 	},
 	"severity": 8,
-	"message": "could not import github.com/monochromegane/go-gitignore (no required module provides package \"github.com/monochromegane/go-gitignore\")",
+	"message": "undefined: treeprinter.Print",
 	"source": "compiler",
-	"startLineNumber": 8,
-	"startColumn": 2,
-	"endLineNumber": 8,
-	"endColumn": 42,
-	"origin": "extHost1"
-},{
-	"resource": "/G:/Programming/Nestify/internal/ignore/ignore.go",
-	"owner": "_generated_diagnostic_collection_name_#3",
-	"code": {
-		"value": "UndeclaredName",
-		"target": {
-			"$mid": 1,
-			"path": "/golang.org/x/tools/internal/typesinternal",
-			"scheme": "https",
-			"authority": "pkg.go.dev",
-			"fragment": "UndeclaredName"
-		}
-	},
-	"severity": 8,
-	"message": "undefined: gitignore",
-	"source": "compiler",
-	"startLineNumber": 13,
-	"startColumn": 10,
-	"endLineNumber": 13,
-	"endColumn": 19,
-	"origin": "extHost1"
-},{
-	"resource": "/G:/Programming/Nestify/internal/ignore/ignore.go",
-	"owner": "_generated_diagnostic_collection_name_#3",
-	"code": {
-		"value": "UndeclaredName",
-		"target": {
-			"$mid": 1,
-			"path": "/golang.org/x/tools/internal/typesinternal",
-			"scheme": "https",
-			"authority": "pkg.go.dev",
-			"fragment": "UndeclaredName"
-		}
-	},
-	"severity": 8,
-	"message": "undefined: gitignore",
-	"source": "compiler",
-	"startLineNumber": 20,
-	"startColumn": 14,
-	"endLineNumber": 20,
-	"endColumn": 23,
-	"origin": "extHost1"
-},{
-	"resource": "/G:/Programming/Nestify/internal/ignore/ignore.go",
-	"owner": "_generated_diagnostic_collection_name_#3",
-	"code": {
-		"value": "UndeclaredName",
-		"target": {
-			"$mid": 1,
-			"path": "/golang.org/x/tools/internal/typesinternal",
-			"scheme": "https",
-			"authority": "pkg.go.dev",
-			"fragment": "UndeclaredName"
-		}
-	},
-	"severity": 8,
-	"message": "undefined: gitignore",
-	"source": "compiler",
-	"startLineNumber": 24,
-	"startColumn": 13,
-	"endLineNumber": 24,
-	"endColumn": 22,
-	"origin": "extHost1"
-},{
-	"resource": "/G:/Programming/Nestify/internal/ignore/ignore.go",
-	"owner": "_generated_diagnostic_collection_name_#3",
-	"code": {
-		"value": "UndeclaredName",
-		"target": {
-			"$mid": 1,
-			"path": "/golang.org/x/tools/internal/typesinternal",
-			"scheme": "https",
-			"authority": "pkg.go.dev",
-			"fragment": "UndeclaredName"
-		}
-	},
-	"severity": 8,
-	"message": "undefined: strings",
-	"source": "compiler",
-	"startLineNumber": 24,
-	"startColumn": 56,
-	"endLineNumber": 24,
-	"endColumn": 63,
-	"origin": "extHost1"
-},{
-	"resource": "/G:/Programming/Nestify/internal/ignore/ignore.go",
-	"owner": "_generated_diagnostic_collection_name_#3",
-	"code": {
-		"value": "UndeclaredName",
-		"target": {
-			"$mid": 1,
-			"path": "/golang.org/x/tools/internal/typesinternal",
-			"scheme": "https",
-			"authority": "pkg.go.dev",
-			"fragment": "UndeclaredName"
-		}
-	},
-	"severity": 8,
-	"message": "undefined: gitignore",
-	"source": "compiler",
-	"startLineNumber": 27,
-	"startColumn": 18,
-	"endLineNumber": 27,
-	"endColumn": 27,
-	"origin": "extHost1"
-},{
-	"resource": "/G:/Programming/Nestify/internal/ignore/ignore.go",
-	"owner": "_generated_diagnostic_collection_name_#3",
-	"code": {
-		"value": "UndeclaredName",
-		"target": {
-			"$mid": 1,
-			"path": "/golang.org/x/tools/internal/typesinternal",
-			"scheme": "https",
-			"authority": "pkg.go.dev",
-			"fragment": "UndeclaredName"
-		}
-	},
-	"severity": 8,
-	"message": "undefined: strings",
-	"source": "compiler",
-	"startLineNumber": 40,
-	"startColumn": 11,
-	"endLineNumber": 40,
-	"endColumn": 18,
+	"startLineNumber": 87,
+	"startColumn": 25,
+	"endLineNumber": 87,
+	"endColumn": 30,
 	"origin": "extHost1"
 }]

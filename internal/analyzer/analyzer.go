@@ -12,7 +12,7 @@ import (
 )
 
 func RunAnalyze(path string) {
-	nodes, err := scanner.Scan(path, true) // فقط پوشه‌ها
+	nodes, err := scanner.Scan(path, true)
 	if err != nil {
 		fmt.Println("❌ خطا در اسکن مسیر:", err)
 		return

@@ -1,6 +1,6 @@
 [
   {
-    "name": ".",
+    "name": "Nestify",
     "type": "folder",
     "size": 4096,
     "children": [
@@ -57,22 +57,32 @@
               {
                 "name": "cli.go",
                 "type": "file",
-                "size": 2075
+                "size": 1390
               },
               {
                 "name": "help.go",
                 "type": "file",
-                "size": 983
+                "size": 1170
+              },
+              {
+                "name": "ignore_handler.go",
+                "type": "file",
+                "size": 1527
               },
               {
                 "name": "init.go",
                 "type": "file",
-                "size": 785
+                "size": 1760
+              },
+              {
+                "name": "path_util.go",
+                "type": "file",
+                "size": 703
               },
               {
                 "name": "scan.go",
                 "type": "file",
-                "size": 1387
+                "size": 3501
               },
               {
                 "name": "version.go",
@@ -88,7 +98,7 @@
               {
                 "name": "generator.go",
                 "type": "file",
-                "size": 726
+                "size": 900
               }
             ]
           },
@@ -99,7 +109,7 @@
               {
                 "name": "ignore.go",
                 "type": "file",
-                "size": 906
+                "size": 1469
               }
             ]
           },
@@ -121,7 +131,7 @@
               {
                 "name": "treeprinter.go",
                 "type": "file",
-                "size": 556
+                "size": 558
               }
             ]
           },
@@ -137,6 +147,10 @@
             ]
           }
         ]
+      },
+      {
+        "name": "reports",
+        "type": "folder"
       },
       {
         "name": "templates",
@@ -169,6 +183,22 @@
               {
                 "name": "python.txt",
                 "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "projects",
+            "type": "folder",
+            "children": [
+              {
+                "name": "go_basic.json",
+                "type": "file",
+                "size": 404
+              },
+              {
+                "name": "go_standard.json",
+                "type": "file",
+                "size": 833
               }
             ]
           }

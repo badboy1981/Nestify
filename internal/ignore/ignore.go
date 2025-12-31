@@ -1,4 +1,3 @@
-// internal/ignore/ignore.go
 package ignore
 
 import (
@@ -9,25 +8,35 @@ import (
 	"github.com/monochromegane/go-gitignore"
 )
 
-// IgnoreMatcher ساختار نگهدارنده مچر
 type IgnoreMatcher struct {
 	matcher gitignore.IgnoreMatcher
 }
 
-// NewIgnoreMatcher فایل .nestifyignore را بارگذاری می‌کند
+// تابع برای لیست کردن تمپلیت‌های موجود در پوشه templates/ignore
+func ListAvailableTemplates(templatesPath string) ([]string, error) {
+	entries, err := os.ReadDir(templatesPath)
+	if err != nil {
+		return nil, err
+	}
+	var list []string
+	for _, e := range entries {
+		// فقط فایل‌های .txt را به عنوان تمپلیت در نظر می‌گیریم
+		if !e.IsDir() && strings.HasSuffix(e.Name(), ".txt") {
+			list = append(list, strings.TrimSuffix(e.Name(), ".txt"))
+		}
+	}
+	return list, nil
+}
+
 func NewIgnoreMatcher(rootPath string) (*IgnoreMatcher, error) {
 	filePath := filepath.Join(rootPath, ".nestifyignore")
 
-	// بررسی وجود فایل برای جلوگیری از خطای سیستمی
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
-		// اگر فایل نباشد، یک مچر خالی برمی‌گردانیم که هیچ فایلی را ایگنور نمی‌کند
 		return &IgnoreMatcher{
 			matcher: gitignore.NewGitIgnoreFromReader(rootPath, strings.NewReader("")),
 		}, nil
 	}
 
-	// استفاده از متد نیو برای خواندن فایل
-	// آرگومان اول مسیر ریشه پروژه است تا مچر بداند الگوها نسبت به کجا هستند
 	matcher, err := gitignore.NewGitIgnore(filePath, rootPath)
 	if err != nil {
 		return nil, err
@@ -36,12 +45,8 @@ func NewIgnoreMatcher(rootPath string) (*IgnoreMatcher, error) {
 	return &IgnoreMatcher{matcher: matcher}, nil
 }
 
-// ShouldIgnore بررسی می‌کند که آیا مسیر مورد نظر باید حذف شود یا خیر
+// اضافه شدن آرگومان isDir برای تشخیص الگوهای پوشه (مثل /node_modules/)
 func (m *IgnoreMatcher) ShouldIgnore(relPath string, isDir bool) bool {
-	// ۱. تبدیل جداکننده‌ها به اسلش (/) برای سازگاری در ویندوز
 	relPath = filepath.ToSlash(relPath)
-
-	// ۲. کتابخانه monochromegane از ما می‌پرسد که آیا این مسیر یک دایرکتوری است یا خیر.
-	// بهتر است این مقدار را از بدنه اصلی برنامه (جایی که Walk انجام می‌دهید) پاس دهید.
 	return m.matcher.Match(relPath, isDir)
 }

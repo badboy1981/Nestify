@@ -55,9 +55,9 @@ func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
 	if m.matcher == nil {
 		return false
 	}
-
-	// ۳. تبدیل مسیر به اسلش و حروف کوچک برای مطابقت دقیق در ویندوز
+	// در ویندوز، کتابخانه ایگنور فقط با اسلش / کار می‌کند
 	cleanPath := filepath.ToSlash(path)
 
+	// استفاده از Match (نسخه درست کتابخانه تو)
 	return m.matcher.Match(cleanPath, isDir)
 }

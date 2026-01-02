@@ -9,23 +9,29 @@ import (
 )
 
 func Scan(path string, foldersOnly bool) ([]types.Node, error) {
-	info, err := os.Stat(path)
+	// ۱. حتما مسیر را مطلق و استاندارد کن
+	absPath, _ := filepath.Abs(path)
+	absPath = filepath.ToSlash(absPath)
+
+	info, err := os.Stat(absPath)
 	if err != nil {
 		return nil, err
 	}
 
-	matcher, err := ignore.NewIgnoreMatcher(path)
+	// ۲. ماتچر را با مسیر مطلق بساز
+	matcher, err := ignore.NewIgnoreMatcher(absPath)
 	if err != nil {
 		return nil, err
 	}
 
 	rootNode := types.Node{
-		Name: filepath.Base(path),
+		Name: filepath.Base(absPath),
 		Type: "folder",
 		Size: info.Size(),
 	}
 
-	children, err := scanDir(path, path, matcher, foldersOnly)
+	// ۳. بسیار مهم: هر دو ورودی باید absPath باشند
+	children, err := scanDir(absPath, absPath, matcher, foldersOnly)
 	if err != nil {
 		return nil, err
 	}

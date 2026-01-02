@@ -1,6 +1,7 @@
 # Compiled binary
 nestify
 nestify.exe
+*.exe
 
 # Test outputs
 scan_output.*

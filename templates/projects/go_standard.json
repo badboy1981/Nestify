@@ -1,0 +1,38 @@
+{
+  "name": "StandardGoProject",
+  "root": [
+    {
+      "name": "cmd",
+      "type": "folder",
+      "children": [
+        {
+          "name": "main.go",
+          "type": "file",
+          "content": "package main\n\nimport \"fmt\"\n\nfunc main() {\n\tfmt.Println(\"Nestify Project Started!\")\n}"
+        }
+      ]
+    },
+    {
+      "name": "internal",
+      "type": "folder",
+      "children": [
+        { "name": "repository", "type": "folder" },
+        { "name": "service", "type": "folder" },
+        { "name": "handler", "type": "folder" }
+      ]
+    },
+    {
+      "name": "pkg",
+      "type": "folder"
+    },
+    {
+      "name": "configs",
+      "type": "folder"
+    },
+    {
+      "name": ".gitignore",
+      "type": "file",
+      "content": "/bin\n/vendor\n.env\n*.exe"
+    }
+  ]
+}

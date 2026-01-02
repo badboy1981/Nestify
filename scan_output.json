@@ -1,557 +1,174 @@
 [
   {
-    "name": "Copliot",
+    "name": ".",
     "type": "folder",
+    "size": 4096,
     "children": [
       {
-        "name": "Art",
+        "name": "README.md",
+        "type": "file",
+        "size": 5979
+      },
+      {
+        "name": "README_fa.md",
+        "type": "file",
+        "size": 4797
+      },
+      {
+        "name": "cmd",
         "type": "folder",
         "children": [
           {
-            "name": "Actors",
+            "name": "nestify",
             "type": "folder",
             "children": [
               {
-                "name": "Enemies",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "RobotGuard",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "Animations",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Audio",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Models",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Prefabs",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Scripts",
-                        "type": "folder",
-                        "children": [
-                          {
-                            "name": "Logic",
-                            "type": "folder"
-                          },
-                          {
-                            "name": "UI",
-                            "type": "folder"
-                          },
-                          {
-                            "name": "View",
-                            "type": "folder"
-                          }
-                        ]
-                      },
-                      {
-                        "name": "Settings",
-                        "type": "folder"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Shared",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "Players",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Shared",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Volt",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "Animations",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Audio",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Models",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Prefabs",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Scripts",
-                        "type": "folder",
-                        "children": [
-                          {
-                            "name": "Logic",
-                            "type": "folder"
-                          },
-                          {
-                            "name": "UI",
-                            "type": "folder"
-                          },
-                          {
-                            "name": "View",
-                            "type": "folder"
-                          }
-                        ]
-                      },
-                      {
-                        "name": "Settings",
-                        "type": "folder"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "Items",
-            "type": "folder",
-            "children": [
-              {
-                "name": "Collectables",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Battery",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "Animations",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Audio",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Models",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Prefabs",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Scripts",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Settings",
-                        "type": "folder"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Shared",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "Interactables",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Gate",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "Animations",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Audio",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Models",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Prefabs",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Scripts",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Settings",
-                        "type": "folder"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Shared",
-                    "type": "folder"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "World",
-            "type": "folder",
-            "children": [
-              {
-                "name": "Environment",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Architecture",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "Materials",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Models",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Prefabs",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Textures",
-                        "type": "folder"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Materials",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Modular",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "Materials",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Models",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Prefabs",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Textures",
-                        "type": "folder"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Props",
-                    "type": "folder",
-                    "children": [
-                      {
-                        "name": "Materials",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Models",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Prefabs",
-                        "type": "folder"
-                      },
-                      {
-                        "name": "Textures",
-                        "type": "folder"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "Textures",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "Global_Audio",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Ambience",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Music",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Prefabs",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "UI_Sounds",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "Lighting",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Prefabs",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Profiles",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "VFX_Projectiles",
-                "type": "folder"
+                "name": "main.go",
+                "type": "file",
+                "size": 128
               }
             ]
           }
         ]
       },
       {
-        "name": "Docs",
-        "type": "folder",
-        "children": [
-          {
-            "name": "CHANGELOG.md",
-            "type": "file"
-          },
-          {
-            "name": "CONTRIBUTING.md",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
+        "name": "config",
+        "type": "folder"
       },
       {
-        "name": "Prototypes",
+        "name": "internal",
         "type": "folder",
         "children": [
           {
-            "name": "Prefabs",
-            "type": "folder"
-          },
-          {
-            "name": "Scenes",
-            "type": "folder"
-          },
-          {
-            "name": "Scripts",
-            "type": "folder"
-          }
-        ]
-      },
-      {
-        "name": "Scenes",
-        "type": "folder",
-        "children": [
-          {
-            "name": "Cutscenes",
-            "type": "folder"
-          },
-          {
-            "name": "Docs",
+            "name": "analyzer",
             "type": "folder",
             "children": [
               {
-                "name": "SCENES_GUIDELINES.md",
+                "name": "analyzer.go",
+                "type": "file",
+                "size": 1954
+              }
+            ]
+          },
+          {
+            "name": "cli",
+            "type": "folder",
+            "children": [
+              {
+                "name": "cli.go",
+                "type": "file",
+                "size": 2075
+              },
+              {
+                "name": "help.go",
+                "type": "file",
+                "size": 983
+              },
+              {
+                "name": "init.go",
+                "type": "file",
+                "size": 785
+              },
+              {
+                "name": "scan.go",
+                "type": "file",
+                "size": 1387
+              },
+              {
+                "name": "version.go",
+                "type": "file",
+                "size": 583
+              }
+            ]
+          },
+          {
+            "name": "generator",
+            "type": "folder",
+            "children": [
+              {
+                "name": "generator.go",
+                "type": "file",
+                "size": 726
+              }
+            ]
+          },
+          {
+            "name": "ignore",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ignore.go",
+                "type": "file",
+                "size": 906
+              }
+            ]
+          },
+          {
+            "name": "scanner",
+            "type": "folder",
+            "children": [
+              {
+                "name": "scanner.go",
+                "type": "file",
+                "size": 1658
+              }
+            ]
+          },
+          {
+            "name": "treeprinter",
+            "type": "folder",
+            "children": [
+              {
+                "name": "treeprinter.go",
+                "type": "file",
+                "size": 556
+              }
+            ]
+          },
+          {
+            "name": "types",
+            "type": "folder",
+            "children": [
+              {
+                "name": "type.go",
+                "type": "file",
+                "size": 679
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "templates",
+        "type": "folder",
+        "children": [
+          {
+            "name": "ignore",
+            "type": "folder",
+            "children": [
+              {
+                "name": "dotnet.txt",
                 "type": "file"
               },
               {
-                "name": "SCENES_README.md",
+                "name": "flutter.txt",
                 "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "Levels",
-            "type": "folder",
-            "children": [
-              {
-                "name": "Bonus",
-                "type": "folder"
               },
               {
-                "name": "Campaign",
-                "type": "folder"
-              }
-            ]
-          },
-          {
-            "name": "Menus",
-            "type": "folder"
-          },
-          {
-            "name": "Sandboxes",
-            "type": "folder"
-          }
-        ]
-      },
-      {
-        "name": "Scripts",
-        "type": "folder",
-        "children": [
-          {
-            "name": "Core",
-            "type": "folder",
-            "children": [
-              {
-                "name": "Events",
-                "type": "folder"
+                "name": "general.txt",
+                "type": "file"
               },
               {
-                "name": "Input",
-                "type": "folder"
+                "name": "go.txt",
+                "type": "file"
               },
               {
-                "name": "Managers",
-                "type": "folder"
-              }
-            ]
-          },
-          {
-            "name": "Definitions",
-            "type": "folder",
-            "children": [
-              {
-                "name": "Actors",
-                "type": "folder"
+                "name": "nodejs.txt",
+                "type": "file"
               },
               {
-                "name": "Environment",
-                "type": "folder"
-              },
-              {
-                "name": "Items",
-                "type": "folder"
-              }
-            ]
-          },
-          {
-            "name": "Utilities",
-            "type": "folder",
-            "children": [
-              {
-                "name": "DebugTools",
-                "type": "folder"
-              },
-              {
-                "name": "Extensions",
-                "type": "folder"
-              },
-              {
-                "name": "Helpers",
-                "type": "folder"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "System",
-        "type": "folder",
-        "children": [
-          {
-            "name": "AudioSystem",
-            "type": "folder",
-            "children": [
-              {
-                "name": "Emitters",
-                "type": "folder"
-              },
-              {
-                "name": "Managers",
-                "type": "folder"
-              },
-              {
-                "name": "Poolers",
-                "type": "folder"
-              },
-              {
-                "name": "Prefabs",
-                "type": "folder"
-              }
-            ]
-          },
-          {
-            "name": "Cameras",
-            "type": "folder",
-            "children": [
-              {
-                "name": "Prefabs",
-                "type": "folder"
-              },
-              {
-                "name": "Scripts",
-                "type": "folder"
-              }
-            ]
-          },
-          {
-            "name": "Managers",
-            "type": "folder"
-          },
-          {
-            "name": "UI",
-            "type": "folder",
-            "children": [
-              {
-                "name": "HUD",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Prefabs",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Scripts",
-                    "type": "folder"
-                  }
-                ]
-              },
-              {
-                "name": "Menus",
-                "type": "folder",
-                "children": [
-                  {
-                    "name": "Prefabs",
-                    "type": "folder"
-                  },
-                  {
-                    "name": "Scripts",
-                    "type": "folder"
-                  }
-                ]
+                "name": "python.txt",
+                "type": "file"
               }
             ]
           }

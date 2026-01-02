@@ -1,0 +1,22 @@
+[{
+	"resource": "/G:/Programming/Nestify/internal/cli/scan.go",
+	"owner": "_generated_diagnostic_collection_name_#1",
+	"code": {
+		"value": "UndeclaredImportedName",
+		"target": {
+			"$mid": 1,
+			"path": "/golang.org/x/tools/internal/typesinternal",
+			"scheme": "https",
+			"authority": "pkg.go.dev",
+			"fragment": "UndeclaredImportedName"
+		}
+	},
+	"severity": 8,
+	"message": "undefined: treeprinter.Print",
+	"source": "compiler",
+	"startLineNumber": 87,
+	"startColumn": 25,
+	"endLineNumber": 87,
+	"endColumn": 30,
+	"origin": "extHost1"
+}]

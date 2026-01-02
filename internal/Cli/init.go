@@ -1,9 +1,8 @@
-package Cli
-
-// File: init.go
+package cli
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"os"
 
@@ -11,26 +10,48 @@ import (
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
+func runInitCmd() {
+	cmd := flag.NewFlagSet("init", flag.ExitOnError)
+	template := cmd.String("template", "template.json", "فایل JSON معماری پروژه")
+	path := cmd.String("path", ".", "مسیر ایجاد ساختار پروژه")
+
+	cmd.Parse(os.Args[2:])
+
+	// استفاده از تابع جادویی شما برای حل مشکل درایو G و بک‌اسلش‌ها
+	cleanTemplatePath := NormalizePath(*template)
+	cleanDestPath := NormalizePath(*path)
+
+	runInit(cleanTemplatePath, cleanDestPath)
+}
+
 func runInit(templateFile string, path string) {
+	// خواندن فایل تمپلیت
 	data, err := os.ReadFile(templateFile)
 	if err != nil {
-		fmt.Println("❌ failed to read template file:", err)
+		fmt.Printf("❌ خطا در خواندن فایل تمپلیت در مسیر: %s\n", templateFile)
 		return
 	}
 
 	var template types.Template
 	if err := json.Unmarshal(data, &template); err != nil {
-		fmt.Println("❌ failed to parse JSON:", err)
+		fmt.Println("❌ خطا در تحلیل JSON:", err)
+		return
+	}
+
+	// ایجاد پوشه ریشه پروژه (مثلاً G:\Test) قبل از ساخت فایل‌ها
+	if err := os.MkdirAll(path, 0755); err != nil {
+		fmt.Printf("❌ خطا در دسترسی یا ایجاد مسیر مقصد: %s\n", path)
 		return
 	}
 
 	for _, rootNode := range template.Root {
+		// ارسال مسیر مطلق به ژنراتور
 		err = generator.CreateStructure(rootNode, path)
 		if err != nil {
-			fmt.Println("❌ failed to create structure:", err)
+			fmt.Printf("❌ خطا در ایجاد ساختار: %v\n", err)
 			return
 		}
 	}
 
-	fmt.Println("✅ the project structure was created successfully.")
+	fmt.Printf("✅ پروژه با موفقیت در مسیر زیر ساخته شد:\n   %s\n", path)
 }

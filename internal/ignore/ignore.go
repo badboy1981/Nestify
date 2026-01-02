@@ -1,0 +1,63 @@
+package ignore
+
+import (
+	"os"
+	"path/filepath"
+	"strings"
+
+	"github.com/monochromegane/go-gitignore"
+)
+
+type IgnoreMatcher struct {
+	matcher gitignore.IgnoreMatcher
+}
+
+// تابع برای لیست کردن تمپلیت‌های موجود در پوشه templates/ignore
+func ListAvailableTemplates(templatesPath string) ([]string, error) {
+	entries, err := os.ReadDir(templatesPath)
+	if err != nil {
+		return nil, err
+	}
+	var list []string
+	for _, e := range entries {
+		// فقط فایل‌های .txt را به عنوان تمپلیت در نظر می‌گیریم
+		if !e.IsDir() && strings.HasSuffix(e.Name(), ".txt") {
+			list = append(list, strings.TrimSuffix(e.Name(), ".txt"))
+		}
+	}
+	return list, nil
+}
+
+func NewIgnoreMatcher(rootPath string) (*IgnoreMatcher, error) {
+	// ۱. تبدیل مسیر ریشه به مسیر مطلق و تمیز برای ویندوز
+	absRoot, _ := filepath.Abs(rootPath)
+	absRoot = filepath.ToSlash(absRoot)
+
+	filePath := filepath.Join(absRoot, ".nestifyignore")
+
+	if _, err := os.Stat(filePath); os.IsNotExist(err) {
+		return &IgnoreMatcher{
+			matcher: gitignore.NewGitIgnoreFromReader(absRoot, strings.NewReader("")),
+		}, nil
+	}
+
+	// ۲. ارسال absRoot به عنوان مبنا
+	matcher, err := gitignore.NewGitIgnore(filePath, absRoot)
+	if err != nil {
+		return nil, err
+	}
+
+	return &IgnoreMatcher{matcher: matcher}, nil
+}
+
+// اضافه شدن آرگومان isDir برای تشخیص الگوهای پوشه (مثل /node_modules/)
+func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
+	if m.matcher == nil {
+		return false
+	}
+
+	// ۳. تبدیل مسیر به اسلش و حروف کوچک برای مطابقت دقیق در ویندوز
+	cleanPath := filepath.ToSlash(path)
+
+	return m.matcher.Match(cleanPath, isDir)
+}

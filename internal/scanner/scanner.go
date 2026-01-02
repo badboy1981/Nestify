@@ -49,8 +49,11 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 		fullPath := filepath.Join(currentPath, entry.Name())
 		relPath, _ := filepath.Rel(rootPath, fullPath)
 
+		// --- این بخش باید حتماً اضافه شود ---
+		standardRelPath := filepath.ToSlash(relPath)
+
 		// بررسی ایگنور با دقت بالا (ارسال وضعیت پوشه بودن)
-		if matcher.ShouldIgnore(relPath, entry.IsDir()) {
+		if matcher.ShouldIgnore(standardRelPath, entry.IsDir()) {
 			continue
 		}
 

@@ -17,7 +17,7 @@
 ./nestify scan --path G:/Programming/AiMemory --tree --folders-only
 
 G:/Programming/Customer/Javid/ConsoleStore
-./nestify scan --path G:/Programming/Customer/Javid/ConsoleStore --tree --folders-only
+./nestify scan --path g:/Programming/Customer/Javid/ConsoleStore --tree --folders-only
 ./nestify scan --path . --tree --folders-only
 
 

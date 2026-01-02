@@ -29,15 +29,20 @@ func ListAvailableTemplates(templatesPath string) ([]string, error) {
 }
 
 func NewIgnoreMatcher(rootPath string) (*IgnoreMatcher, error) {
-	filePath := filepath.Join(rootPath, ".nestifyignore")
+	// ۱. تبدیل مسیر ریشه به مسیر مطلق و تمیز برای ویندوز
+	absRoot, _ := filepath.Abs(rootPath)
+	absRoot = filepath.ToSlash(absRoot)
+
+	filePath := filepath.Join(absRoot, ".nestifyignore")
 
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 		return &IgnoreMatcher{
-			matcher: gitignore.NewGitIgnoreFromReader(rootPath, strings.NewReader("")),
+			matcher: gitignore.NewGitIgnoreFromReader(absRoot, strings.NewReader("")),
 		}, nil
 	}
 
-	matcher, err := gitignore.NewGitIgnore(filePath, rootPath)
+	// ۲. ارسال absRoot به عنوان مبنا
+	matcher, err := gitignore.NewGitIgnore(filePath, absRoot)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +51,13 @@ func NewIgnoreMatcher(rootPath string) (*IgnoreMatcher, error) {
 }
 
 // اضافه شدن آرگومان isDir برای تشخیص الگوهای پوشه (مثل /node_modules/)
-func (m *IgnoreMatcher) ShouldIgnore(relPath string, isDir bool) bool {
-	relPath = filepath.ToSlash(relPath)
-	return m.matcher.Match(relPath, isDir)
+func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
+	if m.matcher == nil {
+		return false
+	}
+
+	// ۳. تبدیل مسیر به اسلش و حروف کوچک برای مطابقت دقیق در ویندوز
+	cleanPath := filepath.ToSlash(path)
+
+	return m.matcher.Match(cleanPath, isDir)
 }

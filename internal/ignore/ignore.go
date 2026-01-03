@@ -1,18 +1,16 @@
 package ignore
 
 import (
+	"bufio"
 	"os"
 	"path/filepath"
 	"strings"
-
-	"github.com/monochromegane/go-gitignore"
 )
 
 type IgnoreMatcher struct {
-	matcher gitignore.IgnoreMatcher
+	patterns []string
 }
 
-// تابع برای لیست کردن تمپلیت‌های موجود در پوشه templates/ignore
 func ListAvailableTemplates(templatesPath string) ([]string, error) {
 	entries, err := os.ReadDir(templatesPath)
 	if err != nil {
@@ -20,7 +18,6 @@ func ListAvailableTemplates(templatesPath string) ([]string, error) {
 	}
 	var list []string
 	for _, e := range entries {
-		// فقط فایل‌های .txt را به عنوان تمپلیت در نظر می‌گیریم
 		if !e.IsDir() && strings.HasSuffix(e.Name(), ".txt") {
 			list = append(list, strings.TrimSuffix(e.Name(), ".txt"))
 		}
@@ -29,35 +26,52 @@ func ListAvailableTemplates(templatesPath string) ([]string, error) {
 }
 
 func NewIgnoreMatcher(rootPath string) (*IgnoreMatcher, error) {
-	// ۱. تبدیل مسیر ریشه به مسیر مطلق و تمیز برای ویندوز
-	absRoot, _ := filepath.Abs(rootPath)
-	absRoot = filepath.ToSlash(absRoot)
+	filePath := filepath.Join(rootPath, ".nestifyignore")
+	var patterns []string
 
-	filePath := filepath.Join(absRoot, ".nestifyignore")
-
-	if _, err := os.Stat(filePath); os.IsNotExist(err) {
-		return &IgnoreMatcher{
-			matcher: gitignore.NewGitIgnoreFromReader(absRoot, strings.NewReader("")),
-		}, nil
+	file, err := os.Open(filePath)
+	if err == nil {
+		defer file.Close()
+		scanner := bufio.NewScanner(file)
+		for scanner.Scan() {
+			line := strings.TrimSpace(scanner.Text())
+			// نادیده گرفتن خطوط خالی و کامنت‌ها
+			if line != "" && !strings.HasPrefix(line, "#") {
+				// حذف اسلش‌های ابتدا و انتها برای مقایسه راحت‌تر
+				line = strings.Trim(line, "/")
+				patterns = append(patterns, line)
+			}
+		}
 	}
 
-	// ۲. ارسال absRoot به عنوان مبنا
-	matcher, err := gitignore.NewGitIgnore(filePath, absRoot)
-	if err != nil {
-		return nil, err
-	}
+	// همیشه این موارد سیستمی را اضافه کن
+	patterns = append(patterns, ".git", "node_modules", ".Test", "Test")
 
-	return &IgnoreMatcher{matcher: matcher}, nil
+	return &IgnoreMatcher{patterns: patterns}, nil
 }
 
-// اضافه شدن آرگومان isDir برای تشخیص الگوهای پوشه (مثل /node_modules/)
-func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
-	if m.matcher == nil {
-		return false
-	}
-	// در ویندوز، کتابخانه ایگنور فقط با اسلش / کار می‌کند
-	cleanPath := filepath.ToSlash(path)
+// func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
+// 	// مسیر ورودی قبلاً در اسکنر استاندارد شده، فقط چک کن
+// 	cleanPath := strings.Trim(path, "/")
 
-	// استفاده از Match (نسخه درست کتابخانه تو)
-	return m.matcher.Match(cleanPath, isDir)
+//		for _, p := range m.patterns {
+//			if cleanPath == p || strings.HasPrefix(cleanPath, p+"/") {
+//				return true
+//			}
+//		}
+//		return false
+//	}
+func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
+	for _, pattern := range m.patterns {
+		// استفاده از Match برای پشتیبانی از ستاره و الگوها
+		matched, _ := filepath.Match(pattern, path)
+		if matched {
+			return true
+		}
+		// چک کردن مستقیم برای پوشه‌ها یا نام‌های دقیق
+		if path == pattern {
+			return true
+		}
+	}
+	return false
 }

@@ -1,0 +1,231 @@
+[
+  {
+    "name": "Nestify",
+    "type": "folder",
+    "size": 4096,
+    "children": [
+      {
+        "name": ".nestifyignore",
+        "type": "file",
+        "size": 773
+      },
+      {
+        "name": "README.md",
+        "type": "file",
+        "size": 5979
+      },
+      {
+        "name": "README_fa.md",
+        "type": "file",
+        "size": 4797
+      },
+      {
+        "name": "cmd",
+        "type": "folder",
+        "children": [
+          {
+            "name": "nestify",
+            "type": "folder",
+            "children": [
+              {
+                "name": "main.go",
+                "type": "file",
+                "size": 119
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "config",
+        "type": "folder"
+      },
+      {
+        "name": "internal",
+        "type": "folder",
+        "children": [
+          {
+            "name": "analyzer",
+            "type": "folder",
+            "children": [
+              {
+                "name": "analyzer.go",
+                "type": "file",
+                "size": 1887
+              }
+            ]
+          },
+          {
+            "name": "cli",
+            "type": "folder",
+            "children": [
+              {
+                "name": "cli.go",
+                "type": "file",
+                "size": 1344
+              },
+              {
+                "name": "help.go",
+                "type": "file",
+                "size": 1139
+              },
+              {
+                "name": "ignore_handler.go",
+                "type": "file",
+                "size": 1472
+              },
+              {
+                "name": "init.go",
+                "type": "file",
+                "size": 1777
+              },
+              {
+                "name": "scan.go",
+                "type": "file",
+                "size": 3573
+              },
+              {
+                "name": "version.go",
+                "type": "file",
+                "size": 562
+              }
+            ]
+          },
+          {
+            "name": "generator",
+            "type": "folder",
+            "children": [
+              {
+                "name": "generator.go",
+                "type": "file",
+                "size": 866
+              }
+            ]
+          },
+          {
+            "name": "ignore",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ignore copy.txt",
+                "type": "file",
+                "size": 2122
+              },
+              {
+                "name": "ignore.go",
+                "type": "file",
+                "size": 1610
+              }
+            ]
+          },
+          {
+            "name": "pathutil",
+            "type": "folder",
+            "children": [
+              {
+                "name": "pathutil.go",
+                "type": "file",
+                "size": 384
+              }
+            ]
+          },
+          {
+            "name": "scanner",
+            "type": "folder",
+            "children": [
+              {
+                "name": "scanner.go",
+                "type": "file",
+                "size": 1940
+              }
+            ]
+          },
+          {
+            "name": "treeprinter",
+            "type": "folder",
+            "children": [
+              {
+                "name": "treeprinter.go",
+                "type": "file",
+                "size": 531
+              }
+            ]
+          },
+          {
+            "name": "types",
+            "type": "folder",
+            "children": [
+              {
+                "name": "type.go",
+                "type": "file",
+                "size": 662
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "nestify.exe",
+        "type": "file",
+        "size": 3340288
+      },
+      {
+        "name": "scan_output.json",
+        "type": "file",
+        "size": 4123
+      },
+      {
+        "name": "templates",
+        "type": "folder",
+        "children": [
+          {
+            "name": "ignore",
+            "type": "folder",
+            "children": [
+              {
+                "name": "dotnet.txt",
+                "type": "file"
+              },
+              {
+                "name": "flutter.txt",
+                "type": "file"
+              },
+              {
+                "name": "general.txt",
+                "type": "file"
+              },
+              {
+                "name": "go.txt",
+                "type": "file"
+              },
+              {
+                "name": "nodejs.txt",
+                "type": "file"
+              },
+              {
+                "name": "python.txt",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "projects",
+            "type": "folder",
+            "children": [
+              {
+                "name": "go_basic.json",
+                "type": "file",
+                "size": 404
+              },
+              {
+                "name": "go_standard.json",
+                "type": "file",
+                "size": 833
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

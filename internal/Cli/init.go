@@ -7,9 +7,11 @@ import (
 	"os"
 
 	"github.com/badboy1981/Nestify/internal/generator"
+	"github.com/badboy1981/Nestify/internal/pathutil"
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
+// بخش تغییر یافته در تابع runInitCmd
 func runInitCmd() {
 	cmd := flag.NewFlagSet("init", flag.ExitOnError)
 	template := cmd.String("template", "template.json", "فایل JSON معماری پروژه")
@@ -17,9 +19,9 @@ func runInitCmd() {
 
 	cmd.Parse(os.Args[2:])
 
-	// استفاده از تابع جادویی شما برای حل مشکل درایو G و بک‌اسلش‌ها
-	cleanTemplatePath := NormalizePath(*template)
-	cleanDestPath := NormalizePath(*path)
+	// اصلاح شده: استفاده از پکیج pathutil
+	cleanTemplatePath := pathutil.NormalizeForOS(*template)
+	cleanDestPath := pathutil.NormalizeForOS(*path)
 
 	runInit(cleanTemplatePath, cleanDestPath)
 }

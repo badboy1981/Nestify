@@ -28,3 +28,15 @@ G:/Programming/AiMemory/Copilot/ExternalMemoryAI
 G:/Programming/AiMemory/Test
 G:\Programming\Customer\Javid\ConsoleStore
 G:\Test
+
+# ۱. همگام‌سازی پکیج‌ها
+go mod tidy
+
+# ۲. اطمینان از وجود پکیج ایگنور
+go get github.com/monochromegane/go-gitignore
+
+# ۳. پاک کردن فایل اجرایی قدیمی
+rm -f nestify.exe
+
+# ۴. ساخت مجدد با کدهای اصلاح شده
+go build -o nestify.exe ./cmd/nestify

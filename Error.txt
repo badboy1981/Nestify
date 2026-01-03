@@ -1,22 +1,64 @@
 [{
-	"resource": "/G:/Programming/Nestify/internal/cli/scan.go",
-	"owner": "_generated_diagnostic_collection_name_#1",
+	"resource": "/G:/Programming/Nestify/internal/cli/init.go",
+	"owner": "_generated_diagnostic_collection_name_#3",
 	"code": {
-		"value": "UndeclaredImportedName",
+		"value": "UndeclaredName",
 		"target": {
 			"$mid": 1,
 			"path": "/golang.org/x/tools/internal/typesinternal",
 			"scheme": "https",
 			"authority": "pkg.go.dev",
-			"fragment": "UndeclaredImportedName"
+			"fragment": "UndeclaredName"
 		}
 	},
 	"severity": 8,
-	"message": "undefined: treeprinter.Print",
+	"message": "undefined: NormalizeForOS",
 	"source": "compiler",
-	"startLineNumber": 87,
-	"startColumn": 25,
-	"endLineNumber": 87,
-	"endColumn": 30,
+	"startLineNumber": 22,
+	"startColumn": 23,
+	"endLineNumber": 22,
+	"endColumn": 37,
+	"origin": "extHost1"
+},{
+	"resource": "/G:/Programming/Nestify/internal/cli/init.go",
+	"owner": "_generated_diagnostic_collection_name_#3",
+	"code": {
+		"value": "UndeclaredName",
+		"target": {
+			"$mid": 1,
+			"path": "/golang.org/x/tools/internal/typesinternal",
+			"scheme": "https",
+			"authority": "pkg.go.dev",
+			"fragment": "UndeclaredName"
+		}
+	},
+	"severity": 8,
+	"message": "undefined: NormalizeForOS",
+	"source": "compiler",
+	"startLineNumber": 23,
+	"startColumn": 19,
+	"endLineNumber": 23,
+	"endColumn": 33,
+	"origin": "extHost1"
+},{
+	"resource": "/G:/Programming/Nestify/internal/cli/scan.go",
+	"owner": "_generated_diagnostic_collection_name_#3",
+	"code": {
+		"value": "UndeclaredName",
+		"target": {
+			"$mid": 1,
+			"path": "/golang.org/x/tools/internal/typesinternal",
+			"scheme": "https",
+			"authority": "pkg.go.dev",
+			"fragment": "UndeclaredName"
+		}
+	},
+	"severity": 8,
+	"message": "undefined: NormalizePath",
+	"source": "compiler",
+	"startLineNumber": 54,
+	"startColumn": 15,
+	"endLineNumber": 54,
+	"endColumn": 28,
 	"origin": "extHost1"
 }]

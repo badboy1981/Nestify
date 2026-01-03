@@ -1,29 +1,38 @@
-# --- Temporary & Binary Files ---
-bin/
-obj/
-/nestify
-*.exe
-
-# --- Dependency Folders ---
-node_modules/
+# سیستم کنترل نسخه
 .git/
-
-# --- Project Specific & Archive ---
-.Test/
-Test/
-archive/
-config/examples/
-
-# --- Nestify Outputs ---
-scan_output.*
-skeleton_report.md
-Error.txt
-
-# --- Meta & Config Files (Optional) ---
-# حذف فایل‌های تنظیمات خود پروژه از لیست اسکن
-go.mod
-go.sum
-.nestifyignore
 .gitignore
 .gitattributes
+.nestifyignore
+# فایل‌های موقت و تنظیمات ادیتور
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+
+# فایل‌های اجرایی و خروجی کامپایل
+*.exe
+*.test
+bin/
+
+# فایل‌های گزارش و دیتای خود Nestify
+reports/
+Nestify_*.json
+Nestify_*.md
+scan_output.md
+skeleton_report.md
+Error.txt
+go.mod
+go.sum
+
+# مستندات غیر ضروری در ساختار کد
 LICENSE
+archive/
+config/examples
+
+# تست‌های داخلی (اگر نمی‌خواهید در گزارش باشند)
+Test/
+.Test/
+
+# فایل‌های مدیریت پکیج (اختیاری - اگر فقط ساختار پوشه‌ها را می‌خواهید)
+# go.sum

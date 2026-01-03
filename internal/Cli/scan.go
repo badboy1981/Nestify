@@ -8,11 +8,13 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/badboy1981/Nestify/internal/pathutil"
 	"github.com/badboy1981/Nestify/internal/scanner"
 	"github.com/badboy1981/Nestify/internal/treeprinter"
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
+// بخش تغییر یافته در تابع runScanCmd
 func runScanCmd() {
 	cmd := flag.NewFlagSet("scan", flag.ExitOnError)
 	path := cmd.String("path", ".", "Project path to scan")
@@ -21,7 +23,8 @@ func runScanCmd() {
 
 	cmd.Parse(os.Args[2:])
 
-	cleanPath := NormalizePath(*path)
+	// استفاده صحیح از پکیج جدید
+	cleanPath := pathutil.NormalizeForOS(*path)
 	runScan(cleanPath, *tree, *foldersOnly)
 }
 
@@ -48,7 +51,7 @@ func runScan(cleanPath string, printTree bool, foldersOnly bool) {
 	}
 
 	// ۳. مدیریت پوشه گزارشات
-	reportDir := NormalizePath("reports")
+	reportDir := pathutil.NormalizeForOS("reports")
 	if err := os.MkdirAll(reportDir, 0755); err != nil {
 		fmt.Printf("❌ Error creating report directory: %v\n", err)
 		return

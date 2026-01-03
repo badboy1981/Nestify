@@ -1,0 +1,621 @@
+[
+  {
+    "name": "ConsoleStore",
+    "type": "folder",
+    "size": 4096,
+    "children": [
+      {
+        "name": "API",
+        "type": "folder",
+        "children": [
+          {
+            "name": "API.csproj",
+            "type": "file",
+            "size": 848
+          },
+          {
+            "name": "API.http",
+            "type": "file",
+            "size": 119
+          },
+          {
+            "name": "Controllers",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ProductsController.cs",
+                "type": "file",
+                "size": 3592
+              },
+              {
+                "name": "WeatherForecastController.cs",
+                "type": "file",
+                "size": 852
+              }
+            ]
+          },
+          {
+            "name": "Middleware",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ExceptionHandlerMiddleware.cs",
+                "type": "file",
+                "size": 1969
+              }
+            ]
+          },
+          {
+            "name": "Program.cs",
+            "type": "file",
+            "size": 1813
+          },
+          {
+            "name": "WeatherForecast.cs",
+            "type": "file",
+            "size": 283
+          },
+          {
+            "name": "appsettings.Development.json",
+            "type": "file",
+            "size": 127
+          },
+          {
+            "name": "appsettings.json",
+            "type": "file",
+            "size": 345
+          }
+        ]
+      },
+      {
+        "name": "Admin",
+        "type": "folder",
+        "children": [
+          {
+            "name": "Admin.csproj",
+            "type": "file",
+            "size": 488
+          },
+          {
+            "name": "Components",
+            "type": "folder",
+            "children": [
+              {
+                "name": "App.razor",
+                "type": "file",
+                "size": 663
+              },
+              {
+                "name": "Layout",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "MainLayout.razor",
+                    "type": "file",
+                    "size": 547
+                  },
+                  {
+                    "name": "NavMenu.razor",
+                    "type": "file",
+                    "size": 1084
+                  },
+                  {
+                    "name": "ReconnectModal.razor",
+                    "type": "file",
+                    "size": 1320
+                  },
+                  {
+                    "name": "ReconnectModal.razor.js",
+                    "type": "file",
+                    "size": 2364
+                  }
+                ]
+              },
+              {
+                "name": "Pages",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "Counter.razor",
+                    "type": "file",
+                    "size": 363
+                  },
+                  {
+                    "name": "Error.razor",
+                    "type": "file",
+                    "size": 1215
+                  },
+                  {
+                    "name": "Home.razor",
+                    "type": "file",
+                    "size": 99
+                  },
+                  {
+                    "name": "NotFound.razor",
+                    "type": "file",
+                    "size": 126
+                  },
+                  {
+                    "name": "Weather.razor",
+                    "type": "file",
+                    "size": 1922
+                  }
+                ]
+              },
+              {
+                "name": "Routes.razor",
+                "type": "file",
+                "size": 300
+              },
+              {
+                "name": "_Imports.razor",
+                "type": "file",
+                "size": 414
+              }
+            ]
+          },
+          {
+            "name": "Program.cs",
+            "type": "file",
+            "size": 1121
+          },
+          {
+            "name": "appsettings.Development.json",
+            "type": "file",
+            "size": 127
+          },
+          {
+            "name": "appsettings.json",
+            "type": "file",
+            "size": 151
+          },
+          {
+            "name": "wwwroot",
+            "type": "folder"
+          }
+        ]
+      },
+      {
+        "name": "Application",
+        "type": "folder",
+        "children": [
+          {
+            "name": "Application.csproj",
+            "type": "file",
+            "size": 698
+          },
+          {
+            "name": "Common",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Behaviors",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "ValidationBehavior.cs",
+                    "type": "file",
+                    "size": 1702
+                  }
+                ]
+              },
+              {
+                "name": "Exceptions",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "NotFoundException.cs",
+                    "type": "file",
+                    "size": 280
+                  },
+                  {
+                    "name": "ValidationException.cs",
+                    "type": "file",
+                    "size": 717
+                  }
+                ]
+              },
+              {
+                "name": "Interfaces",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "IApplicationDbContext.cs",
+                    "type": "file",
+                    "size": 422
+                  },
+                  {
+                    "name": "ICategoryRepository.cs",
+                    "type": "file",
+                    "size": 336
+                  },
+                  {
+                    "name": "IDateTimeService.cs",
+                    "type": "file"
+                  },
+                  {
+                    "name": "IProductRepository.cs",
+                    "type": "file",
+                    "size": 383
+                  },
+                  {
+                    "name": "IUserRepository.cs",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "Mapping",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "MappingProfile.cs",
+                    "type": "file",
+                    "size": 983
+                  },
+                  {
+                    "name": "ProductProfile.cs",
+                    "type": "file",
+                    "size": 661
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "DependencyInjection.cs",
+            "type": "file",
+            "size": 1136
+          },
+          {
+            "name": "Features",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Orders",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "Commands",
+                    "type": "folder"
+                  },
+                  {
+                    "name": "Dtos",
+                    "type": "folder"
+                  },
+                  {
+                    "name": "Queries",
+                    "type": "folder"
+                  }
+                ]
+              },
+              {
+                "name": "Products",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "Commands",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "CreateProduct",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "CreateProductCommand.cs",
+                            "type": "file",
+                            "size": 345
+                          },
+                          {
+                            "name": "CreateProductCommandHandler.cs",
+                            "type": "file",
+                            "size": 1188
+                          },
+                          {
+                            "name": "CreateProductCommandValidator.cs",
+                            "type": "file",
+                            "size": 1077
+                          },
+                          {
+                            "name": "CreateProductDto.cs",
+                            "type": "file",
+                            "size": 420
+                          }
+                        ]
+                      },
+                      {
+                        "name": "CreateProductCommand.cs",
+                        "type": "file"
+                      },
+                      {
+                        "name": "CreateProductCommandHandler.cs",
+                        "type": "file"
+                      },
+                      {
+                        "name": "DeleteProduct",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "DeleteProductCommand.cs",
+                            "type": "file",
+                            "size": 333
+                          },
+                          {
+                            "name": "DeleteProductCommandHandler.cs",
+                            "type": "file",
+                            "size": 936
+                          }
+                        ]
+                      },
+                      {
+                        "name": "UpdateProduct",
+                        "type": "folder",
+                        "children": [
+                          {
+                            "name": "UpdateProductCommand.cs",
+                            "type": "file",
+                            "size": 496
+                          },
+                          {
+                            "name": "UpdateProductCommandHandler.cs",
+                            "type": "file",
+                            "size": 1268
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Dtos",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "Class1.cs",
+                        "type": "file",
+                        "size": 168
+                      },
+                      {
+                        "name": "ProductDto.cs",
+                        "type": "file",
+                        "size": 531
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Queries",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "GetProductListQuery.cs",
+                        "type": "file",
+                        "size": 422
+                      },
+                      {
+                        "name": "GetProductListQueryHandler.cs",
+                        "type": "file",
+                        "size": 1488
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Validators",
+                    "type": "folder",
+                    "children": [
+                      {
+                        "name": "CreateProductCommandValidator.cs",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Interfaces",
+            "type": "folder",
+            "children": [
+              {
+                "name": "IProductRepository.cs",
+                "type": "file",
+                "size": 289
+              },
+              {
+                "name": "IUserRepository.cs",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ConsoleStore.slnx",
+        "type": "file",
+        "size": 346
+      },
+      {
+        "name": "Domain",
+        "type": "folder",
+        "children": [
+          {
+            "name": "Domain.csproj",
+            "type": "file",
+            "size": 299
+          },
+          {
+            "name": "Entities",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Category.cs",
+                "type": "file",
+                "size": 226
+              },
+              {
+                "name": "Interfaces",
+                "type": "folder"
+              },
+              {
+                "name": "Product.cs",
+                "type": "file",
+                "size": 1035
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Infrastructure",
+        "type": "folder",
+        "children": [
+          {
+            "name": "DependencyInjection.cs",
+            "type": "file",
+            "size": 1778
+          },
+          {
+            "name": "Infrastructure.csproj",
+            "type": "file",
+            "size": 788
+          },
+          {
+            "name": "Persistence",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ApplicationDbContext.cs",
+                "type": "file",
+                "size": 862
+              },
+              {
+                "name": "Repositories",
+                "type": "folder",
+                "children": [
+                  {
+                    "name": "CategoryRepository.cs",
+                    "type": "file",
+                    "size": 1250
+                  },
+                  {
+                    "name": "ProductRepository.cs",
+                    "type": "file",
+                    "size": 1156
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "type": "file",
+        "size": 4297
+      },
+      {
+        "name": "Tests.Unit",
+        "type": "folder",
+        "children": [
+          {
+            "name": "FactAttribute.cs",
+            "type": "file",
+            "size": 91
+          },
+          {
+            "name": "Tests.Unit.csproj",
+            "type": "file",
+            "size": 797
+          },
+          {
+            "name": "UnitTest1.cs",
+            "type": "file",
+            "size": 142
+          }
+        ]
+      },
+      {
+        "name": "Web",
+        "type": "folder",
+        "children": [
+          {
+            "name": "App.razor",
+            "type": "file",
+            "size": 292
+          },
+          {
+            "name": "Layout",
+            "type": "folder",
+            "children": [
+              {
+                "name": "MainLayout.razor",
+                "type": "file",
+                "size": 372
+              },
+              {
+                "name": "NavMenu.razor",
+                "type": "file",
+                "size": 1376
+              }
+            ]
+          },
+          {
+            "name": "Pages",
+            "type": "folder",
+            "children": [
+              {
+                "name": "Counter.razor",
+                "type": "file",
+                "size": 332
+              },
+              {
+                "name": "Home.razor",
+                "type": "file",
+                "size": 99
+              },
+              {
+                "name": "NotFound.razor",
+                "type": "file",
+                "size": 126
+              },
+              {
+                "name": "Weather.razor",
+                "type": "file",
+                "size": 1440
+              }
+            ]
+          },
+          {
+            "name": "Program.cs",
+            "type": "file",
+            "size": 613
+          },
+          {
+            "name": "Web.csproj",
+            "type": "file",
+            "size": 727
+          },
+          {
+            "name": "_Imports.razor",
+            "type": "file",
+            "size": 369
+          },
+          {
+            "name": "wwwroot",
+            "type": "folder",
+            "children": [
+              {
+                "name": "css",
+                "type": "folder"
+              },
+              {
+                "name": "index.html",
+                "type": "file",
+                "size": 1063
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

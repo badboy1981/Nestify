@@ -5,33 +5,30 @@ import (
 	"path/filepath"
 
 	"github.com/badboy1981/Nestify/internal/ignore"
+	"github.com/badboy1981/Nestify/internal/pathutil" // فقط این را برای آدرس‌ها استفاده کن
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
 func Scan(path string, foldersOnly bool) ([]types.Node, error) {
-	// ۱. حتما مسیر را مطلق و استاندارد کن
-	absPath, _ := filepath.Abs(path)
-	absPath = filepath.ToSlash(absPath)
-
-	info, err := os.Stat(absPath)
+	osPath := pathutil.NormalizeForOS(path)
+	info, err := os.Stat(osPath)
 	if err != nil {
 		return nil, err
 	}
 
-	// ۲. ماتچر را با مسیر مطلق بساز
-	matcher, err := ignore.NewIgnoreMatcher(absPath)
+	standardRoot := pathutil.ToStandardPath(osPath)
+	matcher, err := ignore.NewIgnoreMatcher(standardRoot)
 	if err != nil {
 		return nil, err
 	}
 
 	rootNode := types.Node{
-		Name: filepath.Base(absPath),
+		Name: filepath.Base(standardRoot),
 		Type: "folder",
 		Size: info.Size(),
 	}
 
-	// ۳. بسیار مهم: هر دو ورودی باید absPath باشند
-	children, err := scanDir(absPath, absPath, matcher, foldersOnly)
+	children, err := scanDir(standardRoot, standardRoot, matcher, foldersOnly)
 	if err != nil {
 		return nil, err
 	}
@@ -52,20 +49,21 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 			continue
 		}
 
-		fullPath := filepath.Join(currentPath, entry.Name())
+		entryName := entry.Name()
+		fullPath := filepath.Join(currentPath, entryName)
+
 		relPath, _ := filepath.Rel(rootPath, fullPath)
+		standardRel := pathutil.ToStandardPath(relPath) // اصلاح استفاده از پکیج جدید
 
-		// --- این بخش باید حتماً اضافه شود ---
-		standardRelPath := filepath.ToSlash(relPath)
-
-		// بررسی ایگنور با دقت بالا (ارسال وضعیت پوشه بودن)
-		if matcher.ShouldIgnore(standardRelPath, entry.IsDir()) {
-			continue
+		if matcher != nil {
+			if matcher.ShouldIgnore(entryName, entry.IsDir()) || matcher.ShouldIgnore(standardRel, entry.IsDir()) {
+				continue
+			}
 		}
 
 		info, _ := entry.Info()
 		node := types.Node{
-			Name: entry.Name(),
+			Name: entryName,
 			Size: info.Size(),
 		}
 

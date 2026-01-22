@@ -5,26 +5,19 @@ namespace GateSystem
     [RequireComponent(typeof(Animator))]
     internal class Gate : Interactive
     {
-        [SerializeField] Animator animator;
-        [SerializeField] bool GateFirstOpen;
+        [SerializeField] private GateSystemManager manager;
+        [SerializeField] private Animator animator;
         private void Start()
         {
-            GateFirstOpen = true;
             animator = GetComponent<Animator>();
         }
-        public void OnGateOpen()
+        public void OnAnimateGate()
         {
-            if (animator.GetBool("OpenGate")) PlaySound("OpenGateSound");
-            GateFirstOpen = false;
-        }
-        public void OnGateClose()
-        {
-            if (GateFirstOpen) return;
-            if (!animator.GetBool("OpenGate")) PlaySound("OpenGateSound");
+            PlaySound("OpenGateSound");
         }
         public void GateDefualtPosition()
         {
-            animator.SetBool("OpenGate", false);
+            manager.CloseGate();
         }
     }
 }

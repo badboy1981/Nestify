@@ -1,0 +1,134 @@
+{
+    "SceneName": "E_Maze",
+    "PuzzleName": "C_Gate_Puzzle",
+    "gate": {
+        "Name": "Gate",
+        "Position": {
+            "x": -32.0,
+            "y": 0.0,
+            "z": -192.0
+        },
+        "Rotation": {
+            "x": 270.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        }
+    },
+    "stoneHatch": {
+        "Name": "StoneHatch",
+        "Position": {
+            "x": -40.0,
+            "y": 0.2,
+            "z": -220.75
+        },
+        "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        }
+    },
+    "keys": [
+        {
+            "Name": "A_Key",
+            "Position": {
+                "x": -65.0,
+                "y": 1.0,
+                "z": -86.0
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 2.5,
+                "y": 2.5,
+                "z": 2.5
+            }
+        },
+        {
+            "Name": "B_Key",
+            "Position": {
+                "x": -30.0,
+                "y": 1.0,
+                "z": -250.0
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 2.5,
+                "y": 2.5,
+                "z": 2.5
+            }
+        },
+        {
+            "Name": "C_Key",
+            "Position": {
+                "x": -47.0,
+                "y": 1.0,
+                "z": -183.0
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 2.5,
+                "y": 2.5,
+                "z": 2.5
+            }
+        }
+    ],
+    "gateHandle": [
+        {
+            "Name": "A_GateController",
+            "Position": {
+                "x": -24.0,
+                "y": 0.2,
+                "z": -156.4
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "Name": "B_GateController",
+            "Position": {
+                "x": -11.6,
+                "y": 0.2,
+                "z": -208.0
+            },
+            "Rotation": {
+                "x": 0.0,
+                "y": 270.0,
+                "z": 0.0
+            },
+            "Scale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }
+    ]
+}

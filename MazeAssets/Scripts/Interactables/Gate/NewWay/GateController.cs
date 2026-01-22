@@ -4,14 +4,26 @@ namespace GateSystem
 {
     internal class GateController : Interactive
     {
-        [SerializeField] private GateSystemManager manager;
-        [SerializeField] Animator animator;
+        [SerializeField] GateSystemManager manager;
+        [SerializeField] Animator gateAnimator;
+        //[SerializeField] GameObject gateHandle;
+        [SerializeField] Animator handleAnimator;
         private void Start()
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
-        void OnEnable() { manager.OnGateOpen += StartGateSequence; }
-        void OnDisable() { manager.OnGateOpen -= StartGateSequence; }
+        void OnEnable()
+        {
+            manager.OnAllKeysCollected += ActiveHandle;
+            manager.OnGateOpen += StartGateSequence;
+            manager.OnGateClose += StartGateSequence;
+        }
+        void OnDisable()
+        {
+            manager.OnAllKeysCollected -= ActiveHandle;
+            manager.OnGateOpen -= StartGateSequence;
+            manager.OnGateClose -= StartGateSequence;
+        }
 
         protected override void OnTriggerEnter(Collider other)
         {
@@ -20,13 +32,18 @@ namespace GateSystem
         }
         protected override void OnTriggerExit(Collider other)
         {
-            animator.SetBool("OpenGate", false);
-            
+            //animator.SetBool("OpenGate", false);
+
         }
-        void StartGateSequence(bool state)
+        private void StartGateSequence(bool state)
         {
-            animator.SetBool("OpenGate", state);
+            handleAnimator.SetBool("RotateHandle", state);
+            //gateAnimator.SetBool("OpenGate", state);
             //PlaySound("OpenGateSound");
+        }
+        private void ActiveHandle()
+        {
+            handleAnimator.SetBool("ActiveHandle", true);
         }
     }
 }

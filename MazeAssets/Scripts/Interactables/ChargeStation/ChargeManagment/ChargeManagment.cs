@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ChargeManagment", menuName = "Charge Managment/ChargeManagment")]
+[CreateAssetMenu(fileName = "ChargeManagment", menuName = "Interactables/Charge Managment/ChargeManagment")]
 public class ChargeManagment : ScriptableObject
 {
     [Header("Charge Event")]
@@ -41,7 +41,7 @@ public class ChargeManagment : ScriptableObject
                CVStatus.MaxVoltCharge
            );
     }
-public IEnumerator DeChargeVoltRoutine()
+    public IEnumerator DeChargeVoltRoutine()
     {
         while (CVStatus.VoltChargeLevel >= 0f)
         {

@@ -22,6 +22,7 @@ internal class StoneHatch : Interactive
     private void Start()
     {
         gateProperty = FindGateProperty.GetGateProperty(gatePropertyGroup, name);
+     
     }
     protected override void OnTriggerEnter(Collider other)
     {

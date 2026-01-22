@@ -11,8 +11,9 @@ namespace GateSystem
         public UnityAction OnAllKeysCollected;
         public UnityAction OnHatchActivated;
         public UnityAction<bool> OnGateOpen;
+        public UnityAction<bool> OnGateClose;
         public UnityAction<int> OnKeyCollected;
-        public UnityAction<int> OnCheckKeyCount;
+        public UnityAction<int> OnCollectedKeyCount;
         public void CollectKey()
         {
             keysCollected++;
@@ -28,6 +29,10 @@ namespace GateSystem
             //if (keysCollected >= keysRequired)
                 OnAllKeysCollected?.Invoke();
         }
+        public void CloseGate()
+        {
+            OnGateClose?.Invoke(false);
+        }
         public void OpenGate()
         {
             if (keysCollected >= keysRequired)
@@ -39,9 +44,10 @@ namespace GateSystem
                 OnGateOpen?.Invoke(false);
             }
         }
-        public void CheckKeyCount()
+        public void CollectedKeyCount()
         {
-            OnCheckKeyCount?.Invoke(keysCollected);
+            //OnCheckKeyCount?.Invoke(keysCollected);
+            OnCollectedKeyCount?.Invoke(keysCollected);
         }
     }
 }

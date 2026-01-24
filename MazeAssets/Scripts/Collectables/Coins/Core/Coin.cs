@@ -1,5 +1,4 @@
 using UnityEngine;
-//using UnityEngine.Events;
 
 namespace Collectable
 {
@@ -9,9 +8,11 @@ namespace Collectable
         //public static event UnityAction<string> TestEvent = delegate { };
 
         [SerializeField] SaveSystem.SaveLevelDataSObject CoinCounter;
+        [SerializeField] CollectableEventManagement CollectetedManagement;
 
         protected override void OnTriggerEnter(Collider other)
         {
+            CollectetedManagement.collectableEvent.CollectedItem = tag;
             base.OnTriggerEnter(other);
             CoinCounter.CoinCounter += 1;
         }

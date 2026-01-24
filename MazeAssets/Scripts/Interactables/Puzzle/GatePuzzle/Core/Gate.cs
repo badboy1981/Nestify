@@ -11,12 +11,12 @@ namespace GateSystem3
                 GetComponentInParent<Transform>().
                 GetComponentInParent<GatePuzzleManager>().gateManagement;
         }
-        //Use in animation Eenent
+        //Use in animation Eevent
         private void GateSound()
         {
             PlaySound("OpenGateSound");
         }
-        //Use in animation Eenent
+        //Use in animation Eevent
         private void OnGateClose()
         {
             gateManagement.gateEvent.OnPushHandle = false;

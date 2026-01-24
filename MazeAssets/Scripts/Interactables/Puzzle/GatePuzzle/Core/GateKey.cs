@@ -10,7 +10,6 @@ namespace GateSystem3
         {
             gateManagement = GetComponentInParent<Transform>().GetComponentInParent<GatePuzzleManager>().gateManagement;
             gateManagement.gateEvent.OnKeyCollected(tag);
-            //gateManagment.collectedKeyList.Add(tag);
             base.OnTriggerEnter(other);
         }
     }

@@ -8,7 +8,7 @@ namespace Collectable
         //[SerializeField] SaveSystem.SaveLevelDataSObject KeyList;
         [Header("Internal Parameter")]
         [SerializeField] GameEntityProperty keyProperty;
-        [SerializeField] GateManagment gateManagment;
+        //[SerializeField] GateManagment gateManagment;
         //private KeyCollectedEvent keyCollected;
         private event UnityAction<GameEntityProperty> OnCollectedKeyEvent;
 
@@ -18,14 +18,14 @@ namespace Collectable
             keyProperty.Value = name;                    // Assigns the GameObject's name as the Value
             keyProperty.Type = EntityTypeEnum.GateKey;   // Sets the Type to Key
             keyProperty.IsCollected = false;
-            gateManagment.KeyCollectedCounter = 0;
+            //gateManagment.KeyCollectedCounter = 0;
         }
         protected override void OnTriggerEnter(Collider other)
         {
             keyProperty.IsCollected = true;
-            gateManagment.gateConfig.RequiredKeys.Add(keyProperty);
+            //gateManagment.gateConfig.RequiredKeys.Add(keyProperty);
             //OnCollectedKeyEvent?.Invoke(keyProperty);
-            gateManagment.KeyCollectedCounter++;
+            //gateManagment.KeyCollectedCounter++;
             base.OnTriggerEnter(other);
         }
         private void OnEnable()
@@ -38,7 +38,7 @@ namespace Collectable
         }
         private void OnKeyCollected(GameEntityProperty property)
         {
-            gateManagment.UpdateKeyStatus(property.UniqueID);
+            //gateManagment.UpdateKeyStatus(property.UniqueID);
         }
     }
 }

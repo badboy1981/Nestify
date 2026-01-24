@@ -7,10 +7,10 @@ namespace Collectable
 {
     public class Collector2 : Parent
     {
-        [SerializeField] TextMeshProUGUI CoinBank;
-        [SerializeField] TextMeshProUGUI CointText;
-        [SerializeField] TextMeshProUGUI KeyText;
-        [SerializeField] TextMeshProUGUI LevelNumber;
+        //[SerializeField] TextMeshProUGUI CoinBank;
+        //[SerializeField] TextMeshProUGUI CointText;
+        //[SerializeField] TextMeshProUGUI KeyText;
+        //[SerializeField] TextMeshProUGUI LevelNumber;
         [SerializeField] SaveSystem.SaveLevelDataSObject LevelData;
 
         protected override void Awake()
@@ -18,7 +18,7 @@ namespace Collectable
             transform.SetPositionAndRotation(new Vector3(0, 0.5f, 0), Quaternion.identity);
             LevelData.SceneName = SceneManager.GetActiveScene().name;
             //LevelData.KeyList.Clear();
-            LevelNumber.text = $"{SaveSystem.Data2.PlayableSceneList.levelNumber(SceneManager.GetActiveScene().name)}";
+            //LevelNumber.text = $"{SaveSystem.Data2.PlayableSceneList.levelNumber(SceneManager.GetActiveScene().name)}";
             InitCollectedText();
             RemoveCellectedKeys();
         }
@@ -28,9 +28,9 @@ namespace Collectable
         }
         private void InitCollectedText()
         {
-            CoinBank.text = $"{LevelData.CoinBank}";
-            CointText.text = $"{LevelData.CoinCounter}";
-            KeyText.text = $"{LevelData.KeyList.Count}";
+            //CoinBank.text = $"{LevelData.CoinBank}";
+            //CointText.text = $"{LevelData.CoinCounter}";
+            //KeyText.text = $"{LevelData.KeyList.Count}";
 
         }
         private void RemoveCellectedKeys()

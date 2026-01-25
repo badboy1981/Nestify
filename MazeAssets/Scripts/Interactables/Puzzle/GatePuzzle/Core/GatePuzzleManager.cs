@@ -13,7 +13,6 @@ namespace GateSystem3
         {
             gateManagement.ResetValues();
         }
-
         private void OnEnable()
         {
             gateManagement.gateEvent.OnKeyCollectedEvent += KeyAddToList;
@@ -29,7 +28,7 @@ namespace GateSystem3
         private void KeyAddToList(string keyName)
         {
             if (gateManagement.allKeyCollected) return;
-            if (!gateManagement.collectedKeyList.Contains(name))
+            if (!gateManagement.collectedKeyList.Contains(keyName))
             {
                 gateManagement.collectedKeyList.Add(keyName);
             }

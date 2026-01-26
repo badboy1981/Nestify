@@ -3,6 +3,7 @@ using UnityEngine;
 public class ChargeManager : MonoBehaviour
 {
     [SerializeField] ChargeManagment chargeManagment;
+
     Coroutine drainRoutine;
     private void Start()
     {

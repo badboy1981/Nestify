@@ -1,0 +1,21 @@
+# Compiled binary
+nestify
+nestify.exe
+*.exe
+
+# Go
+/go.work
+/go.work.sum
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Optional: hide .git in scans (if you want clean output)
+.git/

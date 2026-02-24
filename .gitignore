@@ -1,7 +1,12 @@
 # Compiled binary
-#nestify
 nestify.exe
 *.exe
+
+#Folder
+templates
+Note
+config
+reports
 
 # Go
 /go.work

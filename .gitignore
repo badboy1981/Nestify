@@ -1,6 +1,7 @@
 # Compiled binary
 nestify.exe
 *.exe
+nestify
 
 #Folder
 templates

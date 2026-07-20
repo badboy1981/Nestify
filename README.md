@@ -66,19 +66,25 @@ graph TD
     J --> K[Save JSON to Nestify-Report/PROJECT_TIMESTAMP.json]
     J -->|--tree Flag| L[Save Tree Markdown to Nestify-Report/PROJECT_TIMESTAMP.md]
 
+    %% CONTEXT COMMAND FLOW (NEW)
+    B -->|context| M[Run Scan & Skeleton Analysis]
+    M --> N[analyzer.AnalyzeLanguages & Metrics]
+    N --> O[treeprinter.GenerateTree]
+    O --> P[Save Unified AI Report to Nestify-Report/ai_context_report.md]
+
     %% INIT COMMAND FLOW
-    B -->|init| M[Read JSON Template from Embedded FS]
-    M --> N[generator.CreateStructure]
-    N --> O[Create Directories & Files on Disk]
+    B -->|init| Q[Read JSON Template from Embedded FS]
+    Q --> R[generator.CreateStructure]
+    R --> S[Create Directories & Files on Disk]
 
     %% IGNORE COMMAND FLOW
-    B -->|ignore-list| P[List Available Embedded Ignore Templates]
-    B -->|ignore-use| Q[Copy Selected Template to .nestifyignore]
+    B -->|ignore-list| T[List Available Embedded Ignore Templates]
+    B -->|ignore-use| U[Copy Selected Template to .nestifyignore]
 
     %% ANALYZE COMMAND FLOW
-    B -->|analyze| R[scanner.Scan Folders]
-    R --> S[analyzer.AnalyzeSkeleton]
-    S --> T[Save Report to Nestify-Report/skeleton_report.md]
+    B -->|analyze| V[scanner.Scan Folders]
+    V --> W[analyzer.AnalyzeSkeleton]
+    W --> X[Save Report to Nestify-Report/skeleton_report.md]
 
 ```
 

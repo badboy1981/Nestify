@@ -26,6 +26,8 @@ func RunCli() {
 		runAnalyzeCmd() // این تابع در فایل cli.go (پایین‌تر) یا فایل خودش تعریف می‌شود
 	case "ignore-list":
 		runIgnoreListCmd()
+	case "context":
+		runContextCmd()
 	case "ignore-use":
 		if len(os.Args) < 3 {
 			fmt.Println("❌ لطفا نام تمپلیت را وارد کنید. مثال: nestify ignore-use go")
@@ -39,8 +41,8 @@ func RunCli() {
 }
 
 // فقط این مورد را اینجا نگه دار چون فایل جداگانه برای آنالیز در پوشه CLI نداری
-func runAnalyzeCmd() {
-	// اگر بعدا فایل analyze.go را در این پوشه ساختی، این را هم به آنجا منتقل کن
-	fmt.Println("🔍 در حال آنالیز پروژه...")
-	// فراخوانی متد اصلی آنالیزور
-}
+// func runAnalyzeCmd() {
+// 	// اگر بعدا فایل analyze.go را در این پوشه ساختی، این را هم به آنجا منتقل کن
+// 	fmt.Println("🔍 در حال آنالیز پروژه...")
+// 	// فراخوانی متد اصلی آنالیزور
+// }

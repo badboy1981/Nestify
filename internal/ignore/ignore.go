@@ -2,17 +2,15 @@ package ignore
 
 import (
 	"bufio"
+	"embed"
 	"os"
 	"path/filepath"
 	"strings"
 )
 
-type IgnoreMatcher struct {
-	patterns []string
-}
-
-func ListAvailableTemplates(templatesPath string) ([]string, error) {
-	entries, err := os.ReadDir(templatesPath)
+// خواندن کاملا پویای لیست تمپلیت‌ها بدون نیاز به تعریف نام آنها در کد
+func ListAvailableTemplatesFromFS(fs embed.FS, templatesDir string) ([]string, error) {
+	entries, err := fs.ReadDir(templatesDir)
 	if err != nil {
 		return nil, err
 	}
@@ -25,6 +23,10 @@ func ListAvailableTemplates(templatesPath string) ([]string, error) {
 	return list, nil
 }
 
+type IgnoreMatcher struct {
+	patterns []string
+}
+
 func NewIgnoreMatcher(rootPath string) (*IgnoreMatcher, error) {
 	filePath := filepath.Join(rootPath, ".nestifyignore")
 	var patterns []string
@@ -35,41 +37,22 @@ func NewIgnoreMatcher(rootPath string) (*IgnoreMatcher, error) {
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
 			line := strings.TrimSpace(scanner.Text())
-			// نادیده گرفتن خطوط خالی و کامنت‌ها
 			if line != "" && !strings.HasPrefix(line, "#") {
-				// حذف اسلش‌های ابتدا و انتها برای مقایسه راحت‌تر
 				line = strings.Trim(line, "/")
 				patterns = append(patterns, line)
 			}
 		}
 	}
 
-	// همیشه این موارد سیستمی را اضافه کن
 	patterns = append(patterns, ".git", "node_modules", ".Test", "Test")
 
 	return &IgnoreMatcher{patterns: patterns}, nil
 }
 
-// func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
-// 	// مسیر ورودی قبلاً در اسکنر استاندارد شده، فقط چک کن
-// 	cleanPath := strings.Trim(path, "/")
-
-//		for _, p := range m.patterns {
-//			if cleanPath == p || strings.HasPrefix(cleanPath, p+"/") {
-//				return true
-//			}
-//		}
-//		return false
-//	}
 func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
 	for _, pattern := range m.patterns {
-		// استفاده از Match برای پشتیبانی از ستاره و الگوها
 		matched, _ := filepath.Match(pattern, path)
-		if matched {
-			return true
-		}
-		// چک کردن مستقیم برای پوشه‌ها یا نام‌های دقیق
-		if path == pattern {
+		if matched || path == pattern {
 			return true
 		}
 	}

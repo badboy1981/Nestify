@@ -2,6 +2,8 @@
 nestify.exe
 *.exe
 nestify
+.nestifyignore
+Temp.md
 
 #Folder
 templates

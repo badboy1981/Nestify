@@ -51,12 +51,11 @@ func runScan(cleanPath string, printTree bool, foldersOnly bool) {
 	}
 
 	// ۳. مدیریت پوشه گزارشات
-	reportDir := pathutil.NormalizeForOS("reports")
+	reportDir := pathutil.NormalizeForOS("Nestify-Report")
 	if err := os.MkdirAll(reportDir, 0755); err != nil {
 		fmt.Printf("❌ Error creating report directory: %v\n", err)
 		return
 	}
-
 	// ۳. نام‌گذاری با زمان دقیق
 	timestamp := time.Now().Format("20060102_150405")
 	baseFileName := fmt.Sprintf("%s_%s", projectName, timestamp)

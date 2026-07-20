@@ -1,20 +1,25 @@
 package cli
 
 import (
+	"embed"
 	"fmt"
-	"io"
 	"os"
-	"path/filepath"
+	"path"
 
 	"github.com/badboy1981/Nestify/internal/ignore"
 )
 
-// نمایش لیست تمپلیت‌های آماده
+var templatesFS embed.FS
+
+func SetTemplatesFS(fs embed.FS) {
+	templatesFS = fs
+}
+
 func runIgnoreListCmd() {
-	templatesPath := filepath.Join("templates", "ignore")
-	list, err := ignore.ListAvailableTemplates(templatesPath)
+	// خواندن مستقیم از پوشه templates-ignore
+	list, err := ignore.ListAvailableTemplatesFromFS(templatesFS, "templates-ignore")
 	if err != nil {
-		fmt.Println("❌ خطا در خواندن پوشه تمپلیت‌ها:", err)
+		fmt.Println("❌ خطا در خواندن تمپلیت‌ها:", err)
 		return
 	}
 
@@ -25,29 +30,20 @@ func runIgnoreListCmd() {
 	fmt.Println("\nاستفاده: nestify ignore-use <name>")
 }
 
-// کپی کردن تمپلیت انتخاب شده در فایل پروژه
 func runIgnoreUseCmd(templateName string) {
-	sourcePath := filepath.Join("templates", "ignore", templateName+".txt")
+	// آدرس فایل در پوشه templates-ignore
+	sourcePath := path.Join("templates-ignore", templateName+".txt")
 	destPath := ".nestifyignore"
 
-	// خواندن از تمپلیت و نوشتن در فایل مقصد
-	input, err := os.Open(sourcePath)
+	data, err := templatesFS.ReadFile(sourcePath)
 	if err != nil {
 		fmt.Printf("❌ تمپلیت '%s' پیدا نشد.\n", templateName)
 		return
 	}
-	defer input.Close()
 
-	output, err := os.Create(destPath)
+	err = os.WriteFile(destPath, data, 0644)
 	if err != nil {
 		fmt.Println("❌ خطا در ایجاد فایل .nestifyignore:", err)
-		return
-	}
-	defer output.Close()
-
-	_, err = io.Copy(output, input)
-	if err != nil {
-		fmt.Println("❌ خطا در کپی محتوا:", err)
 		return
 	}
 

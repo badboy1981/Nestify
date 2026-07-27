@@ -5,11 +5,12 @@ import (
 	"path/filepath"
 
 	"github.com/badboy1981/Nestify/internal/ignore"
-	"github.com/badboy1981/Nestify/internal/pathutil" // فقط این را برای آدرس‌ها استفاده کن
+	"github.com/badboy1981/Nestify/internal/pathutil"
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
-func Scan(path string, foldersOnly bool) ([]types.Node, error) {
+// Scan اسکن پروژه را با امکان تعیین حداکثر عمق انجام می‌دهد
+func Scan(path string, foldersOnly bool, maxDepth int) ([]types.Node, error) {
 	osPath := pathutil.NormalizeForOS(path)
 	info, err := os.Stat(osPath)
 	if err != nil {
@@ -28,7 +29,8 @@ func Scan(path string, foldersOnly bool) ([]types.Node, error) {
 		Size: info.Size(),
 	}
 
-	children, err := scanDir(standardRoot, standardRoot, matcher, foldersOnly)
+	// شروع اسکن از عمق ۱
+	children, err := scanDir(standardRoot, standardRoot, matcher, foldersOnly, 1, maxDepth)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +39,7 @@ func Scan(path string, foldersOnly bool) ([]types.Node, error) {
 	return []types.Node{rootNode}, nil
 }
 
-func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, foldersOnly bool) ([]types.Node, error) {
+func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, foldersOnly bool, currentDepth, maxDepth int) ([]types.Node, error) {
 	entries, err := os.ReadDir(currentPath)
 	if err != nil {
 		return nil, err
@@ -53,7 +55,7 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 		fullPath := filepath.Join(currentPath, entryName)
 
 		relPath, _ := filepath.Rel(rootPath, fullPath)
-		standardRel := pathutil.ToStandardPath(relPath) // اصلاح استفاده از پکیج جدید
+		standardRel := pathutil.ToStandardPath(relPath)
 
 		if matcher != nil {
 			if matcher.ShouldIgnore(entryName, entry.IsDir()) || matcher.ShouldIgnore(standardRel, entry.IsDir()) {
@@ -69,11 +71,14 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 
 		if entry.IsDir() {
 			node.Type = "folder"
-			children, err := scanDir(fullPath, rootPath, matcher, foldersOnly)
-			if err != nil {
-				return nil, err
+			// اگر سقف عمق تعیین نشده باشد (0 یا کمتر) یا هنوز به سقف عمق نرسیده باشیم، وارد زیرپوشه می‌شویم
+			if maxDepth <= 0 || currentDepth < maxDepth {
+				children, err := scanDir(fullPath, rootPath, matcher, foldersOnly, currentDepth+1, maxDepth)
+				if err != nil {
+					return nil, err
+				}
+				node.Children = children
 			}
-			node.Children = children
 		} else {
 			node.Type = "file"
 		}

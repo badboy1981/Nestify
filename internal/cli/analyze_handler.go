@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -11,19 +12,23 @@ import (
 )
 
 func runAnalyzeCmd() {
-	targetPath := "."
-	if len(os.Args) > 2 {
-		targetPath = os.Args[2]
+	cmd := flag.NewFlagSet("analyze", flag.ExitOnError)
+	path := cmd.String("path", ".", "Project path to analyze")
+	depth := cmd.Int("depth", 0, "Maximum directory depth to analyze (0 for unlimited)")
+	cmd.IntVar(depth, "d", 0, "Maximum directory depth to analyze (shorthand)")
+
+	cmd.Parse(os.Args[2:])
+
+	targetPath := *path
+	if targetPath == "." && len(cmd.Args()) > 0 {
+		targetPath = cmd.Args()[0]
 	}
 
 	fmt.Println("🔍 در حال آنالیز پروژه (با اعمال فیلترهای ignore)...")
 
 	normPath := pathutil.NormalizeForOS(targetPath)
 
-	// ۱. اسکن کامل پروژه
-	// خود scanner.Scan به صورت داخلی IgnoreMatcher را اجرا کرده
-	// و با پاس دادن false، فایل‌ها را هم جهت محاسبه درصد زبان‌ها اسکن می‌کند.
-	nodes, err := scanner.Scan(normPath, false)
+	nodes, err := scanner.Scan(normPath, false, *depth)
 	if err != nil {
 		fmt.Printf("❌ خطا در اسکن مسیر: %v\n", err)
 		return
@@ -34,10 +39,16 @@ func runAnalyzeCmd() {
 		return
 	}
 
-	// ۲. تحلیل آمار و زبان‌های پروژه
 	report := analyzer.AnalyzeSkeleton(nodes)
 
-	// ۳. ساخت پوشه گزارشات و ذخیره فایل
+	depthStr := "Unlimited"
+	if *depth > 0 {
+		depthStr = fmt.Sprintf("%d", *depth)
+	}
+
+	// اضافه کردن میزان عمق اسکن در ابتدای گزارش آنالیز
+	reportWithDepth := fmt.Sprintf("> **Scan Depth:** %s\n\n%s", depthStr, report)
+
 	reportDir := pathutil.NormalizeForOS("Nestify-Report")
 	if err := os.MkdirAll(reportDir, 0755); err != nil {
 		fmt.Printf("❌ خطا در ایجاد پوشه گزارشات: %v\n", err)
@@ -45,14 +56,13 @@ func runAnalyzeCmd() {
 	}
 
 	outputPath := filepath.Join(reportDir, "skeleton_report.md")
-	err = os.WriteFile(outputPath, []byte(report), 0644)
+	err = os.WriteFile(outputPath, []byte(reportWithDepth), 0644)
 	if err != nil {
 		fmt.Printf("❌ خطا در ذخیره گزارش آنالیز: %v\n", err)
 		return
 	}
 
-	// ۴. نمایش موفقیت
 	fmt.Println("✅ آنالیز پروژه با موفقیت انجام شد!")
 	fmt.Printf("📄 گزارش خروجی ذخیره شد در: %s\n\n", outputPath)
-	fmt.Println(report)
+	fmt.Println(reportWithDepth)
 }

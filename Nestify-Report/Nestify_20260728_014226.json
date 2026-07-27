@@ -21,12 +21,12 @@
       {
         "name": "README.md",
         "type": "file",
-        "size": 16303
+        "size": 16483
       },
       {
         "name": "README_fa.md",
         "type": "file",
-        "size": 4797
+        "size": 22374
       },
       {
         "name": "cmd",
@@ -66,6 +66,11 @@
                 "name": "analyzer.go",
                 "type": "file",
                 "size": 3860
+              },
+              {
+                "name": "analyzer_flowchart.md",
+                "type": "file",
+                "size": 1761
               }
             ]
           },
@@ -76,7 +81,7 @@
               {
                 "name": "analyze_handler.go",
                 "type": "file",
-                "size": 1830
+                "size": 2054
               },
               {
                 "name": "cli.go",
@@ -86,12 +91,12 @@
               {
                 "name": "context_handler.go",
                 "type": "file",
-                "size": 2580
+                "size": 2716
               },
               {
                 "name": "help.go",
                 "type": "file",
-                "size": 1582
+                "size": 1460
               },
               {
                 "name": "ignore_handler.go",
@@ -106,7 +111,7 @@
               {
                 "name": "scan.go",
                 "type": "file",
-                "size": 3579
+                "size": 3131
               },
               {
                 "name": "version.go",
@@ -155,7 +160,12 @@
               {
                 "name": "scanner.go",
                 "type": "file",
-                "size": 1940
+                "size": 2276
+              },
+              {
+                "name": "scanner_sequenceDiagram.md",
+                "type": "file",
+                "size": 3777
               }
             ]
           },

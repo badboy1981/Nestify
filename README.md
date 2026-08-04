@@ -20,6 +20,8 @@ Modern developer tools are becoming bloated, cloud-dependent, and intrusive. Nes
 - 🔒 **100% Local & Private:** Runs entirely on your machine with zero telemetry. Your codebase never leaves your system.
 - ⚡ **Lightning-Fast, Single Binary:** Written in Go and compiled into one native executable. No Node.js, Python, or external runtimes.
 - 🧠 **AI Token-Efficient Reports:** Automatically removes build noise (`bin/`, `obj/`, `node_modules/`) so you only send meaningful architecture context to LLMs.
+- 💬 **Injected Prompt Templates:** Attach targeted AI instructions (architecture, refactoring, security audits) directly into your context reports.
+- 📏 **Custom Traversal Depth (`--depth` / `-d`):** Limit scan depth to focus on high-level architecture without drowning in nested folders.
 - 🔄 **Full Architecture Lifecycle:** Scan → Analyze → Export JSON blueprint → Rebuild structure with `nestify init`. A complete round-trip workflow for developers.
 
 ---
@@ -29,7 +31,11 @@ Modern developer tools are becoming bloated, cloud-dependent, and intrusive. Nes
 - 🌍 **Global Execution**  
   Install once and run `nestify` globally from any folder or project on your system.
 - 📦 **Zero-Config Embedded Templates**  
-  All ignore and project templates (`templates-ignore/`, `templates-projects/`) are embedded directly into the binary via Go's `embed` package.
+  All ignore, project, and prompt templates (`templates-ignore/`, `templates-projects/`, `templates-prompts/`) are embedded directly into the binary via Go's `embed` package.
+- 💬 **Prompt Engineering Integration (`-p` / `--prompt`)**  
+  Inject pre-built prompt templates or custom LLM task instructions directly into generated AI context reports.
+- 📏 **Directory Depth Control (`-d` / `--depth`)**  
+  Restrict directory recursion to specific levels for quick top-level architectural overviews.
 - 🔍 **Smart Project Scanning**  
   Scans project directories and exports structured reports in both **JSON** and clean **Markdown Tree** formats.
 - 📂 **Organized Report Output**  
@@ -47,7 +53,7 @@ Modern developer tools are becoming bloated, cloud-dependent, and intrusive. Nes
 
 ## 🔄 Program Workflow & Architecture
 
-The diagram below illustrates how Nestify routes CLI commands and processes directory scans and template generation:
+The diagram below illustrates how Nestify routes CLI commands and processes directory scans, AI context generation, and template management:
 
 ```mermaid
 graph TD
@@ -57,35 +63,42 @@ graph TD
     B -->|scan| C[pathutil.NormalizeForOS]
     C --> D[ignore.NewIgnoreMatcher]
     D --> E[Read .nestifyignore & Defaults]
-    E --> F[scanner.Scan]
+    E --> F[scanner.Scan with Depth Filter]
     F --> G{foldersOnly Flag?}
     G -->|Yes| H[Scan Directories Only]
     G -->|No| I[Scan Files & Directories]
     H --> J[Format Output]
     I --> J
     J --> K[Save JSON to Nestify-Report/PROJECT_TIMESTAMP.json]
-    J -->|--tree Flag| L[Save Tree Markdown to Nestify-Report/PROJECT_TIMESTAMP.md]
+    J -->|--tree Flag| L[Save Tree Markdown with Depth Metadata]
 
-    %% CONTEXT COMMAND FLOW (NEW)
+    %% CONTEXT COMMAND FLOW
     B -->|context| M[Run Scan & Skeleton Analysis]
-    M --> N[analyzer.AnalyzeLanguages & Metrics]
-    N --> O[treeprinter.GenerateTree]
-    O --> P[Save Unified AI Report to Nestify-Report/ai_context_report.md]
+    M --> N[analyzer.AnalyzeSkeleton & Metrics]
+    N --> O[treeprinter.GetTreeString]
+    O --> P{Prompt Flag Given?}
+    P -->|Yes| Q[Inject Prompt Instructions to Header]
+    P -->|No| R[Build Standard Context]
+    Q --> S[Save Unified AI Report to Nestify-Report/ai_context_report.md]
+    R --> S
 
     %% INIT COMMAND FLOW
-    B -->|init| Q[Read JSON Template from Embedded FS]
-    Q --> R[generator.CreateStructure]
-    R --> S[Create Directories & Files on Disk]
+    B -->|init| T[Read JSON Template from Embedded FS]
+    T --> U[generator.CreateStructure]
+    U --> V[Create Directories & Files on Disk]
 
     %% IGNORE COMMAND FLOW
-    B -->|ignore-list| T[List Available Embedded Ignore Templates]
-    B -->|ignore-use| U[Copy Selected Template to .nestifyignore]
+    B -->|ignore-list| W[List Available Embedded Ignore Templates]
+    B -->|ignore-use| X[Copy Selected Template to .nestifyignore]
+
+    %% PROMPT COMMAND FLOW
+    B -->|prompt-list| Y[List Available Embedded Prompt Templates]
+    B -->|prompt| Z[Display Specified Prompt Template in Terminal]
 
     %% ANALYZE COMMAND FLOW
-    B -->|analyze| V[scanner.Scan Folders]
-    V --> W[analyzer.AnalyzeSkeleton]
-    W --> X[Save Report to Nestify-Report/skeleton_report.md]
-
+    B -->|analyze| AA[scanner.Scan with Depth Filter]
+    AA --> AB[analyzer.AnalyzeSkeleton]
+    AB --> AC[Save Report with Depth Info to Nestify-Report/skeleton_report.md]
 ```
 
 ---
@@ -119,7 +132,61 @@ go install ./cmd/nestify
 
 You can execute `nestify` commands from **any working directory** on your computer.
 
-### 1. Scan a Project (`scan`)
+### 1. AI Context Generation (`context`)
+
+Generates a unified Markdown report (`Nestify-Report/ai_context_report.md`) combining project metrics, language distributions, directory structure, and optional AI task instructions.
+
+```bash
+nestify context [options]
+```
+
+#### Flags:
+
+* `-p, --prompt <template|text>` : Inject an embedded prompt template (e.g., `architecture`, `refactor`) or custom instruction text into the report header.
+* `-d, --depth <int>` : Limit directory traversal depth (e.g., `-d 2`). Default: `0` (unlimited).
+* `--path <path>` : Target project path (Default: `.`).
+
+#### Examples:
+
+##### Generate AI context with default scan depth
+
+```bash
+nestify context
+```
+
+##### Inject an embedded prompt template (`architecture`) with scan depth restricted to 2 levels
+
+```bash
+nestify context -p architecture -d 2
+```
+
+##### Inject custom prompt text directly from the terminal
+
+```bash
+nestify context -p "Review this codebase structure for Go clean architecture guidelines" -d 3
+```
+
+---
+
+### 2. Manage Prompt Templates (`prompt-list` / `prompt`)
+
+View and inspect built-in prompt templates designed for AI codebase evaluation.
+
+#### List all available embedded prompt templates
+
+```bash
+nestify prompt-list
+```
+
+#### View the full text of a specific prompt template
+
+```bash
+nestify prompt architecture
+```
+
+---
+
+### 3. Scan a Project (`scan`)
 
 Scans a directory path and outputs structured representations into the `Nestify-Report/` directory.
 
@@ -132,38 +199,25 @@ nestify scan [options]
 * `--path <path>` : Path to the project directory (Default: `.`)
 * `--tree` : Generates a readable tree-view Markdown file (`Nestify-Report/PROJECT_TIMESTAMP.md`)
 * `--folders-only` : Excludes files from the scan to display only directory hierarchy
+* `-d, --depth <int>` : Limit scan depth (Default: `0` / unlimited)
 
 #### Examples:
 
-##### 1. Full scan of the current directory with tree view (Default path)
-
-When you are already inside the target project directory:
+##### Full scan with tree view up to 2 folder levels deep
 
 ```bash
-nestify scan --tree
+nestify scan -d 2 --tree
 ```
 
-OR
+##### Scan folder hierarchy only up to depth level 1
 
 ```bash
-nestify scan --tree --folders-only
-```
-
-##### 2. Full scan of the current directory with tree view
-
-```bash
-nestify scan --path . --tree
-```
-
-##### 3. Scan only folder hierarchy of a specific project
-
-```bash
-nestify scan --path ./MyProject --tree --folders-only
+nestify scan --folders-only -d 1
 ```
 
 ---
 
-### 2. Manage `.nestifyignore` Templates (`ignore-list` / `ignore-use`)
+### 4. Manage `.nestifyignore` Templates (`ignore-list` / `ignore-use`)
 
 View and apply built-in ignore templates tailored for specific tech stacks without needing extra files.
 
@@ -181,25 +235,23 @@ nestify ignore-use go
 
 ---
 
-### 3. Analyze Project Skeleton & Languages (`analyze`)
+### 5. Analyze Project Skeleton & Languages (`analyze`)
 
 Evaluates the project directory by applying `.nestifyignore` filtering, eliminating build artifacts (`bin/`, `obj/`, `node_modules/`), and calculating real source-code language distributions alongside project metrics.
 
 ```bash
-nestify analyze [path]
+nestify analyze [options]
 ```
 
-#### What it produces:
+#### Flags:
 
-It generates a concise report inside `Nestify-Report/skeleton_report.md` containing:
-
-* **Clean Project Metrics:** Total physical size, real file counts, and folder depth (excluding ignored artifacts).
-* **Language Percentage Breakdown:** Accurate visual progress bars showing source language ratios.
-* **Prompt-Ready AI Summary:** A compact JSON block designed to be copied directly into LLMs (like Gemini or Claude) for instant codebase context.
+* `-d, --depth <int>` : Limit analysis depth.
 
 #### Example Report Preview:
 
-```markdown
+
+> **Scan Depth:** 2
+
 # 🧠 Nestify Project Analysis Report
 
 ## 📊 Project Metrics
@@ -230,7 +282,9 @@ It generates a concise report inside `Nestify-Report/skeleton_report.md` contain
 }
 ```
 
-### 4. Create Project from Template (`init`)
+---
+
+### 6. Create Project from Template (`init`)
 
 Generates a physical file/folder hierarchy from a JSON template.
 
@@ -242,17 +296,16 @@ nestify init --template templates-projects/go_standard.json --path ./MyNewApp
 
 ## 🛠️ Adding Custom Templates
 
-Adding new ignore templates is fully dynamic and requires zero code modifications:
+Adding new ignore, project, or prompt templates is fully dynamic and requires zero code modifications:
 
-1. Drop a new `.txt` file into the `templates-ignore/` directory in your local clone (e.g., `templates-ignore/rust.txt`).
+1. Drop a new `.txt` file into `templates-ignore/` or `templates-prompts/` in your local clone (e.g., `templates-prompts/custom-audit.txt`).
 2. Reinstall the CLI:
 
 ```bash
 go install ./cmd/nestify
 ```
 
-3. Your new template is now embedded and immediately listed under `nestify ignore-list`!
-
+3. Your new template is now embedded and immediately available via `nestify prompt-list` or `nestify ignore-list`!
 ---
 
 ## 🔄 Reusing Existing Project Architectures
@@ -276,38 +329,59 @@ nestify init --template Nestify-Report/ExistingProject_20260720_110010.json --pa
 
 ## 📄 Real Example Outputs
 
-### 1. Markdown Tree Output (`--tree`)
+### AI Context Report Output with Injected Prompt (`ai_context_report.md`)
 
-# Project Structure: Nestify
 
-Generated by **Nestify** on 2026-07-20 13:30:40
+# 💬 AI Task & Instructions
+
+You are an enterprise software architect experienced in Clean Architecture, Onion Architecture, and Event-Driven systems.
+Evaluate the directory and module structure of this project.
+Verify layer separation (Domain, Application, Infrastructure, Presentation), check for dependency inversion violations, and suggest structural corrections to strictly maintain architectural boundaries.
+
+---
+
+# 🤖 Project Context for AI Analysis
+
+Generated by **Nestify** on 2026-08-04 20:35:42 | **Scan Depth:** 2
+
+## 📊 Project Metrics
+- **Total Size:** 42.10 KB
+- **Total Files:** 32
+- **Total Folders:** 18
+
+## 🌐 Languages Breakdown
+- **Go          ** `██████░░░░`   62.5% (20 files, 26.3 KB)
+- **Markdown    ** `███░░░░░░░`   30.1% (4 files, 12.7 KB)
+- **JSON        ** `█░░░░░░░░░`    7.4% (8 files, 3.1 KB)
+
+---
+
+## 🌲 Project Directory Tree
 
 ```text
 .
 └── Nestify
-    ├── .nestifyignore
-    ├── NOTICE
-    ├── README.md
-    ├── README_fa.md
+    ├── LICENSE
     ├── cmd
     │   └── nestify
     │       └── main.go
-    ├── config
     ├── embed.go
     ├── internal
     │   ├── analyzer
     │   │   └── analyzer.go
     │   ├── cli
+    │   │   ├── analyze_handler.go
     │   │   ├── cli.go
+    │   │   ├── context_handler.go
     │   │   ├── help.go
     │   │   ├── ignore_handler.go
     │   │   ├── init.go
+    │   │   ├── prompt_handler.go
     │   │   ├── scan.go
     │   │   └── version.go
     │   ├── generator
     │   │   └── generator.go
     │   ├── ignore
-    │   │   ├── ignore copy.txt
     │   │   └── ignore.go
     │   ├── pathutil
     │   │   └── pathutil.go
@@ -318,52 +392,33 @@ Generated by **Nestify** on 2026-07-20 13:30:40
     │   └── types
     │       └── type.go
     ├── templates-ignore
+    │   ├── angular.txt
+    │   ├── docker.txt
     │   ├── dotnet.txt
     │   ├── flutter.txt
     │   ├── general.txt
     │   ├── go.txt
+    │   ├── java.txt
+    │   ├── kotlin.txt
     │   ├── nodejs.txt
-    │   └── python.txt
-    └── templates-projects
-        ├── go_basic.json
-        └── go_standard.json
-
-```
-
-### 2. JSON Report Output (`Nestify-Report/*.json`)
-
-```json
-[
-  {
-    "name": "Nestify",
-    "type": "folder",
-    "size": 4096,
-    "children": [
-      {
-        "name": ".nestifyignore",
-        "type": "file",
-        "size": 784
-      },
-      {
-        "name": "cmd",
-        "type": "folder",
-        "children": [
-          {
-            "name": "nestify",
-            "type": "folder",
-            "children": [
-              {
-                "name": "main.go",
-                "type": "file",
-                "size": 119
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+    │   ├── php-laravel.txt
+    │   ├── python.txt
+    │   ├── react.txt
+    │   ├── ruby.txt
+    │   ├── rust.txt
+    │   ├── swift.txt
+    │   ├── terraform.txt
+    │   ├── unity.txt
+    │   └── vue.txt
+    ├── templates-projects
+    │   ├── go_basic.json
+    │   └── go_standard.json
+    └── templates-prompts
+        ├── architecture.txt
+        ├── default.txt
+        ├── desktop.txt
+        ├── refactor.txt
+        └── security.txt
 ```
 
 ---
@@ -376,16 +431,17 @@ The internal structure of Nestify follows standard Go project layout practices:
 | --- | --- |
 | `embed.go` | Root embed definition holding global template file systems (`RootTemplatesFS`). |
 | `cmd/nestify/` | Application entry point (`main.go`). |
-| `internal/cli/` | Command-line argument parsing and subcommands (`scan`, `init`, `analyze`, `ignore-*`). |
-| `internal/scanner/` | Recursive directory traversal and node hierarchy assembly. |
-| `internal/ignore/` | `.nestifyignore` parsing, template retrieval, and pattern matching logic. |
+| `internal/cli/` | Command-line argument parsing, flag routing, and subcommand handlers (`scan`, `context`, `analyze`, `prompt-*`, `ignore-*`). |
+| `internal/scanner/` | Recursive directory traversal with depth limiting and node hierarchy assembly. |
+| `internal/ignore/` | `.nestifyignore` parsing, embedded ignore templates, and pattern matching logic. |
 | `internal/generator/` | Disk structure creation based on JSON node templates. |
-| `internal/analyzer/` | Folder role detection heuristics (e.g., `cmd`, `internal`, `src`). |
+| `internal/analyzer/` | Language detection heuristics and metric statistics calculation. |
 | `internal/pathutil/` | Cross-platform file path normalization (Windows / Unix slashes). |
 | `internal/treeprinter/` | Pretty-printed ASCII tree string builder. |
 | `internal/types/` | Core struct definitions (`Node`, `Template`). |
 | `templates-ignore/` | Embedded ignore rule templates. |
 | `templates-projects/` | Embedded project scaffold templates. |
+| `templates-prompts/` | Embedded prompt templates for LLM instruction injection. |
 
 ---
 
@@ -393,13 +449,14 @@ The internal structure of Nestify follows standard Go project layout practices:
 
 | Command | Description | Example |
 | --- | --- | --- |
-| `nestify context` | Generates a unified, AI-ready report combining metrics, languages, and directory tree. | `nestify context` |
-| `nestify analyze` | Evaluates project skeleton metrics and language breakdowns. | `nestify analyze [path]` |
-| `nestify scan` | Scans directory structures and exports JSON/Markdown tree reports. | `nestify scan --path . --tree` |
+| `nestify context` | Generates a unified, AI-ready report with optional prompt injection (`-p`) and depth limits (`-d`). | `nestify context -p architecture -d 2` |
+| `nestify prompt-list` | Lists all available embedded prompt templates. | `nestify prompt-list` |
+| `nestify prompt` | Displays the content of a specific prompt template in the terminal. | `nestify prompt architecture` |
+| `nestify analyze` | Evaluates project skeleton metrics and language breakdowns. | `nestify analyze -d 2` |
+| `nestify scan` | Scans directory structures and exports JSON/Markdown tree reports. | `nestify scan -d 2 --tree` |
 | `nestify init` | Scaffolds physical project directories and files from a JSON template. | `nestify init --template Blueprint.json --path ./App` |
 | `nestify ignore-use` | Applies a built-in ignore template to clean out unwanted build artifacts. | `nestify ignore-use go` |
 | `nestify ignore-list` | Lists all available embedded tech-stack ignore templates. | `nestify ignore-list` |
-
 ---
 
 ## 💡 Real-World Use Cases
@@ -421,15 +478,14 @@ Strip out compiled artifacts, dependencies, and temporary files (`bin/`, `obj/`,
 
 ```bash
 nestify ignore-use dotnet   # or go, nodejs, python, flutter, etc.
-
 ```
 
 3. **Run your desired operation:**
 
-* **For AI Prompts:** Generate a complete metrics + tree context report:
+* **For AI Prompts:** Generate a complete metrics + tree context report with injected prompt instructions:
 
 ```bash
-nestify context
+nestify context -p architecture -d 2
 ```
 
 * **For Folder Architecture Analysis:** Get visual language statistics:
@@ -456,12 +512,6 @@ nestify scan --tree
 nestify scan --tree --folders-only
 ```
 
-OR
-
-```bash
-nestify scan --folders-only
-```
-
 ---
 
 ### 2. 🤖 AI-Driven Codebase Context Generation (Prompt Engineering)
@@ -475,15 +525,14 @@ Unfiltered scans include build artifacts, which corrupt metrics and waste LLM to
 nestify ignore-use dotnet   # or go, nodejs, python, etc.
 ```
 
-* **Step 2: Generate AI-Ready Context Report**
-Run the unified context command:
+* **Step 2: Generate AI-Ready Context Report with Targeted Prompt Instructions**
+Run the unified context command with a prompt template and depth constraint:
 
 ```bash
-nestify context
+nestify context -p refactor -d 3
 ```
 
-> 📄 *Output:* Generates `Nestify-Report/ai_context_report.md` combining **skeleton metrics, real language breakdown, and clean directory tree** ready to be attached to your AI prompts.
-
+> 📄 *Output:* Generates `Nestify-Report/ai_context_report.md` combining **prompt instructions, skeleton metrics, real language breakdown, and depth-restricted directory tree** ready to be attached to your AI prompts.
 ---
 
 ### 3. 🏗️ Architectural Reverse-Engineering (GitHub to Local Scaffold)
@@ -500,7 +549,7 @@ nestify ignore-use go
 2. **Step 2: Scan Folder Structure Only**
 
 ```bash
-nestify scan --folders-only
+nestify scan --folders-only -d 2
 ```
 
 3. **Step 3: Re-create the empty scaffold locally**

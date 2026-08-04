@@ -68,45 +68,49 @@
 #
 # ================================================================
 
-# ===== OS Files =====
-.DS_Store
-Thumbs.db
-desktop.ini
-*.tmp
+# ===== Rust Build Outputs =====
+target/
+*.rs.bk
+*.rlib
+*.rmeta
+*.dylib
+*.so
+*.dll
+*.exe
+
+# ===== Cargo =====
+Cargo.lock
+Cargo.toml
+.cargo/
+cargo/
+*.lock
+
+# ===== Logs & Temp =====
 *.log
+*.tmp
+tmp/
+temp/
 *.bkp
 *.bak
-*.old
-*.orig
-*~
 
 # ===== IDE & Editor =====
 .idea/
 .vscode/
 *.swp
 *.swo
-*.sublime-project
-*.sublime-workspace
+*~
 
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
+# ===== OS Files =====
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# ===== Logs =====
-logs/
-Logs/
-*.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr
+# ===== Coverage =====
+*.profraw
+*.profdata
+*.gcda
+*.gcno
+*.gcov
+*.html
+*.css
+*.js

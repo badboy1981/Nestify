@@ -68,45 +68,62 @@
 #
 # ================================================================
 
+# ===== Build Outputs =====
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.jmod
+target/
+build/
+out/
+*.log
+*.iml
+*.ipr
+*.iws
+
+# ===== Maven & Gradle =====
+pom.xml
+pom.xml.versionsBackup
+gradle/
+gradlew
+gradlew.bat
+build.gradle
+build.gradle.kts
+settings.gradle
+settings.gradle.kts
+*.gradle
+*.gradle.kts
+
+# ===== IntelliJ IDEA =====
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ===== Eclipse =====
+.classpath
+.project
+.settings/
+*.prefs
+
+# ===== Logs & Temp =====
+*.log
+logs/
+Logs/
+*.tmp
+*.bkp
+*.bak
+
 # ===== OS Files =====
 .DS_Store
 Thumbs.db
 desktop.ini
-*.tmp
-*.log
-*.bkp
-*.bak
-*.old
-*.orig
-*~
 
-# ===== IDE & Editor =====
-.idea/
-.vscode/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
-
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
-
-# ===== Logs =====
-logs/
-Logs/
-*.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr
+# ===== Test & Coverage =====
+*.test
+*.test.*
+*.coverage
+*.jacoco

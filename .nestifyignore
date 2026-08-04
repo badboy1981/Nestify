@@ -1,41 +1,125 @@
-# سیستم کنترل نسخه
-.git/
+# ================================================================
+# 🔧 Nestify Self-Ignore (Optional)
+#
+# Uncomment (remove the '#') the lines below if you want to
+# exclude these items from your Nestify scan reports.
+#
+# 👉 Just delete the '#' at the start of each line.
+# ================================================================
+ .nestifyignore
+ Nestify-Report/
+# ================================================================
+
+# ================================================================
+# 🐙 GitHub (Enabled by Default)
+#
+# These lines are ACTIVE and will EXCLUDE GitHub-related files
+# from reports. To INCLUDE them, add '#' at the start of each line.
+# ================================================================
+.github/
 .gitignore
 .gitattributes
+.gitmodules
+.git/
+.gitlab/
+.mergify.yml
+.changeset/
+.coveralls.yml
+.codeclimate.yml
+.codecov.yml
+.dependabot/
+.gitea/
+# ================================================================
 
-# فایل‌های موقت و تنظیمات ادیتور
-.vscode/
-.idea/
-*.swp
-Thumbs.db
-.DS_Store
+# ================================================================
+# 🖼️ Media Files (Enabled by Default)
+#
+# These lines are active and will EXCLUDE media files from reports.
+# To INCLUDE them in your scan, just add '#' at the start of each line.
+# ================================================================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.svg
+*.ico
+*.icns
+*.psd
+*.ai
+*.eps
+*.raw
+*.cr2
+*.nef
+*.heic
+*.avif
+# ================================================================
 
-# فایل‌های اجرایی و خروجی کامپایل
-*.exe
-*.test
-bin/
-
-# فایل‌های گزارش و دیتای خود Nestify
-reports/
-Nestify_*.json
-Nestify_*.md
-scan_output.md
-skeleton_report.md
-Error.txt
-go.mod
-go.sum
-Temp.md
-
-# مستندات غیر ضروری در ساختار کد
-LICENSE
-archive/
-config/examples
+# ================================================================
+# ✏️ Custom User Rules
+#
+# Add your own custom ignore patterns below.
+# Example:
+#   my-temp-folder/
+#   *.tmp
+#   secret-file.txt
+NOTICE/
 Note/
+config/
+scanner_sequenceDiagram.md
+analyzer_flowchart.md
+ ================================================================
 
+# ===== Go Build & Dependencies =====
+vendor/
+Godeps/
+bin/
+pkg/
+*.a
+*.test
+*.out
 
-# تست‌های داخلی (اگر نمی‌خواهید در گزارش باشند)
-Test/
-.Test/
+# ===== Go Module =====
+go.sum
+go.mod
+*.mod
+*.sum
 
-# فایل‌های مدیریت پکیج (اختیاری - اگر فقط ساختار پوشه‌ها را می‌خواهید)
-# go.sum
+# ===== IDE & Editor =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== OS Files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Logs & Temp =====
+*.log
+tmp/
+temp/
+*.tmp
+
+# ===== Coverage & Reports =====
+*.coverprofile
+*.out
+coverage.html
+coverage.out
+*.cov
+
+# ===== Binary Outputs =====
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+
+# ===== Project Specific (optional) =====
+dist/
+build/
+output/

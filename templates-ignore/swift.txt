@@ -68,45 +68,35 @@
 #
 # ================================================================
 
-# ===== OS Files =====
+# ===== Xcode =====
+*.xcodeproj/project.xcworkspace/
+*.xcworkspace/
+*.xcscheme/
+*.xcuserstate
+*.xcuserdatad/
+*.xcscmblueprint
+*.xccheckout
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# ===== Build =====
+build/
+DerivedData/
+*.app
+*.ipa
+*.dSYM
+
+# ===== Pods =====
+Pods/
+Podfile.lock
+
+# ===== Cache =====
+*.hmap
+*.xcconfig
+*.hmap
+*.swiftmodule
+
+# ===== OS =====
 .DS_Store
 Thumbs.db
 desktop.ini
-*.tmp
-*.log
-*.bkp
-*.bak
-*.old
-*.orig
-*~
-
-# ===== IDE & Editor =====
-.idea/
-.vscode/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
-
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
-
-# ===== Logs =====
-logs/
-Logs/
-*.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr

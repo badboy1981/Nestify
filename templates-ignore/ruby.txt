@@ -68,45 +68,37 @@
 #
 # ================================================================
 
-# ===== OS Files =====
+# ===== Ruby =====
+*.gem
+*.rbc
+*.ruby
+*.rbx
+*.o
+*.so
+*.dll
+*.dylib
+
+# ===== Bundler =====
+Gemfile.lock
+vendor/bundle/
+.bundle/
+
+# ===== Rails =====
+log/
+tmp/
+db/*.sqlite3
+db/*.sqlite3-journal
+db/*.db
+db/*.db-journal
+public/assets/
+public/packs/
+public/uploads/
+
+# ===== Cache =====
+*.cache
+.cache/
+
+# ===== OS =====
 .DS_Store
 Thumbs.db
 desktop.ini
-*.tmp
-*.log
-*.bkp
-*.bak
-*.old
-*.orig
-*~
-
-# ===== IDE & Editor =====
-.idea/
-.vscode/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
-
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
-
-# ===== Logs =====
-logs/
-Logs/
-*.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr

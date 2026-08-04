@@ -1,0 +1,177 @@
+# ================================================================
+# 🔧 Nestify Self-Ignore (Optional)
+#
+# Uncomment (remove the '#') the lines below if you want to
+# exclude these items from your Nestify scan reports.
+#
+# 👉 Just delete the '#' at the start of each line.
+# ================================================================
+# .nestifyignore
+# Nestify-Report/
+# ================================================================
+
+# ================================================================
+# 🐙 GitHub (Enabled by Default)
+#
+# These lines are ACTIVE and will EXCLUDE GitHub-related files
+# from reports. To INCLUDE them, add '#' at the start of each line.
+# ================================================================
+.github/
+.gitignore
+.gitattributes
+.gitmodules
+.git/
+.gitlab/
+.mergify.yml
+.changeset/
+.coveralls.yml
+.codeclimate.yml
+.codecov.yml
+.dependabot/
+.gitea/
+# ================================================================
+
+# ================================================================
+# 🖼️ Media Files (Enabled by Default)
+#
+# These lines are active and will EXCLUDE media files from reports.
+# To INCLUDE them in your scan, just add '#' at the start of each line.
+# ================================================================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.svg
+*.ico
+*.icns
+*.psd
+*.ai
+*.eps
+*.raw
+*.cr2
+*.nef
+*.heic
+*.avif
+# ================================================================
+
+# ================================================================
+# ✏️ Custom User Rules
+#
+# Add your own custom ignore patterns below.
+# Example:
+#   my-temp-folder/
+#   *.tmp
+#   secret-file.txt
+#
+# ================================================================
+
+# ===== Visual Studio & IDE =====
+.vs/
+*.user
+*.suo
+*.sln.docstates
+*.ipch
+*.pdb
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tlh
+*.tmp_proj
+*.log
+*.tlog
+*.lastbuildstate
+*.res
+*.resources
+*.exp
+*.lib
+*.map
+*.mpj
+*.sr
+
+# ===== Build Outputs =====
+bin/
+obj/
+publish/
+Debug/
+Release/
+x64/
+x86/
+AnyCPU/
+*.dll
+*.exe
+*.exe.config
+*.dll.config
+*.pdb
+*.so
+*.dylib
+
+# ===== NuGet & Dependencies =====
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.assets.json
+packages.lock.json
+
+# ===== Test Outputs =====
+TestResults/
+*.coverage
+*.coveragexml
+*.trx
+*.runsettings
+*.testsettings
+*.testrunconfig
+*.vsmdi
+*.psess
+*.vsp
+*.vspx
+*.dotCover
+*.VisualState.xml
+*.TestResult.xml
+
+# ===== Logs & Temp =====
+*.log
+logs/
+Logs/
+*.tmp
+*.bkp
+*.bak
+*.old
+*.orig
+
+# ===== OS Files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Certificate Files =====
+*.pfx
+*.p12
+*.snk
+*.cer
+*.pvk
+*.pem
+*.crt
+
+# ===== Documentation =====
+*.drawio
+*.vsdx
+*.pdf
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx

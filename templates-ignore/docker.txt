@@ -68,45 +68,30 @@
 #
 # ================================================================
 
-# ===== OS Files =====
-.DS_Store
-Thumbs.db
-desktop.ini
-*.tmp
-*.log
-*.bkp
-*.bak
-*.old
-*.orig
-*~
+# ===== Docker =====
+*.tar
+*.tar.gz
+*.tgz
 
-# ===== IDE & Editor =====
-.idea/
-.vscode/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
+# ===== Build =====
+Dockerfile
+docker-compose.yml
+docker-compose.*.yml
+.dockerignore
 
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
+# ===== Images =====
+*.img
+*.iso
+*.vmdk
+*.vdi
+
+# ===== Data =====
+data/
+volumes/
+*.db
+*.sqlite
+*.sqlite3
 
 # ===== Logs =====
-logs/
-Logs/
 *.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr
+logs/

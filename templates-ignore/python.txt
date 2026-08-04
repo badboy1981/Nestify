@@ -1,0 +1,145 @@
+# ================================================================
+# 🔧 Nestify Self-Ignore (Optional)
+#
+# Uncomment (remove the '#') the lines below if you want to
+# exclude these items from your Nestify scan reports.
+#
+# 👉 Just delete the '#' at the start of each line.
+# ================================================================
+# .nestifyignore
+# Nestify-Report/
+# ================================================================
+
+# ================================================================
+# 🐙 GitHub (Enabled by Default)
+#
+# These lines are ACTIVE and will EXCLUDE GitHub-related files
+# from reports. To INCLUDE them, add '#' at the start of each line.
+# ================================================================
+.github/
+.gitignore
+.gitattributes
+.gitmodules
+.git/
+.gitlab/
+.mergify.yml
+.changeset/
+.coveralls.yml
+.codeclimate.yml
+.codecov.yml
+.dependabot/
+.gitea/
+# ================================================================
+
+# ================================================================
+# 🖼️ Media Files (Enabled by Default)
+#
+# These lines are active and will EXCLUDE media files from reports.
+# To INCLUDE them in your scan, just add '#' at the start of each line.
+# ================================================================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.svg
+*.ico
+*.icns
+*.psd
+*.ai
+*.eps
+*.raw
+*.cr2
+*.nef
+*.heic
+*.avif
+# ================================================================
+
+# ================================================================
+# ✏️ Custom User Rules
+#
+# Add your own custom ignore patterns below.
+# Example:
+#   my-temp-folder/
+#   *.tmp
+#   secret-file.txt
+#
+# ================================================================
+
+# ===== Python Cache & Compiled =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.dll
+*.dylib
+
+# ===== Virtual Environment =====
+venv/
+env/
+ENV/
+.venv/
+.venv.bak/
+pythonenv*
+pyenv/
+virtualenv/
+
+# ===== Dependency Files =====
+pip-log.txt
+pip-delete-this-directory.txt
+.pip/
+poetry.lock
+Pipfile.lock
+pyproject.toml
+setup.py
+setup.cfg
+requirements.txt
+requirements-dev.txt
+
+# ===== Build Outputs =====
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+*.whl
+*.tar.gz
+*.zip
+
+# ===== Test & Coverage =====
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ===== Logs & Temp =====
+*.log
+*.tmp
+temp/
+tmp/
+
+# ===== IDE & Editor =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== OS Files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+*.ipynb

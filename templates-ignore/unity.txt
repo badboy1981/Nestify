@@ -68,45 +68,40 @@
 #
 # ================================================================
 
-# ===== OS Files =====
+# ===== Unity =====
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Uu]serSettings/
+
+# ===== Visual Studio =====
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.suo
+*.pidb
+
+# ===== Cache =====
+*.asset
+*.meta
+*.prefab
+*.unity
+*.scene
+*.mat
+*.anim
+*.controller
+*.fbx
+*.obj
+*.dll
+*.pdb
+
+# ===== OS =====
 .DS_Store
 Thumbs.db
 desktop.ini
-*.tmp
-*.log
-*.bkp
-*.bak
-*.old
-*.orig
-*~
-
-# ===== IDE & Editor =====
-.idea/
-.vscode/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
-
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
-
-# ===== Logs =====
-logs/
-Logs/
-*.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr

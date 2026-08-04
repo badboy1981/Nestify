@@ -68,45 +68,31 @@
 #
 # ================================================================
 
-# ===== OS Files =====
+# ===== Build =====
+dist/
+out-tsc/
+tmp/
+
+# ===== Dependencies =====
+node_modules/
+package-lock.json
+yarn.lock
+
+# ===== Cache =====
+.npm/
+.angular/
+.cache/
+
+# ===== Environment =====
+.env
+.env.*
+*.env
+
+# ===== Logs =====
+*.log
+npm-debug.log*
+
+# ===== Misc =====
 .DS_Store
 Thumbs.db
 desktop.ini
-*.tmp
-*.log
-*.bkp
-*.bak
-*.old
-*.orig
-*~
-
-# ===== IDE & Editor =====
-.idea/
-.vscode/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
-
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
-
-# ===== Logs =====
-logs/
-Logs/
-*.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr

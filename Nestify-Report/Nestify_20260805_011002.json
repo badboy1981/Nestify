@@ -1,0 +1,428 @@
+[
+  {
+    "name": "Nestify",
+    "type": "folder",
+    "size": 4096,
+    "children": [
+      {
+        "name": "LICENSE",
+        "type": "file",
+        "size": 11541
+      },
+      {
+        "name": "README.md",
+        "type": "file",
+        "size": 19719
+      },
+      {
+        "name": "README_fa.md",
+        "type": "file",
+        "size": 21857
+      },
+      {
+        "name": "cmd",
+        "type": "folder",
+        "children": [
+          {
+            "name": "nestify",
+            "type": "folder",
+            "children": [
+              {
+                "name": "main.go",
+                "type": "file",
+                "size": 279
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "docs",
+        "type": "folder",
+        "children": [
+          {
+            "name": "ai",
+            "type": "folder",
+            "children": [
+              {
+                "name": "overview.md",
+                "type": "file",
+                "size": 39
+              },
+              {
+                "name": "prompt-templates.md",
+                "type": "file",
+                "size": 33
+              }
+            ]
+          },
+          {
+            "name": "architecture.md",
+            "type": "file",
+            "size": 50
+          },
+          {
+            "name": "commands",
+            "type": "folder",
+            "children": [
+              {
+                "name": "analyze.md",
+                "type": "file",
+                "size": 43
+              },
+              {
+                "name": "context.md",
+                "type": "file",
+                "size": 43
+              },
+              {
+                "name": "init.md",
+                "type": "file",
+                "size": 40
+              },
+              {
+                "name": "overview.md",
+                "type": "file",
+                "size": 29
+              },
+              {
+                "name": "scan.md",
+                "type": "file",
+                "size": 37
+              }
+            ]
+          },
+          {
+            "name": "getting-started",
+            "type": "folder",
+            "children": [
+              {
+                "name": "installation.md",
+                "type": "file",
+                "size": 28
+              },
+              {
+                "name": "quickstart.md",
+                "type": "file",
+                "size": 24
+              }
+            ]
+          },
+          {
+            "name": "index.md",
+            "type": "file",
+            "size": 166
+          },
+          {
+            "name": "templates",
+            "type": "folder",
+            "children": [
+              {
+                "name": "custom-scaffolding.md",
+                "type": "file",
+                "size": 33
+              },
+              {
+                "name": "ignore-rules.md",
+                "type": "file",
+                "size": 43
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "embed.go",
+        "type": "file",
+        "size": 133
+      },
+      {
+        "name": "internal",
+        "type": "folder",
+        "children": [
+          {
+            "name": "analyzer",
+            "type": "folder",
+            "children": [
+              {
+                "name": "analyzer.go",
+                "type": "file",
+                "size": 3860
+              }
+            ]
+          },
+          {
+            "name": "cli",
+            "type": "folder",
+            "children": [
+              {
+                "name": "analyze_handler.go",
+                "type": "file",
+                "size": 2054
+              },
+              {
+                "name": "cli.go",
+                "type": "file",
+                "size": 975
+              },
+              {
+                "name": "context_handler.go",
+                "type": "file",
+                "size": 3279
+              },
+              {
+                "name": "help.go",
+                "type": "file",
+                "size": 2166
+              },
+              {
+                "name": "ignore_handler.go",
+                "type": "file",
+                "size": 1265
+              },
+              {
+                "name": "init.go",
+                "type": "file",
+                "size": 1777
+              },
+              {
+                "name": "prompt_handler.go",
+                "type": "file",
+                "size": 2369
+              },
+              {
+                "name": "scan.go",
+                "type": "file",
+                "size": 3131
+              },
+              {
+                "name": "version.go",
+                "type": "file",
+                "size": 562
+              }
+            ]
+          },
+          {
+            "name": "generator",
+            "type": "folder",
+            "children": [
+              {
+                "name": "generator.go",
+                "type": "file",
+                "size": 866
+              }
+            ]
+          },
+          {
+            "name": "ignore",
+            "type": "folder",
+            "children": [
+              {
+                "name": "ignore.go",
+                "type": "file",
+                "size": 1422
+              }
+            ]
+          },
+          {
+            "name": "pathutil",
+            "type": "folder",
+            "children": [
+              {
+                "name": "pathutil.go",
+                "type": "file",
+                "size": 384
+              }
+            ]
+          },
+          {
+            "name": "scanner",
+            "type": "folder",
+            "children": [
+              {
+                "name": "scanner.go",
+                "type": "file",
+                "size": 2276
+              }
+            ]
+          },
+          {
+            "name": "treeprinter",
+            "type": "folder",
+            "children": [
+              {
+                "name": "treeprinter.go",
+                "type": "file",
+                "size": 531
+              }
+            ]
+          },
+          {
+            "name": "types",
+            "type": "folder",
+            "children": [
+              {
+                "name": "type.go",
+                "type": "file",
+                "size": 662
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "mkdocs.yml",
+        "type": "file",
+        "size": 2011
+      },
+      {
+        "name": "templates-ignore",
+        "type": "folder",
+        "children": [
+          {
+            "name": "angular.txt",
+            "type": "file",
+            "size": 2131
+          },
+          {
+            "name": "docker.txt",
+            "type": "file",
+            "size": 2103
+          },
+          {
+            "name": "dotnet.txt",
+            "type": "file",
+            "size": 2915
+          },
+          {
+            "name": "flutter.txt",
+            "type": "file",
+            "size": 2527
+          },
+          {
+            "name": "general.txt",
+            "type": "file",
+            "size": 2226
+          },
+          {
+            "name": "go.txt",
+            "type": "file",
+            "size": 2372
+          },
+          {
+            "name": "java.txt",
+            "type": "file",
+            "size": 2464
+          },
+          {
+            "name": "kotlin.txt",
+            "type": "file",
+            "size": 2164
+          },
+          {
+            "name": "nodejs.txt",
+            "type": "file",
+            "size": 2447
+          },
+          {
+            "name": "php-laravel.txt",
+            "type": "file",
+            "size": 2141
+          },
+          {
+            "name": "python.txt",
+            "type": "file",
+            "size": 2713
+          },
+          {
+            "name": "react.txt",
+            "type": "file",
+            "size": 2174
+          },
+          {
+            "name": "ruby.txt",
+            "type": "file",
+            "size": 2192
+          },
+          {
+            "name": "rust.txt",
+            "type": "file",
+            "size": 2271
+          },
+          {
+            "name": "swift.txt",
+            "type": "file",
+            "size": 2258
+          },
+          {
+            "name": "terraform.txt",
+            "type": "file",
+            "size": 2131
+          },
+          {
+            "name": "unity.txt",
+            "type": "file",
+            "size": 2204
+          },
+          {
+            "name": "vue.txt",
+            "type": "file",
+            "size": 2138
+          }
+        ]
+      },
+      {
+        "name": "templates-projects",
+        "type": "folder",
+        "children": [
+          {
+            "name": "go_basic.json",
+            "type": "file",
+            "size": 385
+          },
+          {
+            "name": "go_standard.json",
+            "type": "file",
+            "size": 796
+          },
+          {
+            "name": "mkdocs_scaffold.json",
+            "type": "file",
+            "size": 4105
+          }
+        ]
+      },
+      {
+        "name": "templates-prompts",
+        "type": "folder",
+        "children": [
+          {
+            "name": "architecture.txt",
+            "type": "file",
+            "size": 386
+          },
+          {
+            "name": "default.txt",
+            "type": "file",
+            "size": 293
+          },
+          {
+            "name": "desktop.txt",
+            "type": "file",
+            "size": 291
+          },
+          {
+            "name": "refactor.txt",
+            "type": "file",
+            "size": 348
+          },
+          {
+            "name": "security.txt",
+            "type": "file",
+            "size": 315
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,106 @@
+{
+    "projectType": "Documentation",
+    "language": "Markdown",
+    "tags": [
+        "mkdocs",
+        "documentation",
+        "nestify"
+    ],
+    "root": [
+        {
+            "name": "docs",
+            "type": "folder",
+            "children": [
+                {
+                    "name": "index.md",
+                    "type": "file",
+                    "content": "# 🚀 Welcome to Nestify Documentation\n\nNestify is a fast, lightweight, and cross-platform CLI tool written in Go to scan, analyze, and generate project structures.\n"
+                },
+                {
+                    "name": "architecture.md",
+                    "type": "file",
+                    "content": "# 🏛️ Codebase Architecture & Internal Design\n"
+                },
+                {
+                    "name": "getting-started",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "installation.md",
+                            "type": "file",
+                            "content": "# ⚙️ Installation Guide\n"
+                        },
+                        {
+                            "name": "quickstart.md",
+                            "type": "file",
+                            "content": "# ⚡ Quick Start Guide\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "commands",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "overview.md",
+                            "type": "file",
+                            "content": "# 💻 CLI Commands Overview\n"
+                        },
+                        {
+                            "name": "context.md",
+                            "type": "file",
+                            "content": "# 🤖 Context Command (`nestify context`)\n"
+                        },
+                        {
+                            "name": "scan.md",
+                            "type": "file",
+                            "content": "# 🔍 Scan Command (`nestify scan`)\n"
+                        },
+                        {
+                            "name": "analyze.md",
+                            "type": "file",
+                            "content": "# 🧠 Analyze Command (`nestify analyze`)\n"
+                        },
+                        {
+                            "name": "init.md",
+                            "type": "file",
+                            "content": "# 🏗️ Init Command (`nestify init`)\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "ai",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "overview.md",
+                            "type": "file",
+                            "content": "# 💬 AI Context & Prompt Engineering\n"
+                        },
+                        {
+                            "name": "prompt-templates.md",
+                            "type": "file",
+                            "content": "# 📋 Embedded Prompt Templates\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "templates",
+                    "type": "folder",
+                    "children": [
+                        {
+                            "name": "ignore-rules.md",
+                            "type": "file",
+                            "content": "# 🚫 Ignore Templates (`.nestifyignore`)\n"
+                        },
+                        {
+                            "name": "custom-scaffolding.md",
+                            "type": "file",
+                            "content": "# 🛠️ Custom Templates Guide\n"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

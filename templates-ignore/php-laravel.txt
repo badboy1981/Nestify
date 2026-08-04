@@ -68,45 +68,33 @@
 #
 # ================================================================
 
-# ===== OS Files =====
-.DS_Store
-Thumbs.db
-desktop.ini
-*.tmp
-*.log
-*.bkp
-*.bak
-*.old
-*.orig
-*~
+# ===== PHP & Composer =====
+vendor/
+composer.lock
+composer.phar
+*.phar
 
-# ===== IDE & Editor =====
+# ===== Laravel =====
+storage/
+bootstrap/cache/
+public/storage/
+.env
+.env.*
+*.env
+
+# ===== Cache =====
+.cache/
+*.cache
+*.log
+logs/
+
+# ===== IDE =====
 .idea/
 .vscode/
 *.swp
 *.swo
-*.sublime-project
-*.sublime-workspace
 
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
-
-# ===== Logs =====
-logs/
-Logs/
-*.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini

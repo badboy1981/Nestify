@@ -19,11 +19,11 @@ func RunCli() {
 	case "--version", "version":
 		ShowVersion()
 	case "init":
-		runInitCmd() // این تابع در فایل init.go تعریف شده است
+		runInitCmd()
 	case "scan":
-		runScanCmd() // این تابع در فایل scan.go تعریف شده است
+		runScanCmd()
 	case "analyze":
-		runAnalyzeCmd() // این تابع در فایل cli.go (پایین‌تر) یا فایل خودش تعریف می‌شود
+		runAnalyzeCmd()
 	case "ignore-list":
 		runIgnoreListCmd()
 	case "context":
@@ -34,15 +34,16 @@ func RunCli() {
 			return
 		}
 		runIgnoreUseCmd(os.Args[2])
+	case "prompt-list":
+		runPromptListCmd()
+	case "prompt":
+		if len(os.Args) < 3 {
+			fmt.Println("❌ لطفا نام پرامپت را وارد کنید. مثال: nestify prompt architecture")
+			return
+		}
+		runPromptShowCmd(os.Args[2])
 	default:
 		fmt.Printf("❌ ساب‌کامند نامعتبر: %s\n", arg)
 		fmt.Println("برای راهنمایی بیشتر: nestify --help")
 	}
 }
-
-// فقط این مورد را اینجا نگه دار چون فایل جداگانه برای آنالیز در پوشه CLI نداری
-// func runAnalyzeCmd() {
-// 	// اگر بعدا فایل analyze.go را در این پوشه ساختی، این را هم به آنجا منتقل کن
-// 	fmt.Println("🔍 در حال آنالیز پروژه...")
-// 	// فراخوانی متد اصلی آنالیزور
-// }

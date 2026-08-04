@@ -1,0 +1,77 @@
+site_name: Nestify Documentation
+site_url: https://badboy1981.github.io/Nestify/
+site_author: badboy1981
+site_description: Fast, Lightweight Project Structure Scanner & AI Context Generator written in Go.
+
+repo_name: badboy1981/Nestify
+repo_url: https://github.com/badboy1981/Nestify
+
+theme:
+  name: material
+  language: en
+  palette:
+    # Toggle to Light Mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Toggle to Dark Mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quickstart.md
+  - CLI Commands:
+      - Overview: commands/overview.md
+      - Scan: commands/scan.md
+      - Ignore Rules: commands/ignore.md
+      - Analyze: commands/analyze.md
+      - Context (AI): commands/context.md
+      - Prompt Templates: commands/prompt.md
+      - Init: commands/init.md
+  - AI & Prompt Engineering:
+      - Overview: ai/overview.md
+      - Prompt Templates: ai/prompt-templates.md
+  - Templates & Ignore:
+    #   - Ignore Rules: templates/ignore-rules.md
+      - Ignore Templates: templates/ignore-rules.md
+      - Custom Scaffolding: templates/custom-scaffolding.md
+  - Architecture: architecture.md

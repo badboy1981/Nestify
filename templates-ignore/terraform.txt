@@ -68,45 +68,27 @@
 #
 # ================================================================
 
-# ===== OS Files =====
-.DS_Store
-Thumbs.db
-desktop.ini
-*.tmp
-*.log
-*.bkp
-*.bak
-*.old
-*.orig
-*~
+# ===== Terraform =====
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*.override.tf
+*.override.tf.json
 
-# ===== IDE & Editor =====
-.idea/
-.vscode/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
+# ===== Crash =====
+crash.log
+crash.*.log
 
-# ===== Temp & Cache =====
-temp/
-tmp/
-cache/
-.cache/
-*.cache
+# ===== Cache =====
+.terraform.lock.hcl
+*.hcl
+*.tfplan
+*.tfstate.backup
 
-# ===== Logs =====
-logs/
-Logs/
-*.log
-*.trace
-
-# ===== Misc =====
-*.pid
-*.seed
-*.pid.lock
-*.secret
-*.key
-*.pem
-*.crt
-*.csr
+# ===== Environment =====
+.env
+*.env

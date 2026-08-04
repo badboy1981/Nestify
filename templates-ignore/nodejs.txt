@@ -1,0 +1,123 @@
+# ================================================================
+# 🔧 Nestify Self-Ignore (Optional)
+#
+# Uncomment (remove the '#') the lines below if you want to
+# exclude these items from your Nestify scan reports.
+#
+# 👉 Just delete the '#' at the start of each line.
+# ================================================================
+# .nestifyignore
+# Nestify-Report/
+# ================================================================
+
+# ================================================================
+# 🐙 GitHub (Enabled by Default)
+#
+# These lines are ACTIVE and will EXCLUDE GitHub-related files
+# from reports. To INCLUDE them, add '#' at the start of each line.
+# ================================================================
+.github/
+.gitignore
+.gitattributes
+.gitmodules
+.git/
+.gitlab/
+.mergify.yml
+.changeset/
+.coveralls.yml
+.codeclimate.yml
+.codecov.yml
+.dependabot/
+.gitea/
+# ================================================================
+
+# ================================================================
+# 🖼️ Media Files (Enabled by Default)
+#
+# These lines are active and will EXCLUDE media files from reports.
+# To INCLUDE them in your scan, just add '#' at the start of each line.
+# ================================================================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.svg
+*.ico
+*.icns
+*.psd
+*.ai
+*.eps
+*.raw
+*.cr2
+*.nef
+*.heic
+*.avif
+# ================================================================
+
+# ================================================================
+# ✏️ Custom User Rules
+#
+# Add your own custom ignore patterns below.
+# Example:
+#   my-temp-folder/
+#   *.tmp
+#   secret-file.txt
+#
+# ================================================================
+
+# ===== Node.js Dependencies =====
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+*.lock
+
+# ===== Build Outputs =====
+dist/
+build/
+coverage/
+.nyc_output/
+out/
+
+# ===== Logs & Temp =====
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.temp/
+.tmp/
+
+# ===== IDE & Editor =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== OS Files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Environment Files =====
+.env
+.env.local
+.env.*.local
+*.env
+
+# ===== Cache =====
+.cache/
+.eslintcache
+*.tsbuildinfo
+.next/
+.nuxt/
+.cache/
+
+# ===== Misc =====
+*.pid
+*.seed
+*.pid.lock

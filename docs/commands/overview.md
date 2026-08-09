@@ -1,8 +1,8 @@
 # 🛠️ CLI Commands Overview
 
-**Nestify** provides a suite of fast, token-efficient, and cross-platform command-line tools designed to streamline project structure scanning, codebase analysis, AI context generation, and project scaffolding[cite: 5].
+**Nestify** provides a suite of fast, token-efficient, and cross-platform command-line tools designed to streamline project structure scanning, codebase analysis, AI context generation, and project scaffolding.
 
-All commands execute locally with zero network telemetry and share consistent syntax across Windows, macOS, and Linux[cite: 5].
+All commands execute locally with zero network telemetry and share consistent syntax across Windows, macOS, and Linux.
 
 ---
 
@@ -10,14 +10,14 @@ All commands execute locally with zero network telemetry and share consistent sy
 
 | Command | Primary Use Case | Output Location | Key Flags |
 | --- | --- | --- | --- |
-| [`nestify scan`](scan.md) | Structural scanning to JSON node tree or Markdown tree[cite: 5]. | `Nestify-Report/`[cite: 5] | `--tree`, `-d`, `--folders-only`[cite: 5] |
-| [`nestify ignore-list`](ignore.md) | Discover embedded tech-stack ignore presets[cite: 5]. | Terminal Output[cite: 5] | N/A |
-| [`nestify ignore-use`](ignore.md) | Generate a local `.nestifyignore` file for noise reduction[cite: 5]. | `.nestifyignore`[cite: 5] | `<template-name>`[cite: 5] |
-| [`nestify analyze`](analyze.md) | Calculate language distribution percentages and project size metrics[cite: 5]. | `skeleton_report.md`[cite: 3, 5] | `-d`, `--path`[cite: 5] |
-| [`nestify context`](context.md) | Generate a unified AI-ready Markdown context report with optional prompt injection[cite: 5]. | `ai_context_report.md`[cite: 4, 5] | `-p`, `-d`, `--path`[cite: 5] |
-| [`nestify prompt-list`](prompt.md) | Discover built-in prompt engineering templates[cite: 5]. | Terminal Output[cite: 5] | N/A |
-| [`nestify prompt`](prompt.md) | Inspect the full instruction text of an embedded prompt[cite: 5]. | Terminal Output[cite: 5] | `<template-name>`[cite: 5] |
-| [`nestify init`](init.md) | Scaffold empty physical directory/file structures from JSON blueprints[cite: 5]. | Target Path[cite: 5] | `--template`, `--path`[cite: 5] |
+| [`nestify scan`](scan.md) | Structural scanning to JSON node tree or Markdown tree. | `Nestify-Report/` | `--tree`, `-d`, `--folders-only` |
+| [`nestify ignore-list`](ignore.md) | Discover embedded tech-stack ignore presets. | Terminal Output | N/A |
+| [`nestify ignore-use`](ignore.md) | Generate a local `.nestifyignore` file for noise reduction. | `.nestifyignore` | `<template-name>` |
+| [`nestify analyze`](analyze.md) | Calculate language distribution percentages and project size metrics. | `skeleton_report.md`[cite: 3, 5] | `-d`, `--path` |
+| [`nestify context`](context.md) | Generate a unified AI-ready Markdown context report with optional prompt injection. | `ai_context_report.md`[cite: 4, 5] | `-p`, `-d`, `--path` |
+| [`nestify prompt-list`](prompt.md) | Discover built-in prompt engineering templates. | Terminal Output | N/A |
+| [`nestify prompt`](prompt.md) | Inspect the full instruction text of an embedded prompt. | Terminal Output | `<template-name>` |
+| [`nestify init`](init.md) | Scaffold empty physical directory/file structures from JSON blueprints. | Target Path | `--template`, `--path` |
 
 ---
 

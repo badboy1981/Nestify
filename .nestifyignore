@@ -65,12 +65,16 @@
 #   my-temp-folder/
 #   *.tmp
 #   secret-file.txt
-NOTICE/
+*.txt
+*.md
+*.json
+*.yml
+LICENSE
+NOTICE
 Note/
 config/
-scanner_sequenceDiagram.md
-analyzer_flowchart.md
- ================================================================
+docs/
+================================================================
 
 # ===== Go Build & Dependencies =====
 vendor/

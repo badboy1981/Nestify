@@ -18,6 +18,8 @@ func Scan(path string, foldersOnly bool, maxDepth int) ([]types.Node, error) {
 	}
 
 	standardRoot := pathutil.ToStandardPath(osPath)
+
+	// ایگنور مارکِر بدون وابسته بودن به Subfolder، فایل ریشه اصلی را لود می‌کند
 	matcher, err := ignore.NewIgnoreMatcher(standardRoot)
 	if err != nil {
 		return nil, err
@@ -58,20 +60,25 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 		standardRel := pathutil.ToStandardPath(relPath)
 
 		if matcher != nil {
+			// چک کردن اسم فایل و مسیر نسبی
 			if matcher.ShouldIgnore(entryName, entry.IsDir()) || matcher.ShouldIgnore(standardRel, entry.IsDir()) {
 				continue
 			}
 		}
 
 		info, _ := entry.Info()
+		var size int64
+		if info != nil {
+			size = info.Size()
+		}
+
 		node := types.Node{
 			Name: entryName,
-			Size: info.Size(),
+			Size: size,
 		}
 
 		if entry.IsDir() {
 			node.Type = "folder"
-			// اگر سقف عمق تعیین نشده باشد (0 یا کمتر) یا هنوز به سقف عمق نرسیده باشیم، وارد زیرپوشه می‌شویم
 			if maxDepth <= 0 || currentDepth < maxDepth {
 				children, err := scanDir(fullPath, rootPath, matcher, foldersOnly, currentDepth+1, maxDepth)
 				if err != nil {

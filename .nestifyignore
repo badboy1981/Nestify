@@ -65,8 +65,8 @@
 #   my-temp-folder/
 #   *.tmp
 #   secret-file.txt
-# *.txt
-*.md
+*.txt
+# *.md
 *.json
 *.yml
 nestify

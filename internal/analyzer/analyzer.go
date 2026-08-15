@@ -17,14 +17,14 @@ type LanguageStat struct {
 	Percentage float64
 }
 
-// AnalyzeSkeleton تحلیل جامع پروژه شامل تفکیک زبان‌ها به سبک گیت‌هاب
+// AnalyzeSkeleton performs a full project analysis including GitHub-style language breakdown.
 func AnalyzeSkeleton(nodes []types.Node) string {
 	extMap := make(map[string]*LanguageStat)
 	var totalFiles int
 	var totalFolders int
 	var totalBytes int64
 
-	// پیمایش کامل گره‌ها برای استخراج آمار
+	// Walk all nodes to collect statistics.
 	var processNode func(node types.Node)
 	processNode = func(node types.Node) {
 		if node.Type == "folder" {
@@ -60,7 +60,7 @@ func AnalyzeSkeleton(nodes []types.Node) string {
 		processNode(node)
 	}
 
-	// تبدیل مپ به اسلایس و مرتب‌سازی بر اساس حجم
+	// Convert map to slice and sort by total bytes.
 	var stats []LanguageStat
 	for _, stat := range extMap {
 		if totalBytes > 0 {
@@ -73,17 +73,17 @@ func AnalyzeSkeleton(nodes []types.Node) string {
 		return stats[i].TotalBytes > stats[j].TotalBytes
 	})
 
-	// ساخت گزارش مارک‌داون
+	// Build the Markdown report.
 	var sb strings.Builder
 	sb.WriteString("# 🧠 Nestify Project Analysis Report\n\n")
 
-	// ۱. آمارهای کلی پروژه
+	// 1. Overall project metrics.
 	sb.WriteString("## 📊 Project Metrics\n")
 	sb.WriteString(fmt.Sprintf("- **Total Size:** %.2f KB\n", float64(totalBytes)/1024))
 	sb.WriteString(fmt.Sprintf("- **Total Files:** %d\n", totalFiles))
 	sb.WriteString(fmt.Sprintf("- **Total Folders:** %d\n\n", totalFolders))
 
-	// ۲. تفکیک زبان‌ها به سبک گیت‌هاب
+	// 2. GitHub-style language breakdown.
 	sb.WriteString("## 🌐 Languages Breakdown\n")
 	for _, stat := range stats {
 		progressBar := makeProgressBar(stat.Percentage)
@@ -91,7 +91,7 @@ func AnalyzeSkeleton(nodes []types.Node) string {
 			stat.Name, progressBar, stat.Percentage, stat.Count, float64(stat.TotalBytes)/1024))
 	}
 
-	// ۳. بخش آماده‌سازی برای AI
+	// 3. Prompt-ready summary for AI.
 	sb.WriteString("\n---\n")
 	sb.WriteString("### 🤖 Prompt-Ready Summary for AI Analysis\n")
 	sb.WriteString("```json\n{\n")

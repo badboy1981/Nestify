@@ -29,6 +29,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
+    - navigation.indexes
     - navigation.top
     - navigation.tracking
     - search.suggest
@@ -64,10 +65,12 @@ nav:
       - Context (AI): commands/context.md
       - Prompt Templates: commands/prompt.md
       - Init: commands/init.md
+      - Copy: commands/copy.md
   - AI & Prompt Engineering:
       - Overview: ai/overview.md
       - Prompt Templates: ai/prompt-templates.md
   - Templates & Ignore:
+      - templates/index.md
       - Ignore Templates: templates/ignore-rules.md
       - Custom Scaffolding: templates/custom-scaffolding.md
   - Architecture: architecture.md

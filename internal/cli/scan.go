@@ -85,7 +85,7 @@ func saveJSON(data interface{}, targetPath string) error {
 	return os.WriteFile(targetPath, file, 0644)
 }
 
-// تابع تغییر یافته جهت اضافه کردن اطلاعات عمق اسکن در فایل
+// saveTree writes a Markdown tree report including scan depth metadata.
 func saveTree(nodes []types.Node, targetPath string, projectName string, maxDepth int) error {
 	depthStr := "Unlimited"
 	if maxDepth > 0 {

@@ -13,11 +13,12 @@ All commands execute locally with zero network telemetry and share consistent sy
 | [`nestify scan`](scan.md) | Structural scanning to JSON node tree or Markdown tree. | `Nestify-Report/` | `--tree`, `-d`, `--folders-only` |
 | [`nestify ignore-list`](ignore.md) | Discover embedded tech-stack ignore presets. | Terminal Output | N/A |
 | [`nestify ignore-use`](ignore.md) | Generate a local `.nestifyignore` file for noise reduction. | `.nestifyignore` | `<template-name>` |
-| [`nestify analyze`](analyze.md) | Calculate language distribution percentages and project size metrics. | `skeleton_report.md`[cite: 3, 5] | `-d`, `--path` |
-| [`nestify context`](context.md) | Generate a unified AI-ready Markdown context report with optional prompt injection. | `ai_context_report.md`[cite: 4, 5] | `-p`, `-d`, `--path` |
+| [`nestify analyze`](analyze.md) | Calculate language distribution percentages and project size metrics. | `skeleton_report.md` | `-d`, `--path` |
+| [`nestify context`](context.md) | Generate a unified AI-ready Markdown context report with optional prompt injection. | `ai_context_report.md` | `-p`, `-d`, `--path` |
 | [`nestify prompt-list`](prompt.md) | Discover built-in prompt engineering templates. | Terminal Output | N/A |
 | [`nestify prompt`](prompt.md) | Inspect the full instruction text of an embedded prompt. | Terminal Output | `<template-name>` |
 | [`nestify init`](init.md) | Scaffold empty physical directory/file structures from JSON blueprints. | Target Path | `--template`, `--path` |
+| [`nestify copy`](copy.md) | Copy current project to a new path with real file contents (respects `.nestifyignore`). | Destination path | `--path` |
 
 ---
 
@@ -32,15 +33,16 @@ graph LR
     B -->|AI Context & Prompts| C[<b>AI Analysis</b><br/><code>nestify context -p &lt;prompt&gt;</code>]
     B -->|Directory Tree & JSON| D[<b>Visual Scan</b><br/><code>nestify scan --tree</code>]
     B -->|Language Breakdown| E[<b>Code Metrics</b><br/><code>nestify analyze</code>]
+    B -->|Clean Clone| F[<b>Clean Copy</b><br/><code>nestify copy --path &lt;dest&gt;</code>]
 ```
 
 1. **Suppress Clutter First:** Run `nestify ignore-use <tech-stack>` to filter out compiled binaries, dependencies, and temporary files (`bin/`, `obj/`, `node_modules/`).
 
-
 2. **Contextualize for AI:** Run `nestify context -p <template>` to generate a complete codebase context report merged with custom LLM task instructions.
 
-
 3. **Inspect Architecture:** Run `nestify scan --tree -d 2` to review high-level directory organization without drowning in file details.
+
+4. **Clean Clone (optional):** Run `nestify copy --path ../clean-project` to copy the filtered project (real files + folders) to a new location.
 
 ---
 

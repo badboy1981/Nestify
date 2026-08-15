@@ -13,6 +13,7 @@ func ShowHelp() {
 	fmt.Println("  analyze       Analyze project metrics and language distributions")
 	fmt.Println("  scan          Scan directory structure and save JSON/Markdown reports")
 	fmt.Println("  init          Generate physical folder/file structure from JSON template")
+	fmt.Println("  copy          Copy current project to a new path (respects .nestifyignore)")
 	fmt.Println()
 	fmt.Println("Prompt Template Management:")
 	fmt.Println("  prompt-list   List available embedded prompt templates (architecture, refactor, etc.)")
@@ -41,5 +42,6 @@ func ShowHelp() {
 	fmt.Println("  nestify prompt architecture")
 	fmt.Println("  nestify scan -d 2 --tree")
 	fmt.Println("  nestify analyze --path ./MyProject -d 3")
+	fmt.Println("  nestify copy --path ../clean-project")
 	fmt.Println()
 }

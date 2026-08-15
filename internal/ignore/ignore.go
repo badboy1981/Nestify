@@ -10,7 +10,7 @@ import (
 	"github.com/badboy1981/Nestify/internal/pathutil"
 )
 
-// خواندن کاملا پویای لیست تمپلیت‌ها بدون نیاز به تعریف نام آنها در کد
+// ListAvailableTemplatesFromFS dynamically lists template names from an embedded FS directory.
 func ListAvailableTemplatesFromFS(fs embed.FS, templatesDir string) ([]string, error) {
 	entries, err := fs.ReadDir(templatesDir)
 	if err != nil {
@@ -32,14 +32,14 @@ type IgnoreMatcher struct {
 func NewIgnoreMatcher(targetPath string) (*IgnoreMatcher, error) {
 	var patterns []string
 
-	// ۱. ابتدا فایل .nestifyignore موجود در ریشه اجرای دستور (Current Working Directory) را چک می‌کنیم
+	// 1. Load .nestifyignore from the current working directory (where the command is run).
 	cwd, err := os.Getwd()
 	if err == nil {
 		cwdIgnore := filepath.Join(cwd, ".nestifyignore")
 		patterns = append(patterns, readIgnoreFile(cwdIgnore)...)
 	}
 
-	// ۲. اگر targetPath یک مسیر متفاوت بود و خودش هم .nestifyignore مجزا داشت، آن را هم می‌خوانیم
+	// 2. If targetPath differs from cwd and has its own .nestifyignore, load that too.
 	absTarget, err1 := filepath.Abs(targetPath)
 	absCwd, err2 := filepath.Abs(cwd)
 	if err1 == nil && err2 == nil && absTarget != absCwd {
@@ -47,10 +47,10 @@ func NewIgnoreMatcher(targetPath string) (*IgnoreMatcher, error) {
 		patterns = append(patterns, readIgnoreFile(targetIgnore)...)
 	}
 
-	// قوانین پیش‌فرض سیستمی
+	// Built-in system defaults.
 	patterns = append(patterns, ".git", "node_modules", ".Test", "Test")
 
-	// حذف موارد تکراری
+	// Deduplicate patterns.
 	uniquePatterns := make([]string, 0, len(patterns))
 	seen := make(map[string]bool)
 	for _, p := range patterns {
@@ -88,13 +88,13 @@ func (m *IgnoreMatcher) ShouldIgnore(path string, isDir bool) bool {
 	baseName := filepath.Base(cleanPath)
 
 	for _, pattern := range m.patterns {
-		// تطبیق با نام فایل یا پوشه (مثلاً node_modules یا *.log)
+		// Match against file or folder name (e.g. node_modules or *.log).
 		matchedBase, _ := filepath.Match(pattern, baseName)
 		if matchedBase || baseName == pattern {
 			return true
 		}
 
-		// تطبیق با مسیر نسبی کامل (مثلاً build/outputs)
+		// Match against full relative path (e.g. build/outputs).
 		matchedPath, _ := filepath.Match(pattern, cleanPath)
 		if matchedPath || cleanPath == pattern || strings.HasPrefix(cleanPath, pattern+"/") {
 			return true

@@ -11,15 +11,13 @@ import (
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
-// بخش تغییر یافته در تابع runInitCmd
 func runInitCmd() {
 	cmd := flag.NewFlagSet("init", flag.ExitOnError)
-	template := cmd.String("template", "template.json", "فایل JSON معماری پروژه")
-	path := cmd.String("path", ".", "مسیر ایجاد ساختار پروژه")
+	template := cmd.String("template", "template.json", "JSON project structure template file")
+	path := cmd.String("path", ".", "Destination path for the generated structure")
 
 	cmd.Parse(os.Args[2:])
 
-	// اصلاح شده: استفاده از پکیج pathutil
 	cleanTemplatePath := pathutil.NormalizeForOS(*template)
 	cleanDestPath := pathutil.NormalizeForOS(*path)
 
@@ -27,33 +25,33 @@ func runInitCmd() {
 }
 
 func runInit(templateFile string, path string) {
-	// خواندن فایل تمپلیت
+	// Read the template file.
 	data, err := os.ReadFile(templateFile)
 	if err != nil {
-		fmt.Printf("❌ خطا در خواندن فایل تمپلیت در مسیر: %s\n", templateFile)
+		fmt.Printf("❌ Failed to read template file at: %s\n", templateFile)
 		return
 	}
 
 	var template types.Template
 	if err := json.Unmarshal(data, &template); err != nil {
-		fmt.Println("❌ خطا در تحلیل JSON:", err)
+		fmt.Println("❌ Failed to parse JSON:", err)
 		return
 	}
 
-	// ایجاد پوشه ریشه پروژه (مثلاً G:\Test) قبل از ساخت فایل‌ها
+	// Create the destination root directory before generating files.
 	if err := os.MkdirAll(path, 0755); err != nil {
-		fmt.Printf("❌ خطا در دسترسی یا ایجاد مسیر مقصد: %s\n", path)
+		fmt.Printf("❌ Failed to access or create destination path: %s\n", path)
 		return
 	}
 
 	for _, rootNode := range template.Root {
-		// ارسال مسیر مطلق به ژنراتور
+		// Pass the absolute path to the generator.
 		err = generator.CreateStructure(rootNode, path)
 		if err != nil {
-			fmt.Printf("❌ خطا در ایجاد ساختار: %v\n", err)
+			fmt.Printf("❌ Failed to create structure: %v\n", err)
 			return
 		}
 	}
 
-	fmt.Printf("✅ پروژه با موفقیت در مسیر زیر ساخته شد:\n   %s\n", path)
+	fmt.Printf("✅ Project created successfully at:\n   %s\n", path)
 }

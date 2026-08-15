@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	// ارسال سیستم‌فایل ایمبد شده از ریشه به پکیج cli
+	// Pass the embedded root template filesystem to the cli package.
 	cli.SetTemplatesFS(nestify.RootTemplatesFS)
 	cli.RunCli()
 }

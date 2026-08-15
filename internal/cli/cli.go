@@ -20,6 +20,8 @@ func RunCli() {
 		ShowVersion()
 	case "init":
 		runInitCmd()
+	case "copy":
+		runCopyCmd()
 	case "scan":
 		runScanCmd()
 	case "analyze":
@@ -30,7 +32,7 @@ func RunCli() {
 		runContextCmd()
 	case "ignore-use":
 		if len(os.Args) < 3 {
-			fmt.Println("❌ لطفا نام تمپلیت را وارد کنید. مثال: nestify ignore-use go")
+			fmt.Println("❌ Please provide a template name. Example: nestify ignore-use go")
 			return
 		}
 		runIgnoreUseCmd(os.Args[2])
@@ -38,12 +40,12 @@ func RunCli() {
 		runPromptListCmd()
 	case "prompt":
 		if len(os.Args) < 3 {
-			fmt.Println("❌ لطفا نام پرامپت را وارد کنید. مثال: nestify prompt architecture")
+			fmt.Println("❌ Please provide a prompt name. Example: nestify prompt architecture")
 			return
 		}
 		runPromptShowCmd(os.Args[2])
 	default:
-		fmt.Printf("❌ ساب‌کامند نامعتبر: %s\n", arg)
-		fmt.Println("برای راهنمایی بیشتر: nestify --help")
+		fmt.Printf("❌ Invalid subcommand: %s\n", arg)
+		fmt.Println("For more help: nestify --help")
 	}
 }

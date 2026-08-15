@@ -9,7 +9,7 @@ import (
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
-// Scan اسکن پروژه را با امکان تعیین حداکثر عمق انجام می‌دهد
+// Scan walks a project path with optional max depth and ignore filtering.
 func Scan(path string, foldersOnly bool, maxDepth int) ([]types.Node, error) {
 	osPath := pathutil.NormalizeForOS(path)
 	info, err := os.Stat(osPath)
@@ -19,7 +19,7 @@ func Scan(path string, foldersOnly bool, maxDepth int) ([]types.Node, error) {
 
 	standardRoot := pathutil.ToStandardPath(osPath)
 
-	// ایگنور مارکِر بدون وابسته بودن به Subfolder، فایل ریشه اصلی را لود می‌کند
+	// Ignore matcher loads rules from the project root (not dependent on subfolders).
 	matcher, err := ignore.NewIgnoreMatcher(standardRoot)
 	if err != nil {
 		return nil, err
@@ -31,7 +31,7 @@ func Scan(path string, foldersOnly bool, maxDepth int) ([]types.Node, error) {
 		Size: info.Size(),
 	}
 
-	// شروع اسکن از عمق ۱
+	// Start scanning at depth 1.
 	children, err := scanDir(standardRoot, standardRoot, matcher, foldersOnly, 1, maxDepth)
 	if err != nil {
 		return nil, err
@@ -60,7 +60,7 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 		standardRel := pathutil.ToStandardPath(relPath)
 
 		if matcher != nil {
-			// چک کردن اسم فایل و مسیر نسبی
+			// Check both base name and relative path against ignore rules.
 			if matcher.ShouldIgnore(entryName, entry.IsDir()) || matcher.ShouldIgnore(standardRel, entry.IsDir()) {
 				continue
 			}

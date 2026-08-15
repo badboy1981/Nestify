@@ -16,36 +16,36 @@ func SetTemplatesFS(fs embed.FS) {
 }
 
 func runIgnoreListCmd() {
-	// خواندن مستقیم از پوشه templates-ignore
+	// Read available templates directly from the embedded templates-ignore folder.
 	list, err := ignore.ListAvailableTemplatesFromFS(templatesFS, "templates-ignore")
 	if err != nil {
-		fmt.Println("❌ خطا در خواندن تمپلیت‌ها:", err)
+		fmt.Println("❌ Failed to read ignore templates:", err)
 		return
 	}
 
-	fmt.Println("🚫 لیست تمپلیت‌های Ignore آماده:")
+	fmt.Println("🚫 Available ignore templates:")
 	for _, name := range list {
 		fmt.Printf("  - %s\n", name)
 	}
-	fmt.Println("\nاستفاده: nestify ignore-use <name>")
+	fmt.Println("\nUsage: nestify ignore-use <name>")
 }
 
 func runIgnoreUseCmd(templateName string) {
-	// آدرس فایل در پوشه templates-ignore
+	// Path of the template inside the embedded templates-ignore folder.
 	sourcePath := path.Join("templates-ignore", templateName+".txt")
 	destPath := ".nestifyignore"
 
 	data, err := templatesFS.ReadFile(sourcePath)
 	if err != nil {
-		fmt.Printf("❌ تمپلیت '%s' پیدا نشد.\n", templateName)
+		fmt.Printf("❌ Template '%s' not found.\n", templateName)
 		return
 	}
 
 	err = os.WriteFile(destPath, data, 0644)
 	if err != nil {
-		fmt.Println("❌ خطا در ایجاد فایل .nestifyignore:", err)
+		fmt.Println("❌ Failed to create .nestifyignore:", err)
 		return
 	}
 
-	fmt.Printf("✅ فایل .nestifyignore با استفاده از تمپلیت '%s' ایجاد شد.\n", templateName)
+	fmt.Printf("✅ .nestifyignore created using template '%s'.\n", templateName)
 }

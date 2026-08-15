@@ -48,6 +48,8 @@ Modern developer tools are becoming bloated, cloud-dependent, and intrusive. Nes
   Automatically evaluates directory layouts and detects folder roles (e.g., entry points, core logic, configs, tests).
 - 🏗️ **Project Generation (`init`)**  
   Instantly bootstrap new project directory structures from JSON templates.
+- 📋 **Clean Project Copy (`copy`)**  
+  Copy the current project to a new path with real file contents, respecting `.nestifyignore` so build noise is left behind.
 
 ---
 
@@ -86,6 +88,12 @@ graph TD
     B -->|init| T[Read JSON Template from Embedded FS]
     T --> U[generator.CreateStructure]
     U --> V[Create Directories & Files on Disk]
+
+    %% COPY COMMAND FLOW
+    B -->|copy| CA[pathutil.NormalizeForOS dest]
+    CA --> CB[ignore.NewIgnoreMatcher]
+    CB --> CC[copier.Copy walk + stream files]
+    CC --> CD[Clean project at --path]
 
     %% IGNORE COMMAND FLOW
     B -->|ignore-list| W[List Available Embedded Ignore Templates]
@@ -294,6 +302,27 @@ nestify init --template templates-projects/go_standard.json --path ./MyNewApp
 
 ---
 
+### 7. Clean Project Copy (`copy`)
+
+Copies the **current project** (real files and folders) to a destination path while respecting `.nestifyignore`.  
+Source is always the folder you are in; destination is set with `--path`.
+
+```bash
+# Inside the project you want to clone
+nestify ignore-use go
+nestify copy --path ../clean-project
+```
+
+Typical workflow:
+
+1. Open a terminal inside the source project.
+2. Apply and optionally customize `.nestifyignore`.
+3. Run `nestify copy --path <destination>`.
+
+Unlike `init` (empty scaffold from JSON), `copy` transfers actual file contents (text and binary).
+
+---
+
 ## 🛠️ Adding Custom Templates
 
 Adding new ignore, project, or prompt templates is fully dynamic and requires zero code modifications:
@@ -310,7 +339,7 @@ go install ./cmd/nestify
 
 ## 🔄 Reusing Existing Project Architectures
 
-You can easily capture the architecture of an existing project and use it as a blueprint for new ones:
+### Option A — Empty structure only (`scan` + `init`)
 
 1. **Scan the source project:**
 
@@ -323,6 +352,17 @@ nestify scan --path ./ExistingProject --folders-only
 
 ```bash
 nestify init --template Nestify-Report/ExistingProject_20260720_110010.json --path ./NewProject
+```
+
+### Option B — Real clean copy (`ignore-use` + `copy`)
+
+When you need the actual files (not an empty scaffold):
+
+```bash
+# Inside the source project
+nestify ignore-use go
+# Optionally edit .nestifyignore, then:
+nestify copy --path ../NewCleanProject
 ```
 
 ---

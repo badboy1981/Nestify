@@ -29,18 +29,18 @@ func runContextCmd() {
 		targetPath = cmd.Args()[0]
 	}
 
-	fmt.Println("🤖 در حال تولید گزارش جامع پروپت هوش مصنوعی (AI Context Report)...")
+	fmt.Println("🤖 Generating unified AI Context Report...")
 
 	normPath := pathutil.NormalizeForOS(targetPath)
 
 	nodes, err := scanner.Scan(normPath, false, *depth)
 	if err != nil {
-		fmt.Printf("❌ خطا در اسکن مسیر: %v\n", err)
+		fmt.Printf("❌ Scan error: %v\n", err)
 		return
 	}
 
 	if len(nodes) == 0 {
-		fmt.Println("⚠️ هیچ فایلی برای تحلیل پیدا نشد.")
+		fmt.Println("⚠️ No files found to analyze.")
 		return
 	}
 
@@ -67,7 +67,7 @@ func runContextCmd() {
 		depthStr = fmt.Sprintf("%d", *depth)
 	}
 
-	// دریافت متن پرامپت تزریقی
+	// Resolve optional injected prompt text.
 	promptHeader := getPromptContent(*prompt)
 
 	fullContext := ""
@@ -83,20 +83,20 @@ func runContextCmd() {
 
 	reportDir := pathutil.NormalizeForOS("Nestify-Report")
 	if err := os.MkdirAll(reportDir, 0755); err != nil {
-		fmt.Printf("❌ خطا در ایجاد پوشه گزارشات: %v\n", err)
+		fmt.Printf("❌ Failed to create report directory: %v\n", err)
 		return
 	}
 
 	outputPath := filepath.Join(reportDir, "ai_context_report.md")
 	err = os.WriteFile(outputPath, []byte(fullContext), 0644)
 	if err != nil {
-		fmt.Printf("❌ خطا در ذخیره گزارش AI Context: %v\n", err)
+		fmt.Printf("❌ Failed to save AI Context report: %v\n", err)
 		return
 	}
 
-	fmt.Println("✅ گزارش جامع هوش مصنوعی با موفقیت ساخته شد!")
+	fmt.Println("✅ AI Context report generated successfully!")
 	if promptHeader != "" {
-		fmt.Println("💡 دستورات پرامپت به ابتدای گزارش اضافه شد.")
+		fmt.Println("💡 Prompt instructions were added to the top of the report.")
 	}
-	fmt.Printf("📄 فایل آماده برای Copy/Paste در هوش مصنوعی: %s\n\n", outputPath)
+	fmt.Printf("📄 Ready to copy/paste into an LLM: %s\n\n", outputPath)
 }

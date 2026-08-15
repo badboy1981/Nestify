@@ -5,10 +5,10 @@ package types
 type Node struct {
 	Name     string `json:"name"`
 	Type     string `json:"type"`              // "folder" or "file"
-	Content  string `json:"content,omitempty"` // فقط برای فایل‌ها
-	Role     string `json:"role,omitempty"`    // نقش تخمینی (برای تحلیل)
+	Content  string `json:"content,omitempty"` // file content only
+	Role     string `json:"role,omitempty"`    // estimated role (for analysis)
 	Size     int64  `json:"size,omitempty"`
-	Children []Node `json:"children,omitempty"` // زیرپوشه‌ها یا فایل‌ها
+	Children []Node `json:"children,omitempty"` // nested folders or files
 }
 
 type Template struct {

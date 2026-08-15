@@ -27,3 +27,4 @@ Thumbs.db
 
 # Optional: hide .git in scans (if you want clean output)
 .git/
+Nestify-Report

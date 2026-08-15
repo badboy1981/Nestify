@@ -24,18 +24,18 @@ func runAnalyzeCmd() {
 		targetPath = cmd.Args()[0]
 	}
 
-	fmt.Println("🔍 در حال آنالیز پروژه (با اعمال فیلترهای ignore)...")
+	fmt.Println("🔍 Analyzing project (applying ignore filters)...")
 
 	normPath := pathutil.NormalizeForOS(targetPath)
 
 	nodes, err := scanner.Scan(normPath, false, *depth)
 	if err != nil {
-		fmt.Printf("❌ خطا در اسکن مسیر: %v\n", err)
+		fmt.Printf("❌ Scan error: %v\n", err)
 		return
 	}
 
 	if len(nodes) == 0 {
-		fmt.Println("⚠️ هیچ فایلی برای آنالیز پیدا نشد.")
+		fmt.Println("⚠️ No files found to analyze.")
 		return
 	}
 
@@ -46,23 +46,23 @@ func runAnalyzeCmd() {
 		depthStr = fmt.Sprintf("%d", *depth)
 	}
 
-	// اضافه کردن میزان عمق اسکن در ابتدای گزارش آنالیز
+	// Prepend scan depth information to the analysis report.
 	reportWithDepth := fmt.Sprintf("> **Scan Depth:** %s\n\n%s", depthStr, report)
 
 	reportDir := pathutil.NormalizeForOS("Nestify-Report")
 	if err := os.MkdirAll(reportDir, 0755); err != nil {
-		fmt.Printf("❌ خطا در ایجاد پوشه گزارشات: %v\n", err)
+		fmt.Printf("❌ Failed to create report directory: %v\n", err)
 		return
 	}
 
 	outputPath := filepath.Join(reportDir, "skeleton_report.md")
 	err = os.WriteFile(outputPath, []byte(reportWithDepth), 0644)
 	if err != nil {
-		fmt.Printf("❌ خطا در ذخیره گزارش آنالیز: %v\n", err)
+		fmt.Printf("❌ Failed to save analysis report: %v\n", err)
 		return
 	}
 
-	fmt.Println("✅ آنالیز پروژه با موفقیت انجام شد!")
-	fmt.Printf("📄 گزارش خروجی ذخیره شد در: %s\n\n", outputPath)
+	fmt.Println("✅ Project analysis completed successfully!")
+	fmt.Printf("📄 Report saved to: %s\n\n", outputPath)
 	fmt.Println(reportWithDepth)
 }

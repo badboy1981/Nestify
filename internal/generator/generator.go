@@ -7,24 +7,24 @@ import (
 	"github.com/badboy1981/Nestify/internal/types"
 )
 
-// CreateStructure به صورت بازگشتی پوشه‌ها و فایل‌ها را ایجاد می‌کند
+// CreateStructure recursively creates folders and files from a node tree.
 func CreateStructure(node types.Node, root string) error {
 	path := filepath.Join(root, node.Name)
 
 	if node.Type == "folder" {
-		// ایجاد پوشه
+		// Create directory.
 		if err := os.MkdirAll(path, 0755); err != nil {
 			return err
 		}
-		// ایجاد زیرمجموعه‌ها
+		// Create children.
 		for _, child := range node.Children {
 			if err := CreateStructure(child, path); err != nil {
 				return err
 			}
 		}
 	} else {
-		// ایجاد فایل با محتوا
-		// اگر node.Content خالی باشد، یک فایل خالی ساخته می‌شود
+		// Create file with content.
+		// If node.Content is empty, an empty file is written.
 		data := []byte(node.Content)
 		if err := os.WriteFile(path, data, 0644); err != nil {
 			return err

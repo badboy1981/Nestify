@@ -65,10 +65,11 @@
 #   my-temp-folder/
 #   *.tmp
 #   secret-file.txt
-*.txt
+# *.txt
 *.md
 *.json
 *.yml
+nestify
 LICENSE
 NOTICE
 Note/

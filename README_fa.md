@@ -197,8 +197,8 @@ nestify init --template templates-projects/go_standard.json --path ./MyNewApp
 کپی **واقعی** فایل‌ها و پوشه‌های پروژهٔ فعلی به مقصد، با فیلتر `.nestifyignore`.  
 مبدأ همیشه پوشه جاری است؛ مقصد با `--path` مشخص می‌شود.
 
+### داخل پروژه مبدأ
 ```bash
-# داخل پروژه مبدأ
 nestify ignore-use go
 nestify copy --path ../clean-project
 ```
@@ -233,10 +233,12 @@ nestify init --template Nestify-Report/ExistingProject_TIMESTAMP.json --path ./N
 
 ### گزینه B — کپی تمیز واقعی (`ignore-use` + `copy`)
 
+### داخل پروژه مبدأ
 ```bash
-# داخل پروژه مبدأ
 nestify ignore-use go
-# در صورت نیاز .nestifyignore را ویرایش کنید
+```
+### در صورت نیاز .nestifyignore را ویرایش کنید
+```bash
 nestify copy --path ../NewCleanProject
 ```
 

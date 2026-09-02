@@ -65,16 +65,19 @@
 #   my-temp-folder/
 #   *.tmp
 #   secret-file.txt
-*.txt
+# *.txt
 # *.md
+*.zip
+*.gz
 *.json
 *.yml
-nestify
+# nestify
 LICENSE
 NOTICE
 Note/
 config/
 docs/
+# Nestify-Promotion/
 ================================================================
 
 # ===== Go Build & Dependencies =====

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/badboy1981/Nestify/internal/pathutil"
@@ -37,14 +38,26 @@ func runScan(cleanPath string, printTree bool, foldersOnly bool, maxDepth int) {
 	}
 
 	absPath, _ := filepath.Abs(cleanPath)
-	projectName := filepath.Base(absPath)
-
-	if projectName == "" || projectName == "." || projectName == "/" || projectName == "\\" {
-		projectName = "project"
+	targetName := filepath.Base(absPath)
+	if targetName == "" || targetName == "." || targetName == "/" || targetName == "\\" {
+		targetName = "project"
 	}
 
 	if len(rootNodes) > 0 && rootNodes[0].Name == "." {
-		rootNodes[0].Name = projectName
+		rootNodes[0].Name = targetName
+	}
+
+	// When --path points at a subdirectory of the current working directory,
+	// wrap the scanned tree in ancestor folders from cwd down to the target
+	// so the report shows full path context (only the target's contents are expanded).
+	cwd, err := os.Getwd()
+	if err == nil {
+		rootNodes = wrapWithCwdAncestors(rootNodes, cwd, absPath)
+	}
+
+	projectName := targetName
+	if len(rootNodes) > 0 {
+		projectName = rootNodes[0].Name
 	}
 
 	reportDir := pathutil.NormalizeForOS("Nestify-Report")
@@ -54,7 +67,7 @@ func runScan(cleanPath string, printTree bool, foldersOnly bool, maxDepth int) {
 	}
 
 	timestamp := time.Now().Format("20060102_150405")
-	baseFileName := fmt.Sprintf("%s_%s", projectName, timestamp)
+	baseFileName := fmt.Sprintf("%s_%s", targetName, timestamp)
 
 	jsonPath := filepath.Join(reportDir, baseFileName+".json")
 	mdPath := filepath.Join(reportDir, baseFileName+".md")
@@ -75,6 +88,74 @@ func runScan(cleanPath string, printTree bool, foldersOnly bool, maxDepth int) {
 	if printTree {
 		fmt.Printf("   📄 Markdown: %s\n", filepath.Base(mdPath))
 	}
+}
+
+// wrapWithCwdAncestors rebuilds the node tree so it starts at the current
+// working directory name and chains intermediate folders down to the scanned
+// target. Sibling folders along the path are not included—only the path to
+// the target and the target's scanned children.
+func wrapWithCwdAncestors(nodes []types.Node, cwd, targetAbs string) []types.Node {
+	if len(nodes) == 0 {
+		return nodes
+	}
+
+	cwdAbs, err := filepath.Abs(cwd)
+	if err != nil {
+		return nodes
+	}
+	cwdAbs = filepath.Clean(cwdAbs)
+	targetAbs = filepath.Clean(targetAbs)
+
+	if cwdAbs == targetAbs {
+		return nodes
+	}
+
+	rel, err := filepath.Rel(cwdAbs, targetAbs)
+	if err != nil {
+		return nodes
+	}
+	// Target is outside cwd (e.g. absolute path elsewhere).
+	if rel == ".." || strings.HasPrefix(rel, ".."+string(os.PathSeparator)) {
+		return nodes
+	}
+
+	rel = pathutil.ToStandardPath(rel)
+	if rel == "" || rel == "." {
+		return nodes
+	}
+
+	parts := strings.Split(rel, "/")
+	filtered := make([]string, 0, len(parts))
+	for _, p := range parts {
+		if p != "" && p != "." {
+			filtered = append(filtered, p)
+		}
+	}
+	if len(filtered) == 0 {
+		return nodes
+	}
+
+	current := nodes[0]
+	// Walk from parent of target up to the first path segment under cwd.
+	for i := len(filtered) - 2; i >= 0; i-- {
+		current = types.Node{
+			Name:     filtered[i],
+			Type:     "folder",
+			Children: []types.Node{current},
+		}
+	}
+
+	cwdName := filepath.Base(cwdAbs)
+	if cwdName == "" || cwdName == "." || cwdName == "/" || cwdName == "\\" {
+		cwdName = "project"
+	}
+
+	root := types.Node{
+		Name:     cwdName,
+		Type:     "folder",
+		Children: []types.Node{current},
+	}
+	return []types.Node{root}
 }
 
 func saveJSON(data interface{}, targetPath string) error {

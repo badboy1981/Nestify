@@ -44,6 +44,11 @@ func Scan(path string, foldersOnly bool, maxDepth int) ([]types.Node, error) {
 func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, foldersOnly bool, currentDepth, maxDepth int) ([]types.Node, error) {
 	entries, err := os.ReadDir(currentPath)
 	if err != nil {
+		// Skip directories we cannot access (e.g. $RECYCLE.BIN, System Volume Information)
+		// instead of failing the entire scan.
+		if os.IsPermission(err) {
+			return nil, nil
+		}
 		return nil, err
 	}
 
@@ -82,6 +87,10 @@ func scanDir(currentPath, rootPath string, matcher *ignore.IgnoreMatcher, folder
 			if maxDepth <= 0 || currentDepth < maxDepth {
 				children, err := scanDir(fullPath, rootPath, matcher, foldersOnly, currentDepth+1, maxDepth)
 				if err != nil {
+					// Permission denied on a child → skip that folder, keep scanning the rest.
+					if os.IsPermission(err) {
+						continue
+					}
 					return nil, err
 				}
 				node.Children = children
